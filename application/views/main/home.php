@@ -61,7 +61,7 @@
                 </div><!-- nav-sub -->
             </li>
             <li class="nav-item"><a href="components/" class="nav-link"><i data-feather="box"></i> Components</a></li>
-            <li class="nav-item"><a href="collections/" class="nav-link"><i data-feather="archive"></i> Collections</a></li>
+            <li class="nav-item"><a href="collections/" class="nav-link"><i data-feather="archive"></i> Livescore</a></li>
         </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
