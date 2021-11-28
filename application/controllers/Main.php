@@ -48,4 +48,10 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
+
+	public function kontak()
+	{
+		$data['judul'] = "Kontak";
+		$this->template->load('ptwp_template', 'main/kontak', $data);
+	}
 }
