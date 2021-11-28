@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Main extends CI_Controller
 {
 
-		
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -13,51 +13,33 @@ class Main extends CI_Controller
 		// $this->hari = '3';
 		// $this->basic->squrity();
 	}
-	
+
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
-	
+
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";
 		$this->template->load('ptwp_template', 'main/data_pemain', $data);
 	}
-	
+
 	public function data_pertandingan()
 	{
 		$data['judul'] = "DATA PERTANDINGAN";
 		$this->template->load('ptwp_template', 'main/data_pertandingan', $data);
 	}
-	
+
 	public function data_pertandingan_point()
 	{
-		IF(!ISSET($_POST['id_data_point'])) DIE("Maaf... Anda Tidak Dapat Mengakses Halaman Ini... !!!");
+		if (!isset($_POST['id_data_point'])) die("Maaf... Anda Tidak Dapat Mengakses Halaman Ini... !!!");
 		$data['id_data_point'] = $_POST['id_data_point'];
-		
+
 		OB_START();
 		$this->load->view('main/data_pertandingan_point', $data);
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
-	}
-
-	public function pertandingan()
-	{
-		$data['judul'] = "Pertandingan";
-		$this->template->load('ptwp_template', 'main/pertandingan', $data);
-	}
-
-	public function pengurus()
-	{
-		$data['judul'] = "Pengurus";
-		$this->template->load('ptwp_template', 'main/pengurus', $data);
-	}
-
-	public function livescore()
-	{
-		$data['judul'] = "Livescore";
-		$this->template->load('ptwp_template', 'main/livescore', $data);
 	}
 }

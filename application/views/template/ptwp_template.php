@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <!-- Required meta tags -->
@@ -19,7 +20,7 @@
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.landing.css">
-  
+
   <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/feather-icons/feather.min.js"></script>
@@ -46,16 +47,68 @@
           <a href="<?php echo base_url() ?>" class="nav-link"><i data-feather="home"></i> Beranda</a>
         </li>
         <li class="nav-item with-sub">
-          <a href="#" class="nav-link"><i data-feather="info"></i> Profil</a>
-          <ul class="navbar-menu-sub">
-            <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="calendar"></i>Sejarah</a></li>
-            <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="calendar"></i>Pengurus</a></li>
-          </ul>
+          <a href="" class="nav-link"><i data-feather="info"></i> Profil</a>
+          <div class="navbar-menu-sub">
+            <div class="d-lg-flex">
+              <ul>
+                <li class="nav-label">Sejarah</li>
+                <li class="nav-sub-item"><a href="#l" class="nav-sub-link"><i data-feather="book"></i> Sejarah</a></li>
+                <li class="nav-label mg-t-20">AD/ART Organisasi</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
+                <li class="nav-label mg-t-20">Kongres PTWP</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> SK Panitia Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal & Tempat</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Peserta Kongres</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Tata Tertib Kongres</a></li>
+              </ul>
+              <ul>
+                <li class="nav-label">Pengurus Pusat</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
+                <li class="nav-label mg-t-20">Pengurus Daerah</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
+              </ul>
+              <ul>
+                <li class="nav-label">Gallery Kegiatan</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
+                <li class="nav-label mg-t-20">Hymne PTWP</li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
+              </ul>
+            </div>
+          </div><!-- nav-sub -->
         </li>
-        <li class="nav-item"><a href="<?php echo base_url(); ?>main/data_pemain" class="nav-link"><i data-feather="users"></i> Data Pemain</a></li>
-        <li class="nav-item"><a href="<?php echo base_url(); ?>main/data_pertandingan" class="nav-link"><i data-feather="users"></i> Pertandingan</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/pengurus'); ?>" class="nav-link"><i data-feather="users"></i> Pengurus</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/livescore'); ?>" class="nav-link"><i data-feather="clipboard"></i> Livescore</a></li>
+        <li class="nav-item with-sub">
+          <a href="" class="nav-link"><i data-feather="users"></i> Pertandingan</a>
+          <div class="navbar-menu-sub">
+            <div class="d-lg-flex">
+              <ul>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
+                <li class="nav-label mg-t-20">Pertandingan</li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perdelapan Final</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perempat Final</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Final</a></li>
+              </ul>
+            </div>
+          </div><!-- nav-sub -->
+        </li>
+        <li class="nav-item"><a href="" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
+        <li class="nav-item"><a href="" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
+        <li class="nav-item"><a href="" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
@@ -80,6 +133,7 @@
       </nav>
     </div>
   </footer>
+
 
   <script>
     $(function() {
