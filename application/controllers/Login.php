@@ -4,7 +4,8 @@
 		
 		public function index()
 		{
-			$this->load->view('admin/login_v');
+			$data['judul'] = "Halaman Login";
+			$this->template->load('ptwp_template', 'admin/login_v', $data);
 		}
 		
 		public function signin($param=''){
@@ -104,7 +105,4 @@
 			return(md5($hasil));
 		}
 		
-		}
-		
-		/* End of file welcome.php */
-	/* Location: ./application/controllers/welcome.php */	
+	}

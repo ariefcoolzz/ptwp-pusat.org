@@ -1,50 +1,43 @@
-<div class="content content-fixed">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-style1 mg-b-0">
-            <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo base_url(); ?>">Beranda</a></li>
+<div class="content-fixed">
+    <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+            <li data-target="#slideshow" data-slide-to="1"></li>
+            <li data-target="#slideshow" data-slide-to="2"></li>
         </ol>
-    </nav>
-</div>
-
-<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#slideshow" data-slide-to="0" class="active"></li>
-        <li data-target="#slideshow" data-slide-to="1"></li>
-        <li data-target="#slideshow" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner bg-dark">
-        <div class="carousel-item active">
-            <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-500 w-100" alt="...">
-            <div class="carousel-caption">
-                <h1 class="text-white">PTWP</h1>
-                <p class="tx-14">Badan Sehat, FIkiran Jernih, Kerja Produktif.</p>
+        <div class="carousel-inner bg-dark">
+            <div class="carousel-item active">
+                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 class="text-white">PTWP</h1>
+                    <p class="tx-14">Badan Sehat, FIkiran Jernih, Kerja Produktif.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block ht-600 w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
+                    <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block ht-600 w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
+                    <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
+                </div>
             </div>
         </div>
-        <div class="carousel-item">
-            <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block ht-500 w-100" alt="...">
-            <div class="carousel-caption">
-                <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
-                <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block ht-500 w-100" alt="...">
-            <div class="carousel-caption">
-                <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
-                <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
-            </div>
-        </div>
+        <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"><i data-feather="chevron-left"></i></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#slideshow" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"><i data-feather="chevron-right"></i></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-    <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"><i data-feather="chevron-left"></i></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#slideshow" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"><i data-feather="chevron-right"></i></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-
+</div><!-- content -->
 
 <div class="divider-text">
     <h4>Berita Terbaru</h4>

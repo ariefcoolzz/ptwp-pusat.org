@@ -22,12 +22,14 @@ class Main extends CI_Controller
 	
 	public function data_pemain()
 	{
-		$this->template->load('ptwp_template', 'main/data_pemain');
+		$data['judul'] = "DATA PEMAIN";
+		$this->template->load('ptwp_template', 'main/data_pemain', $data);
 	}
 	
 	public function data_pertandingan()
 	{
-		$this->template->load('ptwp_template', 'main/data_pertandingan');
+		$data['judul'] = "DATA PERTANDINGAN";
+		$this->template->load('ptwp_template', 'main/data_pertandingan', $data);
 	}
 	
 	public function data_pertandingan_point()
