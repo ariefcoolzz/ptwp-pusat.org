@@ -41,12 +41,6 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 
-	public function index()
-	{
-		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
-		$this->template->load('ptwp_template', 'main/home', $data);
-	}
-
 	public function pertandingan()
 	{
 		$data['judul'] = "Pertandingan";
