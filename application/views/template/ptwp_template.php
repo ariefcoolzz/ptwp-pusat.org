@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
+	<script src="<?php echo base_url(); ?>assets/jquery-2.0.2.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -67,7 +67,7 @@
             </ul>
           </li>
           <li class="nav-item with-sub">
-            <a href="#" class="nav-link"><i data-feather="package"></i> Apps</a>
+            <a href="<?php echo base_url(); ?>main/data_pemain" class="nav-link"><i data-feather="package"></i> Data Pemain</a>
             <ul class="navbar-menu-sub">
               <li class="nav-sub-item"><a href="template/classic/app-calendar.html" class="nav-sub-link"><i data-feather="calendar"></i>Calendar</a></li>
               <li class="nav-sub-item"><a href="template/classic/app-chat.html" class="nav-sub-link"><i data-feather="message-square"></i>Chat</a></li>
@@ -77,7 +77,7 @@
             </ul>
           </li>
           <li class="nav-item with-sub">
-            <a href="" class="nav-link"><i data-feather="layers"></i> Pages</a>
+            <a href="<?php echo base_url(); ?>main/data_pertandingan" class="nav-link"><i data-feather="layers"></i> Pertandingan</a>
             <div class="navbar-menu-sub">
               <div class="d-lg-flex">
                 <ul>
