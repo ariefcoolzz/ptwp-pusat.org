@@ -20,6 +20,12 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
 
+	public function sejarah()
+	{
+		$data['judul'] = "Sejarah";
+		$this->template->load('ptwp_template', 'main/sejarah', $data);
+	}
+
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";

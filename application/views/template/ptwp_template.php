@@ -52,7 +52,7 @@
             <div class="d-lg-flex">
               <ul>
                 <li class="nav-label">Sejarah</li>
-                <li class="nav-sub-item"><a href="#l" class="nav-sub-link"><i data-feather="book"></i> Sejarah</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/sejarah') ?>" class="nav-sub-link"><i data-feather="book"></i> Sejarah</a></li>
                 <li class="nav-label mg-t-20">AD/ART Organisasi</li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
@@ -88,7 +88,7 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item with-sub">
-          <a href="" class="nav-link"><i data-feather="users"></i> Pertandingan</a>
+          <a href="#" class="nav-link"><i data-feather="users"></i> Pertandingan</a>
           <div class="navbar-menu-sub">
             <div class="d-lg-flex">
               <ul>
@@ -106,9 +106,9 @@
             </div>
           </div><!-- nav-sub -->
         </li>
-        <li class="nav-item"><a href="" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
-        <li class="nav-item"><a href="" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
+        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
@@ -136,6 +136,10 @@
 
 
   <script>
+    $(document).ready(function() {
+      $('.nav-item.active').removeClass('active');
+      $('a[href="' + location.pathname + location.search + '"]').closest('li.nav-item').addClass('active');
+    });
     $(function() {
       'use strict'
       $('.img-caption').on('mouseover mouseout', function() {
