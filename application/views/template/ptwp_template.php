@@ -135,8 +135,8 @@
 
         $('[data-toggle="tooltip"]').tooltip()
 
+    });
+  </script>
+</body>
 
-      });
-    </script>
-  </body>
 </html>
