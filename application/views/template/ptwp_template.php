@@ -16,6 +16,11 @@
   <!-- vendor css -->
   <link href="<?php echo base_url(); ?>assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
 
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
@@ -25,7 +30,12 @@
   <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/feather-icons/feather.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-
+  <script src="<?php echo base_url(); ?>assets/lib/prismjs/prism.js"></script>
+  <script src="<?php echo base_url(); ?>assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
 
 </head>
@@ -134,12 +144,12 @@
     </div>
   </footer>
 
-
   <script>
     $(document).ready(function() {
       $('.nav-item.active').removeClass('active');
       $('a[href="' + location.pathname + location.search + '"]').closest('li.nav-item').addClass('active');
     });
+
     $(function() {
       'use strict'
       $('.img-caption').on('mouseover mouseout', function() {

@@ -5,17 +5,16 @@
 			<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
 		</ol>
 	</nav>
-</div>
-<div class="content">
-	<div class="table-responsive">
-		<table class='table table-striped'>
-			<h4 class="header-title btn-sm btn-dark">DATA PEMAIN</h4>
-			<div class="dropdown-divider" style="border-color: seagreen;"></div>
-			<tr>
-				<th>No.</th>
-				<th>Nama</th>
-				<th>Nip</th>
-			</tr>
+	<div class="table-responsive mg-t-30">
+		<h3>DATA PEMAIN</h3>
+		<table id="datatable-pemain" class='table'>
+			<thead>
+				<tr>
+					<th class="wd-10p text-center">No.</th>
+					<th>Nama</th>
+					<th>Nip</th>
+				</tr>
+			</thead>
 			<?php
 			$data 	= $this->Model_main->model_data_pemain();
 			if (COUNT($data->result_array())) {
@@ -24,17 +23,28 @@
 					$no++;
 			?>
 					<tr>
-						<td class="p-1"><?php echo $no; ?></td>
-						<td class="p-1"><?php echo $R['nama']; ?></td>
-						<td class="p-1"><?php echo $R['nip']; ?></td>
+						<td class="text-center"><?php echo $no; ?></td>
+						<td><?php echo $R['nama']; ?></td>
+						<td><?php echo $R['nip']; ?></td>
 					</tr>
 			<?php
 				}
 			}
 			?>
-			<tr>
-				<th colspan='3'>Jumlah Pemain: <?php echo $no; ?></th>
-			</tr>
+			<tfoot class="bg-primary">
+				<tr>
+					<th colspan='3' class="text-white">Jumlah Pemain: <?php echo $no; ?></th>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
-</div><!-- content -->
+</div>
+<script>
+	$('#datatable-pemain').DataTable({
+		language: {
+			searchPlaceholder: 'Pencarian...',
+			sSearch: '',
+			lengthMenu: '_MENU_ Pemain/Halaman',
+		}
+	});
+</script>
