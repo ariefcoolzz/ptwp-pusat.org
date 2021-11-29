@@ -79,6 +79,8 @@
                 </div>
             </div><!-- aside-loggedin -->
             <ul class="nav nav-aside">
+                <li class="nav-label">Dashboard</li>
+                <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
                 <li class="nav-label">Menu</li>
                 <li class="nav-item with-sub">
                     <a href="" class="nav-link"><i data-feather="user"></i> <span>Profil</span></a>
