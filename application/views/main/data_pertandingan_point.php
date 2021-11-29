@@ -1,5 +1,5 @@
 	<table>
-		<tr align='center'>
+		<tr class='text-center'>
 			<th>Set</th>
 			<th>Point Tim A</th>
 			<th>Point Tim B</th>
@@ -12,22 +12,22 @@
 			$no = 0;
 			foreach ($data->result_array() as $R) {
 				$no++;
-				IF($R['id_point_tim_A'] == 5) $score_A++; 
-				IF($R['id_point_tim_B'] == 5) $score_B++; 
-				?>
-				<tr align='center'>
+				if ($R['id_point_tim_A'] == 5) $score_A++;
+				if ($R['id_point_tim_B'] == 5) $score_B++;
+		?>
+				<tr class='text-center'>
 					<td class="p-1"><?php echo $R['set']; ?></td>
 					<td class="p-1"><?php echo $R['point_tim_A']; ?></td>
 					<td class="p-1"><?php echo $R['point_tim_B']; ?></td>
 				</tr>
-				<?php
+		<?php
 			}
 		}
 		?>
-		<tr align='center'>
+		<tr class='text-center'>
 			<th>Score</th>
 			<th><?php echo $score_A; ?></th>
 			<th><?php echo $score_B; ?></th>
 		</tr>
 	</table>
-</div>
+	</div>

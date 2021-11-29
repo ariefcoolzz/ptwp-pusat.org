@@ -5,20 +5,19 @@
 			<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
 		</ol>
 	</nav>
-</div>
-<div class="content">
-	<div class="table-responsive">
-		<table class='table table-striped'>
-			<h4 class="header-title btn-sm btn-dark">DATA PERTANDINGAN</h4>
-			<div class="dropdown-divider" style="border-color: seagreen;"></div>
-			<tr align='center'>
-				<th>No.</th>
-				<th>Tanggal</th>
-				<th>Waktu</th>
-				<th>Lapangan</th>
-				<th colspan='2'>Score</th>
-				<th>Detail Point & Score</th>
-			</tr>
+	<div class="table-responsive mg-t-30">
+		<h3>DATA PERTANDINGAN</h3>
+		<table class='table table-primary table-border'>
+			<thead>
+				<tr class='text-center valign-center'>
+					<th class="wd-10">No.</th>
+					<th class="wd-100">Tanggal</th>
+					<th class="wd-100">Waktu</th>
+					<th class="wd-20">Lapangan</th>
+					<th colspan='3' class="wd-400">Score</th>
+					<th class="wd-250">Detail</th>
+				</tr>
+			</thead>
 			<?php
 
 			$data 	= $this->Model_main->model_data_pertandingan();
@@ -28,15 +27,16 @@
 					$no++;
 					$id_data_point = $R['id_data_point'];
 			?>
-					<tr align='center'>
-						<td class="p-1"><?php echo $no; ?></td>
-						<td class="p-1"><?php echo $R['tanggal']; ?></td>
-						<td class="p-1"><?php echo $R['waktu']; ?></td>
-						<td class="p-1"><?php echo $R['lapangan']; ?></td>
-						<td class="p-1"><?php echo $R['nama_tim_A']; ?><br><?php echo $R['score_tim_A']; ?></td>
-						<td class="p-1"><?php echo $R['nama_tim_B']; ?><br><?php echo $R['score_tim_B']; ?></td>
-						<td class="p-1">
-							<div class='data_pertandingan_point' id_data_point='<?php echo $id_data_point; ?>'>Tampilkan</div>
+					<tr class='text-center'>
+						<td><?php echo $no; ?></td>
+						<td><?php echo $R['tanggal']; ?></td>
+						<td><?php echo $R['waktu']; ?></td>
+						<td class="badge badge-warning"><?php echo $R['lapangan']; ?></td>
+						<td><?php echo $R['nama_tim_A']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_A']; ?></a></td>
+						<td>Lawan</td>
+						<td><?php echo $R['nama_tim_B']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_B']; ?></a></td>
+						<td>
+							<div class='data_pertandingan_point text-center badge badge-success' id_data_point='<?php echo $id_data_point; ?>'>Tampilkan</div>
 							<div id='data_pertandingan_point<?php echo $id_data_point; ?>' style='display:none;'></div>
 						</td>
 					</tr>
@@ -44,9 +44,11 @@
 				}
 			}
 			?>
-			<tr>
-				<th colspan='7'>Jumlah Pertandingan: <?php echo $no; ?></th>
-			</tr>
+			<tfoot>
+				<tr>
+					<th colspan='7'>Jumlah Pertandingan: <?php echo $no; ?></th>
+				</tr>
+			</tfoot>
 		</table>
 	</div>
 </div>
