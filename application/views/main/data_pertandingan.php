@@ -9,9 +9,9 @@
 		<h3>DATA PERTANDINGAN</h3>
 		<table class='table table-primary table-border'>
 			<thead>
-				<tr class='text-center valign-center'>
+				<tr class='text-center'>
 					<th class="wd-10">No.</th>
-					<th class="wd-100">Tanggal</th>
+					<th class="wd-150">Tanggal</th>
 					<th class="wd-100">Waktu</th>
 					<th class="wd-20">Lapangan</th>
 					<th colspan='3' class="wd-400">Score</th>
@@ -28,14 +28,18 @@
 					$id_data_point = $R['id_data_point'];
 			?>
 					<tr class='text-center'>
-						<td><?php echo $no; ?></td>
-						<td><?php echo $R['tanggal']; ?></td>
-						<td><?php echo $R['waktu']; ?></td>
-						<td class="badge badge-warning"><?php echo $R['lapangan']; ?></td>
-						<td><?php echo $R['nama_tim_A']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_A']; ?></a></td>
-						<td>Lawan</td>
-						<td><?php echo $R['nama_tim_B']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_B']; ?></a></td>
-						<td>
+						<td class="align-middle"><?php echo $no; ?></td>
+						<td class="align-middle"><?php echo $R['tanggal']; ?></td>
+						<td class="align-middle"><?php echo $R['waktu']; ?></td>
+						<td class="align-middle"><a class="badge badge-warning"><?php echo $R['lapangan']; ?></a></td>
+						<td class="align-middle">
+							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""></div><?php echo $R['nama_tim_A']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_A']; ?></a>
+						</td>
+						<td class="align-middle">Lawan</td>
+						<td class="align-middle">
+							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""></div><?php echo $R['nama_tim_B']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_B']; ?></a>
+						</td>
+						<td class="align-middle">
 							<div class='data_pertandingan_point text-center badge badge-success' id_data_point='<?php echo $id_data_point; ?>'>Tampilkan</div>
 							<div id='data_pertandingan_point<?php echo $id_data_point; ?>' style='display:none;'></div>
 						</td>
@@ -46,7 +50,7 @@
 			?>
 			<tfoot>
 				<tr>
-					<th colspan='7'>Jumlah Pertandingan: <?php echo $no; ?></th>
+					<th colspan='7' class="text-dark">Jumlah Pertandingan: <?php echo $no; ?></th>
 				</tr>
 			</tfoot>
 		</table>
