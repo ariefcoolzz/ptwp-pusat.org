@@ -3,8 +3,9 @@ class Model_main extends CI_Model
 {
 	function model_data_pemain()
 	{
-		$this->db->select("A.*");
+		$this->db->select("A.*, B.kategori");
 		$this->db->from('data_pemain AS A');
+		$this->db->join("master_kategori_pemain AS B", "A.id_kategori = B.id_kategori", 'left');
 		$this->db->order_by("A.nama", "ASC");
 		$query = $this->db->get();
 		// DIE($this->db->last_query());

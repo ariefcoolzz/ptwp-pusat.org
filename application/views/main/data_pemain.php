@@ -12,7 +12,8 @@
 				<tr>
 					<th class="wd-10p text-center">No.</th>
 					<th>Nama</th>
-					<th>Nip</th>
+					<th>Kategori</th>
+					<th>Satuan Kerja</th>
 				</tr>
 			</thead>
 			<?php
@@ -25,7 +26,8 @@
 					<tr>
 						<td class="text-center"><?php echo $no; ?></td>
 						<td><?php echo $R['nama']; ?></td>
-						<td><?php echo $R['nip']; ?></td>
+						<td><?php echo $R['kategori']; ?></td>
+						<td><?php echo $R['satker']; ?></td>
 					</tr>
 			<?php
 				}
