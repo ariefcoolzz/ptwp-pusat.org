@@ -16,6 +16,8 @@ class Model_main extends CI_Model
 	{
 		$this->db->select("A.*");
 		$this->db->select("B.lapangan");
+		$this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
+		$this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
 		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
 		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
 		$this->db->from('data_pertandingan AS A');
