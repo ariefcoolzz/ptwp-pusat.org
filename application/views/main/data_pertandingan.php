@@ -33,11 +33,11 @@
 						<td class="align-middle"><?php echo $R['waktu']; ?></td>
 						<td class="align-middle"><a class="badge badge-warning"><?php echo $R['lapangan']; ?></a></td>
 						<td class="align-middle">
-							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""></div><?php echo $R['nama_tim_A']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_A']; ?></a>
+							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" data-toggle="tooltip" data-placement="left" title="Peserta 1" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" data-toggle="tooltip" data-placement="right" title="Peserta 2" alt=""></div><?php echo $R['nama_tim_A']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_A']; ?></a>
 						</td>
 						<td class="align-middle">Lawan</td>
 						<td class="align-middle">
-							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" alt=""></div><?php echo $R['nama_tim_B']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_B']; ?></a>
+							<div class="img-group"><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" data-toggle="tooltip" data-placement="left" title="Peserta 1" alt=""><img src="<?php echo base_url(); ?>assets/img/default.png" class="img wd-60 ht-50 rounded-circle" data-toggle="tooltip" data-placement="right" title="Peserta 2" alt=""></div><?php echo $R['nama_tim_B']; ?><br><a class="text-white badge badge-pill badge-primary"><?php echo $R['score_tim_B']; ?></a>
 						</td>
 						<td class="align-middle">
 							<div class='data_pertandingan_point text-center badge badge-success' id_data_point='<?php echo $id_data_point; ?>'>Tampilkan</div>
@@ -62,6 +62,8 @@
 	}
 </style>
 <script>
+	$('[data-toggle="tooltip"]').tooltip();
+
 	$(document).ready(function() {
 		$(".data_pertandingan_point").on("click", function() {
 			// alert();skip();
