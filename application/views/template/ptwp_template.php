@@ -62,9 +62,9 @@
             <div class="d-lg-flex">
               <ul>
                 <li class="nav-label">Sejarah</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/sejarah') ?>" class="nav-sub-link"><i data-feather="book"></i> Sejarah</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/sejarah') ?>" class="nav-sub-link"><i data-feather="book"></i> Sejarah</a></li>
                 <li class="nav-label mg-t-20">AD/ART Organisasi</li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_dasar') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
                 <li class="nav-label mg-t-20">Kongres PTWP</li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> SK Panitia Kongres PTWP</a></li>

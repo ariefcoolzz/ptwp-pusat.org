@@ -21,33 +21,41 @@
 			}
 		}
 		public function processLogin($userName=NULL,$password){
-			$whereCondition = $array = array('nip' =>$userName,'password'=>$password);
+			$whereCondition = $array = array('username' =>$userName,'password'=>MD7($password));
 			$this->db->where($whereCondition);
-			$this->db->from('tbl_peserta_bimtek');
+			$this->db->from('data_user');
 			$query = $this->db->get();
+			// DIE($this->db->last_query());
 			return $query;
 		}
-		public function processLogin_pelayanan($userName=NULL,$password){
-			$whereCondition = $array = array('username' =>$userName,'pass'=>$password);
-			$this->db->where($whereCondition);
-			$this->db->from('tbl_user');
-			$query = $this->db->get();
-			return $query;
+		function update_log($data){
+			try {
+				$this->db->where('id = '.$data['id_user']);
+				$this->db->update('data_user', array('last_login'=>date('Y-m-d H:i:s')));
+				$q = $this->db->replace('sys_user_online',$data);
+				return $q;
+			}
+			catch (Exception $e) {
+				log_message('error', $e);
+				return false;
+			}
 		}
 		public function squrity(){
-			$userName = $this->session->userdata('userid');
+			$userName = $this->session->userdata('username');
 			if(empty($userName)){
 				$this->session->sess_destroy();
-				redirect('login');
+				if(!empty($_POST))
+				{
+					$this->session->set_flashdata('error_msg', '<div class="alert alert-danger text-center">Sesi Anda Telah Berakhir, Silahkan Login Kembali</div>');
+					DIE(JSON_ENCODE(array("status" => FALSE)));
+				}
+				else{
+					redirect('login');
+				}
+				
 			}
 		}
-		public function squrity_pelayanan(){
-			$userName = $this->session->userdata('id_user');
-			if(empty($userName)){
-				$this->session->sess_destroy();
-				redirect('pelayanan/login');
-			}
-		}
+
 		function get_data($table){
 			try{
 				$query = $this->db->get($table); 

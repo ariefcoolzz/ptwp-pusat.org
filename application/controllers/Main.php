@@ -20,10 +20,23 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
 
-	public function sejarah()
+	public function page($konten=false)
 	{
-		$data['judul'] = "Sejarah";
-		$this->template->load('ptwp_template', 'main/sejarah', $data);
+		if(!$konten){
+			$data['judul'] = "NOT FOUND";
+			$this->template->load('ptwp_template', 'main/404', $data);
+		}
+		$q = $this->basic->get_data_where(array('alias'=>$konten),'data_konten')->row_array();
+		if(!empty($q)){
+			$data['judul'] = $q['judul'];
+			$data['konten'] = $q;
+		}
+		else{
+			$data['judul'] = $konten;
+			$data['konten']['isi'] = '<h1 class="tx-color-01 tx-24 tx-sm-32 tx-lg-36 mg-xl-b-5">Halaman Belum Tersedia</h1>';
+		}
+		
+		$this->template->load('ptwp_template', 'main/page', $data);
 	}
 
 	public function data_pemain()

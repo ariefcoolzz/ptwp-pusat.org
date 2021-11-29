@@ -11,6 +11,7 @@ class Login extends CI_Controller
 
 	public function signin($param = '')
 	{
+		$data['judul'] = "Halaman Login";
 		$this->session->set_flashdata('param', $param);
 		$sessid = '';
 		while (strlen($sessid) < 32) {
@@ -22,8 +23,9 @@ class Login extends CI_Controller
 
 		$userName = trim($this->input->post('userName'));
 		$password = trim($this->input->post('password'));
-		// print_r($password);
-		$q = $this->basic->processLogin($userName, kuncidong($password));
+		// print_r($userName);
+		$q = $this->basic->processLogin($userName, $password);
+		// echo "<pre>";
 		// print_r($q->result_array());die;
 
 		$this->form_validation->set_rules('userName', 'Username', 'required');
@@ -33,39 +35,44 @@ class Login extends CI_Controller
 		$this->form_validation->set_message('required', 'Masukan %s');
 
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('admin/login_v');
+			$this->template->load('ptwp_template', 'admin/login_v', $data);
 			//echo "gagal";
-		} else if ($userName == 'admin' && $password == 'BadilagJaya') {
-			redirect('/admin/list_peserta/1');
-		} else {
+		} 
+		else {
 			if ($q->num_rows() > 0) {
 				$query = $q->result();
 				$user = array(
-					'nip' => $query[0]->nip,
+					'id' => $query[0]->id,
+					'username' => $query[0]->username,
 					'nama' => $query[0]->nama,
-					'no_hp' => $query[0]->no_hp,
-					'level' => '1',
+					'photo' => $query[0]->photo,
+					'level' => $query[0]->level,
 					'session_id'	=> md5(uniqid($sessid, TRUE)),
 					'ip_address'	=> $this->input->ip_address(),
 					'user_agent'	=> substr($this->input->user_agent(), 0, 120),
 					'last_activity'	=> time(),
 				);
 				// print_r($user);die;
-				$this->session->set_userdata($user);
+				$this->session->set_userdata($user); //Save ke Session
+                        $sess = array(
+                        'id_user' => $query[0]->id,
+                        'session_id'	=> md5(uniqid($sessid, TRUE)),
+                        'ip_address'	=> $this->input->ip_address(),
+                        'last_login'	=> date('Y-m-d H:i:s'),
+                        'last_activity'	=> date('Y-m-d H:i:s'),
+                        'user_agent'	=> substr($this->input->user_agent(), 0, 120),
+                        'uri'	=> base_url().'login',
+                        'current_page'	=> base_url().'login',
+                        
+                        );
+				$this->basic->update_log($sess);
+				// $level = $this->session->userdata('level');
+				redirect('/admin');
 
-				$level = $this->session->userdata('level');
-
-				// print_r($level);die;
-				if ($level < '10') { // Admin
-					redirect('/dashboard');
-				} else {
-					$this->session->set_flashdata('error_msg', '<div class="alert alert-danger text-center">Maaf Anda tidak memiliki hak akses</div>');
-					$this->load->view('admin/login_v');
-				}
 			} else {
 				$this->form_validation->set_message('validateUser', 'Username atau password salah');
 				$this->session->set_flashdata('error_msg', '<div class="alert alert-danger text-center">Password salah</div>');
-				$this->load->view('admin/login_v');
+				$this->template->load('ptwp_template', 'admin/login_v', $data);
 			}
 		}
 	}

@@ -544,12 +544,12 @@ function class_bg_out($int)
 
 function MD7($str)
 {
-	return MD5("DITBINGANIS" . $str . "BADILAG");
+	return MD5("PTWP" . $str . "MAHKAMAHAGUNG");
 }
 
 function MD7S($str)
 {
-	return "MD5(CONCAT('DITBINGANIS',CONCAT($str),'BADILAG'))";
+	return "MD5(CONCAT('PTWP',CONCAT($str),'MAHKAMAHAGUNG'))";
 }
 function kategori_hukuman_disiplin($str)
 {
