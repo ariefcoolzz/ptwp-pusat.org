@@ -66,11 +66,12 @@
                 <li class="nav-label mg-t-20">AD/ART Organisasi</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_dasar') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_rumah_tangga') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
-                <li class="nav-label mg-t-20">Kongres PTWP</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/sk_panitia_kongres_ptwp') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> SK Panitia Kongres PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/jadwal_tempat_kongres_ptwp') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal & Tempat</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/peserta_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Peserta Kongres</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tata_tertib_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Tata Tertib Kongres</a></li>
+                <li class="nav-label mg-t-20">Gallery Kegiatan</li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
+                <li class="nav-label mg-t-20">Hymne PTWP</li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
               </ul>
               <ul>
                 <li class="nav-label">Pengurus Pusat</li>
@@ -85,14 +86,6 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
-              </ul>
-              <ul>
-                <li class="nav-label">Gallery Kegiatan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
-                <li class="nav-label mg-t-20">Hymne PTWP</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
@@ -113,6 +106,19 @@
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perdelapan Final</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perempat Final</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Final</a></li>
+              </ul>
+            </div>
+          </div><!-- nav-sub -->
+        </li>
+        <li class="nav-item with-sub">
+          <a href="#" class="nav-link"><i data-feather="users"></i> Kongres</a>
+          <div class="navbar-menu-sub">
+            <div class="d-lg-flex">
+              <ul>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/sk_panitia_kongres_ptwp') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> SK Panitia Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/jadwal_tempat_kongres_ptwp') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal & Tempat</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/peserta_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Peserta Kongres</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tata_tertib_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Tata Tertib Kongres</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
