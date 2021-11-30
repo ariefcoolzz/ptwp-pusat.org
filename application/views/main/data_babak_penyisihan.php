@@ -18,8 +18,9 @@
 		</select>
 		
 		<select id='pool'>
-			<option value='A'>POOL A</option>
-			<option value='B'>POOL B</option>
+			<option value='<?php echo MD7("0"); ?>'>SEMUA POOL</option>
+			<option value='<?php echo MD7("A"); ?>'>POOL A</option>
+			<option value='<?php echo MD7("B"); ?>'>POOL B</option>
 		</select>
 		</h4>
 		<div id='konten'></div>
@@ -27,11 +28,12 @@
 </div>
 <script>
 $(document).ready(function() {
-	$("#id_kategori").on("change", function() {
+	$("#id_kategori,#pool").on("change", function() {
 		// alert();skip();
 		
 		var form_data = new FormData();
 		form_data.append('id_kategori', $("#id_kategori").val());
+		form_data.append('pool', $("#pool").val());
 		$.ajax({
 			url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
 			type: 'POST',
