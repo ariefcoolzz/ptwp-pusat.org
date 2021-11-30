@@ -28,7 +28,7 @@
             <tbody>
                 <tr>
                     <td class="align-middle text-center" rowspan="2">1</td>
-                    <td></td>
+                    <td class="align-middle" rowspan="2">Peserta 1</td>
                     <td rowspan="2" colspan="2" class="bg-primary"></td>
                     <td></td>
                     <td></td>
@@ -44,8 +44,6 @@
                 </tr>
                 <tr>
                     <td></td>
-
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -57,7 +55,7 @@
                 </tr>
                 <tr>
                     <td class="align-middle text-center" rowspan="2">2</td>
-                    <td></td>
+                    <td class="align-middle" rowspan="2">Peserta 2</td>
                     <td></td>
                     <td></td>
                     <td rowspan="2" colspan="2" class="bg-primary"></td>
@@ -79,13 +77,12 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
                     <td>Lost</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="align-middle text-center" rowspan="2">3</td>
-                    <td></td>
+                    <td class="align-middle" rowspan="2">Peserta 3</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -100,7 +97,6 @@
                     <td class="align-middle text-center" rowspan="2">3</td>
                 </tr>
                 <tr>
-                    <td></td>
                     <td></td>
                     <td></td>
                     <td></td>
