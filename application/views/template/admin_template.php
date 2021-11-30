@@ -65,7 +65,8 @@ extract($_SESSION);
                         <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a>
                         <a href="" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
                     </div>
-            <ul class="nav nav-aside">
+                </div><!-- aside-loggedin -->
+                 <ul class="nav nav-aside">
                 <li class="nav-label">Dashboard</li>
                 <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
                 <li class="nav-label">Menu</li>
@@ -73,14 +74,14 @@ extract($_SESSION);
                 <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                 <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
             </ul>
-        </div>
-    </aside>
-
-    <div class="content ht-100v pd-0">
-        <div class="content-header">
-            <div class="content-search">
-                <i data-feather="search"></i>
-                <input type="search" class="form-control" placeholder="Search...">
+            </div>
+        </aside>
+        
+        <div class="content ht-100v pd-0">
+            <div class="content-header">
+                <div class="content-search">
+                    <i data-feather="search"></i>
+                    <input type="search" class="form-control" placeholder="Search...">
             </div>
             <nav class="nav">
                 <a href="" class="nav-link"><i data-feather="help-circle"></i></a>

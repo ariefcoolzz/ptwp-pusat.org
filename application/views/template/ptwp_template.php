@@ -44,11 +44,11 @@
   <header class="navbar navbar-header navbar-header-fixed bd-b-0">
     <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('') ?>" class="df-logo">PTWP<span>Pusat</span></a>
+      <a href="<?php echo base_url('') ?>" class="df-logo"><img src="<?php echo base_url('assets/img/favicon.png'); ?>" height="35" width="35">PTWP<span>Pusat</span></a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">
-        <a href="<?php echo base_url('') ?>" class="df-logo">PTWP<span>Pusat</span></a>
+        <a href="<?php echo base_url('') ?>" class="df-logo"> PTWP<span> Pusat</span></a>
         <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
       <ul class="nav navbar-menu">
@@ -142,9 +142,8 @@
     </div>
     <div>
       <nav class="nav">
-        <a href="#" class="nav-link">Licenses</a>
-        <a href="#" class="nav-link">Change Log</a>
-        <a href="#" class="nav-link">Get Help</a>
+        <li><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324 | 
+        <span>Email:</span> ptwp.pusat2021@gmail.com</li>
       </nav>
     </div>
   </footer>

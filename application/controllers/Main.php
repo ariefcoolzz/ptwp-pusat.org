@@ -17,6 +17,7 @@ class Main extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
+		$data['berita_terbaru'] = $this->basic->get_data_where(array('cat_id'=>'1'),'data_konten');
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
 

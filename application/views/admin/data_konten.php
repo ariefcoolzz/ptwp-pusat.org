@@ -64,8 +64,10 @@
         // $(this).closest('li.nav-item').addClass('active');
         //loader
         // skip();
+        var cat_id = <?php echo $cat_id; ?>;
         var form_data = new FormData();
         form_data.append('id_konten', $(this).attr('id_konten'));
+        form_data.append('cat_id', cat_id);
         $.ajax({
             url: "<?php echo base_url(); ?>admin/form_data_konten",
             type: 'POST',

@@ -7,10 +7,17 @@
         </ol>
         <div class="carousel-inner bg-dark">
             <div class="carousel-item active">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpeg" class="d-block ht-600 w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 class="text-white">PTWP</h1>
+                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
                 <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
-                    <p class="tx-14">Badan Sehat, FIkiran Jernih, Kerja Produktif.</p>
+                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -44,62 +51,19 @@
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-sm mg-t-1">
+        <?php foreach($berita_terbaru->result_array() as $R) { ?>
+        <div class="col-sm col-xl-4 mg-t-1 mb-4">
             <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
+                <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
                 <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
+                    <a href="<?php echo base_url('main/page/').$R['alias'] ?>"><h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5></a>
+                    <?php 
+                    echo $R['intro']."...";
+                    ?>
                 </div>
             </div>
         </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 
@@ -110,7 +74,7 @@
     <div class="row">
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/01.jpg" class="rounded ht-250 w-100" alt="Responsive image">
+                <img src="<?php echo base_url() ?>assets/img/01.jpg" class="rounded w-100" alt="Responsive image">
                 <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
                     <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua Mahkamah Agung RI</h6>
                 </figcaption>
