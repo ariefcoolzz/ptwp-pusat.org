@@ -63,7 +63,7 @@ if ($id) $txt_simpan = "UPDATE";
     tinymce.init({
         selector: ".mymce",
         theme: "silver",
-        height: 300,
+        height: 700,
         plugins: [
             "advlist autolink link image lists charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
