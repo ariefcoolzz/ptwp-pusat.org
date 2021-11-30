@@ -18,6 +18,7 @@
             <div class="card-body">
                 <form id='form_konten' enctype="multipart/form-data">
                     <input type="hidden" name='id' value="<?php echo $id ?>">
+                    <input type="hidden" name='cat_id' value="<?php echo $cat_id ?>">
                     <?php echo $this->session->flashdata('msg'); ?>
                     
                     <div class="row">                    
