@@ -44,7 +44,7 @@
   <header class="navbar navbar-header navbar-header-fixed bd-b-0">
     <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('#') ?>" class="df-logo"><img src="<?php echo base_url('assets/img/favicon.png'); ?>" height="35" width="35">PTWP<span>Pusat</span></a>
+      <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">

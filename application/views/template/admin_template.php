@@ -50,7 +50,7 @@ extract($_SESSION);
 <body>
     <aside class="aside aside-fixed">
         <div class="aside-header">
-            <a href="<?php echo base_url('') ?>" class="df-logo">PTWP<span>Pusat</span></a>
+            <a href="<?php echo base_url('') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
             <a href="" class="aside-menu-link">
                 <i data-feather="menu"></i>
                 <i data-feather="x"></i>
@@ -66,22 +66,22 @@ extract($_SESSION);
                         <a href="" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
                     </div>
                 </div><!-- aside-loggedin -->
-                 <ul class="nav nav-aside">
-                <li class="nav-label">Dashboard</li>
-                <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
-                <li class="nav-label">Menu</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
-            </ul>
+                <ul class="nav nav-aside">
+                    <li class="nav-label">Dashboard</li>
+                    <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
+                    <li class="nav-label">Menu</li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                </ul>
             </div>
-        </aside>
-        
-        <div class="content ht-100v pd-0">
-            <div class="content-header">
-                <div class="content-search">
-                    <i data-feather="search"></i>
-                    <input type="search" class="form-control" placeholder="Search...">
+    </aside>
+
+    <div class="content ht-100v pd-0">
+        <div class="content-header">
+            <div class="content-search">
+                <i data-feather="search"></i>
+                <input type="search" class="form-control" placeholder="Search...">
             </div>
             <nav class="nav">
                 <a href="" class="nav-link"><i data-feather="help-circle"></i></a>

@@ -9,15 +9,15 @@
             <div class="carousel-item active">
                 <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpeg" class="d-block ht-600 w-100" alt="...">
                 <div class="carousel-caption">
-                    <h1 class="text-white">PTWP</h1>
-                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p>
+                    <!-- <h1 class="text-white">PTWP</h1>
+                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p> -->
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
-                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p>
+                    <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -51,18 +51,20 @@
 </div>
 <div class="content">
     <div class="row">
-        <?php foreach($berita_terbaru->result_array() as $R) { ?>
-        <div class="col-sm col-xl-4 mg-t-1 mb-4">
-            <div class="media">
-                <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <a href="<?php echo base_url('main/page/').$R['alias'] ?>"><h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5></a>
-                    <?php 
-                    echo $R['intro']."...";
-                    ?>
+        <?php foreach ($berita_terbaru->result_array() as $R) { ?>
+            <div class="col-sm col-xl-4 mg-t-1 mb-4">
+                <div class="media">
+                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
+                    <div class="media-body">
+                        <a href="<?php echo base_url('main/page/') . $R['alias'] ?>">
+                            <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
+                        </a>
+                        <?php
+                        echo $R['intro'] . "...";
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 </div>
