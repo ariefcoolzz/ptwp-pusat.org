@@ -41,7 +41,7 @@
 </head>
 
 <body class="home-body">
-  <header class="navbar navbar-header navbar-header-fixed bd-b-0">
+  <header class="navbar navbar-header navbar-header-fixed bd-b">
     <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
       <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
