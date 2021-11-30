@@ -45,6 +45,11 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/data_pemain', $data);
 	}
 
+	public function data_penyisihan()
+	{
+		$data['judul'] = "DATA PENYISIHAN TURNAMEN PERTANDINGAN";
+		$this->template->load('ptwp_template', 'main/data_penyisihan', $data);
+	}
 	public function data_pertandingan()
 	{
 		$data['judul'] = "DATA PERTANDINGAN";

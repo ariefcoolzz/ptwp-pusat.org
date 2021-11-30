@@ -1,11 +1,12 @@
 <?php
 class Model_main extends CI_Model
 {
-	function model_data_pemain()
+	function model_data_pemain($id_kategori = false)
 	{
 		$this->db->select("A.*, B.kategori");
 		$this->db->from('data_pemain AS A');
 		$this->db->join("master_kategori_pemain AS B", "A.id_kategori = B.id_kategori", 'left');
+		if($id_kategori)$this->db->where('A.id_kategori',$id_kategori);
 		$this->db->order_by("A.nama", "ASC");
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
@@ -16,8 +17,8 @@ class Model_main extends CI_Model
 	{
 		$this->db->select("A.*");
 		$this->db->select("B.lapangan");
-		$this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
-		$this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
 		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
 		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
 		$this->db->from('data_pertandingan AS A');
