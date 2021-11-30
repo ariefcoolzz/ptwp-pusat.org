@@ -106,28 +106,93 @@
 </div>
 
 
-<div class="bg-dark">
-    <div class="row pd-t-15 pd-l-25">
-        <div class="col-sm text-white bd-r-">
-            <h4 class="text-white">Hubungi kami :</h4>
-            <h6 class="text-white"><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324</h6>
-            <h4 class="text-white">Kirimi kami pesan :</h4>
-            <h6 class="text-white">ptwp.pusat2021@gmail.com</h6>
-        </div>
+<div class="content bd-t">
+    <div class="row">
         <div class="col-sm">
-            <div class="mapouter">
-                <h4 class="text-white">Sekretariat :</h4>
-                <h6 class="text-white">Mahkamah Agung Republik Indonesia<br />
-                    Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</h6>
-                <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="200" height="100" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
-                </div>
-            </div>
+            <div class="card bd-0">
+                <div class="card-header pd-b-0 pd-x-20 bd-b-0">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h6 class="mg-b-0">Hubungi Kami</h6>
+                    </div>
+                </div><!-- card-header -->
+                <div class="card-body pd-20">
+                    <ul class="activity tx-13">
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="phone-call"></i>
+                            </div>
+                            <div class="activity-body">
+                                <p class="mg-t-2"><strong>Telepon: (021) 3843348 - 3843459 - 3845793 - 3457624</strong></p>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="smartphone"></i>
+                            </div>
+                            <div class="activity-body">
+                                <p class="mg-t-10"><strong>Pesawat: 324</strong></p>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="mail"></i>
+                            </div>
+                            <div class="activity-body">
+                                <p class="mg-t-10"><strong>ptwp.pusat2021@gmail.com</strong></p>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+                    </ul><!-- activity -->
+                </div><!-- card-body -->
+            </div><!-- card -->
         </div>
+
         <div class="col-sm">
-            <h4 class="text-white">Pengunjung :</h4>
-            <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a>
-            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
-            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script>
+            <div class="card bd-0">
+                <div class="card-header pd-b-0 pd-x-20 bd-b-0">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h6 class="mg-b-0">Hubungi Kami</h6>
+                    </div>
+                </div><!-- card-header -->
+                <div class="card-body pd-20">
+                    <ul class="activity tx-13">
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="map-pin"></i>
+                            </div>
+                            <div class="activity-body">
+                                <p class="mg-t-2"><strong>Mahkamah Agung Republik Indonesia, Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</strong></p>
+                                <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="200" height="100" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+
+                    </ul><!-- activity -->
+                </div><!-- card-body -->
+            </div><!-- card -->
+        </div>
+
+        <div class="col-sm">
+            <div class="card bd-0">
+                <div class="card-header pd-b-0 pd-x-20 bd-b-0">
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h6 class="mg-b-0">Pengunjung</h6>
+                    </div>
+                </div><!-- card-header -->
+                <div class="card-body pd-20">
+                    <ul class="activity tx-13">
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="trending-up"></i>
+                            </div>
+                            <div class="activity-body">
+                                <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a>
+                                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
+                                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+
+                    </ul><!-- activity -->
+                </div><!-- card-body -->
+            </div><!-- card -->
         </div>
     </div>
 </div>
