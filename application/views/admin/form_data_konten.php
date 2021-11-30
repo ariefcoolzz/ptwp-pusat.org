@@ -1,6 +1,6 @@
-<?php 
-    $txt_simpan = "SIMPAN";
-    if($id) $txt_simpan = "UPDATE";
+<?php
+$txt_simpan = "SIMPAN";
+if ($id) $txt_simpan = "UPDATE";
 ?>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
@@ -20,14 +20,14 @@
                     <input type="hidden" name='id' value="<?php echo $id ?>">
                     <input type="hidden" name='cat_id' value="<?php echo $cat_id ?>">
                     <?php echo $this->session->flashdata('msg'); ?>
-                    
-                    <div class="row">                    
+
+                    <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label class="control-label">Judul Konten :</label>
                                 <input type="text" name='judul' class="form-control" value="<?php echo $judul ?>">
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="row">
@@ -36,20 +36,20 @@
                                 <label class="control-label">Alias :</label>
                                 <input type="text" name='alias' class="form-control" value="<?php echo $alias ?>">
                             </div>
-                            
+
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="control-label">Image Thumbnail :</label>
                                 <input type="text" name='img' class="form-control" value="<?php echo $img ?>">
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="col-lg-12 text-center">
                         <textarea class="mymce" name="isi"><?php echo $isi ?></textarea>
                     </div>
-                    <div class="row text-center mx-4 mt-3">                        
+                    <div class="row text-center mx-4 mt-3">
                         <div class="col-lg-12">
                             <button id="btn-simpan" type='submit' class="btn btn-outline-success btn-rounded"><i class="fa fa-save"></i> <?php echo $txt_simpan; ?></button>
                         </div>
@@ -65,12 +65,12 @@
         theme: "silver",
         height: 300,
         plugins: [
-        "advlist autolink link image lists charmap print preview hr anchor pagebreak",
-        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-        "save table directionality emoticons template paste"
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table directionality emoticons template paste"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
-        
+
     });
     $("#form_konten").submit(function(e) {
         e.preventDefault();
@@ -91,8 +91,7 @@
             success: function(html) {
                 if (html.status !== true) {
                     location.reload();
-                } 
-                else {                    
+                } else {
                     Swal.fire({
                         icon: 'success',
                         title: 'Simpan Data Berhasil',
@@ -103,11 +102,11 @@
                     $("#konten").fadeOut(300);
                     $("#konten").html(html.konten_menu);
                     $("#konten").fadeIn(300);
-                    
+
                 }
             }
         });
     });
 
     // tinyMCE.EditorManager.execCommand('mceAddEditor',true, '.mymce'); 
-</script>            
+</script>
