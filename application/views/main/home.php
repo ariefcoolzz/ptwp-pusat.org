@@ -7,28 +7,28 @@
         </ol>
         <div class="carousel-inner bg-dark">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p> -->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
