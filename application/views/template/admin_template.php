@@ -88,6 +88,7 @@
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
                     <li class="nav-label">Menu</li>
                     <li class="nav-item"><a style='cursor:pointer;'  menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;'  menu="data_berita" class="menu nav-link"><i data-feather="user"></i> <span>Berita PTWP</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;'  menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                     <li class="nav-item with-sub">
                         <a href="" class="nav-link"><i data-feather="user"></i> <span>Profil</span></a>
