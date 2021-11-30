@@ -25,7 +25,21 @@
 		public function data_konten()
 		{
 			$data['judul'] = "DATA MENU KONTEN";
-			$data['list_konten'] = $this->basic->get_data('data_konten');
+			$data['cat_id'] = 0;
+			$where = array('cat_id'=>0);
+			$data['list_konten'] = $this->basic->get_data_where($where,'data_konten');
+			OB_START();
+			$this->load->view("admin/data_konten", $data);
+			$konten_menu = ob_get_clean();
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+			
+		}
+		public function data_berita()
+		{
+			$data['judul'] = "DATA MENU BERITA";
+			$data['cat_id'] = 1;
+			$where = array('cat_id'=>1);
+			$data['list_konten'] = $this->basic->get_data_where($where,'data_konten');
 			OB_START();
 			$this->load->view("admin/data_konten", $data);
 			$konten_menu = ob_get_clean();
@@ -36,8 +50,10 @@
 		{
 			
 			$id_konten = $this->input->post('id_konten');
+			$cat_id = $this->input->post('cat_id');
 			
 			$data['id'] = $id_konten;
+			$data['cat_id'] = $cat_id;
 			$data['isi'] = '';
 			$data['judul'] = '';
 			$data['img'] = '';
@@ -60,16 +76,21 @@
 		{
 			$id = $this->input->post('id');
 			$data['judul'] = $this->input->post('judul');
+			$data['cat_id'] = $this->input->post('cat_id');
 			$data['alias'] = $this->input->post('alias');
 			$data['img'] = $this->input->post('img');
 			$data['isi'] = $this->input->post('isi_konten');
+			
 			// echo "<pre>";
 				// print_r($_POST);die;
 			if($id > 0){
+				$data['date_updated'] = date('Y-m-d H:i:s');
 				$where = array ('id' => $id);
 				$res = $this->basic->update_data($where,'data_konten',$data);
 			}
 			else{
+				$data['user_created'] = $this->session->userdata('id');
+				$data['date_created'] = date('Y-m-d H:i:s');
 				$res = $this->basic->insert_data('data_konten',$data);
 			}
 			if($res){
