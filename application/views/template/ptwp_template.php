@@ -81,7 +81,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
                 <li class="nav-label mg-t-20">Pengurus Daerah</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
@@ -99,7 +99,7 @@
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tempat_jadwal'); ?>" class="nav-sub-link"" class="nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_wasit'); ?>" class="nav-sub-link"" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
@@ -124,7 +124,7 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item"><a href="#" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/live_streaming') ?>" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
