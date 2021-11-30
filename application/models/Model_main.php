@@ -3,10 +3,11 @@ class Model_main extends CI_Model
 {
 	function model_data_pemain($id_kategori = false)
 	{
-		$this->db->select("A.*, B.kategori");
+		$this->db->select("A.*, C.kategori");
 		$this->db->from('data_pemain AS A');
-		$this->db->join("master_kategori_pemain AS B", "A.id_kategori = B.id_kategori", 'left');
-		if($id_kategori)$this->db->where('A.id_kategori',$id_kategori);
+		$this->db->join("data_tim AS B", "(A.id_pemain = B.id_pemain1 OR A.id_pemain = B.id_pemain2)", 'left');
+		$this->db->join("master_kategori_pemain AS C", "B.id_kategori = C.id_kategori", 'left');
+		if($id_kategori)$this->db->where('B.id_kategori',$id_kategori);
 		$this->db->order_by("A.nama", "ASC");
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
