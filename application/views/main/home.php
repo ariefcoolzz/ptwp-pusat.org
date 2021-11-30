@@ -74,43 +74,31 @@
     <div class="row">
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/01.jpg" class="rounded w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua Mahkamah Agung RI</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
             <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/02.jpeg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Mantan Ketua Mahkamah Agung RI</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded ht-250 w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
+            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/03.jpg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua PTWP Pusat</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded ht-250 w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/04.jpg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded ht-250 w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
+            <h6 class="text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>
         </div>
     </div>
 </div>
