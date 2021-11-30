@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" id_konten="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
+        <a href="#" id_konten="0" class="btn-tambah btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
     </div>
 </div>
 <div class="row">
@@ -14,11 +14,11 @@
         <div class="card">
             <div class="card-body">
                 <?php echo $this->session->flashdata('msg'); ?>
-                <div data-label="Example" class="df-example demo-table">
+                <div>
                     <div class="table-responsive">
-                        <table class="table table-primary mg-b-0">
-                            <thead class="thead-primary">
-                                <tr class="text-center">
+                        <table class="table table-sm table-primary">
+                            <thead>
+                                <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Alias</th>
                                     <th scope="col">Judul Konten / Page</th>
@@ -30,7 +30,7 @@
                                 <?php
                                 $no = 1;
                                 foreach ($list_konten->result_array() as $R) {
-                                    echo '<tr align="center">';
+                                    echo '<tr>';
                                     echo "<td>" . $no . "</td>";
                                     echo "<td>" . $R['alias'] . "</td>";
                                     echo "<td align='left'>" . $R['judul'] . "</td>";
@@ -41,8 +41,8 @@
                                     }
                                     echo '<td>
                                         <div class="btn-group">
-                                        <a href="#" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="#" class="btn btn-xs btn-outline-danger btn-rounded"><i class="fas fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a></td>';
+                                        <a href="#" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></a>
+                                        <a href="#" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></a></td>';
                                     echo "</div>";
                                     echo "</tr>";
                                     $no++;
