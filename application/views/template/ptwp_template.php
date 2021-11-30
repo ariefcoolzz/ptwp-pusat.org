@@ -101,7 +101,8 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perdelapan Final</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perempat Final</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Final</a></li>
