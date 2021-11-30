@@ -133,7 +133,6 @@
   <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
-      <span>Design by <a href="#">Direktorat Jenderal Badan Peradilan Agama</a></span>
     </div>
     <div>
       <nav class="nav">
