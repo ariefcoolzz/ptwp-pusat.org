@@ -17,7 +17,7 @@
                 <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
-                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p>
+                    <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
