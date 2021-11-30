@@ -8,13 +8,18 @@
     <div class="table-responsive">
         <h2>TURNAMEN TENIS PERORANGAN PIALA KMA 2021</h2>
         <h4 class="text-center mg-t-20">
-		<select id='kategori'>
+		<select id='id_kategori'>
 		<?php 
 		$kategori = $this->basic->get_data('master_kategori_pemain'); 
 		foreach($kategori->result_array() as $R){
-			echo "<option value='$R[id_kategori]'>$R[kategori]</option>";
+			echo "<option value='".MD7($R['id_kategori'])."'>$R[kategori]</option>";
 		}	
 		?>
+		</select>
+		
+		<select id='pool'>
+			<option value='A'>POOL A</option>
+			<option value='B'>POOL B</option>
 		</select>
 		</h4>
 		<div id='konten'></div>
@@ -22,11 +27,11 @@
 </div>
 <script>
 $(document).ready(function() {
-	$("#kategori").on("change", function() {
+	$("#id_kategori").on("change", function() {
 		// alert();skip();
 		
 		var form_data = new FormData();
-		// form_data.append('id_data_point', id_data_point);
+		form_data.append('id_kategori', $("#id_kategori").val());
 		$.ajax({
 			url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
 			type: 'POST',
