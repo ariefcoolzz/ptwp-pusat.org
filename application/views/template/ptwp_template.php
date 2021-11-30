@@ -42,13 +42,13 @@
 
 <body class="home-body">
   <header class="navbar navbar-header navbar-header-fixed bd-b-0">
-    <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('') ?>" class="df-logo"><img src="<?php echo base_url('assets/img/favicon.png'); ?>" height="35" width="35">PTWP<span>Pusat</span></a>
+      <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">
-        <a href="<?php echo base_url('') ?>" class="df-logo"> PTWP<span> Pusat</span></a>
+        <a href="<?php echo base_url('#') ?>" class="df-logo"> PTWP<span> Pusat</span></a>
         <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
       <ul class="nav navbar-menu">
@@ -67,9 +67,9 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_dasar') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_rumah_tangga') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
                 <li class="nav-label mg-t-20">Gallery Kegiatan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
                 <li class="nav-label mg-t-20">Hymne PTWP</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
               </ul>
@@ -81,11 +81,11 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
                 <li class="nav-label mg-t-20">Pengurus Daerah</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
@@ -143,8 +143,9 @@
     </div>
     <div>
       <nav class="nav">
-        <li><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324 | 
-        <span>Email:</span> ptwp.pusat2021@gmail.com</li>
+        <li><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324 |
+          <span>Email:</span> ptwp.pusat2021@gmail.com
+        </li>
       </nav>
     </div>
   </footer>
