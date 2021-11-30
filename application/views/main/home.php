@@ -83,21 +83,21 @@
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded ht-250 w-100" alt="Responsive image">
+                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
             <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded ht-250 w-100" alt="Responsive image">
+                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
             <h6 class="text-center">Ketua PTWP Pusat</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded ht-250 w-100" alt="Responsive image">
+                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
             <h6 class="text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>

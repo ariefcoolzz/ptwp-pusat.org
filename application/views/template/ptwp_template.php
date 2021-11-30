@@ -41,7 +41,7 @@
 </head>
 
 <body class="home-body">
-  <header class="navbar navbar-header navbar-header-fixed bd-b-0">
+  <header class="navbar navbar-header navbar-header-fixed bd-b">
     <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
       <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
@@ -95,11 +95,11 @@
           <div class="navbar-menu-sub">
             <div class="d-lg-flex">
               <ul>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/technical_meeting'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tempat_jadwal'); ?>" class="nav-sub-link"" class="nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_wasit'); ?>" class="nav-sub-link"" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
@@ -125,7 +125,7 @@
         </li>
         <li class="nav-item"><a href="#" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
         <li class="nav-item"><a href="#" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
