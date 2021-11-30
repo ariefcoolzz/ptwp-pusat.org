@@ -46,7 +46,7 @@
     </div>
 </div><!-- content -->
 
-<div class="divider-text">
+<div class="divider-text" id="berita_terbaru">
     <h4>Berita Terbaru</h4>
 </div>
 <div class="content">
