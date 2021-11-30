@@ -7,21 +7,28 @@
         </ol>
         <div class="carousel-inner bg-dark">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
-                    <h1 class="text-white">PTWP</h1>
-                    <p class="tx-14">Badan Sehat, FIkiran Jernih, Kerja Produktif.</p>
+                    <!-- <h1 class="text-white">PTWP</h1>
+                    <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p> -->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block  w-100" alt="...">
+                <div class="carousel-caption">
+                    <h1 class="text-white">PTWP</h1>
+                    <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block ht-600 w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block  w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
@@ -39,67 +46,26 @@
     </div>
 </div><!-- content -->
 
-<div class="divider-text">
+<div class="divider-text" id="berita_terbaru">
     <h4>Berita Terbaru</h4>
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
+        <?php foreach ($berita_terbaru->result_array() as $R) { ?>
+            <div class="col-sm col-xl-4 mg-t-1 mb-4">
+                <div class="media">
+                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
+                    <div class="media-body">
+                        <a href="<?php echo base_url('main/page/') . $R['alias'] ?>">
+                            <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
+                        </a>
+                        <?php
+                        echo $R['intro'] . "...";
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
-        <div class="col-sm mg-t-1">
-            <div class="media">
-                <img src="<?php echo base_url() ?>assets/img/gambar.jpg" class="wd-200 rounded mg-r-20" alt="">
-                <div class="media-body">
-                    <h5 class="mg-b-15 tx-inverse">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla...
-                </div>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 
@@ -110,43 +76,31 @@
     <div class="row">
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/01.jpg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua Mahkamah Agung RI</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
             <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/02.jpeg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Mantan Ketua Mahkamah Agung RI</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
+            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/03.jpg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua PTWP Pusat</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/04.jpg" class="rounded ht-250 w-100" alt="Responsive image">
-                <figcaption class="pos-absolute a-0 wd-100p pd-20 d-flex flex-column justify-content-center bg-white-9 transition-base op-0">
-                    <h6 class="tx-inverse tx-semibold mg-b-20 text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>
-                </figcaption>
+                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
             </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
+            <h6 class="text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>
         </div>
     </div>
 </div>

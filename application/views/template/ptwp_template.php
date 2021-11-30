@@ -41,14 +41,14 @@
 </head>
 
 <body class="home-body">
-  <header class="navbar navbar-header navbar-header-fixed bd-b-0">
-    <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+  <header class="navbar navbar-header navbar-header-fixed bd-b">
+    <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('') ?>" class="df-logo">PTWP<span>Pusat</span></a>
+      <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">
-        <a href="<?php echo base_url('') ?>" class="df-logo">PTWP<span>Pusat</span></a>
+        <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
         <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
       <ul class="nav navbar-menu">
@@ -67,9 +67,9 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_dasar') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_rumah_tangga') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
                 <li class="nav-label mg-t-20">Gallery Kegiatan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
                 <li class="nav-label mg-t-20">Hymne PTWP</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
               </ul>
@@ -81,11 +81,11 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
                 <li class="nav-label mg-t-20">Pengurus Daerah</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/struktur_organisasi_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/profil_pengurus_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/program_kerja_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
@@ -95,17 +95,17 @@
           <div class="navbar-menu-sub">
             <div class="d-lg-flex">
               <ul>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/technical_meeting'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/rundown_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tempat_jadwal'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Wasit</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perdelapan Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Perempat Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Pertandingan Final</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
+                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
@@ -123,9 +123,9 @@
             </div>
           </div><!-- nav-sub -->
         </li>
-        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="#" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
+        <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/live_streaming') ?>" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
@@ -137,15 +137,37 @@
 
   <?php echo $body; ?>
 
+  <div class="content bg-dark">
+  <div class="row">
+    <div class="col-sm text-white bd-r-">
+      <h4 class="text-white">Hubungi kami :</h4>
+      <h6 class="text-white"><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324</h6>
+    </div>
+    <div class="col-sm">
+      <h4 class="text-white">Kirimi kami pesan :</h4>
+      <h6 class="text-white">ptwp.pusat2021@gmail.com</h6>
+    </div>
+    <div class="col-sm">
+      <div class="mapouter">
+        <h4 class="text-white">Sekretariat:</h4>
+        <h6 class="text-white">Mahkamah Agung Republik Indonesia<br />
+        Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</h6>
+        <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="300" height="200" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        </div>
+      </div>
+  </div>
+  </div>
+</div>
+
   <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
     </div>
     <div>
       <nav class="nav">
-        <a href="#" class="nav-link">Licenses</a>
-        <a href="#" class="nav-link">Change Log</a>
-        <a href="#" class="nav-link">Get Help</a>
+        <li><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324 |
+          <span>Email:</span> ptwp.pusat2021@gmail.com
+        </li>
       </nav>
     </div>
   </footer>
