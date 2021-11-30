@@ -106,8 +106,8 @@
 </div>
 
 
-<div class="content bg-dark">
-  <div class="row">
+<div class="bg-dark">
+  <div class="row pd-t-15 pd-l-25">
     <div class="col-sm text-white bd-r-">
       <h4 class="text-white">Hubungi kami :</h4>
       <h6 class="text-white"><span>Telepon:</span> (021) 3843348 - 3843459 - 3845793 - 3457624 <span>Pesawat:</span> 324</h6>
@@ -121,7 +121,7 @@
         <h4 class="text-white">Sekretariat:</h4>
         <h6 class="text-white">Mahkamah Agung Republik Indonesia<br />
         Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</h6>
-        <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="300" height="200" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
+        <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="200" height="100" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>
         </div>
       </div>
   </div>
