@@ -20,7 +20,7 @@ if (COUNT($data->result_array())) {
 					<div class="row">
 						<div class="col-sm">
 							<ul class="list-group list-group-flush tx-13">
-								<li class="list-group-item d-flex pd-sm-x-20">
+								<li class="list-group-item d-flex">
 									<div class="img-group">
 										<img src="<?php echo base_url() ?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
 									</div>
@@ -44,7 +44,7 @@ if (COUNT($data->result_array())) {
 						</div>
 						<div class="col-sm">
 							<ul class="list-group list-group-flush tx-13">
-								<li class="list-group-item d-flex pd-sm-x-20">
+								<li class="list-group-item d-flex">
 									<div class="img-group">
 										<img src="<?php echo base_url() ?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
 									</div>
