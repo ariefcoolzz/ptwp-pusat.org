@@ -50,17 +50,17 @@
     <h4>Berita Terbaru</h4>
 </div>
 <div class="content">
-    <div class="row">
+    <div class="row pd-x-20">
         <?php foreach ($berita_terbaru->result_array() as $R) { ?>
-            <div class="col-sm col-xl-4">
+            <div class="col-sm col-xl-4 mg-t-1 mg-b-4">
                 <div class="media">
-                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded" alt="">
+                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
                     <div class="media-body">
                         <a href="<?php echo base_url('main/page/') . $R['alias'] ?>">
                             <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
                         </a>
                         <?php
-                        echo $R['intro'] . "...";
+                        echo $R['intro'] . "<button type='button' class='btn btn-sm btn-info'><a class='text-white' href='" . base_url("main/page/$R[alias]") . "'>" . "Selengkanya...</a></button>";
                         ?>
                     </div>
                 </div>
