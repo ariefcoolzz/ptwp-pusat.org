@@ -19,11 +19,11 @@
                         <table class="datatable-pemain table table-primary mg-b-0">
                             <thead class="thead-primary">
                                 <tr class="text-center">
-                                    <th scope="col">No</th>
-                                    <th scope="col">Foto</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Satuan Kerja</th>
-                                    <th scope="col">Aksi</th>
+                                    <th class="wd-20">No</th>
+                                    <th>Foto</th>
+                                    <th>Nama</th>
+                                    <th>Satuan Kerja</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,11 +32,10 @@
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
-                                    if(!empty($R['foto_profil'])){
-                                         echo "<td align='left'><img src='".base_url('assets/profil/').$R['foto_profil']."' class='img-thumbnail' style='width:55px;height:60px;'></td>";
-                                    }
-                                    else{
-                                         echo "<td align='left'><img src='".base_url('assets/profil/default.png')."' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                    if (!empty($R['foto_profil'])) {
+                                        echo "<td class='align-center'><img src='" . base_url('assets/profil/') . $R['foto_profil'] . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                    } else {
+                                        echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
                                     }
                                     echo "<td align='left'>" . $R['nama'] . "</td>";
                                     echo "<td align='left'>" . $R['satker'] . "</td>";
@@ -59,12 +58,13 @@
 </div>
 <script>
     $('.datatable-pemain').DataTable({
-		language: {
-			searchPlaceholder: 'Pencarian...',
-			sSearch: '',
-			lengthMenu: '_MENU_ Pemain/Halaman',
-		}
-	});
+        language: {
+            searchPlaceholder: 'Pencarian...',
+            sSearch: '',
+            lengthMenu: '_MENU_ Pemain/Halaman',
+        }
+    });
+
     function tambah_pemain(id_pemain) {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
