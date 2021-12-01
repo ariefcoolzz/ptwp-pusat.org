@@ -81,4 +81,10 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
+	
+	public function data_penyisihan_file( )
+	{
+		$data['judul'] = "DATA PENYISIHAN";
+		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
+	}
 }
