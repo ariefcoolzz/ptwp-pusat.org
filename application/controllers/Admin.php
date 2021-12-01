@@ -119,6 +119,20 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function form_data_tim()
+	{
+		$data['title'] = "FORM TAMBAH POOL";
+		
+		$id_tim = $this->input->post('id_tim');
+		
+		$data['id_tim'] = $id_tim;
+		
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/form_data_tim", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function form_data_pool()
 	{
 		$data['title'] = "FORM TAMBAH POOL";
@@ -253,6 +267,18 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function get_nama_pemain_tim()
+	{
+		$kategori = $this->input->post('kategori');
+		$data = $this->Model_admin->get_pemain_for_tim($kategori);
+		OB_START();
+		echo '<option value="">--PILIH PEMAIN--</option>';
+		foreach($data->result_array() as $d){
+			echo '<option value="'.$d['id_pemain'].'">'.$d['nama'].'</option>';
+		}
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function form_data_pool_simpan()
 	{
 		$insert['id_kategori'] = $this->input->post('kategori');
@@ -277,6 +303,24 @@ class Admin extends CI_Controller
 			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
 			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
 			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - POOL ".$insert['pool']." - Urutan ".$insert['urutan']."</li>";
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		} else {
+			echo JSON_ENCODE(array("status" => FALSE));
+		}
+	}
+	public function form_data_tim_simpan()
+	{
+		$insert['id_kategori'] = $this->input->post('kategori');
+		$insert['id_pemain1'] = $this->input->post('id_pemain1');
+		$id_pemain2 = $this->input->post('id_pemain2');
+		if(ISSET($id_pemain2)){
+			$insert['id_pemain2'] = $id_pemain2;
+		}
+		$res = $this->basic->insert_data('data_tim', $insert);
+		if ($res) {
+			$last_id = $this->db->insert_id();
+			$timA = $this->Model_admin->data_tim_byid($last_id)->row_array();
+			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." Berhasil Di Tambahkan dengan ID ".$last_id."</li>";
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		} else {
 			echo JSON_ENCODE(array("status" => FALSE));

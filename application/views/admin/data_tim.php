@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" onClick="tambah_pemain(0)" id_pemain="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Tambah Tim Baru</a>
+        <a href="#" onClick="tambah_tim(0)" id_pemain="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Tambah Tim Baru</a>
     </div>
 </div>
 <div class="row">
@@ -82,7 +82,7 @@
         }
     });
 
-    function tambah_pemain(id_pemain) {
+    function tambah_tim(id_tim) {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -91,9 +91,9 @@
         //loader
         // skip();
         var form_data = new FormData();
-        form_data.append('id_pemain', id_pemain);
+        form_data.append('id_tim', id_tim);
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/form_data_pemain",
+            url: "<?php echo base_url(); ?>admin/form_data_tim",
             type: 'POST',
             cache: false,
             contentType: false,

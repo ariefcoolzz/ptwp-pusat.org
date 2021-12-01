@@ -14,6 +14,17 @@ class Model_admin extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+	function get_pemain_for_tim()
+	{
+		$this->db->select("A.*");
+		$this->db->from('data_pemain AS A');
+		$this->db->join("data_tim AS B", "A.id_pemain = B.id_pemain1", 'left');
+		$this->db->join("data_tim AS C", "A.id_pemain = C.id_pemain2", 'left');
+		$this->db->where('B.`id_tim` IS NULL AND C.`id_tim` IS NULL');
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
 	function get_tim_A($id_kategori = false)
 	{
 		$this->db->select("A.*, C.kategori");
