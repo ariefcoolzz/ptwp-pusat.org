@@ -313,7 +313,7 @@ class Admin extends CI_Controller
 		$insert['id_kategori'] = $this->input->post('kategori');
 		$insert['id_pemain1'] = $this->input->post('id_pemain1');
 		$id_pemain2 = $this->input->post('id_pemain2');
-		if(ISSET($id_pemain2)){
+		if(!empty($id_pemain2)){
 			$insert['id_pemain2'] = $id_pemain2;
 		}
 		$res = $this->basic->insert_data('data_tim', $insert);
