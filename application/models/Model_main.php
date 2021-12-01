@@ -106,4 +106,14 @@ class Model_main extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+	
+	function model_cek_tunggal_ganda($id_kategori)
+	{
+		$this->db->select("A.tunggal_ganda");
+		$this->db->from('master_kategori_pemain AS A');
+		$this->db->where("A.id_kategori", $id_kategori);
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query->row_array()['tunggal_ganda'];
+	}
 }

@@ -98,6 +98,20 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 	
+	public function data_skema_pertandingan()
+	{
+		$data['judul'] 	= "Skema Pertandingan";
+		$this->template->load('ptwp_template', 'main/data_skema_pertandingan', $data);
+	}
+	
+	public function data_skema_pertandingan_rekap()
+	{
+		OB_START();
+		$this->load->view('main/data_skema_pertandingan_rekap');
+		$konten = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	}
+	
 	public function data_penyisihan_file()
 	{
 		$data['judul'] = "DATA PENYISIHAN";
