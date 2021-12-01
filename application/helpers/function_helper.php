@@ -1,4 +1,36 @@
 <?php	
+	function pool($hrf)
+		{
+			$huruf[1] = "A";
+			$huruf[2] = "B";
+			$huruf[3] = "C";
+			$huruf[4] = "D";
+			$huruf[5] = "E";
+			$huruf[6] = "F";
+			$huruf[7] = "G";
+			$huruf[8] = "H";
+			$huruf[9] = "I";
+			$huruf[10] = "J";
+			$huruf[11] = "K";
+			$huruf[12] = "L";
+			$huruf[13] = "M";
+			$huruf[14] = "N";
+			$huruf[15] = "O";
+			$huruf[16] = "P";
+			$huruf[17] = "Q";
+			$huruf[18] = "R";
+			$huruf[19] = "S";
+			$huruf[20] = "T";
+			$huruf[21] = "U";
+			$huruf[22] = "V";
+			$huruf[23] = "W";
+			$huruf[24] = "X";
+			$huruf[25] = "Y";
+			$huruf[26] = "Z";
+			
+			return $huruf[$hrf];
+		}
+		
 	function tanggal($tgl)
 		{
 			IF($tgl != "") return "'".$tgl->format('Y-m-d')."'"; ELSE return "NULL";
