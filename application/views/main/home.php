@@ -60,7 +60,7 @@
                             <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
                         </a>
                         <?php
-                        echo $R['intro'] . "<button type='button' class='btn btn-sm btn-info'><a class='text-white' href='" . base_url("main/page/$R[alias]") . "'>" . "Selengkanya...</a></button>";
+                        echo $R['intro'] . "<button type='button' class='btn btn-sm btn-info'><a class='text-white' href='" . base_url("main/page/$R[alias]") . "'>" . "Selengkapnya...</a></button>";
                         ?>
                     </div>
                 </div>
