@@ -7,6 +7,8 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Model_main');
+		$this->load->model('Model_admin');
 		$this->basic->squrity();
 	}
 
@@ -49,6 +51,24 @@ class Admin extends CI_Controller
 		$data['list_pemain'] = $this->basic->get_data('data_pemain');
 		OB_START();
 		$this->load->view("admin/data_pemain", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_tim()
+	{
+		$data['judul'] = "DATA TIM PEMAIN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/data_tim", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_babak_penyisihan()
+	{
+		$data['judul'] = "DATA POOL BABAK PENYISIHAN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/data_babak_penyisihan", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -96,6 +116,21 @@ class Admin extends CI_Controller
 		}
 		OB_START();
 		$this->load->view("admin/form_data_pemain", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_pool()
+	{
+		$data['title'] = "FORM TAMBAH POOL";
+		
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		
+		$data['id_tim_A'] = $id_tim_A;
+		$data['id_tim_B'] = $id_tim_B;
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/form_data_pool", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -201,6 +236,48 @@ class Admin extends CI_Controller
 			redirect('admin/data_konten');
 		} else {
 			redirect('admin/data_berita');
+		}
+	}
+	public function get_nama_tim()
+	{
+		$kategori = $this->input->post('kategori');
+
+		$data = $this->Model_admin->data_tim($kategori);
+		OB_START();
+		echo '<option value="">--PILIH TIM--</option>';
+		foreach($data->result_array() as $d){
+			echo '<option value="'.$d['id_tim'].'">'.$d['nama_pasangan'].'</option>';
+		}
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_pool_simpan()
+	{
+		$insert['id_kategori'] = $this->input->post('kategori');
+		$insert['pool'] = $this->input->post('pool');
+		$insert['id_tim_A'] = $this->input->post('tim_A');
+		$insert['id_tim_B'] = $this->input->post('tim_B');
+		$insert['id_lapangan'] = 1;
+		$insert['tanggal'] = '2021-12-3';
+		$insert['waktu'] = '08:00:00';
+		
+		$urutan = $this->Model_admin->get_max_urutan($insert['pool'],$insert['id_kategori']);
+		if(!empty($urutan)){
+			$insert['urutan'] = $urutan+1;
+		}
+		else{
+			$insert['urutan'] = 1;
+		}
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$res = $this->basic->insert_data('data_babak_penyisihan', $insert);
+		if ($res) {
+			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
+			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
+			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - POOL ".$insert['pool']." - Urutan ".$insert['urutan']."</li>";
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		} else {
+			echo JSON_ENCODE(array("status" => FALSE));
 		}
 	}
 }

@@ -69,10 +69,15 @@ extract($_SESSION);
                 <ul class="nav nav-aside">
                     <li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
-                    <li class="nav-label">Menu</li>
+                    <li class="nav-label pt-2">Menu</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                    
+                    <li class="nav-label pt-2">Pertandingan</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_perdelapan" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
                 </ul>
             </div>
     </aside>
