@@ -102,6 +102,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
                 <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
@@ -140,7 +141,7 @@
   <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
-      <span>Design by <a>ADIL</a></span>
+      <span>Design By <a href="#">TIM GERCEP GANIS</a></span>
     </div>
     <div>
       <nav class="nav">
@@ -164,6 +165,22 @@
       });
     });
   </script>
+
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/619f25886bb0760a4944472c/1flaql84v';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
 </body>
 
 </html>

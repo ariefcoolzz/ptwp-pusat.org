@@ -1,6 +1,18 @@
 <?php
 class Model_main extends CI_Model
 {
+	function model_select_pool($id_kategori = false)
+	{
+		$this->db->distinct();
+		$this->db->select("A.pool");
+		$this->db->from('data_babak_penyisihan AS A');
+		if($id_kategori)$this->db->where('A.id_kategori',$id_kategori);
+		$this->db->order_by("A.pool", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	
 	function model_data_pemain($id_kategori = false)
 	{
 		$this->db->select("A.*, C.kategori");

@@ -39,7 +39,7 @@ class Main extends CI_Controller
 		
 		$this->template->load('ptwp_template', 'main/page', $data);
 	}
-
+	
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";
@@ -80,5 +80,11 @@ class Main extends CI_Controller
 		$this->load->view('main/data_babak_penyisihan_rekap');
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	}
+	
+	public function data_penyisihan_file( )
+	{
+		$data['judul'] = "DATA PENYISIHAN";
+		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
 	}
 }
