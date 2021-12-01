@@ -86,7 +86,7 @@
                 <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
-            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT</h6>
+            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
