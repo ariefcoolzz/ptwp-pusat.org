@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" id_pemain="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Pemain Baru</a>
+        <a href="#" onClick="tambah_pemain(0)" id_pemain="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Pemain Baru</a>
     </div>
 </div>
 <div class="row">
@@ -42,7 +42,7 @@
                                     echo "<td align='left'>" . $R['satker'] . "</td>";
                                     echo '<td>
                                         <div class="btn-group">
-                                        <a href="#" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="#" onClick="tambah_pemain(' . $R['id_pemain'] . ')" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                         <a href="#" class="btn btn-xs btn-outline-danger btn-rounded"><i class="fas fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a></td>';
                                     echo "</div>";
                                     echo "</tr>";
@@ -65,7 +65,7 @@
 			lengthMenu: '_MENU_ Pemain/Halaman',
 		}
 	});
-    $(".btn-tambah").on("click", function() {
+    function tambah_pemain(id_pemain) {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -74,7 +74,7 @@
         //loader
         // skip();
         var form_data = new FormData();
-        form_data.append('id_pemain', $(this).attr('id_pemain'));
+        form_data.append('id_pemain', id_pemain);
         $.ajax({
             url: "<?php echo base_url(); ?>admin/form_data_pemain",
             type: 'POST',
@@ -95,7 +95,7 @@
                 }
             }
         });
-    });
+    }
 
     $('[data-toggle="tooltip"]').tooltip();
 </script>
