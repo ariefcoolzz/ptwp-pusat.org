@@ -188,27 +188,28 @@ class Admin extends CI_Controller
 			$id_pemain = $this->db->insert_id();
 		}
 		if ($res) {
-			$path_parts = pathinfo($_FILES["file_upload"]["name"]);
-			$extension = $path_parts['extension'];
-			$nama_file = $id_pemain . '.' . $extension;
-			$config = array(
-				'upload_path'			=> './assets/profil',
-				'allowed_types'			=> 'gif|jpg|png|jpeg',
-				'max_size'				=> 5000,
-				'overwrite'				=> true,
-				'file_name'				=> $nama_file
-			);
-			$this->load->library('upload', $config);
 			if (!empty($_FILES['file_upload']['name'])) {
+				$path_parts = pathinfo($_FILES["file_upload"]["name"]);
+				$extension = $path_parts['extension'];
+				$nama_file = $id_pemain . '.' . $extension;
+				$config = array(
+					'upload_path'			=> './assets/profil',
+					'allowed_types'			=> 'gif|jpg|png|jpeg',
+					'max_size'				=> 5000,
+					'overwrite'				=> true,
+					'file_name'				=> $nama_file
+				);
+				$this->load->library('upload', $config);
 				if (!$this->upload->do_upload('file_upload')) {
 					$msg = $this->upload->display_errors();
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger">' . $msg . '</div>');
-					redirect('admin/data_pemain');
-				} else {
+						redirect('admin/data_pemain');
+				} 
+				else {
 					$update['foto_profil'] = $nama_file;
 					$where = array('id_pemain' => $id_pemain);
 					$res = $this->basic->update_data($where, 'data_pemain', $update);
-				}
+					}
 			}
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
 		} else {
