@@ -26,36 +26,36 @@ class Model_main extends CI_Model
 		return $query;
 	}
 	
-	function model_data_pertandingan()
-	{
-		$this->db->select("A.*");
-		$this->db->select("B.lapangan");
-		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
-		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
-		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
-		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
-		$this->db->from('data_pertandingan AS A');
-		$this->db->join('master_lapangan AS B','A.id_lapangan=B.id_lapangan','left');
-		$this->db->order_by("A.tanggal", "ASC");
-		$this->db->order_by("A.waktu", "ASC");
-		$this->db->order_by("A.id_lapangan", "ASC");
-		$query = $this->db->get();
-		// DIE($this->db->last_query());
-		return $query;
-	}
+	// function model_data_pertandingan()
+	// {
+		// $this->db->select("A.*");
+		// $this->db->select("B.lapangan");
+		// // $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
+		// // $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
+		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		// $this->db->from('data_pertandingan AS A');
+		// $this->db->join('master_lapangan AS B','A.id_lapangan=B.id_lapangan','left');
+		// $this->db->order_by("A.tanggal", "ASC");
+		// $this->db->order_by("A.waktu", "ASC");
+		// $this->db->order_by("A.id_lapangan", "ASC");
+		// $query = $this->db->get();
+		// // DIE($this->db->last_query());
+		// return $query;
+	// }
 	
-	function model_data_pertandingan_point($id_data_point)
-	{
-		$this->db->select("A.*");
-		$this->db->select("NAMA_POINT(A.id_point_tim_A) AS point_tim_A");
-		$this->db->select("NAMA_POINT(A.id_point_tim_B) AS point_tim_B");
-		$this->db->from('data_point AS A');
-		$this->db->where('A.id_data_point',$id_data_point);
-		$this->db->order_by("A.set", "ASC");
-		$query = $this->db->get();
-		// DIE($this->db->last_query());
-		return $query;
-	}
+	// function model_data_pertandingan_point($id_data_point)
+	// {
+		// $this->db->select("A.*");
+		// $this->db->select("NAMA_POINT(A.id_point_tim_A) AS point_tim_A");
+		// $this->db->select("NAMA_POINT(A.id_point_tim_B) AS point_tim_B");
+		// $this->db->from('data_point AS A');
+		// $this->db->where('A.id_data_point',$id_data_point);
+		// $this->db->order_by("A.set", "ASC");
+		// $query = $this->db->get();
+		// // DIE($this->db->last_query());
+		// return $query;
+	// }
 	
 	function model_data_babak_penyisihan($id_kategori,$pool)
 	{
@@ -115,5 +115,43 @@ class Model_main extends CI_Model
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
 		return $query->row_array()['tunggal_ganda'];
+	}
+	
+	function model_data_jadwal_pertandingan_babak_penyisihan()
+	{
+		$this->db->select("A.*");
+		$this->db->select("B.lapangan");
+		$this->db->select("KATEGORI(A.id_kategori) AS kategori");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->join('master_lapangan AS B','A.id_lapangan=B.id_lapangan','left');
+		$this->db->order_by("A.tanggal", "ASC");
+		$this->db->order_by("A.waktu", "ASC");
+		$this->db->order_by("A.id_lapangan", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	
+	function model_data_jadwal_pertandingan_babak_final()
+	{
+		$this->db->select("A.*");
+		$this->db->select("B.lapangan");
+		$this->db->select("KATEGORI(A.id_kategori) AS kategori");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nip_tim_A");
+		// $this->db->select("(SELECT CONCAT(NIP_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NIP_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nip_tim_B");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		$this->db->from('data_babak_final AS A');
+		$this->db->join('master_lapangan AS B','A.id_lapangan=B.id_lapangan','left');
+		$this->db->order_by("A.tanggal", "ASC");
+		$this->db->order_by("A.waktu", "ASC");
+		$this->db->order_by("A.id_lapangan", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
 	}
 }

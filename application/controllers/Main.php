@@ -112,6 +112,12 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 	
+	public function data_jadwal_pertandingan()
+	{
+		$data['judul'] 	= "Jadwal Pertandingan";
+		$this->template->load('ptwp_template', 'main/data_jadwal_pertandingan', $data);
+	}
+	
 	public function data_penyisihan_file()
 	{
 		$data['judul'] = "DATA PENYISIHAN";
