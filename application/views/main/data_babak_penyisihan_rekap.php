@@ -1,5 +1,5 @@
 <?php
-$data 	= $this->Model_main->model_data_babak_penyisihan($_POST['id_kategori']);
+$data 	= $this->Model_main->model_data_babak_penyisihan($_POST['id_kategori'],$_POST['pool']);
 if (COUNT($data->result_array())) {
 	$no = 0;
 	?>
@@ -26,6 +26,7 @@ if (COUNT($data->result_array())) {
 	
 		
 			<?php
+				$rank = ARRAY();
 				foreach ($data->result_array() as $R) {
 				$no++;
 				$win_set	= 0;
@@ -66,6 +67,9 @@ if (COUNT($data->result_array())) {
 						IF($jpp != $R['urutan'] AND $get_score_A[$jpp] > $get_score_B[$jpp]) $win_set++;	
 						IF($jpp != $R['urutan'] AND $get_score_A[$jpp] < $get_score_B[$jpp]) $lose_set++;	
 					}
+				
+				$persentase = ROUND(($win_game / ($win_game+$lose_game)) * 100, 2);
+				$rank[$no] 	= $persentase;
 					?>
 					<tr>
 						<td rowspan="2"><?php echo $R['urutan']; ?></td>
@@ -76,19 +80,28 @@ if (COUNT($data->result_array())) {
 						<td rowspan="2"><?php echo $lose_set; ?></td>
 						<td>Win</td>
 						<td><?php echo $win_game; ?></td>
-						<td rowspan="2"><?php echo ROUND(($win_game / ($win_game+$lose_game)) * 100, 2); ?>%</td>
-						<td rowspan="2">...</td>
+						<td rowspan="2"><?php echo $persentase; ?>%</td>
+						<td rowspan="2"><div id='rank<?php echo $no; ?>'>iii</div></td>
 					</tr>
 					<tr>
 						<?php echo $kolom_score_B; ?>
 						<td>Lose</td>
 						<td><?php echo $lose_game; ?></td>
 					</tr>
-					
 					<?php
 				}
 			?>
 	</table>
-	<?php
+	<?php ASORT($rank); ?>
+	<?php 
+	$i=0;
+	foreach($rank as $key => $value) 
+		{
+			$i++;
+			echo "<script>$('#rank$i').html(".(($no-$key)+1).");</script>";
+		}
+	?>
+	<?php // PRINT_R($rank); ?>
+	<?php 
 }
 ?>
