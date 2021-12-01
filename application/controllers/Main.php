@@ -81,4 +81,19 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
+	
+	public function data_babak_final($per)
+	{
+		$data['judul'] 	= "Babak Perdelapan Final";
+		$data['per']	= $per;
+		$this->template->load('ptwp_template', 'main/data_babak_final', $data);
+	}
+	
+	public function data_babak_final_rekap()
+	{
+		OB_START();
+		$this->load->view('main/data_babak_final_rekap');
+		$konten = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	}
 }

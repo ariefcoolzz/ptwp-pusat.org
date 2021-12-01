@@ -88,4 +88,22 @@ class Model_main extends CI_Model
 		// DIE($this->db->last_query());
 		return $query->row_array()['score'];
 	}
+	
+	function model_data_babak_final($id_kategori = false,$per = false)
+	{
+		$this->db->select("A.*");
+		$this->db->select("B.lapangan");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1),IF(id_pemain2 IS NULL,'',CONCAT('<br>',NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		$this->db->from('data_babak_final AS A');
+		$this->db->join('master_lapangan AS B','A.id_lapangan=B.id_lapangan','left');
+		if($id_kategori) $this->db->where('MD7(A.id_kategori)',$id_kategori);
+		if($per) $this->db->where('MD7(A.per)',$per);
+		$this->db->order_by("A.id_kategori", "ASC");
+		$this->db->order_by("A.per", "ASC");
+		$this->db->order_by("A.urutan", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
 }
