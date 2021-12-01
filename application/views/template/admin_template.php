@@ -71,8 +71,8 @@ extract($_SESSION);
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li>
                     <li class="nav-label">Menu</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                 </ul>
             </div>
     </aside>
@@ -100,6 +100,7 @@ extract($_SESSION);
         <footer class="footer">
             <div>
                 <span>&copy; 2021 PTWP-PUSAT.ORG </span>
+                <span>Design by <a>ADIL</a></span>
             </div>
             <div>
                 <nav class="nav">

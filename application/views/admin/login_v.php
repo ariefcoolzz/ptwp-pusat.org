@@ -12,7 +12,7 @@
     <div class="media align-items-stretch justify-content-center ht-100p pos-relative">
       <div class="media-body align-items-center d-none d-lg-flex">
         <div class="mx-wd-600">
-          <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpeg" class="img-fluid" alt="">
+          <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="img-fluid" alt="">
         </div>
         <!-- <div class="pos-absolute b-0 l-0 tx-12 tx-center">
           Workspace design vector is created by <a href="https://www.freepik.com/pikisuperstar" target="_blank">pikisuperstar (freepik.com)</a>
