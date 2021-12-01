@@ -241,8 +241,9 @@ class Admin extends CI_Controller
 	public function get_nama_tim()
 	{
 		$kategori = $this->input->post('kategori');
-
-		$data = $this->Model_admin->data_tim($kategori);
+		$tim = $this->input->post('tim');
+		if($tim == "A")$data = $this->Model_admin->get_tim_A($kategori);
+		if($tim == "B")$data = $this->Model_admin->get_tim_B($kategori);
 		OB_START();
 		echo '<option value="">--PILIH TIM--</option>';
 		foreach($data->result_array() as $d){

@@ -35,12 +35,12 @@ if ($id_tim_A) $txt_simpan = "UPDATE";
                             </div>
                             <div class="form-group">
                                 <label class="control-label">TIM A</label>
-                                <select name="tim_A" class="pilih_tim form-control">
+                                <select name="tim_A" class="pilih_tim_A form-control">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">TIM B</label>
-                                <select name="tim_B" class="pilih_tim form-control">
+                                <select name="tim_B" class="pilih_tim_B form-control">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -67,8 +67,12 @@ if ($id_tim_A) $txt_simpan = "UPDATE";
     </div>
 </div>
 <script>
-    get_nama_tim();
-    $(".pilih_tim").select2({
+    get_nama_tim_A();
+    get_nama_tim_B();
+    $(".pilih_tim_A").select2({
+			placeholder: "Silahkan Pilih Nama TIM"
+		});
+    $(".pilih_tim_B").select2({
 			placeholder: "Silahkan Pilih Nama TIM"
 		});
     $("#form_konten").submit(function(e) {
@@ -96,14 +100,17 @@ if ($id_tim_A) $txt_simpan = "UPDATE";
                     });
                     $("#log").append(html.konten_menu);
                     $("#btn-simpan").html(text);
+                    get_nama_tim_A();
+                    get_nama_tim_B();
                 }
             }
         });
     });
-    function get_nama_tim(){
+    function get_nama_tim_A(){
         var kategori = $('#kategori option:selected').val();
         var form_data = new FormData();
         form_data.append('kategori', kategori);
+        form_data.append('tim', 'A');
         // console.log(kategori);
         $.ajax({
             url: "<?php echo base_url(); ?>admin/get_nama_tim",
@@ -119,8 +126,36 @@ if ($id_tim_A) $txt_simpan = "UPDATE";
                 } 
                 else 
                 {
-                    $(".pilih_tim").html(html.konten_menu);
-                    $(".pilih_tim").select2({
+                    $(".pilih_tim_A").html(html.konten_menu);
+                    $(".pilih_tim_A").select2({
+                        placeholder: "Silahkan Pilih Nama TIM"
+                    });                    
+                }
+            }
+        });
+    }
+    function get_nama_tim_B(){
+        var kategori = $('#kategori option:selected').val();
+        var form_data = new FormData();
+        form_data.append('kategori', kategori);
+        form_data.append('tim', 'B');
+        // console.log(kategori);
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/get_nama_tim",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(html) {
+                if (html.status !== true) {
+                    location.reload();
+                } 
+                else 
+                {
+                    $(".pilih_tim_B").html(html.konten_menu);
+                    $(".pilih_tim_B").select2({
                         placeholder: "Silahkan Pilih Nama TIM"
                     });
                 }
@@ -130,7 +165,8 @@ if ($id_tim_A) $txt_simpan = "UPDATE";
     $('#kategori').on('change', function (e) {
         var optionSelected = $("option:selected", this);
         var valueSelected = this.value;
-        get_nama_tim();
+        get_nama_tim_A();
+        get_nama_tim_B();
     });
     // tinyMCE.EditorManager.execCommand('mceAddEditor',true, '.mymce'); 
 </script>

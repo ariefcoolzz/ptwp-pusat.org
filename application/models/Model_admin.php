@@ -14,6 +14,34 @@ class Model_admin extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+	function get_tim_A($id_kategori = false)
+	{
+		$this->db->select("A.*, C.kategori");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2))))) AS nama_pasangan");
+		$this->db->select("NAMA_SATKER(id_pemain1) as nama_satker");
+		$this->db->from('data_tim AS A');
+		$this->db->join("data_babak_penyisihan AS B", "A.id_tim = B.id_tim_A", 'left');
+		$this->db->join("master_kategori_pemain AS C", "A.id_kategori = C.id_kategori", 'left');
+		if($id_kategori)$this->db->where("A.id_kategori = '$id_kategori' AND pool IS NULL");
+		$this->db->order_by("A.id_tim", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	function get_tim_B($id_kategori = false)
+	{
+		$this->db->select("A.*, C.kategori");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2))))) AS nama_pasangan");
+		$this->db->select("NAMA_SATKER(id_pemain1) as nama_satker");
+		$this->db->from('data_tim AS A');
+		$this->db->join("data_babak_penyisihan AS B", "A.id_tim = B.id_tim_B", 'left');
+		$this->db->join("master_kategori_pemain AS C", "A.id_kategori = C.id_kategori", 'left');
+		if($id_kategori)$this->db->where("A.id_kategori = '$id_kategori' AND pool IS NULL");
+		$this->db->order_by("A.id_tim", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
 	function data_tim_byid($id_tim = false)
 	{
 		$this->db->select("A.*, C.kategori");
