@@ -140,6 +140,7 @@
   <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
+      <span>Design By <a>ADIL</a></span>
     </div>
     <div>
       <nav class="nav">
