@@ -124,7 +124,7 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/page/live_streaming') ?>" class="nav-link"><i data-feather="video"></i> Live Streaming</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="galeri"></i> Galeri</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
