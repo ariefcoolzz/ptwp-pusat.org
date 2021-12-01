@@ -42,7 +42,7 @@
                                     echo '<td>
                                         <div class="btn-group">
                                         <a href="#" onClick="tambah_pemain(' . $R['id_pemain'] . ')" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="#" class="btn btn-xs btn-outline-danger btn-rounded"><i class="fas fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a></td>';
+                                        <a href="#" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td>';
                                     echo "</div>";
                                     echo "</tr>";
                                     $no++;
@@ -57,6 +57,8 @@
     </div>
 </div>
 <script>
+    $('[data-toggle="tooltip"]').tooltip();
+
     $('.datatable-pemain').DataTable({
         language: {
             searchPlaceholder: 'Pencarian...',
@@ -96,6 +98,4 @@
             }
         });
     }
-
-    $('[data-toggle="tooltip"]').tooltip();
 </script>

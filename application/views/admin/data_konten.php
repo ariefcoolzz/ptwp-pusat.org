@@ -57,6 +57,8 @@
     </div>
 </div>
 <script>
+    $('[data-toggle="tooltip"]').tooltip();
+
     $(".btn-tambah").on("click", function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
@@ -90,22 +92,70 @@
             }
         });
     });
-    $(".btn-hapus").on("click", function() {
-        var form_data = new FormData();
-        form_data.append('id_konten', $(this).attr('id_konten'));
-        $.ajax({
-            url: "<?php echo base_url(); ?>admin/hapus_data_konten",
-            type: 'POST',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            dataType: 'json',
-            success: function(html) {
-                alert(html); // CET DISINI SWEET ALERT
+    // $(".btn-hapus").on("click", function() {
+    //     var form_data = new FormData();
+    //     form_data.append('id_konten', $(this).attr('id_konten'));
+    //     $.ajax({
+    //         url: "<?php echo base_url(); ?>admin/hapus_data_konten",
+    //         type: 'POST',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         dataType: 'json',
+    //         success: function(html) {
+    //             alert(html); // CET DISINI SWEET ALERT
+    //         }
+    //     });
+    // });
+
+    $('.btn-hapus').on('click', function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Data tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus saja!',
+            cancelButtonText: 'Batalkan saja!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form_data = new FormData();
+                form_data.append('id_konten', $(this).attr('id_konten'));
+                $.ajax({
+                    url: "<?php echo base_url(); ?>admin/hapus_data_konten",
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    dataType: 'json',
+                    error: function() {
+                        alert('Something is wrong');
+                    },
+                    success: function(html) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Data Berhasil Di Delete...',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                        $("body").scrollTop('0px');
+                        $("#konten").fadeOut(300);
+                        $("#konten").html(html.konten_menu);
+                        $("#konten").fadeIn(300);
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Aman...',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
             }
         });
     });
-
-    $('[data-toggle="tooltip"]').tooltip();
 </script>
