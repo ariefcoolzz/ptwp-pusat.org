@@ -52,9 +52,9 @@
 <div class="content">
     <div class="row">
         <?php foreach ($berita_terbaru->result_array() as $R) { ?>
-            <div class="col-sm col-xl-4 mg-t-1 mb-4">
+            <div class="col-sm col-xl-4">
                 <div class="media">
-                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
+                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded" alt="">
                     <div class="media-body">
                         <a href="<?php echo base_url('main/page/') . $R['alias'] ?>">
                             <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
