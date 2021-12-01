@@ -17,11 +17,7 @@
 		?>
 		</select>
 		
-		<select id='pool'>
-			<option value='<?php echo MD7("0"); ?>'>SEMUA POOL</option>
-			<option value='<?php echo MD7("A"); ?>'>POOL A</option>
-			<option value='<?php echo MD7("B"); ?>'>POOL B</option>
-		</select>
+		<font id='form_pool'><?php $this->load->view('./main/@select_pool.php'); ?></font>
 		</h4>
 		<div id='konten'></div>
     </div>

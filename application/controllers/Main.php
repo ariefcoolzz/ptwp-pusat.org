@@ -39,7 +39,7 @@ class Main extends CI_Controller
 		
 		$this->template->load('ptwp_template', 'main/page', $data);
 	}
-
+	
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";
