@@ -101,12 +101,13 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
+                <?php /* <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li> */ ?>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/8'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/4'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/2'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Semi Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/1'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
