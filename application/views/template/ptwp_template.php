@@ -66,10 +66,6 @@
                 <li class="nav-label mg-t-20">AD/ART Organisasi</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_dasar') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Dasar(AD)</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/anggaran_rumah_tangga') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Anggaran Rumah Tangga(ART)</a></li>
-                <li class="nav-label mg-t-20">Gallery Kegiatan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Kongres PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Pembukaan PTWP</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('#') ?>" class="nav-sub-link"><i data-feather="camera"></i> Galeri Penutupan PTWP</a></li>
                 <li class="nav-label mg-t-20">Hymne PTWP</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
               </ul>
@@ -78,13 +74,11 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/struktur_organisasi') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/profil_pengurus') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/program_kerja') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
                 <li class="nav-label mg-t-20">Pengurus Daerah</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/struktur_organisasi_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Struktur Organisasi</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/profil_pengurus_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Profil Pengurus</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/program_kerja_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Program Kerja</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/galeri_kegiatan_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Galeri Kegiatan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_anggota_daerah') ?>" class="nav-sub-link"><i data-feather="check-square"></i> Daftar Anggota</a></li>
               </ul>
             </div>
@@ -125,7 +119,7 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="galeri"></i> Galeri</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="rss"></i> Galeri</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
