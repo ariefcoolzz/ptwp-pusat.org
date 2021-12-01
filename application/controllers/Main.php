@@ -82,6 +82,7 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 	
+
 	public function data_babak_final($per)
 	{
 		$data['judul'] 	= "Babak Perdelapan Final";
@@ -95,5 +96,10 @@ class Main extends CI_Controller
 		$this->load->view('main/data_babak_final_rekap');
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+
+	public function data_penyisihan_file()
+	{
+		$data['judul'] = "DATA PENYISIHAN";
+		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
 	}
 }
