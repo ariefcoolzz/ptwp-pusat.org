@@ -184,6 +184,7 @@ class Admin extends CI_Controller
 	public function hapus_data_konten()
 	{
 		$id_konten = $this->input->post('id_konten');
+		$cat_id = $this->input->post('cat_id');
 		$where = array('MD7(id)' => $id_konten);
 		$status = $this->basic->delete_data($where, 'data_konten');
 		// $file = 'file_upload/data_tpm_aps/'.MD7($_POST['nip']).'.pdf';
@@ -192,10 +193,14 @@ class Admin extends CI_Controller
 		// }
 		// echo JSON_ENCODE(array("status" => $status));
 		if ($status) {
-			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
 		} else {
-			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.</div>');
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
 		}
-		redirect('admin/data_konten');
+		if ($cat_id == 0) {
+			redirect('admin/data_konten');
+		} else {
+			redirect('admin/data_berita');
+		}
 	}
 }

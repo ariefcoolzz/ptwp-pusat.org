@@ -58,7 +58,7 @@
 </div>
 <script>
     $('[data-toggle="tooltip"]').tooltip();
-
+    var cat_id = <?php echo $cat_id; ?>;
     $(".btn-tambah").on("click", function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
@@ -67,7 +67,7 @@
         // $(this).closest('li.nav-item').addClass('active');
         //loader
         // skip();
-        var cat_id = <?php echo $cat_id; ?>;
+
         var form_data = new FormData();
         form_data.append('id_konten', $(this).attr('id_konten'));
         form_data.append('cat_id', cat_id);
@@ -109,6 +109,7 @@
     //     });
     // });
 
+    var cat_id = <?php echo $cat_id; ?>;
     $('.btn-hapus').on('click', function(e) {
         e.preventDefault();
         Swal.fire({
@@ -124,6 +125,7 @@
             if (result.isConfirmed) {
                 var form_data = new FormData();
                 form_data.append('id_konten', $(this).attr('id_konten'));
+                form_data.append('cat_id', cat_id);
                 $.ajax({
                     url: "<?php echo base_url(); ?>admin/hapus_data_konten",
                     type: 'POST',
