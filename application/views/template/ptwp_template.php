@@ -42,13 +42,13 @@
 
 <body class="home-body">
   <header class="navbar navbar-header navbar-header-fixed bd-b">
-    <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
+      <a href="<?php echo base_url('') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">
-        <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
+        <a href="<?php echo base_url('') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
         <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
       <ul class="nav navbar-menu">
@@ -95,12 +95,13 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li>
+                <?php /* <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li> */ ?>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
-                <li class="nav-sub-item"><a href="#" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/8'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/4'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/2'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Semi Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/1'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
@@ -119,7 +120,6 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="rss"></i> Galeri</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
