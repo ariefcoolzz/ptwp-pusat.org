@@ -42,13 +42,13 @@
 
 <body class="home-body">
   <header class="navbar navbar-header navbar-header-fixed bd-b">
-    <a href="<?php echo base_url('#') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
+    <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
-      <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
+      <a href="<?php echo base_url('') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
     </div><!-- navbar-brand -->
     <div id="navbarMenu" class="navbar-menu-wrapper">
       <div class="navbar-menu-header">
-        <a href="<?php echo base_url('#') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
+        <a href="<?php echo base_url('') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
         <a id="mainMenuClose" href=""><i data-feather="x"></i></a>
       </div><!-- navbar-menu-header -->
       <ul class="nav navbar-menu">
@@ -125,7 +125,7 @@
           </div><!-- nav-sub -->
         </li>
         <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
-        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="galeri"></i> Galeri</a></li>
+        <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="image"></i> Galeri</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
     </div><!-- navbar-menu-wrapper -->
