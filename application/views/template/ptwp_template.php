@@ -123,6 +123,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/jadwal_tempat_kongres_ptwp') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal & Tempat</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/peserta_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Peserta Kongres</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tata_tertib_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Tata Tertib Kongres</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/buku_panduan_kongres') ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Buku Panduan Kongres</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->
