@@ -42,7 +42,7 @@
                                     echo '<td>
                                         <div class="btn-group">
                                         <a href="#" onClick="tambah_pemain(' . $R['id_pemain'] . ')" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                        <a href="#" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td>';
+                                        <a href="#" onClick="hapus_pemain(' . $R['id_pemain'] . ')" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td>';
                                     echo "</div>";
                                     echo "</tr>";
                                     $no++;
@@ -95,6 +95,57 @@
                     $("#konten").fadeIn(300);
 
                 }
+            }
+        });
+    }
+    function hapus_pemain(id_pemain) {
+         Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Data tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus saja!',
+            cancelButtonText: 'Batalkan saja!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+				var form_data = new FormData();
+				form_data.append('id_pemain', id_pemain);
+				$.ajax({
+					url: "<?php echo base_url(); ?>admin/hapus_data_pemain",
+					type: 'POST',
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					dataType: 'json',
+					success: function(html) {
+						if (html.status !== true) {
+							location.reload();
+						} else {
+							Swal.fire({
+								icon: 'success',
+								title: 'Data Berhasil Di Hapus',
+								showConfirmButton: false,
+								timer: 1000
+							});
+							$("body").scrollTop('0px');
+							$("#konten").fadeOut(300);
+							$("#konten").html(html.konten_menu);
+							$("#konten").fadeIn(300);
+
+						}
+					}
+				});
+			}else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Aman...',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
             }
         });
     }

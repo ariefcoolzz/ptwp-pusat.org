@@ -326,4 +326,42 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE(array("status" => FALSE));
 		}
 	}
+	public function hapus_data_pemain()
+	{
+		$id_pemain = $this->input->post('id_pemain');
+		$where = array('id_pemain' => $id_pemain);
+		$status = $this->basic->delete_data($where, 'data_pemain');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		redirect('admin/data_pemain');
+	}
+	public function hapus_data_tim()
+	{
+		$id_tim = $this->input->post('id_tim');
+		$where = array('id_tim' => $id_tim);
+		$status = $this->basic->delete_data($where, 'data_tim');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		redirect('admin/data_tim');
+	}
+	public function hapus_data_pool()
+	{
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B, );
+		$status = $this->basic->delete_data($where, 'data_babak_penyisihan');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		// print($this->db->last_query());die;
+		redirect('admin/data_babak_penyisihan');
+	}
 }
