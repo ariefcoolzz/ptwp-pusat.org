@@ -33,10 +33,15 @@
 	$(document).ready(function() {
 		$("#id_kategori,#pool").on("change", function() {
 			// alert();skip();
-
+			proses($("#id_kategori").val(),$("#pool").val());
+		});
+	});
+	
+	function proses(id_kategori,pool)
+		{
 			var form_data = new FormData();
-			form_data.append('id_kategori', $("#id_kategori").val());
-			form_data.append('pool', $("#pool").val());
+			form_data.append('id_kategori', id_kategori);
+			form_data.append('pool', pool);
 			$.ajax({
 				url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
 				type: 'POST',
@@ -56,6 +61,7 @@
 					}
 				}
 			});
-		});
-	});
+		}
+	
+	proses($("#id_kategori").val(),$("#pool").val());
 </script>
