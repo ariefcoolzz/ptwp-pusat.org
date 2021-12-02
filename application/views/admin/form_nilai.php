@@ -3,7 +3,7 @@
 		<ul class="list-group list-group-flush tx-13">
 			<li class="list-group-item d-flex">
 				<div class="img-group">
-					<img src="/ptwp-pusat.org/assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
+					<img src="<?php echo base_url();?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
 				</div>
 				<div class="pd-20">
 					<p class="tx-medium mg-b-0"><?php echo $nama_tim_A; ?> </p>
@@ -52,7 +52,7 @@
 		<ul class="list-group list-group-flush tx-13">
 			<li class="list-group-item d-flex">
 				<div class="img-group">
-					<img src="/ptwp-pusat.org/assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
+					<img src="<?php echo base_url();?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
 				</div>
 				<div class="pd-20">
 					<p class="tx-medium mg-b-0"><?php echo $nama_tim_B; ?> </p>
