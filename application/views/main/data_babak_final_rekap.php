@@ -1,40 +1,72 @@
 <?php
-$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],$_POST['per']);
+$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'], $_POST['per']);
 if (COUNT($data->result_array())) {
 	$no = 0;
-	?>
-	<table border='1' width='100%'>
-		<tr>
-			<td>No</td>
-			<td>Tim A</td>
-			<td>Tim B</td>
-			<td>Tanggal</td>
-			<td>Waktu</td>
-			<td>Lapangan</td>
-		</tr>
-		<?php
-			foreach ($data->result_array() as $R) {
-			$no++;
-			?>
+?>
+	<table class="table table-striped table-primary">
+		<thead>
 			<tr>
-				<td><?php echo $R['urutan']; ?></td>
-				<td>
-					<?php echo $R['nama_tim_A']; ?><br>
-					<?php echo $R['set1_tim_A']; ?>
-				</td>
-				<td>
-					<?php echo $R['nama_tim_B']; ?><br>
-					<?php echo $R['set1_tim_B']; ?>
-				</td>
-				<td><?php echo $R['tanggal']; ?></td>
-				<td><?php echo $R['waktu']; ?></td>
-				<td><?php echo $R['lapangan']; ?></td>
+				<td>No</td>
+				<td class="text-center" colspan="6">Pertandingan</td>
 			</tr>
-			<?php
-			}
+		</thead>
+		<?php
+		foreach ($data->result_array() as $R) {
+			$no++;
+		?>
+			<tr>
+				<td class="align-middle"><?php echo $R['urutan']; ?></td>
+				<td class="align-middle">
+					<div class="row">
+						<div class="col-sm">
+							<ul class="list-group list-group-flush tx-13">
+								<li class="list-group-item d-flex">
+									<div class="img-group">
+										<img src="<?php echo base_url() ?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
+									</div>
+									<div class="pd-20">
+										<p class="tx-medium mg-b-0"><?php echo $R['nama_tim_A']; ?></p>
+									</div>
+									<div class="mg-l-auto d-flex align-self-center">
+										<nav class="nav nav-icon-only">
+											<a class="nav-link"><?php echo $R['set1_tim_A']; ?></a>
+										</nav>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm text-center">
+							<a class="tx-bold">VS</a>
+							<br><?php echo format_tanggal('wddmmmmyyyy', $R['tanggal']); ?>
+							<br><?php echo $R['waktu']; ?>
+							<br>
+							<h6 class="badge badge-primary">Lapangan <?php echo $R['lapangan']; ?></h6>
+						</div>
+						<div class="col-sm">
+							<ul class="list-group list-group-flush tx-13">
+								<li class="list-group-item d-flex">
+									<div class="img-group">
+										<img src="<?php echo base_url() ?>assets/img/default.png" class="img wd-60 ht-60 rounded-circle" alt="">
+									</div>
+									<div class="pd-20">
+										<p class="tx-medium mg-b-0"><?php echo $R['nama_tim_B']; ?></p>
+									</div>
+									<div class="mg-l-auto d-flex align-self-center">
+										<nav class="nav nav-icon-only">
+											<a class="nav-link"><?php echo $R['set1_tim_B']; ?></a>
+										</nav>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</td>
+			</tr>
+		<?php
+		}
 		?>
 	</table>
-	
-	<?php 
+
+<?php
 }
 ?>

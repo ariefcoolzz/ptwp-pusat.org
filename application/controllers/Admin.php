@@ -7,6 +7,8 @@ class Admin extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('Model_main');
+		$this->load->model('Model_admin');
 		$this->basic->squrity();
 	}
 
@@ -49,6 +51,24 @@ class Admin extends CI_Controller
 		$data['list_pemain'] = $this->basic->get_data('data_pemain');
 		OB_START();
 		$this->load->view("admin/data_pemain", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_tim()
+	{
+		$data['judul'] = "DATA TIM PEMAIN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/data_tim", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_babak_penyisihan()
+	{
+		$data['judul'] = "DATA POOL BABAK PENYISIHAN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/data_babak_penyisihan", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -96,6 +116,49 @@ class Admin extends CI_Controller
 		}
 		OB_START();
 		$this->load->view("admin/form_data_pemain", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_tim()
+	{
+		$data['title'] = "FORM TAMBAH POOL";
+		
+		$id_tim = $this->input->post('id_tim');
+		
+		$data['id_tim'] = $id_tim;
+		
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/form_data_tim", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_pool()
+	{
+		$data['title'] = "FORM TAMBAH POOL";
+		
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		
+		$data['id_tim_A'] = $id_tim_A;
+		$data['id_tim_B'] = $id_tim_B;
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/form_data_pool", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_nilai()
+	{
+
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		
+		$data = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
+		OB_START();
+		$this->load->view("admin/form_nilai", $data);
+		// echo "<pre>";
+		// print_r($data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -153,27 +216,28 @@ class Admin extends CI_Controller
 			$id_pemain = $this->db->insert_id();
 		}
 		if ($res) {
-			$path_parts = pathinfo($_FILES["file_upload"]["name"]);
-			$extension = $path_parts['extension'];
-			$nama_file = $id_pemain . '.' . $extension;
-			$config = array(
-				'upload_path'			=> './assets/profil',
-				'allowed_types'			=> 'gif|jpg|png|jpeg',
-				'max_size'				=> 5000,
-				'overwrite'				=> true,
-				'file_name'				=> $nama_file
-			);
-			$this->load->library('upload', $config);
 			if (!empty($_FILES['file_upload']['name'])) {
+				$path_parts = pathinfo($_FILES["file_upload"]["name"]);
+				$extension = $path_parts['extension'];
+				$nama_file = $id_pemain . '.' . $extension;
+				$config = array(
+					'upload_path'			=> './assets/profil',
+					'allowed_types'			=> 'gif|jpg|png|jpeg',
+					'max_size'				=> 5000,
+					'overwrite'				=> true,
+					'file_name'				=> $nama_file
+				);
+				$this->load->library('upload', $config);
 				if (!$this->upload->do_upload('file_upload')) {
 					$msg = $this->upload->display_errors();
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger">' . $msg . '</div>');
-					redirect('admin/data_pemain');
-				} else {
+						redirect('admin/data_pemain');
+				} 
+				else {
 					$update['foto_profil'] = $nama_file;
 					$where = array('id_pemain' => $id_pemain);
 					$res = $this->basic->update_data($where, 'data_pemain', $update);
-				}
+					}
 			}
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
 		} else {
@@ -202,5 +266,143 @@ class Admin extends CI_Controller
 		} else {
 			redirect('admin/data_berita');
 		}
+	}
+	public function get_nama_tim()
+	{
+		$kategori = $this->input->post('kategori');
+		$tim = $this->input->post('tim');
+		if($tim == "A")$data = $this->Model_admin->get_tim_A($kategori);
+		if($tim == "B")$data = $this->Model_admin->get_tim_B($kategori);
+		OB_START();
+		echo '<option value="">--PILIH TIM--</option>';
+		foreach($data->result_array() as $d){
+			echo '<option value="'.$d['id_tim'].'">'.$d['nama_pasangan'].'</option>';
+		}
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function get_nama_pemain_tim()
+	{
+		$kategori = $this->input->post('kategori');
+		$data = $this->Model_admin->get_pemain_for_tim($kategori);
+		OB_START();
+		echo '<option value="">--PILIH PEMAIN--</option>';
+		foreach($data->result_array() as $d){
+			echo '<option value="'.$d['id_pemain'].'">'.$d['nama'].'</option>';
+		}
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_pool_simpan()
+	{
+		$insert['id_kategori'] = $this->input->post('kategori');
+		$insert['pool'] = $this->input->post('pool');
+		$insert['id_tim_A'] = $this->input->post('tim_A');
+		$insert['id_tim_B'] = $this->input->post('tim_B');
+		$insert['id_lapangan'] = 1;
+		$insert['tanggal'] = '2021-12-3';
+		$insert['waktu'] = '08:00:00';
+		
+		$urutan = $this->Model_admin->get_max_urutan($insert['pool'],$insert['id_kategori']);
+		if(!empty($urutan)){
+			$insert['urutan'] = $urutan+1;
+		}
+		else{
+			$insert['urutan'] = 1;
+		}
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$res = $this->basic->insert_data('data_babak_penyisihan', $insert);
+		if ($res) {
+			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
+			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
+			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - POOL ".$insert['pool']." - Urutan ".$insert['urutan']."</li>";
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		} else {
+			echo JSON_ENCODE(array("status" => FALSE));
+		}
+	}
+	public function form_data_tim_simpan()
+	{
+		$insert['id_kategori'] = $this->input->post('kategori');
+		$insert['id_pemain1'] = $this->input->post('id_pemain1');
+		$id_pemain2 = $this->input->post('id_pemain2');
+		if(!empty($id_pemain2)){
+			$insert['id_pemain2'] = $id_pemain2;
+		}
+		$res = $this->basic->insert_data('data_tim', $insert);
+		if ($res) {
+			$last_id = $this->db->insert_id();
+			$timA = $this->Model_admin->data_tim_byid($last_id)->row_array();
+			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." Berhasil Di Tambahkan dengan ID ".$last_id."</li>";
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		} else {
+			echo JSON_ENCODE(array("status" => FALSE));
+		}
+	}
+	public function hapus_data_pemain()
+	{
+		$id_pemain = $this->input->post('id_pemain');
+		$where = array('id_pemain' => $id_pemain);
+		$status = $this->basic->delete_data($where, 'data_pemain');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		redirect('admin/data_pemain');
+	}
+	public function hapus_data_tim()
+	{
+		$id_tim = $this->input->post('id_tim');
+		$where = array('id_tim' => $id_tim);
+		$status = $this->basic->delete_data($where, 'data_tim');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		redirect('admin/data_tim');
+	}
+	public function hapus_data_pool()
+	{
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B, );
+		$status = $this->basic->delete_data($where, 'data_babak_penyisihan');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		// print($this->db->last_query());die;
+		redirect('admin/data_babak_penyisihan');
+	}
+	public function set_nilai_penyisihan()
+	{
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		$tim_kat = $this->input->post('tim_kat');
+		$jenis = $this->input->post('jenis');
+		$skor = $this->input->post('skor');
+		
+		// $q = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
+		if($tim_kat == 'A'){
+			if($jenis == 'tambah')$skor = $skor+1;
+			if($jenis == 'kurang')$skor = $skor-1;
+			$data = array('set1_tim_A' =>$skor);
+		}
+		if($tim_kat == 'B'){
+			if($jenis == 'tambah')$skor = $skor+1;
+			if($jenis == 'kurang')$skor = $skor-1;
+			$data = array('set1_tim_B' =>$skor);
+		}
+		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
+		
+		$res = $this->basic->update_data($where, 'data_babak_penyisihan', $data);
+
+		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
 	}
 }
