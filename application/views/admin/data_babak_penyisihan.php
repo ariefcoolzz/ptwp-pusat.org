@@ -42,6 +42,7 @@
 								<th class="text-center">TIM B</th>
 								<th class="text-center">Lapangan</th>
 								<th class="text-center">Waktu</th>
+								<th class="text-center">Action</th>
 								</tr>
 								</thead><tbody>';
 								$data 	= $this->Model_admin->get_data_penyisihan($R['id_kategori']);
@@ -54,7 +55,10 @@
 										echo '<td class="text-center">'.$no.'</td>';
 										echo '<td class="text-center">'.$T['pool'].'</td>';
 										echo '<td class="text-center">'.$T['nama_tim_A'].'</td>';
-										echo '<td class="text-center"><b>'.$T['set1_tim_A'].' - '.$T['set1_tim_B'].'</b></td>';
+										echo '<td class="text-center"><b>'.$T['set1_tim_A'].' - '.$T['set1_tim_B'].'</b><br>';
+										
+										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
+										echo '</td>';
 										echo '<td class="text-center">'.$T['nama_tim_B'].'</td>';
 										echo '<td class="text-center">'.$T['lapangan'].'</td>';
 										echo '<td class="text-center">'.format_tanggal('ddmmmmyyyy',$T['tanggal']).'<br>'.$T['waktu'].'</td>';
@@ -65,7 +69,7 @@
 								}
 								echo '</tbody><tfoot class="bg-primary">
 								<tr>
-								<th colspan="7" class="text-white">Jumlah Pertandingan: '.$no.'</th>
+								<th colspan="8" class="text-white">Jumlah Pertandingan: '.$no.'</th>
 								</tr>
 								</tfoot></table>';
 								echo '</div>';
@@ -73,6 +77,24 @@
 						?>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="modal_nilai" tabindex="-1" role="dialog" aria-labelledby="modal_nilai_title" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content tx-14">
+			<div class="modal-header">
+				<h6 class="modal-title" id="modal_nilai_title">Perhitungan Skor Pertandingan</h6>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body" id="modal_body" style="background-color:#e2eeff">
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary tx-13" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
@@ -110,7 +132,7 @@
             success: function(html) {
                 if (html.status !== true) {
                     location.reload();
-					} 
+				} 
 				else {
                     $("body").scrollTop('0px');
                     $("#konten").fadeOut(300);
@@ -143,24 +165,24 @@
             success: function(html) {
                 if (html.status !== true) {
                     location.reload();
-                } else {
+					} else {
 					Swal.fire({
                         icon: 'success',
                         title: 'Data Berhasil Di Hapus',
                         showConfirmButton: false,
                         timer: 1000
-                    });
+					});
                     $("body").scrollTop('0px');
                     $("#konten").fadeOut(300);
                     $("#konten").html(html.konten_menu);
                     $("#konten").fadeIn(300);
-
-                }
-            }
-        });
-    }
+					
+				}
+			}
+		});
+	}
 	function hapus_pool(Tim_A,Tim_B) {
-         Swal.fire({
+		Swal.fire({
             title: 'Apakah kamu yakin?',
             text: "Data tidak bisa dikembalikan!",
             icon: 'warning',
@@ -169,7 +191,7 @@
             cancelButtonColor: '#d33',
             confirmButtonText: 'Ya, Hapus saja!',
             cancelButtonText: 'Batalkan saja!'
-        }).then((result) => {
+			}).then((result) => {
             if (result.isConfirmed) {
 				var form_data = new FormData();
 				form_data.append('id_tim_A', Tim_A);
@@ -185,7 +207,7 @@
 					success: function(html) {
 						if (html.status !== true) {
 							location.reload();
-						} else {
+							} else {
 							Swal.fire({
 								icon: 'success',
 								title: 'Data Berhasil Di Hapus',
@@ -196,19 +218,73 @@
 							$("#konten").fadeOut(300);
 							$("#konten").html(html.konten_menu);
 							$("#konten").fadeIn(300);
-
+							
 						}
 					}
 				});
-			}else {
+				}else {
                 Swal.fire({
                     icon: 'success',
                     title: 'Data Aman...',
                     showConfirmButton: false,
                     timer: 2000
-                });
+				});
+				
+			}
+		});
+	}
+	function mulai_skor(Tim_A,Tim_B) {
+		$("#modal_nilai_title").text("Sedang Memuat Halaman");
+        $("#modal_body").html($("#loader_html").html());
+		
+		var form_data = new FormData();
+        form_data.append('id_tim_A', Tim_A);
+        form_data.append('id_tim_B', Tim_B);
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/form_nilai",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(html) {
+                if (html.status !== true) {
+                    location.reload();
+					} else {
+					$("#modal_nilai_title").text("DATA PERTANDINGAN");
+                    $('#modal_nilai').modal('show');
+                    $("#modal_body").fadeOut(300);
+                    $("#modal_body").html(html.konten_menu);
+                    $("#modal_body").fadeIn(300);
+					
+				}
+			}
+		});
+	}
+	
+	$('#modal_nilai').on('hidden.bs.modal', function () {
+		var form_data = new FormData();
+        form_data.append('menu', 'data_babak_penyisihan');
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/menu",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(html) {
+                if (html.status !== true) {
+                    location.reload();
+                } else {
+                    $("body").scrollTop('0px');
+                    $("#konten").fadeOut(300);
+                    $("#konten").html(html.konten_menu);
+                    $("#konten").fadeIn(300);
 
+                }
             }
         });
-    }
+	});
 </script>
