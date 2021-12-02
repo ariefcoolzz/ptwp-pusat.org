@@ -83,7 +83,7 @@ class Model_admin extends CI_Model
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
 		if($id_kategori)$this->db->where('A.id_kategori',$id_kategori);
-		$this->db->order_by("`A`.`pool` ASC, `A`.`urutan` ASC, `A`.`tanggal` ASC, `A`.`waktu` ASC, `A`.`id_lapangan` ASC");
+		$this->db->order_by("`A`.`pool` ASC, `A`.`urutan` ASC");
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
 		return $query;
