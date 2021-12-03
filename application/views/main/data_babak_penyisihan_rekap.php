@@ -53,7 +53,7 @@ for ($h = 1; $h <= 26; $h++) {
 					if ($jpp == $R['urutan'])
 						$kolom_score_A .= "<td rowspan='2' colspan='1' class='bg-primary'></td>";
 					else {
-						$get_score_A[$jpp] = $this->Model_main->model_data_babak_penyisihan_get_score($R['id_kategori'], $R['pool'], $R['id_tim_A'], $id_tim_B[$jpp]);
+						$get_score_A[$jpp] = $this->Model_main->model_data_babak_penyisihan_get_score($R['id_kategori'], $R['pool'], $R['id_tim_A'], $id_tim_B[$jpp],"A");
 						// echo "<td>$R[id_tim_A],".($id_tim_B[$jpp])." = $get_score_A[$jpp]</td>";
 						$win_game += $get_score_A[$jpp];
 						$kolom_score_A .= "<td class='text-center'>$get_score_A[$jpp]</td>";
@@ -61,7 +61,7 @@ for ($h = 1; $h <= 26; $h++) {
 				}
 
 				for ($jpp = 1; $jpp <= $jumlah_pemain_pool; $jpp++) {
-					$get_score_B[$jpp] = $this->Model_main->model_data_babak_penyisihan_get_score($R['id_kategori'], $R['pool'], $id_tim_B[$jpp], $R['id_tim_A']);
+					$get_score_B[$jpp] = $this->Model_main->model_data_babak_penyisihan_get_score($R['id_kategori'], $R['pool'], $id_tim_B[$jpp], $R['id_tim_A'],"B");
 					if ($jpp != $R['urutan']) {
 						// echo "<td>$id_tim_B[$jpp],$R[id_tim_A] = $get_score_B[$jpp]</td>";
 						$lost_game += $get_score_B[$jpp];
