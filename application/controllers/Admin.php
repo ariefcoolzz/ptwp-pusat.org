@@ -405,4 +405,20 @@ class Admin extends CI_Controller
 
 		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
 	}
+	public function set_komponen()
+	{
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		if(!empty($this->input->post('lapangan')))$data['id_lapangan'] = $this->input->post('lapangan');
+		if(!empty($this->input->post('tanggal')))$data['tanggal'] = $this->input->post('tanggal');
+		if(!empty($this->input->post('waktu')))$data['waktu'] = $this->input->post('waktu');
+		
+		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
+		
+		$res = $this->basic->update_data($where, 'data_babak_penyisihan', $data);
+
+		echo JSON_ENCODE(array("status" => TRUE));
+	}
 }

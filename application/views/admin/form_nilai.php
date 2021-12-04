@@ -40,7 +40,7 @@
 							echo "<option value='".$D['id_lapangan']."' $selected>Lapangan ".$D['lapangan']."</option>";
 						}
 					?>
-                </select>
+				</select>
 			</div>
 			
 			<div class="col-sm">
@@ -70,9 +70,10 @@
 	</div>
 </div>
 <script>
-$('.btn-nilai').on('click', function (e) {
-		var id_tim_A = '<?php echo $id_tim_A; ?>';
-		var id_tim_B = '<?php echo $id_tim_B; ?>';
+	var id_tim_A = '<?php echo $id_tim_A; ?>';
+	var id_tim_B = '<?php echo $id_tim_B; ?>';
+	$('.btn-nilai').on('click', function (e) {
+		
 		
 		var jenis = $(this).attr('jenis');
 		var tim_kat = $(this).attr('tim_kat');
@@ -84,11 +85,11 @@ $('.btn-nilai').on('click', function (e) {
 		console.log(skor);
 		if(skor == '0' && jenis == 'kurang'){
 			Swal.fire({
-                        icon: 'danger',
-                        title: 'SKOR TIDAK BOLEH KURANG DARI 0',
-                        showConfirmButton: false,
-                        timer: 2000
-					});			
+				icon: 'danger',
+				title: 'SKOR TIDAK BOLEH KURANG DARI 0',
+				showConfirmButton: false,
+				timer: 2000
+			});			
 			return;
 		}
 		
@@ -115,13 +116,52 @@ $('.btn-nilai').on('click', function (e) {
                         showConfirmButton: false,
                         timer: 1000
 					});
-                } 
+				} 
                 else 
                 {
                     $("#"+tim).text(html.skor_akhir)                  
-                }
-            }
-        });
+				}
+			}
+		});
+	});
+	var form_komponen = new FormData();
+	form_komponen.append('id_tim_A', id_tim_A);
+    form_komponen.append('id_tim_B', id_tim_B);
+	
+	$('#lapangan').on('change', function (e) {
+		form_komponen.append('lapangan', this.value);
+		ubah_komponen();
     });
+	$('#tanggal').on('keyup', function (e) {
+		form_komponen.append('tanggal', this.value);
+		ubah_komponen();
+    });
+	$('#waktu').on('keyup', function (e) {
+		form_komponen.append('waktu', this.value);
+		ubah_komponen();
+    });
+	function ubah_komponen(){
+		// console.log(form_komponen);
+		$.ajax({
+            url: "<?php echo base_url(); ?>admin/set_komponen",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_komponen,
+            dataType: 'json',
+            success: function(html) {
+                if (html.status !== true) {
+                    Swal.fire({
+                        icon: 'danger',
+                        title: html.msg,
+                        showConfirmButton: false,
+                        timer: 1000
+					});
+				} 
+			}
+		});
+	};
+	
     // tinyMCE.EditorManager.execCommand('mceAddEditor',true, '.mymce'); 
 </script>
