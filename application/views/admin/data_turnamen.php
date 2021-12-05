@@ -36,7 +36,7 @@
 								<thead>
 								<tr>
 								<th class="text-center">No.</th>
-								<th class="text-center">Pool</th>
+								<th class="text-center">TAHAP</th>
 								<th class="text-center">TIM A</th>
 								<th class="text-center">TIM B</th>
 								<th class="text-center">SET 1</th>

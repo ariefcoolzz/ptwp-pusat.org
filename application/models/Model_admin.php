@@ -132,7 +132,7 @@ class Model_admin extends CI_Model
 		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
 		$this->db->join("master_kategori_babak AS C", "A.per = C.id_babak", 'left');
 		if($id_kategori)$this->db->where('A.id_kategori',$id_kategori);
-		$this->db->order_by("`A`.`urutan` ASC");
+		$this->db->order_by("`A`.`per` ASC,`A`.`urutan` ASC");
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
 		return $query;
