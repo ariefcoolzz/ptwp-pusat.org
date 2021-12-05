@@ -72,6 +72,15 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function data_turnamen()
+	{
+		$data['judul'] = "DATA TURNAMEN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		OB_START();
+		$this->load->view("admin/data_turnamen", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function form_data_konten()
 	{
 
@@ -145,6 +154,23 @@ class Admin extends CI_Controller
 		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
 		OB_START();
 		$this->load->view("admin/form_data_pool", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_turnamen_tambah()
+	{
+		$data['title'] = "FORM TAMBAH DATA TURNAMEN";
+		
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		
+		$data['id_tim_A'] = $id_tim_A;
+		$data['id_tim_B'] = $id_tim_B;
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$this->db->order_by("id_babak DESC");
+		$data['kategori_babak'] = $this->basic->get_data('master_kategori_babak');
+		OB_START();
+		$this->load->view("admin/form_data_turnamen_tambah", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -267,6 +293,20 @@ class Admin extends CI_Controller
 			redirect('admin/data_berita');
 		}
 	}
+	public function get_nama_tim_turnamen()
+	{
+		$kategori = $this->input->post('kategori');
+		$tim = $this->input->post('tim');
+		if($tim == "A")$data = $this->Model_admin->get_tim_A_free($kategori,false);
+		if($tim == "B")$data = $this->Model_admin->get_tim_B_free($kategori,false);
+		OB_START();
+		echo '<option value="">--PILIH TIM--</option>';
+		foreach($data->result_array() as $d){
+			echo '<option value="'.$d['id_tim'].'">'.$d['nama_pasangan'].'</option>';
+		}
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function get_nama_tim()
 	{
 		$kategori = $this->input->post('kategori');
@@ -317,6 +357,36 @@ class Admin extends CI_Controller
 			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
 			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
 			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - POOL ".$insert['pool']." - Urutan ".$insert['urutan']."</li>";
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		} else {
+			echo JSON_ENCODE(array("status" => FALSE));
+		}
+	}
+	public function form_data_turnamen_simpan()
+	{
+		$insert['id_kategori'] = $this->input->post('kategori');
+		$insert['per'] = $this->input->post('kategori_babak');
+		$insert['id_tim_A'] = $this->input->post('tim_A');
+		$insert['id_tim_B'] = $this->input->post('tim_B');
+		$insert['id_lapangan'] = 1;
+		$insert['tanggal'] = '2021-12-5';
+		$insert['waktu'] = '08:00:00';
+		
+		$urutan = $this->Model_admin->get_max_urutan_turnamen($insert['per'],$insert['id_kategori']);
+		if(!empty($urutan)){
+			$insert['urutan'] = $urutan+1;
+		}
+		else{
+			$insert['urutan'] = 1;
+		}
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$res = $this->basic->insert_data('data_babak_final', $insert);
+		if ($res) {
+			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
+			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
+			$per = $this->basic->get_data_where(array('id_babak'=>$insert['per']),'master_kategori_babak')->row_array();
+			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - PER ".$per['nama']." - Urutan ".$insert['urutan']."</li>";
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		} else {
 			echo JSON_ENCODE(array("status" => FALSE));

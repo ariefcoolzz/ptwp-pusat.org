@@ -77,7 +77,7 @@ extract($_SESSION);
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_perdelapan" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
                 </ul>
             </div>
     </aside>
