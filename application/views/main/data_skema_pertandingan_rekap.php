@@ -33,7 +33,7 @@
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('8'));
 		IF(COUNT($data->result_array())) {
 			FOREACH ($data->result_array() as $R) {
-				IF($R['urutan'] <= 8)
+				IF($R['urutan'] <= 4)
 					{
 						$tunggal_ganda = $this->Model_main->model_cek_tunggal_ganda($_POST['id_kategori']);
 						?>
@@ -54,7 +54,7 @@
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('4'));
 		IF(COUNT($data->result_array())) {
 			FOREACH ($data->result_array() as $R) {
-				IF($R['urutan'] <= 4)
+				IF($R['urutan'] <= 2)
 					{
 						$tunggal_ganda = $this->Model_main->model_cek_tunggal_ganda($_POST['id_kategori']);
 						?>
@@ -144,7 +144,7 @@
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('4'));
 		IF(COUNT($data->result_array())) {
 			FOREACH ($data->result_array() as $R) {
-				IF($R['urutan'] >= 5)
+				IF($R['urutan'] >= 3)
 					{
 						$tunggal_ganda = $this->Model_main->model_cek_tunggal_ganda($_POST['id_kategori']);
 						?>
@@ -165,7 +165,7 @@
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('8'));
 		IF(COUNT($data->result_array())) {
 			FOREACH ($data->result_array() as $R) {
-				IF($R['urutan'] >= 9)
+				IF($R['urutan'] >= 5)
 					{
 						$tunggal_ganda = $this->Model_main->model_cek_tunggal_ganda($_POST['id_kategori']);
 						?>
