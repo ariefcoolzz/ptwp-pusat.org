@@ -60,19 +60,19 @@
 										echo '<td class="text-center">'.$T['nama_tim_B'].'</td>';
 										//score set 1
 										echo '<td class="text-center"><b>'.$T['set1_tim_A'].' - '.$T['set1_tim_B'].'</b><br>';
-										
-										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
+										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(1,' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
 										echo '</td>';
+										
 										//score set 2
-										echo '<td class="text-center"><b>'.$T['set1_tim_A'].' - '.$T['set1_tim_B'].'</b><br>';
-										
-										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
+										echo '<td class="text-center"><b>'.$T['set2_tim_A'].' - '.$T['set2_tim_B'].'</b><br>';
+										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(2,' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
 										echo '</td>';
+										
 										//score set 2
-										echo '<td class="text-center"><b>'.$T['set1_tim_A'].' - '.$T['set1_tim_B'].'</b><br>';
-										
-										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
+										echo '<td class="text-center"><b>'.$T['set3_tim_A'].' - '.$T['set3_tim_B'].'</b><br>';
+										echo '<button type="button" class="btn btn-xs btn-primary" onClick="mulai_skor(3,' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')">Skor</button>';
 										echo '</td>';
+										
 										echo '<td class="text-center">'.$T['lapangan'].'</td>';
 										echo '<td class="text-center">'.format_tanggal('ddmmmmyyyy',$T['tanggal']).'<br>'.$T['waktu'].'</td>';
 										echo '<td class="text-center"><a href="#" onClick="tambah_pool(' . $T['id_tim_A'] . ',' . $T['id_tim_B'] . ')" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
@@ -246,15 +246,16 @@
 			}
 		});
 	}
-	function mulai_skor(Tim_A,Tim_B) {
+	function mulai_skor(set,Tim_A,Tim_B) {
 		$("#modal_nilai_title").text("Sedang Memuat Halaman");
         $("#modal_body").html($("#loader_html").html());
 		
 		var form_data = new FormData();
+        form_data.append('set', set);
         form_data.append('id_tim_A', Tim_A);
         form_data.append('id_tim_B', Tim_B);
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/form_nilai",
+            url: "<?php echo base_url(); ?>admin/form_nilai_turnamen",
             type: 'POST',
             cache: false,
             contentType: false,
@@ -278,7 +279,7 @@
 	
 	$('#modal_nilai').on('hidden.bs.modal', function () {
 		var form_data = new FormData();
-        form_data.append('menu', 'data_babak_penyisihan');
+        form_data.append('menu', 'data_turnamen');
         $.ajax({
             url: "<?php echo base_url(); ?>admin/menu",
             type: 'POST',

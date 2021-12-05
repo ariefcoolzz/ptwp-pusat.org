@@ -152,4 +152,19 @@ class Model_admin extends CI_Model
 		// DIE($this->db->last_query());
 		return $query->row_array();
 	}
+	function get_turnamen_byId($id_tim_A, $id_tim_B)
+	{
+		$this->db->select("`A`.*, `B`.`lapangan`");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+		$this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		$this->db->from('data_babak_final AS A');
+		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
+		$this->db->where('A.id_tim_A',$id_tim_A);
+		$this->db->where('A.id_tim_B',$id_tim_B);
+		
+		$this->db->order_by("`A`.`per` ASC, `A`.`urutan` ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query->row_array();
+	}
 }

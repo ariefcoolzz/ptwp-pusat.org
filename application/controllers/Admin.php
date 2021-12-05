@@ -188,6 +188,21 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function form_nilai_turnamen()
+	{
+		$set = $this->input->post('set');
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		
+		$data = $this->Model_admin->get_turnamen_byId($id_tim_A,$id_tim_B);
+		$data['set'] = $set;
+		OB_START();
+		$this->load->view("admin/form_nilai_turnamen", $data);
+		// echo "<pre>";
+		// print_r($data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function form_data_konten_simpan()
 	{
 		$id = $this->input->post('id');
@@ -475,6 +490,34 @@ class Admin extends CI_Controller
 
 		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
 	}
+	public function set_nilai_turnamen()
+	{
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		$tim_kat = $this->input->post('tim_kat');
+		$jenis = $this->input->post('jenis');
+		$skor = $this->input->post('skor');
+		$set = $this->input->post('set');
+		
+		// $q = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
+		if($tim_kat == 'A'){
+			if($jenis == 'tambah')$skor = $skor+1;
+			if($jenis == 'kurang')$skor = $skor-1;
+			$data = array('set'.$set.'_tim_A' =>$skor);
+		}
+		if($tim_kat == 'B'){
+			if($jenis == 'tambah')$skor = $skor+1;
+			if($jenis == 'kurang')$skor = $skor-1;
+			$data = array('set'.$set.'_tim_B' =>$skor);
+		}
+		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
+		
+		$res = $this->basic->update_data($where, 'data_babak_final', $data);
+
+		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
+	}
 	public function set_komponen()
 	{
 		// echo "<pre>";
@@ -488,6 +531,22 @@ class Admin extends CI_Controller
 		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
 		
 		$res = $this->basic->update_data($where, 'data_babak_penyisihan', $data);
+
+		echo JSON_ENCODE(array("status" => TRUE));
+	}
+	public function set_komponen_turnamen()
+	{
+		// echo "<pre>";
+		// print_r($_POST);die;
+		$id_tim_A = $this->input->post('id_tim_A');
+		$id_tim_B = $this->input->post('id_tim_B');
+		if(!empty($this->input->post('lapangan')))$data['id_lapangan'] = $this->input->post('lapangan');
+		if(!empty($this->input->post('tanggal')))$data['tanggal'] = $this->input->post('tanggal');
+		if(!empty($this->input->post('waktu')))$data['waktu'] = $this->input->post('waktu');
+		
+		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
+		
+		$res = $this->basic->update_data($where, 'data_babak_final', $data);
 
 		echo JSON_ENCODE(array("status" => TRUE));
 	}
