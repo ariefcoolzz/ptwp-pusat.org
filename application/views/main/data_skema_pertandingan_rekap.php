@@ -28,7 +28,7 @@
     
 
     <div class="round round-two">
-      <div class="round-details">Round 2<br/><span class="date">March 18</span></div>     
+      <div class="round-details">Babak Per 16<br/><span class="date">4 Desember 2021</span></div>     
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('8'));
 		IF(COUNT($data->result_array())) {
@@ -49,7 +49,7 @@
     </div>  <!-- END ROUND TWO -->
     
     <div class="round round-three">
-		<div class="round-details">Round 3<br/><span class="date">March 22</span></div>     
+		<div class="round-details">Babak Per 8<br/><span class="date">4 Desember 2021</span></div>     
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('4'));
 		IF(COUNT($data->result_array())) {
@@ -72,7 +72,7 @@
 
 <div class="champion">
     <div class="semis-l">
-		<div class="round-details">west semifinals <br/><span class="date">March 26-28</span></div>   
+		<div class="round-details">Semi Final<br/><span class="date">5 Desember 2021</span></div>   
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('2'));
 		IF(COUNT($data->result_array())) {
@@ -93,7 +93,7 @@
     </div>
     <div class="final">
       <i class="fa fa-trophy"></i>
-      <div class="round-details">championship <br/><span class="date">March 30 - Apr. 1</span></div>    
+      <div class="round-details">Final <br/><span class="date">5 Desember 2021</span></div>    
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('1'));
 		IF(COUNT($data->result_array())) {
@@ -113,12 +113,12 @@
 		?>   
     </div>
     <div class="semis-r">   
-		<div class="round-details">east semifinals <br/><span class="date">March 26-28</span></div>   
+		<div class="round-details">Semi Final <br/><span class="date">5 Desember 2021</span></div>   
 			<?php 
 			$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('2'));
 			IF(COUNT($data->result_array())) {
 				FOREACH ($data->result_array() as $R) {
-					IF($R['urutan'] == 1)
+					IF($R['urutan'] == 2)
 						{
 							$tunggal_ganda = $this->Model_main->model_cek_tunggal_ganda($_POST['id_kategori']);
 							?>
@@ -139,7 +139,7 @@
 
 
     <div class="round round-three">
-		<div class="round-details">Round 3<br/><span class="date">March 22</span></div>           
+		<div class="round-details">Babak Per 8<br/><span class="date">4 Desember 2021</span></div>           
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('4'));
 		IF(COUNT($data->result_array())) {
@@ -160,7 +160,7 @@
     </div>  <!-- END ROUND THREE -->  
 
     <div class="round round-two">
-		<div class="round-details">Round 2<br/><span class="date">March 18</span></div>           
+		<div class="round-details">Babak Per 16<br/><span class="date">4 Desember 2021</span></div>           
 		<?php 
 		$data 	= $this->Model_main->model_data_babak_final($_POST['id_kategori'],MD7('8'));
 		IF(COUNT($data->result_array())) {
