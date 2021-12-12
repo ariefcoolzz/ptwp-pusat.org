@@ -100,14 +100,14 @@
                 <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
-            <h6 class="text-center">Ketua PTWP Pusat</h6>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
         </div>
         <div class="col-sm">
             <figure class="img-caption pos-relative mg-b-0">
                 <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
-            <h6 class="text-center">Ketua Panitia Turnamen PTWP Nasional Tahun 2021</h6>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2021 s.d. 2024</h6>
         </div>
     </div>
 </div>
