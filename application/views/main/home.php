@@ -7,7 +7,7 @@
         </ol>
         <div class="carousel-inner bg-dark">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/ucapan.jpeg" class="d-block  w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ucapan.jpg" class=" mx-auto d-block  w-50" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->
