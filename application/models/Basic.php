@@ -167,6 +167,16 @@
 				log_message('error', $e);
 			}
 		}
+		function get_data_pemain(){
+			try{
+				$sql = "    ";
+				$query=$this->db->query($sql);
+				return $query;
+				}catch (Exception $e){
+				return false;
+				log_message('error', $e);
+			}
+		}
 		function template_model(){
 			try{
 				$sql = "    ";
