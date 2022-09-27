@@ -81,7 +81,7 @@
 </div>
 <div class="row content-body">
     <div class="col-sm-6 col-lg-6 col-xl">
-        <div class="card ht-100p">
+        <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h6 class="lh-5 mg-b-0">Berita PTWP Pusat</h6>
                 <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
@@ -97,95 +97,68 @@
                 }
                 ?>
 
-                <?php foreach ($berita_terbaru->result_array() as $R) {
-                    $intro = substr(strip_tags($R['isi']), 0, 200);
-                    // $intro = substr($R['isi'], 0, 200);
-                ?>
-
-                    <div class="media-list">
-                        <div class="d-sm-flex pd-20">
-                            <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
+                <div class="media-list">
+                    <?php foreach ($berita_terbaru->result_array() as $R) {
+                        $intro = substr(strip_tags($R['isi']), 0, 200);
+                        // $intro = substr($R['isi'], 0, 200);
+                    ?>
+                        <div class="d-sm-flex pd-20 align-items-center">
+                            <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
                                 <img src="<?php echo $gambar ?>" class="img-fit-cover border" alt="">
                             </a>
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
-                                <small class="text-secondary">Date Created : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                                <small class="text-secondary">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
                             </div><!-- media-body -->
                         </div>
-                    </div>
-                <?php } ?>
+                        <hr class="mg-0">
+                    <?php } ?>
+                </div>
             </div><!-- card-body -->
         </div><!-- card -->
     </div><!-- col -->
     <div class="col-sm-6 col-lg-6 col-xl">
-        <div class="card ht-100p">
+        <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h6 class="lh-5 mg-b-0">Berita PTWP Daerah</h6>
                 <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
                 <button class="btn btn-sm btn-outline-success">Berita Lainnya</button>
             </div><!-- card-header -->
             <div class="card-body pd-0">
+                <?php
+                if (empty($R['img'])) {
+                    $gambar = "assets/img/gambar.jpg";
+                    // $gambar = "assets/img/no_images.png";
+                } else {
+                    $gambar = " . $R[img]";
+                }
+                ?>
+
                 <div class="media-list">
-                    <div class="d-sm-flex pd-20">
-                        <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                            <img src="../../assets/img/img37.jpg" class="img-fit-cover" alt="">
-                        </a>
-                        <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                            <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTA Jakarta</a>
-                            <h6><a href="" class="link-01">Dow Futures, Bitcoin Teeter as Markets Wait for FOMC Bounce</a></h6>
-                            <p class="tx-color-03 tx-13 mg-b-0">As the unwelcome bearish momentum returns to all top cryptocurrency markets, most of this morning’s excitement...</p>
-                        </div><!-- media-body -->
-                    </div>
-                    <hr class="mg-0">
-                    <div class="d-sm-flex pd-20">
-                        <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                            <img src="../../assets/img/img38.jpg" class="img-fit-cover" alt="">
-                        </a>
-                        <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                            <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTA Bandung</a>
-                            <h6><a href="" class="link-01">XRP Price Remains Bearish as XRP/BTC Drops Below 7,800 Satoshi</a></h6>
-                            <p class="tx-color-03 tx-13 mg-b-0">Liquidity has shifted away from the top gaining crypto assets, with only six of the week’s 30 top performing markets...</p>
-                        </div><!-- media-body -->
-                    </div>
-                    <hr class="mg-0">
-                    <div class="d-sm-flex pd-20">
-                        <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                            <img src="../../assets/img/img39.jpg" class="img-fit-cover" alt="">
-                        </a>
-                        <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                            <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTA Semarang</a>
-                            <h6><a href="" class="link-01">Bitcoin Price to $4500 soon? BTC Price Analysis</a></h6>
-                            <p class="tx-color-03 tx-13 mg-b-0">Published on CoinnounceTechnical Indicators: Support Level: $3900 Resistance Levels: $4100, $4200 Bitcoin Price Analysis...</p>
-                        </div><!-- media-body -->
-                    </div>
-                    <hr class="mg-0">
-                    <div class="d-sm-flex pd-20">
-                        <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                            <img src="../../assets/img/img39.jpg" class="img-fit-cover" alt="">
-                        </a>
-                        <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                            <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTA Surabaya</a>
-                            <h6><a href="" class="link-01">Bitcoin Price to $4500 soon? BTC Price Analysis</a></h6>
-                            <p class="tx-color-03 tx-13 mg-b-0">Published on CoinnounceTechnical Indicators: Support Level: $3900 Resistance Levels: $4100, $4200 Bitcoin Price Analysis...</p>
-                        </div><!-- media-body -->
-                    </div>
-                    <hr class="mg-0">
-                    <div class="d-sm-flex pd-20">
-                        <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                            <img src="../../assets/img/img39.jpg" class="img-fit-cover" alt="">
-                        </a>
-                        <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                            <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTA Makassar</a>
-                            <h6><a href="" class="link-01">Bitcoin Price to $4500 soon? BTC Price Analysis</a></h6>
-                            <p class="tx-color-03 tx-13 mg-b-0">Published on CoinnounceTechnical Indicators: Support Level: $3900 Resistance Levels: $4100, $4200 Bitcoin Price Analysis...</p>
-                        </div><!-- media-body -->
-                    </div>
+                    <?php foreach ($berita_terbaru->result_array() as $R) {
+                        $intro = substr(strip_tags($R['isi']), 0, 200);
+                        // $intro = substr($R['isi'], 0, 200);
+                    ?>
+                        <div class="d-sm-flex pd-20 align-items-center">
+                            <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
+                                <img src="<?php echo $gambar ?>" class="img-fit-cover border" alt="">
+                            </a>
+                            <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
+                                <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
+                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
+                                <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
+                                <small class="text-secondary">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                            </div><!-- media-body -->
+                        </div>
+                        <hr class="mg-0">
+                    <?php } ?>
                 </div>
             </div><!-- card-body -->
         </div><!-- card -->
     </div><!-- col -->
+
 </div>
 
 <div class="divider-text">
