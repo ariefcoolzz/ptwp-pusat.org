@@ -57,7 +57,7 @@ class Admin extends CI_Controller
 	public function data_tim()
 	{
 		$data['judul'] = "DATA TIM PEMAIN";
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
 		$this->load->view("admin/data_tim", $data);
 		$konten_menu = ob_get_clean();
@@ -66,7 +66,7 @@ class Admin extends CI_Controller
 	public function data_babak_penyisihan()
 	{
 		$data['judul'] = "DATA POOL BABAK PENYISIHAN";
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
 		$this->load->view("admin/data_babak_penyisihan", $data);
 		$konten_menu = ob_get_clean();
@@ -75,7 +75,7 @@ class Admin extends CI_Controller
 	public function data_turnamen()
 	{
 		$data['judul'] = "DATA TURNAMEN";
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
 		$this->load->view("admin/data_turnamen", $data);
 		$konten_menu = ob_get_clean();
@@ -131,12 +131,12 @@ class Admin extends CI_Controller
 	public function form_data_tim()
 	{
 		$data['title'] = "FORM TAMBAH POOL";
-		
+
 		$id_tim = $this->input->post('id_tim');
-		
+
 		$data['id_tim'] = $id_tim;
-		
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
 		$this->load->view("admin/form_data_tim", $data);
 		$konten_menu = ob_get_clean();
@@ -145,13 +145,13 @@ class Admin extends CI_Controller
 	public function form_data_pool()
 	{
 		$data['title'] = "FORM TAMBAH POOL";
-		
+
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		
+
 		$data['id_tim_A'] = $id_tim_A;
 		$data['id_tim_B'] = $id_tim_B;
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
 		$this->load->view("admin/form_data_pool", $data);
 		$konten_menu = ob_get_clean();
@@ -160,13 +160,13 @@ class Admin extends CI_Controller
 	public function form_data_turnamen_tambah()
 	{
 		$data['title'] = "FORM TAMBAH DATA TURNAMEN";
-		
+
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		
+
 		$data['id_tim_A'] = $id_tim_A;
 		$data['id_tim_B'] = $id_tim_B;
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain'); 
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		$this->db->order_by("id_babak DESC");
 		$data['kategori_babak'] = $this->basic->get_data('master_kategori_babak');
 		OB_START();
@@ -179,8 +179,8 @@ class Admin extends CI_Controller
 
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		
-		$data = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
+
+		$data = $this->Model_admin->get_tim_byId($id_tim_A, $id_tim_B);
 		OB_START();
 		$this->load->view("admin/form_nilai", $data);
 		// echo "<pre>";
@@ -193,8 +193,8 @@ class Admin extends CI_Controller
 		$set = $this->input->post('set');
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		
-		$data = $this->Model_admin->get_turnamen_byId($id_tim_A,$id_tim_B);
+
+		$data = $this->Model_admin->get_turnamen_byId($id_tim_A, $id_tim_B);
 		$data['set'] = $set;
 		OB_START();
 		$this->load->view("admin/form_nilai_turnamen", $data);
@@ -224,9 +224,9 @@ class Admin extends CI_Controller
 			$res = $this->basic->insert_data('data_konten', $data);
 		}
 		if ($res) {
-			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
 		} else {
-			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.</div>');
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
 		}
 		if ($data['cat_id'] == 0) {
 			redirect('admin/data_konten');
@@ -272,13 +272,12 @@ class Admin extends CI_Controller
 				if (!$this->upload->do_upload('file_upload')) {
 					$msg = $this->upload->display_errors();
 					$this->session->set_flashdata('msg', '<div class="alert alert-danger">' . $msg . '</div>');
-						redirect('admin/data_pemain');
-				} 
-				else {
+					redirect('admin/data_pemain');
+				} else {
 					$update['foto_profil'] = $nama_file;
 					$where = array('id_pemain' => $id_pemain);
 					$res = $this->basic->update_data($where, 'data_pemain', $update);
-					}
+				}
 			}
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
 		} else {
@@ -312,12 +311,12 @@ class Admin extends CI_Controller
 	{
 		$kategori = $this->input->post('kategori');
 		$tim = $this->input->post('tim');
-		if($tim == "A")$data = $this->Model_admin->get_tim_A_free($kategori,false);
-		if($tim == "B")$data = $this->Model_admin->get_tim_B_free($kategori,false);
+		if ($tim == "A") $data = $this->Model_admin->get_tim_A_free($kategori, false);
+		if ($tim == "B") $data = $this->Model_admin->get_tim_B_free($kategori, false);
 		OB_START();
 		echo '<option value="">--PILIH TIM--</option>';
-		foreach($data->result_array() as $d){
-			echo '<option value="'.$d['id_tim'].'">'.$d['nama_pasangan'].'</option>';
+		foreach ($data->result_array() as $d) {
+			echo '<option value="' . $d['id_tim'] . '">' . $d['nama_pasangan'] . '</option>';
 		}
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
@@ -326,12 +325,12 @@ class Admin extends CI_Controller
 	{
 		$kategori = $this->input->post('kategori');
 		$tim = $this->input->post('tim');
-		if($tim == "A")$data = $this->Model_admin->get_tim_A($kategori);
-		if($tim == "B")$data = $this->Model_admin->get_tim_B($kategori);
+		if ($tim == "A") $data = $this->Model_admin->get_tim_A($kategori);
+		if ($tim == "B") $data = $this->Model_admin->get_tim_B($kategori);
 		OB_START();
 		echo '<option value="">--PILIH TIM--</option>';
-		foreach($data->result_array() as $d){
-			echo '<option value="'.$d['id_tim'].'">'.$d['nama_pasangan'].'</option>';
+		foreach ($data->result_array() as $d) {
+			echo '<option value="' . $d['id_tim'] . '">' . $d['nama_pasangan'] . '</option>';
 		}
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
@@ -342,8 +341,8 @@ class Admin extends CI_Controller
 		$data = $this->Model_admin->get_pemain_for_tim($kategori);
 		OB_START();
 		echo '<option value="">--PILIH PEMAIN--</option>';
-		foreach($data->result_array() as $d){
-			echo '<option value="'.$d['id_pemain'].'">'.$d['nama'].'</option>';
+		foreach ($data->result_array() as $d) {
+			echo '<option value="' . $d['id_pemain'] . '">' . $d['nama'] . '</option>';
 		}
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
@@ -357,12 +356,11 @@ class Admin extends CI_Controller
 		$insert['id_lapangan'] = 1;
 		$insert['tanggal'] = '2021-12-3';
 		$insert['waktu'] = '08:00:00';
-		
-		$urutan = $this->Model_admin->get_max_urutan($insert['pool'],$insert['id_kategori']);
-		if(!empty($urutan)){
-			$insert['urutan'] = $urutan+1;
-		}
-		else{
+
+		$urutan = $this->Model_admin->get_max_urutan($insert['pool'], $insert['id_kategori']);
+		if (!empty($urutan)) {
+			$insert['urutan'] = $urutan + 1;
+		} else {
 			$insert['urutan'] = 1;
 		}
 		// echo "<pre>";
@@ -371,7 +369,7 @@ class Admin extends CI_Controller
 		if ($res) {
 			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
 			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
-			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - POOL ".$insert['pool']." - Urutan ".$insert['urutan']."</li>";
+			$konten_menu = "<li>TIM : " . $timA['nama_pasangan'] . " melawan " . $timB['nama_pasangan'] . " - POOL " . $insert['pool'] . " - Urutan " . $insert['urutan'] . "</li>";
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		} else {
 			echo JSON_ENCODE(array("status" => FALSE));
@@ -386,12 +384,11 @@ class Admin extends CI_Controller
 		$insert['id_lapangan'] = 1;
 		$insert['tanggal'] = '2021-12-5';
 		$insert['waktu'] = '08:00:00';
-		
-		$urutan = $this->Model_admin->get_max_urutan_turnamen($insert['per'],$insert['id_kategori']);
-		if(!empty($urutan)){
-			$insert['urutan'] = $urutan+1;
-		}
-		else{
+
+		$urutan = $this->Model_admin->get_max_urutan_turnamen($insert['per'], $insert['id_kategori']);
+		if (!empty($urutan)) {
+			$insert['urutan'] = $urutan + 1;
+		} else {
 			$insert['urutan'] = 1;
 		}
 		// echo "<pre>";
@@ -400,8 +397,8 @@ class Admin extends CI_Controller
 		if ($res) {
 			$timA = $this->Model_admin->data_tim_byid($insert['id_tim_A'])->row_array();
 			$timB = $this->Model_admin->data_tim_byid($insert['id_tim_B'])->row_array();
-			$per = $this->basic->get_data_where(array('id_babak'=>$insert['per']),'master_kategori_babak')->row_array();
-			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." melawan ".$timB['nama_pasangan']." - PER ".$per['nama']." - Urutan ".$insert['urutan']."</li>";
+			$per = $this->basic->get_data_where(array('id_babak' => $insert['per']), 'master_kategori_babak')->row_array();
+			$konten_menu = "<li>TIM : " . $timA['nama_pasangan'] . " melawan " . $timB['nama_pasangan'] . " - PER " . $per['nama'] . " - Urutan " . $insert['urutan'] . "</li>";
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		} else {
 			echo JSON_ENCODE(array("status" => FALSE));
@@ -412,14 +409,14 @@ class Admin extends CI_Controller
 		$insert['id_kategori'] = $this->input->post('kategori');
 		$insert['id_pemain1'] = $this->input->post('id_pemain1');
 		$id_pemain2 = $this->input->post('id_pemain2');
-		if(!empty($id_pemain2)){
+		if (!empty($id_pemain2)) {
 			$insert['id_pemain2'] = $id_pemain2;
 		}
 		$res = $this->basic->insert_data('data_tim', $insert);
 		if ($res) {
 			$last_id = $this->db->insert_id();
 			$timA = $this->Model_admin->data_tim_byid($last_id)->row_array();
-			$konten_menu = "<li>TIM : ".$timA['nama_pasangan']." Berhasil Di Tambahkan dengan ID ".$last_id."</li>";
+			$konten_menu = "<li>TIM : " . $timA['nama_pasangan'] . " Berhasil Di Tambahkan dengan ID " . $last_id . "</li>";
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		} else {
 			echo JSON_ENCODE(array("status" => FALSE));
@@ -453,7 +450,7 @@ class Admin extends CI_Controller
 	{
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B, );
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B,);
 		$status = $this->basic->delete_data($where, 'data_babak_penyisihan');
 		if ($status) {
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
@@ -472,20 +469,20 @@ class Admin extends CI_Controller
 		$tim_kat = $this->input->post('tim_kat');
 		$jenis = $this->input->post('jenis');
 		$skor = $this->input->post('skor');
-		
+
 		// $q = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
-		if($tim_kat == 'A'){
-			if($jenis == 'tambah')$skor = $skor+1;
-			if($jenis == 'kurang')$skor = $skor-1;
-			$data = array('set1_tim_A' =>$skor);
+		if ($tim_kat == 'A') {
+			if ($jenis == 'tambah') $skor = $skor + 1;
+			if ($jenis == 'kurang') $skor = $skor - 1;
+			$data = array('set1_tim_A' => $skor);
 		}
-		if($tim_kat == 'B'){
-			if($jenis == 'tambah')$skor = $skor+1;
-			if($jenis == 'kurang')$skor = $skor-1;
-			$data = array('set1_tim_B' =>$skor);
+		if ($tim_kat == 'B') {
+			if ($jenis == 'tambah') $skor = $skor + 1;
+			if ($jenis == 'kurang') $skor = $skor - 1;
+			$data = array('set1_tim_B' => $skor);
 		}
-		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
-		
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B);
+
 		$res = $this->basic->update_data($where, 'data_babak_penyisihan', $data);
 
 		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
@@ -500,20 +497,20 @@ class Admin extends CI_Controller
 		$jenis = $this->input->post('jenis');
 		$skor = $this->input->post('skor');
 		$set = $this->input->post('set');
-		
+
 		// $q = $this->Model_admin->get_tim_byId($id_tim_A,$id_tim_B);
-		if($tim_kat == 'A'){
-			if($jenis == 'tambah')$skor = $skor+1;
-			if($jenis == 'kurang')$skor = $skor-1;
-			$data = array('set'.$set.'_tim_A' =>$skor);
+		if ($tim_kat == 'A') {
+			if ($jenis == 'tambah') $skor = $skor + 1;
+			if ($jenis == 'kurang') $skor = $skor - 1;
+			$data = array('set' . $set . '_tim_A' => $skor);
 		}
-		if($tim_kat == 'B'){
-			if($jenis == 'tambah')$skor = $skor+1;
-			if($jenis == 'kurang')$skor = $skor-1;
-			$data = array('set'.$set.'_tim_B' =>$skor);
+		if ($tim_kat == 'B') {
+			if ($jenis == 'tambah') $skor = $skor + 1;
+			if ($jenis == 'kurang') $skor = $skor - 1;
+			$data = array('set' . $set . '_tim_B' => $skor);
 		}
-		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
-		
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B);
+
 		$res = $this->basic->update_data($where, 'data_babak_final', $data);
 
 		echo JSON_ENCODE(array("status" => TRUE, "skor_akhir" => $skor));
@@ -524,12 +521,12 @@ class Admin extends CI_Controller
 		// print_r($_POST);die;
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		if(!empty($this->input->post('lapangan')))$data['id_lapangan'] = $this->input->post('lapangan');
-		if(!empty($this->input->post('tanggal')))$data['tanggal'] = $this->input->post('tanggal');
-		if(!empty($this->input->post('waktu')))$data['waktu'] = $this->input->post('waktu');
-		
-		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
-		
+		if (!empty($this->input->post('lapangan'))) $data['id_lapangan'] = $this->input->post('lapangan');
+		if (!empty($this->input->post('tanggal'))) $data['tanggal'] = $this->input->post('tanggal');
+		if (!empty($this->input->post('waktu'))) $data['waktu'] = $this->input->post('waktu');
+
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B);
+
 		$res = $this->basic->update_data($where, 'data_babak_penyisihan', $data);
 
 		echo JSON_ENCODE(array("status" => TRUE));
@@ -540,12 +537,12 @@ class Admin extends CI_Controller
 		// print_r($_POST);die;
 		$id_tim_A = $this->input->post('id_tim_A');
 		$id_tim_B = $this->input->post('id_tim_B');
-		if(!empty($this->input->post('lapangan')))$data['id_lapangan'] = $this->input->post('lapangan');
-		if(!empty($this->input->post('tanggal')))$data['tanggal'] = $this->input->post('tanggal');
-		if(!empty($this->input->post('waktu')))$data['waktu'] = $this->input->post('waktu');
-		
-		$where = array('id_tim_A'=>$id_tim_A,'id_tim_B'=>$id_tim_B);
-		
+		if (!empty($this->input->post('lapangan'))) $data['id_lapangan'] = $this->input->post('lapangan');
+		if (!empty($this->input->post('tanggal'))) $data['tanggal'] = $this->input->post('tanggal');
+		if (!empty($this->input->post('waktu'))) $data['waktu'] = $this->input->post('waktu');
+
+		$where = array('id_tim_A' => $id_tim_A, 'id_tim_B' => $id_tim_B);
+
 		$res = $this->basic->update_data($where, 'data_babak_final', $data);
 
 		echo JSON_ENCODE(array("status" => TRUE));

@@ -128,7 +128,17 @@
             </div>
           </div><!-- nav-sub -->
         </li>
-        <li class="nav-item"><a href="#berita_terbaru" class="nav-link"><i data-feather="rss"></i> Berita Kegiatan</a></li>
+        <li class="nav-item with-sub">
+          <a href="#" class="nav-link"><i data-feather="rss"></i> Berita</a>
+          <div class="navbar-menu-sub">
+            <div class="d-lg-flex">
+              <ul>
+                <li class="nav-sub-item"><a href="" class="nav-sub-link"><i data-feather="rss"></i>Berita PTWP Pusat</a></li>
+                <li class="nav-sub-item"><a href="" class="nav-sub-link"><i data-feather="rss"></i> Berita PTWP Daerah</a></li>
+              </ul>
+            </div>
+          </div><!-- nav-sub -->
+        </li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/galeri') ?>" class="nav-link"><i data-feather="image"></i> Galeri</a></li>
         <li class="nav-item"><a href="<?php echo base_url('main/page/kontak') ?>" class="nav-link"><i data-feather="phone-call"></i> Kontak</a></li>
       </ul>
@@ -142,7 +152,7 @@
 
   <?php echo $body; ?>
 
-  <footer class="footer">
+  <footer class="footer fixed-bottom">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
       <span>Design By <a href="#">TIM GERCEP GANIS</a></span>
@@ -157,6 +167,7 @@
   </footer>
 
   <script>
+    $('[data-toggle="tooltip"]').tooltip();
     $(document).ready(function() {
       $('.nav-item.active').removeClass('active');
       $('a[href="' + location.pathname + location.search + '"]').closest('li.nav-item').addClass('active');

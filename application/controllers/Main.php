@@ -17,29 +17,28 @@ class Main extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
-		$data['berita_terbaru'] = $this->basic->get_data_where(array('cat_id'=>'1'),'data_konten');
+		$data['berita_terbaru'] = $this->basic->get_data_where_limit(array('cat_id' => '1'), 5, 'data_konten');
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
 
-	public function page($konten=false)
+	public function page($konten = false)
 	{
-		if(!$konten){
+		if (!$konten) {
 			$data['judul'] = "NOT FOUND";
 			$this->template->load('ptwp_template', 'main/404', $data);
 		}
-		$q = $this->basic->get_data_where(array('alias'=>$konten),'data_konten')->row_array();
-		if(!empty($q)){
+		$q = $this->basic->get_data_where(array('alias' => $konten), 'data_konten')->row_array();
+		if (!empty($q)) {
 			$data['judul'] = $q['judul'];
 			$data['konten'] = $q;
-		}
-		else{
+		} else {
 			$data['judul'] = $konten;
 			$data['konten']['isi'] = '<h1 class="tx-color-01 tx-24 tx-sm-32 tx-lg-36 mg-xl-b-5">Halaman Belum Tersedia</h1>';
 		}
-		
+
 		$this->template->load('ptwp_template', 'main/page', $data);
 	}
-	
+
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";
@@ -73,7 +72,7 @@ class Main extends CI_Controller
 		$data['judul'] = "Babak Penyisihan";
 		$this->template->load('ptwp_template', 'main/data_babak_penyisihan', $data);
 	}
-	
+
 	public function data_babak_penyisihan_rekap()
 	{
 		OB_START();
@@ -81,7 +80,7 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
-	
+
 
 	public function data_babak_final($per)
 	{
@@ -89,7 +88,7 @@ class Main extends CI_Controller
 		$data['per']	= $per;
 		$this->template->load('ptwp_template', 'main/data_babak_final', $data);
 	}
-	
+
 	public function data_babak_final_rekap()
 	{
 		OB_START();
@@ -97,13 +96,13 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
-	
+
 	public function data_skema_pertandingan()
 	{
 		$data['judul'] 	= "Skema Pertandingan";
 		$this->template->load('ptwp_template', 'main/data_skema_pertandingan', $data);
 	}
-	
+
 	public function data_skema_pertandingan_rekap()
 	{
 		OB_START();
@@ -111,13 +110,13 @@ class Main extends CI_Controller
 		$konten = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
-	
+
 	public function data_jadwal_pertandingan()
 	{
 		$data['judul'] 	= "Jadwal Pertandingan";
 		$this->template->load('ptwp_template', 'main/data_jadwal_pertandingan', $data);
 	}
-	
+
 	public function data_penyisihan_file()
 	{
 		$data['judul'] = "DATA PENYISIHAN";

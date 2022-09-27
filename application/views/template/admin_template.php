@@ -16,41 +16,27 @@ extract($_SESSION);
 
     <title><?php echo $judul; ?> - PORTAL PERSATUAN TENIS WARGA PERADILAN (PTWP) PUSAT</title>
 
+
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
+    <!-- <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css"> -->
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.dashboard.css">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css">
 
-    <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/feather-icons/feather.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/prismjs/prism.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/dashforge.aside.js"></script>
-    <script src="<?php echo base_url(); ?>assets/lib/tinymce/tinymce.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
 <body>
     <aside class="aside aside-fixed">
         <div class="aside-header">
-            <a href="<?php echo base_url('') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
+            <a href="<?php echo base_url('admin') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
             <a href="" class="aside-menu-link">
                 <i data-feather="menu"></i>
                 <i data-feather="x"></i>
@@ -61,8 +47,8 @@ extract($_SESSION);
                 <div class="d-flex align-items-center justify-content-start">
                     <a href="" class="avatar"><img src="<?php echo base_url() . $photo ?>" class="rounded-circle" alt=""></a>
                     <div class="aside-alert-link">
-                        <a href="" class="new" data-toggle="tooltip" title="You have 2 unread messages"><i data-feather="message-square"></i></a>
-                        <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a>
+                        <!-- <a href="" class="new" data-toggle="tooltip" title="You have 2 unread messages"><i data-feather="message-square"></i></a>
+                        <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a> -->
                         <a href="" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
                     </div>
                 </div><!-- aside-loggedin -->
@@ -72,7 +58,7 @@ extract($_SESSION);
                     <li class="nav-label pt-2">Menu</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
-                    
+
                     <li class="nav-label pt-2">Pertandingan</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
@@ -89,18 +75,15 @@ extract($_SESSION);
                 <input type="search" class="form-control" placeholder="Search...">
             </div>
             <nav class="nav">
-                <a href="" class="nav-link"><i data-feather="help-circle"></i></a>
-                <a href="" class="nav-link"><i data-feather="grid"></i></a>
-                <a href="" class="nav-link"><i data-feather="align-left"></i></a>
+                <a href="<?php echo base_url('') ?>" target="_blank" class="nav-link" data-toggle="tooltip" data-placement="left" title="Halaman Utama PTWP"><i data-feather="chrome" class="text-primary"></i></a>
             </nav>
         </div><!-- content-header -->
 
         <div class="content-body">
-            <div id="konten" class="container pd-x-0">
+            <div id="konten" class="container-fluid pd-x-0">
                 <?php echo $body; ?>
             </div>
         </div>
-
 
         <footer class="footer">
             <div>
@@ -116,6 +99,26 @@ extract($_SESSION);
             </div>
         </footer>
     </div>
+
+
+    <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/feather-icons/feather.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/prismjs/prism.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/dashforge.aside.js"></script>
+    <!-- append theme customizer -->
+    <script src="<?php echo base_url(); ?>assets/lib/js-cookie/js.cookie.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/dashboard-one.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/dashforge.settings.js"></script>
+    <script src="<?php echo base_url(); ?>assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 
 </body>
 <div id="loader_html" class="container-fluid" style="display:none">
