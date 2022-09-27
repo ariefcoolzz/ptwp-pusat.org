@@ -97,7 +97,11 @@
                 }
                 ?>
 
-                <?php foreach ($berita_terbaru->result_array() as $R) { ?>
+                <?php foreach ($berita_terbaru->result_array() as $R) {
+                    $intro = substr(strip_tags($R['isi']), 0, 200);
+                    // $intro = substr($R['isi'], 0, 200);
+                ?>
+
                     <div class="media-list">
                         <div class="d-sm-flex pd-20">
                             <a href="" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
@@ -106,7 +110,7 @@
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
-                                <p class="tx-color-03 tx-13 mg-b-0"><?php echo $R['intro'] ?></p>
+                                <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
                                 <small class="text-secondary">Date Created : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
                             </div><!-- media-body -->
                         </div>
