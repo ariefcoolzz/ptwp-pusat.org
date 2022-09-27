@@ -5,37 +5,37 @@
             <li data-target="#slideshow" data-slide-to="1"></li>
             <li data-target="#slideshow" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner bg-dark">
+        <div class="carousel-inner bg-secondary">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/ucapan.jpg" class=" mx-auto d-block  w-50" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ucapan.jpg" class="d-block mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Fikiran Jernih, Kerja Produktif.</p> -->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block  w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block  w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block  w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
@@ -87,7 +87,7 @@
                 <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
                 <button class="btn btn-sm btn-outline-primary">Berita Lainnya</button>
             </div><!-- card-header -->
-            <div class="card-body pd-0">
+            <div class="card-body pd-0" data-aos="zoom-in" data-aos-duration="2000">
                 <?php
                 if (empty($R['img'])) {
                     // $gambar = "assets/img/gambar.jpg";
@@ -110,7 +110,7 @@
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
-                                <small class="text-secondary">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
@@ -126,7 +126,7 @@
                 <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
                 <button class="btn btn-sm btn-outline-success">Berita Lainnya</button>
             </div><!-- card-header -->
-            <div class="card-body pd-0">
+            <div class="card-body pd-0" data-aos="zoom-in" data-aos-duration="2000">
                 <?php
                 if (empty($R['img'])) {
                     $gambar = "assets/img/gambar.jpg";
@@ -149,7 +149,7 @@
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
-                                <small class="text-secondary">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
@@ -166,28 +166,28 @@
 </div>
 <div class="content">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm" data-aos="zoom-in-right" data-aos-duration="2000">
             <figure class="img-caption pos-relative mg-b-0">
                 <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
             <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
         </div>
-        <div class="col-sm">
+        <div class="col-sm" data-aos="zoom-in-up" data-aos-duration="2000">
             <figure class="img-caption pos-relative mg-b-0">
                 <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
             <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
         </div>
-        <div class="col-sm">
+        <div class="col-sm" data-aos="zoom-in-down" data-aos-duration="2000">
             <figure class="img-caption pos-relative mg-b-0">
                 <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
             </figure>
             <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
             <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
         </div>
-        <div class="col-sm">
+        <div class="col-sm" data-aos="zoom-in-left" data-aos-duration="2000">
             <figure class="img-caption pos-relative mg-b-0">
                 <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
             </figure>

@@ -18,6 +18,7 @@
   <link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/css/aos.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
@@ -25,6 +26,7 @@
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.landing.css">
+  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
 
   <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -37,6 +39,7 @@
   <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/aos.js"></script>
 
 </head>
 
@@ -165,7 +168,10 @@
       </nav>
     </div>
   </footer>
-
+  <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+  <script>
+    AOS.init();
+  </script>
   <script>
     $('[data-toggle="tooltip"]').tooltip();
     $(document).ready(function() {
@@ -196,6 +202,7 @@
     })();
   </script>
   <!--End of Tawk.to Script-->
+
 </body>
 
 </html>
