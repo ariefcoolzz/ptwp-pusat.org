@@ -29,7 +29,10 @@
                                 $gambar = base_url('assets/img/gambar.jpg');
                                 // $gambar = base_url('assets/img/no_images.png');
                             } else {
-                                $gambar = "$R[img]";
+                                if (filter_var($R['img'], FILTER_VALIDATE_URL))
+                                    $gambar = $R['img'];
+                                else
+                                    $gambar = base_url($R['img']);
                             }
                         ?>
                             <div class="col-md-4 mg-t-20">
