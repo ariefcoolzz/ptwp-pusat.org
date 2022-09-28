@@ -22,7 +22,7 @@
                 <div class="col-lg-12 col-xl-12">
                     <div class="row row-sm mg-b-25">
                         <?php foreach ($berita_ptwp_pusat->result_array() as $R) {
-                            $intro = substr(strip_tags($R['isi']), 0, 200);
+                            $intro = substr(strip_tags($R['isi']), 0, 50);
                             // $intro = substr($R['isi'], 0, 200);
 
                             if ($R['img'] == "") {
@@ -36,7 +36,7 @@
                             }
                         ?>
                             <div class="col-md-4 mg-t-20">
-                                <div class="card card-event">
+                                <div class="card card-event" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                                     <img src="<?php echo $gambar; ?>" class="card-img-top" alt="thumbnail">
                                     <div class="card-body tx-13">
                                         <h5><a href="<?php echo base_url('main/page/') . $R['alias'] ?>"><?php echo $R['judul'] ?></a></h5>

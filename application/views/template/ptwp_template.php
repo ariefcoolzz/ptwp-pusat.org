@@ -147,9 +147,9 @@
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
-      <a href="#" class="btn btn-social"><i class="fab fa-youtube"></i></a>
-      <a href="#" class="btn btn-social"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="btn btn-social"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-social"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com/ptwp.pusat/" target="_blank" class="btn btn-social"><i class="fab fa-instagram"></i></a>
+      <!-- <a href="#" class="btn btn-social"><i class="fab fa-facebook"></i></a> -->
     </div><!-- navbar-right -->
   </header><!-- navbar -->
 
@@ -168,11 +168,10 @@
       </nav>
     </div>
   </footer>
-  <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+
   <script>
     AOS.init();
-  </script>
-  <script>
+
     $('[data-toggle="tooltip"]').tooltip();
     $(document).ready(function() {
       $('.nav-item.active').removeClass('active');

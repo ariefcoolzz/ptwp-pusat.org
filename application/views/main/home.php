@@ -53,28 +53,41 @@
     </div>
 </div><!-- content -->
 
-<!-- <div class="divider-text" id="berita_terbaru">
-    <h4>Berita Terbaru</h4>
+<div class="divider-text">
+    <h4>Pengurus PTWP Pusat</h4>
 </div>
-<div class="content">
-    <div class="row pd-x-20">
-        <?php foreach ($berita_terbaru->result_array() as $R) { ?>
-            <div class="col-sm col-xl-4 mg-t-1 mg-b-4">
-                <div class="media">
-                    <img src="<?php echo $R['img'] ?>" class="wd-200 rounded mg-r-20" alt="">
-                    <div class="media-body">
-                        <a href="<?php echo base_url('main/page/') . $R['alias'] ?>">
-                            <h5 class="mg-b-15 tx-inverse"><?php echo $R['judul'] ?></h5>
-                        </a>
-                        <?php
-                        echo $R['intro'] . "<button type='button' class='btn btn-sm btn-info'><a class='text-white' href='" . base_url("main/page/$R[alias]") . "'>" . "Selengkapnya...</a></button>";
-                        ?>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md" data-aos="fade-up">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
+            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+        </div>
+        <div class="col-md" data-aos="fade-down">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
+            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
+        </div>
+        <div class="col-md" data-aos="fade-up">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
+        </div>
+        <div class="col-md" data-aos="fade-down">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2021 s.d. 2024</h6>
+        </div>
     </div>
-</div> -->
+</div>
 
 <div class="divider-text" id="berita_terbaru">
     <h4>Berita Terbaru</h4>
@@ -84,27 +97,24 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h6 class="lh-5 mg-b-0">Berita PTWP Pusat</h6>
-                <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
                 <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="btn btn-sm btn-outline-primary">Berita Lainnya</a>
             </div><!-- card-header -->
-            <div class="card-body pd-0" data-aos="zoom-in" data-aos-duration="2000">
-                <?php
-                if (empty($R['img'])) {
-                    // $gambar = "assets/img/gambar.jpg";
-                    $gambar = "assets/img/no_images.png";
-                } else {
-                    $gambar = "$R[img]";
-                }
-                ?>
-
-                <div class="media-list">
+            <div class="card card-body pd-0">
+                <div class=" media-list">
                     <?php foreach ($berita_terbaru->result_array() as $R) {
                         $intro = substr(strip_tags($R['isi']), 0, 200);
                         // $intro = substr($R['isi'], 0, 200);
                     ?>
                         <div class="d-sm-flex pd-20 align-items-center">
                             <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                                <img src="<?php echo $gambar ?>" class="img-fit-cover border" alt="">
+                                <?php
+                                if ($R['img'] == "") {
+                                    echo  "<img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'>";
+                                } else {
+                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
+                                }
+                                ?>
+
                             </a>
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
@@ -123,27 +133,24 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h6 class="lh-5 mg-b-0">Berita PTWP Daerah</h6>
-                <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
                 <button class="btn btn-sm btn-outline-success">Berita Lainnya</button>
             </div><!-- card-header -->
-            <div class="card-body pd-0" data-aos="zoom-in" data-aos-duration="2000">
-                <?php
-                if (empty($R['img'])) {
-                    $gambar = "assets/img/gambar.jpg";
-                    // $gambar = "assets/img/no_images.png";
-                } else {
-                    $gambar = " . $R[img]";
-                }
-                ?>
-
-                <div class="media-list">
+            <div class="card card-body pd-0">
+                <div class=" media-list">
                     <?php foreach ($berita_terbaru->result_array() as $R) {
                         $intro = substr(strip_tags($R['isi']), 0, 200);
                         // $intro = substr($R['isi'], 0, 200);
                     ?>
                         <div class="d-sm-flex pd-20 align-items-center">
                             <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                                <img src="<?php echo $gambar ?>" class="img-fit-cover border" alt="">
+                                <?php
+                                if ($R['img'] == "") {
+                                    echo  "<img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'>";
+                                } else {
+                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
+                                }
+                                ?>
+
                             </a>
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
@@ -160,43 +167,6 @@
     </div><!-- col -->
 
 </div>
-
-<div class="divider-text">
-    <h4>Pengurus PTWP Pusat</h4>
-</div>
-<div class="content">
-    <div class="row">
-        <div class="col-sm" data-aos="zoom-in-right" data-aos-duration="2000">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
-        </div>
-        <div class="col-sm" data-aos="zoom-in-up" data-aos-duration="2000">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
-            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
-        </div>
-        <div class="col-sm" data-aos="zoom-in-down" data-aos-duration="2000">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
-            <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
-        </div>
-        <div class="col-sm" data-aos="zoom-in-left" data-aos-duration="2000">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
-            <h6 class="text-center">Ketua PTWP Pusat Periode 2021 s.d. 2024</h6>
-        </div>
-    </div>
-</div>
-
 
 <div class="content bd-t">
     <div class="row">
@@ -288,3 +258,7 @@
         </div>
     </div>
 </div>
+
+<script>
+
+</script>
