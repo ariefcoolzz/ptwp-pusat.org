@@ -85,7 +85,7 @@
             <div class="card-header d-flex justify-content-between">
                 <h6 class="lh-5 mg-b-0">Berita PTWP Pusat</h6>
                 <a href="" class="tx-13 link-03" data-toggle="tooltip" title="Refresh Berita"><i data-feather="refresh-ccw" class="wd-20 ht-20"></i></a>
-                <button class="btn btn-sm btn-outline-primary">Berita Lainnya</button>
+                <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="btn btn-sm btn-outline-primary">Berita Lainnya</a>
             </div><!-- card-header -->
             <div class="card-body pd-0" data-aos="zoom-in" data-aos-duration="2000">
                 <?php
@@ -93,7 +93,7 @@
                     // $gambar = "assets/img/gambar.jpg";
                     $gambar = "assets/img/no_images.png";
                 } else {
-                    $gambar = " . $R[img]";
+                    $gambar = "$R[img]";
                 }
                 ?>
 

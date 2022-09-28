@@ -39,6 +39,14 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/page', $data);
 	}
 
+	public function berita_ptwp_pusat()
+	{
+		$data['judul'] = "Berita PTWP Pusat";
+		$data['berita_ptwp_pusat'] = $this->basic->get_data_where(array('cat_id' => '1'), 'data_konten');
+		$this->template->load('ptwp_template', 'main/berita_ptwp_pusat', $data);
+	}
+
+
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA PEMAIN";
