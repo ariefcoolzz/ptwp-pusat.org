@@ -18,7 +18,8 @@
   <link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
-  <link href="<?php echo base_url(); ?>assets/css/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+  <!-- <link href="<?php echo base_url(); ?>assets/css/aos.css" rel="stylesheet"> -->
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
@@ -26,7 +27,8 @@
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.landing.css">
-  <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 
   <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -39,7 +41,8 @@
   <script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/aos.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <!-- <script src="<?php echo base_url(); ?>assets/js/aos.js"></script> -->
 
 </head>
 
@@ -155,6 +158,9 @@
 
   <?php echo $body; ?>
 
+  <a href="https://api.whatsapp.com/send?phone=6281281419338&amp;text=Halo%20Admin,%20saya%20mau%20tanya%20tentang%20PTWP%20Pusat" class="float" target="_blank">
+    <i class="fa fa-whatsapp my-float"></i>
+  </a>
   <footer class="footer fixed-bottom">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
@@ -168,7 +174,6 @@
       </nav>
     </div>
   </footer>
-
   <script>
     AOS.init();
 
