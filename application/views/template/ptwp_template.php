@@ -47,7 +47,7 @@
 </head>
 
 <body class="home-body">
-  <header class="navbar navbar-header navbar-header-fixed bd-b">
+  <header class="navbar navbar-header navbar-header-fixed">
     <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
       <a href="<?php echo base_url('') ?>" class="df-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
@@ -157,6 +157,7 @@
   </header><!-- navbar -->
 
   <?php echo $body; ?>
+
 
   <a href="https://api.whatsapp.com/send?phone=6281281419338&amp;text=Halo%20Admin,%20saya%20mau%20tanya%20tentang%20PTWP%20Pusat" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
