@@ -24,7 +24,6 @@
                         <?php foreach ($berita_ptwp_pusat->result_array() as $R) {
                             $intro = substr(strip_tags($R['isi']), 0, 50);
                             // $intro = substr($R['isi'], 0, 200);
-
                             if ($R['img'] == "") {
                                 $gambar = base_url('assets/img/gambar.jpg');
                                 // $gambar = base_url('assets/img/no_images.png');
@@ -37,7 +36,10 @@
                         ?>
                             <div class="col-md-4 mg-t-20">
                                 <div class="card card-event" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
-                                    <img src="<?php echo $gambar; ?>" class="card-img-top" alt="thumbnail">
+                                    <div class="pos-relative overflow-hidden rounded">
+                                        <div class="marker-icon marker-primary pos-absolute t-0 l-0"><i data-feather="rss"></i></div>
+                                        <img src="<?php echo $gambar; ?>" class="card-img-top" alt="thumbnail">
+                                    </div>
                                     <div class="card-body tx-13">
                                         <h5><a href="<?php echo base_url('main/page/') . $R['alias'] ?>"><?php echo $R['judul'] ?></a></h5>
                                         <p class="mg-b-0 text-justify"><?php echo $intro ?> .... </p>

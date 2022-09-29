@@ -1,4 +1,4 @@
-<div class="content-fixed">
+<div class="content-fixed ht-60p">
     <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#slideshow" data-slide-to="0" class="active"></li>
@@ -7,7 +7,7 @@
         </ol>
         <div class="carousel-inner bg-secondary">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/ucapan.jpg" class="d-block mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->
@@ -21,21 +21,21 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/tenis.jpeg" class="d-block  mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/05.png" class="d-block  mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/06.png" class="d-block  mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
@@ -53,10 +53,10 @@
     </div>
 </div><!-- content -->
 
-<div class="divider-text">
-    <h4>Pengurus PTWP Pusat</h4>
-</div>
-<div class="container">
+<div class="content bg-gray-100">
+    <div class="divider-text">
+        <h4>Pengurus PTWP Pusat</h4>
+    </div>
     <div class="row">
         <div class="col-md" data-aos="fade-up">
             <figure class="img-caption pos-relative mg-b-0">
@@ -89,18 +89,15 @@
     </div>
 </div>
 
-<div class="divider-text" id="berita_terbaru">
-    <h4>Berita Terbaru</h4>
-</div>
-<div class="row content-body">
-    <div class="col-sm-6 col-lg-6 col-xl">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h6 class="lh-5 mg-b-0">Berita PTWP Pusat</h6>
-                <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="btn btn-sm btn-outline-primary">Berita Lainnya</a>
-            </div><!-- card-header -->
+<div class="content bg-indigo">
+    <div class="divider-text">
+        <h4 class="mg-b-20 text-white">Berita Terbaru</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-lg-6 col-xl">
             <div class="card card-body pd-0">
-                <div class=" media-list">
+                <div class="marker marker-ribbon marker-info pos-absolute t-10 l-0">Berita Terbaru PTWP Pusat</div>
+                <div class=" media-list mg-t-35">
                     <?php foreach ($berita_terbaru->result_array() as $R) {
                         $intro = substr(strip_tags($R['isi']), 0, 200);
                         // $intro = substr($R['isi'], 0, 200);
@@ -109,7 +106,40 @@
                             <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
                                 <?php
                                 if ($R['img'] == "") {
-                                    echo  "<img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'>";
+                                    echo  "<div class='pos-relative overflow-hidden rounded'><div class='marker-icon marker-primary pos-absolute t-0 l-0'><i data-feather='rss'></i></div><img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'></div>";
+                                } else {
+                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
+                                }
+                                ?>
+                            </a>
+                            <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
+                                <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
+                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
+                                <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                            </div><!-- media-body -->
+                        </div>
+                        <hr class="mg-0">
+                    <?php } ?>
+                </div>
+                <div class="card-footer text-center tx-13">
+                    <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="link-03"><i data-feather="rss"></i> Berita Lainnya</a>
+                </div>
+            </div><!-- card-body -->
+        </div><!-- col -->
+        <div class="col-sm-6 col-lg-6 col-xl">
+            <div class="card card-body pd-0">
+                <div class="marker marker-ribbon marker-success pos-absolute t-10 l-0">Berita Terbaru PTWP Daerah</div>
+                <div class=" media-list mg-t-35">
+                    <?php foreach ($berita_terbaru->result_array() as $R) {
+                        $intro = substr(strip_tags($R['isi']), 0, 200);
+                        // $intro = substr($R['isi'], 0, 200);
+                    ?>
+                        <div class="d-sm-flex pd-20 align-items-center">
+                            <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
+                                <?php
+                                if ($R['img'] == "") {
+                                    echo  "<div class='pos-relative overflow-hidden rounded'><div class='marker-icon marker-success pos-absolute t-0 l-0'><i data-feather='rss'></i></div><img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'></div>";
                                 } else {
                                     echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
                                 }
@@ -126,46 +156,12 @@
                         <hr class="mg-0">
                     <?php } ?>
                 </div>
-            </div><!-- card-body -->
-        </div><!-- card -->
-    </div><!-- col -->
-    <div class="col-sm-6 col-lg-6 col-xl">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between">
-                <h6 class="lh-5 mg-b-0">Berita PTWP Daerah</h6>
-                <button class="btn btn-sm btn-outline-success">Berita Lainnya</button>
-            </div><!-- card-header -->
-            <div class="card card-body pd-0">
-                <div class=" media-list">
-                    <?php foreach ($berita_terbaru->result_array() as $R) {
-                        $intro = substr(strip_tags($R['isi']), 0, 200);
-                        // $intro = substr($R['isi'], 0, 200);
-                    ?>
-                        <div class="d-sm-flex pd-20 align-items-center">
-                            <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
-                                <?php
-                                if ($R['img'] == "") {
-                                    echo  "<img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'>";
-                                } else {
-                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
-                                }
-                                ?>
-
-                            </a>
-                            <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                                <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
-                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
-                                <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
-                            </div><!-- media-body -->
-                        </div>
-                        <hr class="mg-0">
-                    <?php } ?>
+                <div class="card-footer text-center tx-13">
+                    <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="link-03"><i data-feather="rss"></i> Berita Lainnya</a>
                 </div>
             </div><!-- card-body -->
-        </div><!-- card -->
-    </div><!-- col -->
-
+        </div><!-- col -->
+    </div>
 </div>
 
 <div class="content bd-t">
