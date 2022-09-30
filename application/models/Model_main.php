@@ -1,6 +1,37 @@
 <?php
 class Model_main extends CI_Model
 {
+	function log_data_konten($id)
+	{
+		$data['id_konten'] 		= $id;
+		$data['waktu_akses']	= date('Y-m-d H:i:s');
+		$data['ip_address']		= $this->input->ip_address();
+		$data['user_agent']		= substr($this->input->user_agent(), 0, 120);
+		if (isset($_SERVER['HTTP_REFERER'])) $data['referal']		= $_SERVER['HTTP_REFERER'];
+
+		$this->db->insert('data_statistik_konten', $data);
+	}
+	function get_data_konten($alias)
+	{
+		$this->db->select("A.*");
+		$this->db->select("(SELECT COUNT(*) FROM data_statistik_konten WHERE id_konten = A.id) as total_dilihat");
+		$this->db->from('data_konten AS A');
+		$this->db->where('A.alias', $alias);
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	function get_data_konten_list($cat_id, $limit = null)
+	{
+		$this->db->select("A.*");
+		$this->db->select("(SELECT COUNT(*) FROM data_statistik_konten WHERE id_konten = A.id) as total_dilihat");
+		$this->db->from('data_konten AS A');
+		$this->db->where('A.cat_id', $cat_id);
+		if ($limit) $this->db->limit($limit);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
 	function model_select_pool($id_kategori = false)
 	{
 		$this->db->distinct();

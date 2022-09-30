@@ -8,6 +8,8 @@
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
                     </ol>
                 </nav>
+                <div class="pt-0 pb-4"><small class="fw-bold">
+                        <?php if ($konten['date_created'] !== '0000-00-00 00:00:00') echo "Tanggal Berita : " . format_tanggal('wddmmmmyyyyhis', $konten['date_created'] . "-") ?> Dilihat <?php echo $konten['total_dilihat'] ?> kali</small></div>
                 <h4><?php echo $judul; ?></h4>
             </div>
         </div>

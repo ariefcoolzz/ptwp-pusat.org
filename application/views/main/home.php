@@ -308,7 +308,7 @@
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ....</p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></small>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?> - Dilihat <?php echo $R['total_dilihat'] ?> kali</small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">

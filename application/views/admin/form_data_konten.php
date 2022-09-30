@@ -70,6 +70,13 @@ if ($id) $txt_simpan = "UPDATE";
             "save table directionality emoticons template paste"
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
+        images_upload_url: "<?php echo base_url('admin/upload_file') ?>",
+        // images_upload_handler: function(blobInfo, success, failure) {
+        //     setTimeout(function() {
+        //         /* no matter what you upload, we will turn it into TinyMCE logo :)*/
+        //         success('http://moxiecode.cachefly.net/tinymce/v9/images/logo.png');
+        //     }, 2000);
+        // }
 
     });
     $("#form_konten").submit(function(e) {

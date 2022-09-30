@@ -547,4 +547,33 @@ class Admin extends CI_Controller
 
 		echo JSON_ENCODE(array("status" => TRUE));
 	}
+	public function upload_file()
+	{
+		// echo "<pre>";
+		// print_r($_FILES);
+		// die;
+		// echo json_encode(array('error' => "error"));
+		// return;
+
+
+		$path_upload = 'file_upload/berita';
+		$config = array(
+			'upload_path'			=> './' . $path_upload,
+			'max_size'				=> 10000,
+			'allowed_types'			=> 'jpg|jpeg|png|bmp|gif',
+			'overwrite'				=> true,
+		);
+		$this->load->library('upload', $config);
+		if (!empty($_FILES['file']['name'])) {
+			if (!$this->upload->do_upload('file')) {
+				$msg = $this->upload->display_errors();
+				die(JSON_ENCODE(array("pesan" => $msg)));
+			} else {
+				// $temp_name = str_replace("/", " ", $_FILES['file']['name']);
+				$temp_name = preg_replace('/\s+/', '_', $_FILES['file']['name']);
+				$filetowrite = $path_upload . "/" . $temp_name;
+				echo json_encode(array('location' => base_url() . $filetowrite));
+			}
+		}
+	}
 }

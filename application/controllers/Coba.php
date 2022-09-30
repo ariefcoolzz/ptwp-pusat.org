@@ -20,7 +20,13 @@ class Coba extends CI_Controller
 	{
 		echo "<pre>";
 		// extract($_POST);
-		print_r($_POST);
-		
+		print_r($_SERVER);
+	}
+	public function replace_string()
+	{
+		$text 		= 'Kartu ASN Virtual Potrait Belakang (1).png';
+		$temp_name 	= preg_replace('/\s+/', '_', $text);
+		// $temp_name 	= str_replace("/", " ", $text);
+		echo $temp_name;
 	}
 }

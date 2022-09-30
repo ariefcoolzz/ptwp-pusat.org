@@ -17,7 +17,8 @@ class Main extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
-		$data['berita_terbaru'] = $this->basic->get_data_where_limit(array('cat_id' => '1'), 3, 'data_konten');
+		$data['berita_terbaru'] = $this->Model_main->get_data_konten_list('1', '3'); // KATEGORI 1 LIMIT 3
+		// $data['berita_terbaru'] = $this->basic->get_data_where_limit(array('cat_id' => '1'), 3, 'data_konten');
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
 
@@ -27,8 +28,10 @@ class Main extends CI_Controller
 			$data['judul'] = "NOT FOUND";
 			$this->template->load('ptwp_template', 'main/404', $data);
 		}
-		$q = $this->basic->get_data_where(array('alias' => $konten), 'data_konten')->row_array();
+		// $q = $this->basic->get_data_where(array('alias' => $konten), 'data_konten')->row_array();
+		$q = $this->Model_main->get_data_konten($konten)->row_array();
 		if (!empty($q)) {
+			$this->Model_main->log_data_konten($q['id']);
 			$data['judul'] = $q['judul'];
 			$data['konten'] = $q;
 		} else {
@@ -42,7 +45,8 @@ class Main extends CI_Controller
 	public function berita_ptwp_pusat()
 	{
 		$data['judul'] = "Berita PTWP Pusat";
-		$data['berita_ptwp_pusat'] = $this->basic->get_data_where(array('cat_id' => '1'), 'data_konten');
+		$data['berita_ptwp_pusat'] = $this->Model_main->get_data_konten_list('1'); // KATEGORI 1
+		// $data['berita_ptwp_pusat'] = $this->basic->get_data_where(array('cat_id' => '1'), 'data_konten');
 		$this->template->load('ptwp_template', 'main/berita_ptwp_pusat', $data);
 	}
 

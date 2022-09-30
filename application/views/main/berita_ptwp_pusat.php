@@ -46,7 +46,7 @@
                                         <span class="tx-12 h6">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></span>
                                     </div><!-- card-body -->
                                     <div class="card-footer tx-13">
-                                        <span class="tx-color-03">xxx Dilihat</span>
+                                        <span class="tx-color-03"><?php echo $R['total_dilihat']; ?> Dilihat</span>
                                         <a class="btn btn-xs btn-primary" href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a>
                                     </div><!-- card-footer -->
                                 </div><!-- card -->
