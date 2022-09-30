@@ -606,10 +606,14 @@ function hitung_umur($tanggal_lahir)
 	$d = $today->diff($birthDate)->d;
 	return $y . " tahun " . $m . " bulan ";
 }
-function cdn_foto($foto, $size='120'){
-	$img = "http://abs.badilag.net/simkep/Resources/Images/Photo/" . trim($foto);
-	$cdn = "//images.weserv.nl/?url=".$img."&w=".$size;
+function cdn_foto($foto1 = null, $foto2 = null, $size = '120')
+{  // MANA YG ADA, FOTO PROFIL ATAU FOTO PEGAWAI
+	$img = 'https://dreamvilla.life/wp-content/uploads/2017/07/dummy-profile-pic.png';
+	if (!empty($foto1))
+		$img = "https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/" . trim($foto1);
+	if (!empty($foto2))
+		$img = "https://sikep.mahkamahagung.go.id/uploads/foto_formal/" . trim($foto2);
+	$cdn = "//images.weserv.nl/?url=" . $img . "&w=" . $size;
 	return $cdn;
-
 }
 

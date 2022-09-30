@@ -20,20 +20,20 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
-                                    <th scope="col">Alias</th>
                                     <th scope="col">Judul Konten / Page</th>
+                                    <th scope="col">Alias</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                $no = 1;
+                                $no = $list_konten->num_rows();
                                 foreach ($list_konten->result_array() as $R) {
                                     echo '<tr>';
                                     echo "<td>" . $no . "</td>";
-                                    echo "<td>" . $R['alias'] . "</td>";
                                     echo "<td align='left'>" . $R['judul'] . "</td>";
+                                    echo "<td>" . $R['alias'] . "</td>";
                                     if ($R['is_publish']) {
                                         echo '<td><span class="badge badge-success">Dipublikasikan</span></td>';
                                     } else {
@@ -45,7 +45,7 @@
                                         <a href="#" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></a></td>';
                                     echo "</div>";
                                     echo "</tr>";
-                                    $no++;
+                                    $no--;
                                 }
                                 ?>
                             </tbody>

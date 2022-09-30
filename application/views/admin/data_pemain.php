@@ -20,8 +20,12 @@
                             <thead class="thead-primary">
                                 <tr class="text-center">
                                     <th class="wd-20">No</th>
-                                    <th>Foto</th>
+                                    <!-- <th>Foto</th> -->
                                     <th>Nama</th>
+                                    <th>Nip</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Usia</th>
+                                    <th>Jabatan</th>
                                     <th>Satuan Kerja</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -32,13 +36,17 @@
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
-                                    if (!empty($R['foto_profil'])) {
-                                        echo "<td class='align-center'><img src='" . base_url('assets/profil/') . $R['foto_profil'] . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
-                                    } else {
-                                        echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
-                                    }
+                                    // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
+                                        // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
+                                    // } else {
+                                        // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                    // }
                                     echo "<td align='left'>" . $R['nama'] . "</td>";
-                                    echo "<td align='left'>" . $R['satker'] . "</td>";
+                                    echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
+                                    echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
+                                    echo "<td align='left'>" . $R['umur'] . "</td>";
+                                    echo "<td align='left'>" . $R['jabatan'] . "</td>";
+                                    echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
                                         <div class="btn-group">
                                         <a href="#" onClick="tambah_pemain(' . $R['id_pemain'] . ')" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>

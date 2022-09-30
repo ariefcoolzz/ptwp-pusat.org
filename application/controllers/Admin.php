@@ -48,7 +48,7 @@ class Admin extends CI_Controller
 	public function data_pemain()
 	{
 		$data['judul'] = "DATA MENU PEMAIN";
-		$data['list_pemain'] = $this->basic->get_data('data_pemain');
+		$data['list_pemain'] = $this->basic->get_data('view_pemain');
 		OB_START();
 		$this->load->view("admin/data_pemain", $data);
 		$konten_menu = ob_get_clean();
