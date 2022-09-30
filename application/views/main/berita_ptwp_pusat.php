@@ -42,11 +42,11 @@
                                     </div>
                                     <div class="card-body tx-13">
                                         <h5><a href="<?php echo base_url('main/page/') . $R['alias'] ?>"><?php echo $R['judul'] ?></a></h5>
-                                        <p class="mg-b-0 text-justify"><?php echo $intro ?> .... </p>
+                                        <p class="mg-b-0 text-justify"><?php echo $intro ?> ...</p>
                                         <span class="tx-12 h6">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></span>
                                     </div><!-- card-body -->
                                     <div class="card-footer tx-13">
-                                        <span class="tx-color-03"><?php echo $R['total_dilihat']; ?> Dilihat</span>
+                                        <span class="tx-color-03">Dilihat <?php echo $R['total_dilihat']; ?>x</span>
                                         <a class="btn btn-xs btn-primary" href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a>
                                     </div><!-- card-footer -->
                                 </div><!-- card -->
