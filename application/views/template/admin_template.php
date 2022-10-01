@@ -35,14 +35,14 @@ extract($_SESSION);
 
 <body>
     <aside class="aside aside-fixed">
-        <div class="aside-header">
+        <div class="aside-header" style='background-color:#64ff74;'>
             <a href="<?php echo base_url('admin') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
             <a href="" class="aside-menu-link">
                 <i data-feather="menu"></i>
                 <i data-feather="x"></i>
             </a>
         </div>
-        <div class="aside-body">
+        <div class="aside-body" style='background-color:#c6ffcc;'>
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
                     <a href="" class="avatar avatar-online"><img src="<?php echo cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']); ?>" class="rounded-circle" alt=""></a>
