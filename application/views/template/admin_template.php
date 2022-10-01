@@ -46,15 +46,16 @@ extract($_SESSION);
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
                     <?php echo "<a href='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal'], 200) . "' data-lightbox='$_SESSION[nama]' data-title='$_SESSION[nama]'><center><img src='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']) . "' class='avatar' style='width:70px;height:85px;'></center></a>"; ?>
-					<br>
-					<?php echo $nama; ?><br>
-					<?php echo level($level); ?><br>
+					
 					<div class="aside-alert-link">
                         <!-- <a href="" class="new" data-toggle="tooltip" title="You have 2 unread messages"><i data-feather="message-square"></i></a>
                         <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a> -->
-                        <a href="" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
+                        <a href="<?php echo base_url(); ?>logout" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
                     </div>
                 </div><!-- aside-loggedin -->
+				<b><?php echo $nama; ?></b>
+				<br>
+				<?php echo level($level); ?><br>
                 <button id='tes'>Tes Jquery on click</button>
 				<ul class="nav nav-aside">
                     <?php /*
