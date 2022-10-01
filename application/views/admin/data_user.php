@@ -26,6 +26,7 @@
                                     <th>Usia</th>
                                     <th>Jabatan</th>
                                     <th>Satuan Kerja</th>
+                                    <th>Level</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -48,6 +49,7 @@
 										echo "<td align='left'>" . $R['umur'] . "</td>";
 										echo "<td align='left'>" . $R['jabatan'] . "</td>";
 										echo "<td align='left'>" . $R['nama_satker'] . "</td>";
+										echo "<td align='left'>" . level($R['level']) . "</td>";
 										echo '<td>';
 										echo '<span data-id_user="'.$R['id_user'].'" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
 										echo '<span data-id_user="'.$R['id_user'].'" class="edit  btn btn-xs btn-outline-warning btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa fa-edit"></i></span>';
