@@ -100,381 +100,181 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="table-responsive">
-                    <table class="table table-borderless wd-100v">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-right">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
                                             <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-down">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">7</h6>
+                                        <h6 class="nav-link">6</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">4</h6>
+                                        <h6 class="nav-link">3</h6>
+                                        <h6 class="nav-link">5</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                        </div><!-- card-footer -->
+                    </div>
+                </div>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
                                             <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-up">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">7</h6>
+                                        <h6 class="nav-link">6</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">4</h6>
+                                        <h6 class="nav-link">3</h6>
+                                        <h6 class="nav-link">5</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                        </div><!-- card-footer -->
+                    </div>
+                </div>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
                                             <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-left">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">7</h6>
+                                        <h6 class="nav-link">6</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">4</h6>
+                                        <h6 class="nav-link">3</h6>
+                                        <h6 class="nav-link">5</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                        </div><!-- card-footer -->
+                    </div>
+                </div>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
                                             <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-right">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-down">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-up">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                                <td>
-                                    <div class="wd-400">
-                                        <div class="card" data-aos="fade-left">
-                                            <div class="card-header d-flex align-items-center justify-content-between">
-                                                <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                                                <div class="d-flex align-items-center tx-18">
-                                                    <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                                                </div>
-                                            </div>
-                                            <ul class="list-group list-group-flush tx-13">
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">6</h6>
-                                                            <h6 class="nav-link">7</h6>
-                                                            <h6 class="nav-link">6</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item d-flex">
-                                                    <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                                    <div class="pd-l-10">
-                                                        <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                                        <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                                    </div>
-                                                    <div class="mg-l-auto d-flex align-items-center">
-                                                        <nav class="nav nav-icon-only">
-                                                            <h6 class="nav-link">4</h6>
-                                                            <h6 class="nav-link">3</h6>
-                                                            <h6 class="nav-link">5</h6>
-                                                        </nav>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="card-footer text-center tx-13">
-                                                <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                                            </div><!-- card-footer -->
-                                        </div>
-                                    </div><!-- col -->
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">7</h6>
+                                        <h6 class="nav-link">6</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">4</h6>
+                                        <h6 class="nav-link">3</h6>
+                                        <h6 class="nav-link">5</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                        </div><!-- card-footer -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -646,3 +446,23 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(function() {
+        'use strict'
+
+        $('#popup_streaming').on('show.bs.modal', function(event) {
+
+            var animation = $(event.relatedTarget).data('animation');
+            $(this).addClass(animation);
+        })
+
+        // hide modal with effect
+        $('#popup_streaming').on('hidden.bs.modal', function(e) {
+            $(this).removeClass(function(index, className) {
+                return (className.match(/(^|\s)effect-\S+/g) || []).join(' ');
+            });
+        });
+
+    });
+</script>
