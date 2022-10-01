@@ -88,7 +88,7 @@ extract($_SESSION);
         </div>
     </aside>
 
-    <div class="content ht-100v pd-0">
+    <div class="content ht-100v pd-0"  style='background-color:#fff8e6;'>
         <div class="content-header">
             <div class="content-search">
                 <i data-feather="search"></i>
