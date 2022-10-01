@@ -28,7 +28,8 @@ class Admin extends CI_Controller
 		$data['judul'] = "DATA MENU KONTEN";
 		$data['cat_id'] = 0;
 		$where = array('cat_id' => 0);
-		$data['list_konten'] = $this->basic->get_data_where($where, 'data_konten');
+		$order_by = 'id DESC';
+		$data['list_konten'] = $this->basic->get_data_where($where, 'data_konten', $order_by);
 		OB_START();
 		$this->load->view("admin/data_konten", $data);
 		$konten_menu = ob_get_clean();
@@ -39,7 +40,8 @@ class Admin extends CI_Controller
 		$data['judul'] = "DATA MENU BERITA";
 		$data['cat_id'] = 1;
 		$where = array('cat_id' => 1);
-		$data['list_konten'] = $this->basic->get_data_where($where, 'data_konten');
+		$order_by = 'id DESC';
+		$data['list_konten'] = $this->basic->get_data_where($where, 'data_konten', $order_by);
 		OB_START();
 		$this->load->view("admin/data_konten", $data);
 		$konten_menu = ob_get_clean();

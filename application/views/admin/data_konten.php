@@ -20,6 +20,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Judul Konten / Page</th>
                                     <th scope="col">Alias</th>
                                     <th scope="col">Status</th>
@@ -32,6 +33,7 @@
                                 foreach ($list_konten->result_array() as $R) {
                                     echo '<tr>';
                                     echo "<td>" . $no . "</td>";
+                                    echo "<td align='center'>" . $R['id'] . "</td>";
                                     echo "<td align='left'>" . $R['judul'] . "</td>";
                                     echo "<td>" . $R['alias'] . "</td>";
                                     if ($R['is_publish']) {

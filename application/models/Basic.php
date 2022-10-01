@@ -57,20 +57,23 @@ class Basic extends CI_Model
 		}
 	}
 
-	function get_data($table)
+	function get_data($table, $order_by = NULL)
 	{
 		try {
 			$query = $this->db->get($table);
+			IF($order_by != NULL) $query = $this->db->order_by($order_by);
 			return $query;
 		} catch (Exception $e) {
 			return false;
 			//log_message('error', $e);
 		}
 	}
-	function get_data_where($whereconditon, $table)
+	function get_data_where($whereconditon, $table, $order_by = NULL)
 	{
 		$this->db->where($whereconditon);
+		IF($order_by != NULL) $this->db->order_by($order_by);
 		$query = $this->db->get($table);
+		// DIE($this->db->last_query());
 		return $query;
 	}
 	function get_data_where_limit($whereconditon, $limit, $table)
