@@ -189,7 +189,25 @@
           <div class="tx-center">
             <h4 id="judul_popup_streaming">SIARAN LANGSUNG</h4>
             <div class="modal-body" id="isi_popup_streaming">
-              <iframe src="https://www.youtube.com/embed/iSWM3o1AFkk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				............................................
+			</div>
+          </div>
+        </div><!-- modal-body -->
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
+  
+  <div class="modal2 fade" id="popup_streaming2" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered wd-sm-450" role="document">
+      <div class="modal-content">
+        <div class="modal-body pd-20 pd-sm-40">
+          <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <div class="tx-center">
+            <h4 id="judul_popup_streaming">SIARAN LANGSUNG</h4>
+            <div class="modal-body2" id="isi_popup_streaming2">
+              ............................................
             </div>
           </div>
         </div><!-- modal-body -->
