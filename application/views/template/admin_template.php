@@ -37,7 +37,7 @@ extract($_SESSION);
 
 <body>
     <aside class="aside aside-fixed">
-        <div class="aside-header">
+        <div class="aside-header" style='background-color:#64ff74;'>
             <a href="<?php echo base_url('admin') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
             <a href="" class="aside-menu-link">
                 <i data-feather="menu"></i>
@@ -75,20 +75,22 @@ extract($_SESSION);
                 <li class="nav-label pt-3">Pengurus</li>
                 <li class="nav-item"><a href="javascript:void(0);" menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
 
-                <li class="nav-label pt-3">Menu</li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                <li class="nav-label pt-3">Konten & Berita</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+
+                <li class="nav-label pt-3">Pemain & Tim</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
 
                 <li class="nav-label pt-3">Pertandingan</li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
             </ul>
         </div>
     </aside>
 
-    <div class="content ht-100v pd-0">
+    <div class="content ht-100v pd-0" style='background-color:#fff8e6;'>
         <div class="content-header">
             <div class="content-search">
                 <i data-feather="search"></i>
