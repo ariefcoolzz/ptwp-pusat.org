@@ -29,6 +29,8 @@ extract($_SESSION);
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.dashboard.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.gradient1.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.cool.css">
 
 
 </head>
@@ -42,7 +44,7 @@ extract($_SESSION);
                 <i data-feather="x"></i>
             </a>
         </div>
-        <div class="aside-body">
+        <div class="aside-body ps">
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
                     <a href="" class="avatar avatar-online"><img src="<?php echo cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']); ?>" class="rounded-circle" alt=""></a>
@@ -71,17 +73,17 @@ extract($_SESSION);
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
                 <li class="nav-label pt-3">Pengurus</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
 
                 <li class="nav-label pt-3">Menu</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
 
                 <li class="nav-label pt-3">Pertandingan</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0);" menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
             </ul>
         </div>
     </aside>

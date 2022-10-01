@@ -53,7 +53,7 @@
     </div>
 </div><!-- content -->
 
-<div class="content bg-gray-100">
+<div class="content">
     <div class="divider-text">
         <h4>Pengurus PTWP Pusat</h4>
     </div>
@@ -281,7 +281,7 @@
     </div>
 </div>
 
-<div class="content bg-gray-100 mg-0">
+<div class="content mg-0">
     <div class="divider-text">
         <h4>Berita Terbaru</h4>
     </div>

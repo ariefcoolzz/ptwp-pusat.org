@@ -27,6 +27,8 @@
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.landing.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.gradient1.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.cool.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
 
