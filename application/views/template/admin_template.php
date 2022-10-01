@@ -73,11 +73,11 @@ extract($_SESSION);
                 <li class="nav-label pt-3">Pengurus</li>
                 <li class="nav-item"><a style='cursor:pointer;' menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
 
-                <li class="nav-label pt-3">Menu</li>
+                <li class="nav-label pt-3">Konten & Berita</li>
                 <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
                 <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
 
-                <li class="nav-label pt-3">Pemain</li>
+                <li class="nav-label pt-3">Pemain & Tim</li>
 				<li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
 				<li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
 				
