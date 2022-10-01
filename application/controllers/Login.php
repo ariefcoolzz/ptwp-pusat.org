@@ -42,10 +42,11 @@ class Login extends CI_Controller
 			if ($q->num_rows() > 0) {
 				$query = $q->result();
 				$user = array(
-					'id' => $query[0]->id,
+					'id_user' => $query[0]->id_user,
 					'username' => $query[0]->username,
 					'nama' => $query[0]->nama,
-					'photo' => $query[0]->photo,
+					'FotoPegawai' => $query[0]->FotoPegawai,
+					'FotoFormal' => $query[0]->FotoFormal,
 					'level' => $query[0]->level,
 					'session_id'	=> md5(uniqid($sessid, TRUE)),
 					'ip_address'	=> $this->input->ip_address(),
@@ -55,7 +56,7 @@ class Login extends CI_Controller
 				// print_r($user);die;
 				$this->session->set_userdata($user); //Save ke Session
                         $sess = array(
-                        'id_user' => $query[0]->id,
+                        'id_user' => $query[0]->id_user,
                         'session_id'	=> md5(uniqid($sessid, TRUE)),
                         'ip_address'	=> $this->input->ip_address(),
                         'last_login'	=> date('Y-m-d H:i:s'),

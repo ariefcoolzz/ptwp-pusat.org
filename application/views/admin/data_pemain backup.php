@@ -3,10 +3,10 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data Pemain</li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <span id='tambah' class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Pemain Baru</span>
+        <a href="#" onClick="tambah_pemain(0)" id_pemain="0" class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Pemain Baru</a>
     </div>
 </div>
 <div class="row">
@@ -33,7 +33,6 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-								$list_pemain = $this->basic->get_data('view_pemain');
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
@@ -49,8 +48,10 @@
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
-                                        <span data-id_pemain="'.$R['id_pemain'].'" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
-                                    echo "</td>";
+                                        <div class="btn-group">
+                                        <a href="#" onClick="tambah_pemain(' . $R['id_pemain'] . ')" id_pemain="' . $R['id_pemain'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="#" onClick="hapus_pemain(' . $R['id_pemain'] . ')" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td>';
+                                    echo "</div>";
                                     echo "</tr>";
                                     $no++;
                                 }
@@ -74,7 +75,7 @@
         }
     });
 
-    $("#tambah").on('click', function(){
+    function tambah_pemain(id_pemain) {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -83,29 +84,29 @@
         //loader
         // skip();
         var form_data = new FormData();
+        form_data.append('id_pemain', id_pemain);
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/data_pemain_form",
+            url: "<?php echo base_url(); ?>admin/form_data_pemain",
             type: 'POST',
             cache: false,
             contentType: false,
             processData: false,
             data: form_data,
             dataType: 'json',
-            success: function(json) {
-                if (json.status !== true) {
+            success: function(html) {
+                if (html.status !== true) {
                     location.reload();
                 } else {
                     $("body").scrollTop('0px');
                     $("#konten").fadeOut(300);
-                    $("#konten").html(json.konten_menu);
+                    $("#konten").html(html.konten_menu);
                     $("#konten").fadeIn(300);
 
                 }
             }
         });
-    });
-    
-    $(".hapus").on('click', function(){
+    }
+    function hapus_pemain(id_pemain) {
          Swal.fire({
             title: 'Apakah kamu yakin?',
             text: "Data tidak bisa dikembalikan!",
@@ -118,7 +119,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
 				var form_data = new FormData();
-				form_data.append('id_pemain', $(this).data('id_pemain'));
+				form_data.append('id_pemain', id_pemain);
 				$.ajax({
 					url: "<?php echo base_url(); ?>admin/hapus_data_pemain",
 					type: 'POST',
@@ -129,12 +130,7 @@
 					dataType: 'json',
 					success: function(html) {
 						if (html.status !== true) {
-							Swal.fire({
-								icon: 'error',
-								title: 'Data Gagal Di Hapus',
-								showConfirmButton: false,
-								timer: 1000
-							});
+							location.reload();
 						} else {
 							Swal.fire({
 								icon: 'success',
@@ -160,6 +156,5 @@
 
             }
         });
-    });
-    
+    }
 </script>

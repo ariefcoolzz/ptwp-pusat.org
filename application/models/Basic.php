@@ -26,7 +26,7 @@ class Basic extends CI_Model
 	{
 		$whereCondition = $array = array('username' => $userName, 'password' => MD7($password));
 		$this->db->where($whereCondition);
-		$this->db->from('data_user');
+		$this->db->from('view_user');
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
 		return $query;
@@ -34,7 +34,7 @@ class Basic extends CI_Model
 	function update_log($data)
 	{
 		try {
-			$this->db->where('id = ' . $data['id_user']);
+			$this->db->where('id_user = ' . $data['id_user']);
 			$this->db->update('data_user', array('last_login' => date('Y-m-d H:i:s')));
 			$q = $this->db->replace('sys_user_online', $data);
 			return $q;
@@ -84,12 +84,14 @@ class Basic extends CI_Model
 	public function insert_data($tableName, $data)
 	{
 		$res = $this->db->insert($tableName, $data);
+		// DIE($this->db->last_query());
 		return $res;
 	}
 	public function update_data($whereconditon, $tableName, $data)
 	{
 		$this->db->where($whereconditon);
 		$res = $this->db->update($tableName, $data);
+		// DIE($this->db->last_query());
 		return $res;
 	}
 	public function delete_data($whereconditon, $tableName)

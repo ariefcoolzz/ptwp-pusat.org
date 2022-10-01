@@ -45,19 +45,23 @@ extract($_SESSION);
         <div class="aside-body">
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
-                    <a href="" class="avatar"><img src="<?php echo base_url() . $photo ?>" class="rounded-circle" alt=""></a>
-                    <div class="aside-alert-link">
+                    <?php echo "<a href='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal'], 200) . "' data-lightbox='$_SESSION[nama]' data-title='$_SESSION[nama]'><center><img src='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']) . "' class='avatar' style='width:70px;height:85px;'></center></a>"; ?>
+					<br>
+					<?php echo $nama; ?><br>
+					<?php echo level($level); ?><br>
+					<div class="aside-alert-link">
                         <!-- <a href="" class="new" data-toggle="tooltip" title="You have 2 unread messages"><i data-feather="message-square"></i></a>
                         <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a> -->
                         <a href="" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
                     </div>
                 </div><!-- aside-loggedin -->
-                <ul class="nav nav-aside">
+                <button id='tes'>Tes Jquery on click</button>
+				<ul class="nav nav-aside">
                     <?php /*
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
-                    <li class="nav-label pt-3">User</li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="user"></i> <span>Data User & Hak Akses</span></a></li>
+                    <li class="nav-label pt-3">Pengurus</li>
+                    <li class="nav-item"><a style='cursor:pointer;' menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
 					
                     <li class="nav-label pt-3">Menu</li>
                     <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>

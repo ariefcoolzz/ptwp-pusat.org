@@ -45,15 +45,91 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	public function data_pemain()
+	
+	public function data_user()
 	{
-		$data['judul'] = "DATA MENU PEMAIN";
-		$data['list_pemain'] = $this->basic->get_data('view_pemain');
 		OB_START();
-		$this->load->view("admin/data_pemain", $data);
+		$this->load->view("admin/data_user");
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	
+	public function data_user_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_user_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function data_user_hapus()
+	{
+		$where = array('id_user' => $_POST['id_user']);
+		$status = $this->basic->delete_data($where, 'data_user');
+		OB_START();
+		$this->load->view("admin/data_user");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	
+	public function data_user_simpan()
+	{
+		$where = array('id_user' => $_POST['id_user']);
+		$cek_user = $this->basic->get_data_where($where, 'data_user');
+		IF($cek_user->num_rows())
+			{
+				$where = array('id_user' => $_POST['id_user']);
+				$status = $this->basic->update_data($where, 'data_user', $_POST);
+			}
+		ELSE
+			{
+				$status = $this->basic->insert_data('data_user', $_POST);
+			}
+			
+		OB_START();
+		$this->load->view("admin/data_user");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+	
+	public function data_pemain()
+	{
+		$data['list_pemain'] = $this->basic->get_data('view_pemain');
+		OB_START();
+		$this->load->view("admin/data_pemain");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function data_pemain_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_pemain_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function data_pemain_simpan()
+	{
+		$where = array('id_pemain' => $_POST['id_pemain']);
+		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
+		IF($cek_pemain->num_rows())
+			{
+				$where = array('id_pemain' => $_POST['id_pemain']);
+				$status = $this->basic->update_data($where, 'data_pemain', $_POST);
+			}
+		ELSE
+			{
+				$status = $this->basic->insert_data('data_pemain', $_POST);
+			}
+			
+		OB_START();
+		$this->load->view("admin/data_pemain");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+	
 	public function data_tim()
 	{
 		$data['judul'] = "DATA TIM PEMAIN";
@@ -103,28 +179,6 @@ class Admin extends CI_Controller
 		}
 		OB_START();
 		$this->load->view("admin/form_data_konten", $data);
-		$konten_menu = ob_get_clean();
-		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	}
-	public function form_data_pemain()
-	{
-
-		$id_pemain = $this->input->post('id_pemain');
-
-		$data['id_pemain'] = $id_pemain;
-		$data['nama'] = '';
-		$data['satker'] = '';
-		$data['foto_profil'] = '';
-		$data['title'] = "FORM TAMBAH PEMAIN";
-		if (!empty($id_pemain)) {
-			$q = $this->basic->get_data_where(array('id_pemain' => $id_pemain), 'data_pemain')->row_array();
-			$data = $q;
-			$data['title'] = "UBAH PEMAIN";
-			// echo "<pre>";
-			// print_r($data);die;
-		}
-		OB_START();
-		$this->load->view("admin/form_data_pemain", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -234,57 +288,7 @@ class Admin extends CI_Controller
 			redirect('admin/data_berita');
 		}
 	}
-	public function form_data_pemain_simpan()
-	{
-		// echo "<pre>";
-		// print_r($_FILES);die;
-		//FILE UPLOAD
-		// $path_parts = pathinfo($_FILES["file_upload"]["name"]);
-		// $extension = $path_parts['extension'];
-		// echo $extension; die;
-		$id_pemain = $this->input->post('id_pemain');
-		$data['nama'] = $this->input->post('nama');
-		$data['satker'] = $this->input->post('satker');
-		$nama_file = '';
-		if ($id_pemain > 0) {
-			$data['date_updated'] = date('Y-m-d H:i:s');
-			$where = array('id_pemain' => $id_pemain);
-			$res = $this->basic->update_data($where, 'data_pemain', $data);
-		} else {
-			$data['user_created'] = $this->session->userdata('id');
-			$data['date_created'] = date('Y-m-d H:i:s');
-			$res = $this->basic->insert_data('data_pemain', $data);
-			$id_pemain = $this->db->insert_id();
-		}
-		if ($res) {
-			if (!empty($_FILES['file_upload']['name'])) {
-				$path_parts = pathinfo($_FILES["file_upload"]["name"]);
-				$extension = $path_parts['extension'];
-				$nama_file = $id_pemain . '.' . $extension;
-				$config = array(
-					'upload_path'			=> './assets/profil',
-					'allowed_types'			=> 'gif|jpg|png|jpeg',
-					'max_size'				=> 5000,
-					'overwrite'				=> true,
-					'file_name'				=> $nama_file
-				);
-				$this->load->library('upload', $config);
-				if (!$this->upload->do_upload('file_upload')) {
-					$msg = $this->upload->display_errors();
-					$this->session->set_flashdata('msg', '<div class="alert alert-danger">' . $msg . '</div>');
-					redirect('admin/data_pemain');
-				} else {
-					$update['foto_profil'] = $nama_file;
-					$where = array('id_pemain' => $id_pemain);
-					$res = $this->basic->update_data($where, 'data_pemain', $update);
-				}
-			}
-			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.</div>');
-		} else {
-			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.</div>');
-		}
-		redirect('admin/data_pemain');
-	}
+	
 	public function hapus_data_konten()
 	{
 		$id_konten = $this->input->post('id_konten');
