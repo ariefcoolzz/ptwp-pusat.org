@@ -45,36 +45,45 @@ extract($_SESSION);
         <div class="aside-body">
             <div class="aside-loggedin">
                 <div class="d-flex align-items-center justify-content-start">
-                    <?php echo "<a href='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal'], 200) . "' data-lightbox='$_SESSION[nama]' data-title='$_SESSION[nama]'><center><img src='" . cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']) . "' class='avatar' style='width:70px;height:85px;'></center></a>"; ?>
-					
-					<div class="aside-alert-link">
-                        <!-- <a href="" class="new" data-toggle="tooltip" title="You have 2 unread messages"><i data-feather="message-square"></i></a>
-                        <a href="" class="new" data-toggle="tooltip" title="You have 4 new notifications"><i data-feather="bell"></i></a> -->
-                        <a href="<?php echo base_url(); ?>logout" data-toggle="tooltip" title="Sign out"><i data-feather="log-out"></i></a>
+                    <a href="" class="avatar avatar-online"><img src="<?php echo cdn_foto($_SESSION['FotoPegawai'], $_SESSION['FotoFormal']); ?>" class="rounded-circle" alt=""></a>
+                    <div class="aside-alert-link">
+                        <a href="<?php echo base_url(); ?>logout" data-toggle="tooltip" title="Keluar"><i data-feather="log-out"></i></a>
                     </div>
-                </div><!-- aside-loggedin -->
-				<b><?php echo $nama; ?></b>
-				<br>
-				<?php echo level($level); ?><br>
-                <button id='tes'>Tes Jquery on click</button>
-				<ul class="nav nav-aside">
-                    <?php /*
+                </div>
+                <div class="aside-loggedin-user">
+                    <a href="#loggedinMenu" class="d-flex align-items-center justify-content-between mg-b-2" data-toggle="collapse">
+                        <h6 class="tx-semibold mg-b-0"><?php echo $nama; ?></h6>
+                        <i data-feather="chevron-down"></i>
+                    </a>
+                    <p class="tx-color-03 tx-12 mg-b-0"><?php echo level($level); ?></p>
+                </div>
+                <div class="collapse" id="loggedinMenu">
+                    <ul class="nav nav-aside mg-b-0">
+                        <li class="nav-item"><a href="" class="nav-link"><i data-feather="user"></i> <span>Profil</span></a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><i data-feather="edit"></i> <span>Ubah Profil</span></a></li>
+                        <li class="nav-item"><a href="" class="nav-link"><i data-feather="lock"></i> <span>Ubah Password</span></a></li>
+                        <li class="nav-item"><a href="<?php echo base_url(); ?>logout" class="nav-link"><i data-feather="log-out"></i> <span>Keluar</span></a></li>
+                    </ul>
+                </div>
+            </div><!-- aside-loggedin -->
+            <ul class="nav nav-aside">
+                <?php /*
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
-                    <li class="nav-label pt-3">Pengurus</li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
-					
-                    <li class="nav-label pt-3">Menu</li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                <li class="nav-label pt-3">Pengurus</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
 
-                    <li class="nav-label pt-3">Pertandingan</li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
-                </ul>
-            </div>
+                <li class="nav-label pt-3">Menu</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+
+                <li class="nav-label pt-3">Pertandingan</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+            </ul>
+        </div>
     </aside>
 
     <div class="content ht-100v pd-0">
