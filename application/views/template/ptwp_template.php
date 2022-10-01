@@ -48,7 +48,7 @@
 
 </head>
 
-<body class="home-body">
+<body class="page-profile">
   <header class="navbar navbar-header navbar-header-fixed">
     <a href="<?php echo base_url('') ?>" id="mainMenuOpen" class="burger-menu"><i data-feather="menu"></i></a>
     <div class="navbar-brand">
@@ -190,7 +190,7 @@
             <h4 id="judul_popup_streaming">...:JUDUL:...</h4>
             <div class="modal-body" id="isi_popup_streaming">
 				............................................
-			</div>
+            </div>
           </div>
         </div><!-- modal-body -->
       </div><!-- modal-content -->

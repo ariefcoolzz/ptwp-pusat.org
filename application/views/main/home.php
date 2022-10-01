@@ -1,4 +1,4 @@
-<div class="content-fixed ht-60p">
+<div class="content-fixed">
     <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#slideshow" data-slide-to="0" class="active"></li>
@@ -356,14 +356,15 @@
     </div>
 </div>
 
-<div class="content content-body">
+<div class="content mg-0 mg-b-50 bd-t bg-indigo">
     <div class="row">
-        <div class="col-sm">
-            <div class="card bd-0">
+        <div class="col-sm mt-2">
+            <div class="card bd-0 ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0">Hubungi Kami</h6>
+                        <h6 class="mg-b-0 tx-uppercase">Hubungi Kami</h6>
                     </div>
+                    <hr>
                 </div><!-- card-header -->
                 <div class="card-body">
                     <ul class="activity tx-13">
@@ -396,12 +397,13 @@
             </div><!-- card -->
         </div>
 
-        <div class="col-sm">
-            <div class="card bd-0">
+        <div class="col-sm mt-2">
+            <div class="card bd-0 ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0">Hubungi Kami</h6>
+                        <h6 class="mg-b-0 tx-uppercase">Alamat</h6>
                     </div>
+                    <hr>
                 </div><!-- card-header -->
                 <div class="card-body pd-20">
                     <ul class="activity tx-13">
@@ -420,12 +422,13 @@
             </div><!-- card -->
         </div>
 
-        <div class="col-sm">
-            <div class="card bd-0">
+        <div class="col-sm mt-2">
+            <div class="card bd-0 ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
                     <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0">Pengunjung</h6>
+                        <h6 class="mg-b-0 tx-uppercase">Pengunjung</h6>
                     </div>
+                    <hr>
                 </div><!-- card-header -->
                 <div class="card-body pd-20">
                     <ul class="activity tx-13">
@@ -439,7 +442,6 @@
                                 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script>
                             </div><!-- activity-body -->
                         </li><!-- activity-item -->
-
                     </ul><!-- activity -->
                 </div><!-- card-body -->
             </div><!-- card -->
