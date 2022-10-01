@@ -180,14 +180,14 @@
 
 
   <div class="modal fade" id="popup_streaming" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered wd-sm-450" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-body pd-20 pd-sm-40">
           <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </a>
           <div class="tx-center">
-            <h4 id="judul_popup_streaming">SIARAN LANGSUNG</h4>
+            <h4 id="judul_popup_streaming">...:JUDUL:...</h4>
             <div class="modal-body" id="isi_popup_streaming">
 				............................................
 			</div>
@@ -196,27 +196,14 @@
       </div><!-- modal-content -->
     </div><!-- modal-dialog -->
   </div><!-- modal -->
-  
-  <div class="modal2 fade" id="popup_streaming2" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered wd-sm-450" role="document">
-      <div class="modal-content">
-        <div class="modal-body pd-20 pd-sm-40">
-          <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </a>
-          <div class="tx-center">
-            <h4 id="judul_popup_streaming">SIARAN LANGSUNG</h4>
-            <div class="modal-body2" id="isi_popup_streaming2">
-              ............................................
-            </div>
-          </div>
-        </div><!-- modal-body -->
-      </div><!-- modal-content -->
-    </div><!-- modal-dialog -->
-  </div><!-- modal -->
 
 
   <script>
+	$(".close,.fade").on("click", function(){
+		$("#judul_popup_streaming").html("");
+		$("#isi_popup_streaming").html("");
+	});
+	
     AOS.init();
 
     $('[data-toggle="tooltip"]').tooltip();

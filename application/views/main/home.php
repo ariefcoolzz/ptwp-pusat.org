@@ -140,7 +140,7 @@
                             </li>
                         </ul>
                         <div class="card-footer text-center tx-13">
-                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                            <span data-link="https://youtube.com/embed/yub_Kjyeqsg" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
                         </div><!-- card-footer -->
                     </div>
                 </div>
@@ -448,6 +448,13 @@
 </div>
 
 <script>
+$(".tonton").on("click", function() {
+	var link = $(this).data('link');
+	$("#judul_popup_streaming").html("SIARAN LANGSUNG - Ganda Putra<br>Pertandingan xxxx melawan yyyy");
+	$("#isi_popup_streaming").html("<iframe src='"+link+"?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
+	$("#popup_streaming").modal('show');
+});
+
     $(function() {
         'use strict'
 
