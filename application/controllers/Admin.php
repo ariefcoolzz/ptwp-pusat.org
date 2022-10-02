@@ -267,6 +267,7 @@ class Admin extends CI_Controller
 		$data['alias'] = $this->input->post('alias');
 		$data['img'] = $this->input->post('img');
 		$data['isi'] = $this->input->post('isi_konten');
+		$data['is_publish'] = $this->input->post('is_publish');
 
 		// echo "<pre>";
 		// print_r($_POST);die;

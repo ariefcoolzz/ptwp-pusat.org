@@ -22,12 +22,20 @@ if ($id) $txt_simpan = "UPDATE";
                     <?php echo $this->session->flashdata('msg'); ?>
 
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-10">
                             <div class="form-group">
                                 <label class="control-label">Judul Konten :</label>
                                 <input type="text" name='judul' class="form-control" value="<?php echo $judul ?>">
                             </div>
-
+                        </div>
+						 <div class="col-lg-2">
+                            <div class="form-group">
+                                <label class="control-label">Publish:</label>
+								<select name='is_publish' class='form-control'>
+									<option value='1' <?php IF(ISSET($is_publish) AND $is_publish == 1) echo "selected"; ?>>Publish</option>
+									<option value='0' <?php IF(ISSET($is_publish) AND $is_publish == 0) echo "selected"; ?>>Not Publish</option>
+								</select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
