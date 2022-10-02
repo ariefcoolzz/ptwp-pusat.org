@@ -43,8 +43,8 @@
                                     }
                                     echo '<td>
                                         <div class="btn-group">
-                                        <a href="#" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></a>
-                                        <a href="#" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></a></td>';
+                                        <span style="cursor:pointer" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></span>
+                                        <span style="cursor:pointer" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></span></td>';
                                     echo "</div>";
                                     echo "</tr>";
                                     $no--;

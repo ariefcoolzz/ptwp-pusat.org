@@ -17,12 +17,7 @@ class Admin extends CI_Controller
 		$data['judul'] = "Halaman Admin";
 		$this->template->load('admin_template', 'admin/home', $data);
 	}
-	public function menu()
-	{
-		$menu = $this->input->post('menu');
-		// if (!isset($menu)) $this->template->load('admin_template', 'admin/404', $data);
-		redirect('admin/' . $menu);
-	}
+
 	public function data_konten()
 	{
 		$data['judul'] = "DATA MENU KONTEN";
@@ -583,4 +578,54 @@ class Admin extends CI_Controller
 			}
 		}
 	}
+	
+	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	public function score_manage()
+	{
+		OB_START();
+		$this->load->view("admin/score_manage");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function score_manage_form()
+	{
+		OB_START();
+		$this->load->view("admin/score_manage_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function score_manage_hapus()
+	{
+		$where = array('id_user' => $_POST['id_user']);
+		$status = $this->basic->delete_data($where, 'score_manage');
+		OB_START();
+		$this->load->view("admin/score_manage");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	
+	public function score_manage_simpan()
+	{
+		$where = array('id_user' => $_POST['id_user']);
+		$cek_user = $this->basic->get_data_where($where, 'score_manage');
+		IF($cek_user->num_rows())
+			{
+				$where = array('id_user' => $_POST['id_user']);
+				$status = $this->basic->update_data($where, 'score_manage', $_POST);
+			}
+		ELSE
+			{
+				$status = $this->basic->insert_data('score_manage', $_POST);
+			}
+			
+		OB_START();
+		$this->load->view("admin/score_manage");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+	
+	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 }

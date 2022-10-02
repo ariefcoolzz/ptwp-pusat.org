@@ -60,8 +60,8 @@ class Basic extends CI_Model
 	function get_data($table, $order_by = NULL)
 	{
 		try {
+			IF($order_by != NULL) $this->db->order_by($order_by);
 			$query = $this->db->get($table);
-			IF($order_by != NULL) $query = $this->db->order_by($order_by);
 			return $query;
 		} catch (Exception $e) {
 			return false;

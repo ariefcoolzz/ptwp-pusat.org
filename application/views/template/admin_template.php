@@ -72,20 +72,27 @@ extract($_SESSION);
                 <?php /*
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
-                <li class="nav-label pt-3">Pengurus</li>
-                <li class="nav-item"><a href="javascript:void(0);" menu="data_user" class="menu nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
+                <li class="nav-label pt-3">Data Master</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_event" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Event</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_wasit" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Wasit</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_lapangan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Lapangan</span></a></li>
 
                 <li class="nav-label pt-3">Konten & Berita</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_konten" class="menu nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_berita" class="menu nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_konten" class="menu_admin nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
 
                 <li class="nav-label pt-3">Pemain & Tim</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_pemain" class="menu nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_tim" class="menu nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
 
                 <li class="nav-label pt-3">Pertandingan</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_babak_penyisihan" class="menu nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu="data_turnamen" class="menu nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                
+				<li class="nav-label pt-3">Score</li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
+                <li class="nav-item"><a style='cursor:pointer;' menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
             </ul>
         </div>
     </aside>
@@ -174,7 +181,7 @@ extract($_SESSION);
         $('.nav-item.active').removeClass('active');
         $('a[href="' + location.pathname + location.search + '"]').closest('li.nav-item').addClass('active');
     });
-    $(".menu").on("click", function() {
+    $(".menu_admin").on("click", function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -183,9 +190,9 @@ extract($_SESSION);
         //loader
         // skip();
         var form_data = new FormData();
-        form_data.append('menu', $(this).attr('menu'));
+        // form_data.append('xxx', 'xxx');
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/menu",
+            url: "<?php echo base_url(); ?>admin/"+$(this).attr('menu_admin'),
             type: 'POST',
             cache: false,
             contentType: false,
