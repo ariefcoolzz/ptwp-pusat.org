@@ -4,9 +4,22 @@ class Model_main extends CI_Model
 	function register_simpan($R)
 	{
 		// PRINT_R($R);DIE();
-		$status = $this->db->insert('data_user', $R);
-		// DIE($this->db->last_query());
-		return $status;
+		UNSET($R['password_confirm']);
+		
+		IF(!ISSET($R['id_user']))
+			{
+				$R['aktif'] = 1;
+				$status = $this->db->insert('data_user', $R);
+				// DIE($this->db->last_query());
+				return $status;
+			}
+		ELSE
+			{
+				$this->db->where("id_user", $R['id_user']);
+				$status = $this->db->update('data_user', $R);
+				// DIE($this->db->last_query());
+				return $status;
+			}
 	}
 	function log_data_konten($id)
 	{

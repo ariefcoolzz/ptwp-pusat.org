@@ -24,7 +24,6 @@ class Main extends CI_Controller
 		$status = FALSE;
 		IF($_POST['password'] === $_POST['password_confirm'])
 			{
-				UNSET($_POST['password_confirm']);
 				$status = $this->Model_main->register_simpan($_POST); 
 			}
 		echo JSON_ENCODE(array("status" => $status));
