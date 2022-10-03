@@ -9,12 +9,14 @@ class Model_main extends CI_Model
 		IF(!ISSET($R['id_user']))
 			{
 				$R['aktif'] = 1;
+				$R['date_created'] = DATE('Y-m-d H:i:s');
 				$status = $this->db->insert('data_user', $R);
 				// DIE($this->db->last_query());
 				return $status;
 			}
 		ELSE
 			{
+				$R['date_updated'] = DATE('Y-m-d H:i:s');
 				$this->db->where("id_user", $R['id_user']);
 				$status = $this->db->update('data_user', $R);
 				// DIE($this->db->last_query());

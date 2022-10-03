@@ -98,16 +98,17 @@
             data: form_data,
             dataType: 'json',
             success: function(json) {
+                // alert(json.status);
                 if (json.status !== true) {
                     alert("Maaf, Pendaftaran Gagal");
                 } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Simpan Data Berhasil',
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-                    location.href = "<?php echo base_url(); ?>";
+                    // Swal.fire({
+                    // icon: 'success',
+                    // title: 'Simpan Data Berhasil',
+                    // showConfirmButton: false,
+                    // timer: 1000
+                    // });
+                    location.replace("<?php echo base_url(); ?>");
                 }
             }
         });

@@ -72,17 +72,6 @@ function jenis_kelamin($str)
 	else return "Perempuan";
 }
 
-function level($str)
-{
-	if ($str == '') return "";
-	else {
-		$array['1'] = "Super Administrator";
-		$array['2'] = "Pengurus Pusat";
-		$array['3'] = "Pengurus Daerah";
-		return $array[$str];
-	}
-}
-
 function flag($str)
 {
 	if ($str == '') return "";
