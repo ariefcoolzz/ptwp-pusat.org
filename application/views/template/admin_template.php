@@ -72,16 +72,20 @@ extract($_SESSION);
                 <?php /*
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
+				<?php IF(IN_ARRAY($_SESSION['id_panitia'],ARRAY(0,1))) { ?>
                 <li class="nav-label pt-3">Data Master</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_event" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Event</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_wasit" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Wasit</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_lapangan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Lapangan</span></a></li>
-
+				<?php } ?>
+				
+				<?php IF(IN_ARRAY($_SESSION['id_panitia'],ARRAY(0,1,2))) { ?>
                 <li class="nav-label pt-3">Konten & Berita</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_konten" class="menu_admin nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
-
+				
+				
                 <li class="nav-label pt-3">Pemain & Tim</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
@@ -89,10 +93,13 @@ extract($_SESSION);
                 <li class="nav-label pt-3">Pertandingan</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
-
+				<?php } ?>
+				
+				<?php IF(IN_ARRAY($_SESSION['id_panitia'],ARRAY(0,1,2,3))) { ?>
                 <li class="nav-label pt-3">Score</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
+				<?php } ?>
             </ul>
         </div>
     </aside>
