@@ -1,5 +1,5 @@
 <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
-<form id="form_register">
+<form id="form_register" method="post">
 nip (max 18 digit): <input type='text' placeholder='198701262006041002' maxlength='18' id='nip' name='nip'>
 <br>
 nama: <input type='text' placeholder='Dika Andrian' id='nama' name='nama'>
