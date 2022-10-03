@@ -19,7 +19,6 @@
   <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
-  <link href="<?php echo base_url(); ?>assets/css/aos.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
@@ -30,6 +29,7 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.gradient1.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.cool.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="<?php echo base_url(); ?>assets/css/aos.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" /> -->
 
   <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
@@ -167,7 +167,7 @@
   <a href="https://api.whatsapp.com/send?phone=6281281419338&amp;text=Halo%20Admin,%20saya%20mau%20tanya%20tentang%20PTWP%20Pusat" class="float" target="_blank">
     <i class="fa fa-whatsapp my-float"></i>
   </a>
-  <footer class="footer fixed-bottom">
+  <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
       <span>Design By <a href="#">TIM GERCEP GANIS</a></span>
@@ -192,7 +192,7 @@
           <div class="tx-center">
             <h4 id="judul_popup_streaming">...:JUDUL:...</h4>
             <div class="modal-body" id="isi_popup_streaming">
-				............................................
+              ............................................
             </div>
           </div>
         </div><!-- modal-body -->
@@ -202,11 +202,11 @@
 
 
   <script>
-	$(".close,.fade").on("click", function(){
-		$("#judul_popup_streaming").html("");
-		$("#isi_popup_streaming").html("");
-	});
-	
+    $(".close,.fade").on("click", function() {
+      $("#judul_popup_streaming").html("");
+      $("#isi_popup_streaming").html("");
+    });
+
     AOS.init();
 
     $('[data-toggle="tooltip"]').tooltip();

@@ -16,20 +16,20 @@ class Main extends CI_Controller
 
 	public function register()
 	{
-		$this->load->view("main/register");
+		$data['judul'] = "Halaman Register";
+		$this->template->load('ptwp_template', 'main/register', $data);
 	}
-	
+
 	public function register_simpan()
 	{
 		$status = FALSE;
-		IF($_POST['password'] === $_POST['password_confirm'])
-			{
-				$status = $this->Model_main->register_simpan($_POST); 
-			}
+		if ($_POST['password'] === $_POST['password_confirm']) {
+			$status = $this->Model_main->register_simpan($_POST);
+		}
 		echo JSON_ENCODE(array("status" => $status));
 	}
-	
-	
+
+
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
