@@ -6,7 +6,7 @@
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
                     <div class="pd-t-20 wd-100p lh-1">
                         <div class="form-group">
-                            <label>Nip <small class="tx-danger">(Maksimal 18 Digit)</small></label>
+                            <label>Nip <small class="tx-danger">(Harus 18 Digit)</small></label>
                             <input type="text" class="form-control" placeholder='198701262006041002' maxlength='18' id='nip' name='nip'>
                         </div>
                         <div class="form-group">
@@ -22,13 +22,14 @@
                         <div class="form-group">
                             <label>Panitia <small class="tx-danger">(admin berhak merubah jabatan panitia anda sewaktu waktu)</small></label>
                             <select id='id_panitia' name='id_panitia' class="form-control">
+								<option></option>
                                 <?php
                                 $rekap = $this->basic->get_data('master_panitia');
                                 $no = 0;
                                 if ($rekap->num_rows()) {
                                     foreach ($rekap->result_array() as $R) {
                                         $no++;
-                                        echo "<option value='$R[id_panitia]'>$R[panitia]</option>";
+                                        IF($R['id_panitia'] > 0) echo "<option value='$R[id_panitia]'>$R[panitia]</option>";
                                     }
                                 }
                                 ?>
@@ -37,7 +38,8 @@
                         <div class="form-group">
                             <label>Satuan Kerja</label>
                             <select id='id_satker_parent' name='id_satker_parent' class="form-control">
-                                <?php
+                                <option></option>
+								<?php
                                 $rekap = $this->basic->get_data_where('LevelSatker = 2', 'tmst_satker', 'UrutanTingkatBanding ASC');
                                 $no = 0;
                                 if ($rekap->num_rows()) {
