@@ -24,7 +24,7 @@ class Basic extends CI_Model
 	}
 	public function processLogin($userName = NULL, $password)
 	{
-		$whereCondition = $array = array('username' => $userName, 'password' => MD7($password));
+		$whereCondition = $array = array('username' => $userName, 'password' => ($password));
 		$this->db->where($whereCondition);
 		$this->db->from('view_user');
 		$query = $this->db->get();
