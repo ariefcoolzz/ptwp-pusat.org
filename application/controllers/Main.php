@@ -14,6 +14,22 @@ class Main extends CI_Controller
 		// $this->basic->squrity();
 	}
 
+	public function register()
+	{
+		$this->load->view("main/register");
+	}
+	
+	public function register_simpan()
+	{
+		$status = FALSE;
+		IF($_POST['password'] === $_POST['password_confirm'])
+			{
+				$status = $this->Model_main->register_simpan($_POST); 
+			}
+		echo JSON_ENCODE(array("status" => $status));
+	}
+	
+	
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";

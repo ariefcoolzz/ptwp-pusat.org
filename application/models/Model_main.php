@@ -1,6 +1,13 @@
 <?php
 class Model_main extends CI_Model
 {
+	function register_simpan($R)
+	{
+		PRINT_R($R);DIE();
+		$status = $this->db->insert($tableName, $data);
+		// DIE($this->db->last_query());
+		return $status;
+	}
 	function log_data_konten($id)
 	{
 		$data['id_konten'] 		= $id;

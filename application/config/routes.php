@@ -5,3 +5,6 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['logout'] = 'login/logout';
+
+$route['register'] = 'main/register';
+$route['register_simpan'] = 'main/register_simpan';
