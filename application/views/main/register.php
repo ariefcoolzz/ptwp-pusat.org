@@ -39,6 +39,7 @@ Satker:
 			}
 	?>
 </select>
+<br>
 
 Username: <input type='text' id='username' name='username'><br>
 Password: <input type='password' id='password' name='password'><br>
@@ -49,7 +50,7 @@ Confirm Password: <input type='password' id='password_confirm' name='password_co
 
 <script>
 	$("#form_register").submit(function(e) {
-		alert();skip();
+		// alert();skip();
         e.preventDefault();
         // var text = $("#btn-simpan").html();
         // $("#btn-simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');

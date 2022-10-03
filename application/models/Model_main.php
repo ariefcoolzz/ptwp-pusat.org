@@ -3,8 +3,8 @@ class Model_main extends CI_Model
 {
 	function register_simpan($R)
 	{
-		PRINT_R($R);DIE();
-		$status = $this->db->insert($tableName, $data);
+		// PRINT_R($R);DIE();
+		$status = $this->db->insert('data_user', $R);
 		// DIE($this->db->last_query());
 		return $status;
 	}
