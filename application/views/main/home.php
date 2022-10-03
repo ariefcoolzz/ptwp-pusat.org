@@ -27,7 +27,7 @@
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
                 </div>
             </div>
-            <div class="carousel-item">
+            <!-- <div class="carousel-item">
                 <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
@@ -40,7 +40,7 @@
                     <h1 class="text-white">KETUA MAHKAMAH AGUNG RI</h1>
                     <p class="tx-14">Melakukan Service Pertama Untuk Lapangan Tenis Baru.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
         <a class="carousel-control-prev" href="#slideshow" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"><i data-feather="chevron-left"></i></span>
@@ -53,38 +53,29 @@
     </div>
 </div><!-- content -->
 
-<div class="content">
-    <div class="divider-text">
-        <h4>Pengurus PTWP Pusat</h4>
-    </div>
-    <div class="row">
-        <div class="col-md" data-aos="fade-up">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
-            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+<div class="content mg-0">
+    <div class="row no-gutters">
+        <div class="col-lg-3 col-sm tx-center">
+            <img src="<?php echo ('assets/img/register-tennis.png'); ?>" alt="thumbnails" data-aos="zoom-in" data-aos-duration="1000">
         </div>
-        <div class="col-md" data-aos="fade-down">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
-            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
-        </div>
-        <div class="col-md" data-aos="fade-up">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
-            <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
-        </div>
-        <div class="col-md" data-aos="fade-down">
-            <figure class="img-caption pos-relative mg-b-0">
-                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
-            </figure>
-            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
-            <h6 class="text-center">Ketua PTWP Pusat Periode 2021 s.d. 2024</h6>
+        <div class="col-lg-9 col-sm my-auto">
+            <div data-aos="zoom-in" data-aos-duration="3000">
+                <div class="d-md-flex align-items-center justify-content-between">
+                    <div class="media align-sm-items-center">
+                        <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-50 wd-lg-70">
+                        <div class="media-body mg-l-15">
+                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-uppercase tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA <span class="tx-normal tx-color-03">(PTWP XIX)</span></h6>
+                            <div class="d-flex flex-column">
+                                <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
+                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Batas Akhir Sampai 5 November 2022)</h6>
+                            </div>
+                        </div><!-- media-body -->
+                    </div><!-- media -->
+                    <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
+                        <a href="#modalregister" data-toggle="modal" role="button" class="btn btn-lg btn-primary btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="edit" class="mg-r-5"></i> DAFTAR PTWP</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -356,6 +347,42 @@
     </div>
 </div>
 
+<div class="content bd-t">
+    <div class="divider-text">
+        <h4>Pengurus PTWP Pusat</h4>
+    </div>
+    <div class="row">
+        <div class="col-md" data-aos="fade-up">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_1.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Prof. Dr. H. Muhammad Syarifuddin, S.H., M.H.</h4>
+            <h6 class="text-center">KETUA MA RI/PEMBINA PTWP PUSAT</h6>
+        </div>
+        <div class="col-md" data-aos="fade-down">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_2.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Prof. Dr. H. M. Hatta Ali, S.H., M.H.</h4>
+            <h6 class="text-center">Mantan Ketua Mahkamah Agung RI / PEMBINA PTWP PUSAT Periode 2012-2020</h6>
+        </div>
+        <div class="col-md" data-aos="fade-up">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_3.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Syamsul Ma'arif, S.H., L.L.M, Ph.D.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2015 s.d 2021</h6>
+        </div>
+        <div class="col-md" data-aos="fade-down">
+            <figure class="img-caption pos-relative mg-b-0">
+                <img src="<?php echo base_url() ?>assets/img/pembina_4.png" class="rounded w-100" alt="Responsive image">
+            </figure>
+            <h4 class="text-center">Dr. Prim Haryadi, S.H., M.H.</h4>
+            <h6 class="text-center">Ketua PTWP Pusat Periode 2021 s.d. 2024</h6>
+        </div>
+    </div>
+</div>
+
 <div class="content mg-0 mg-b-50 bd-t bg-indigo">
     <div class="row">
         <div class="col-sm mt-2">
@@ -437,7 +464,7 @@
                                 <i data-feather="trending-up"></i>
                             </div>
                             <div class="activity-body">
-                                <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a>
+                                <!-- <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a> -->
                                 <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
                                 <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script>
                             </div><!-- activity-body -->
@@ -449,13 +476,50 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalregister" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mx-wd-sm-650" role="document">
+        <div class="modal-content bd-0 bg-transparent">
+            <div class="modal-body pd-0">
+                <a href="" role="button" class="close pos-absolute t-15 r-15 z-index-10" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+                <div class="ht-100p d-flex flex-column justify-content-center pd-20 pd-sm-30 pd-md-40 bg-white">
+                    <div>
+                        <div class="tx-center">
+                            <h4>Pendaftaran Peserta</h4>
+                            <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-50 wd-lg-70">
+                        </div>
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input type="text" class="form-control" placeholder="Nama Lengkap">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label class="mg-b-0-f">Password</label>
+                            <input type="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                        <!-- <div class="form-group">
+                            By clicking Create an account below, you agree to our terms of service and privacy statement.
+                        </div> -->
+                        <button class="btn btn-primary btn-block">Daftar</button>
+                        <div class="tx-13 mg-t-20 tx-center">Sudah Punya Akun? <a href="<?php echo base_url('admin') ?>">Login</a></div>
+                    </div>
+                </div><!-- col -->
+            </div><!-- row -->
+        </div><!-- modal-body -->
+    </div><!-- modal-content -->
+</div><!-- modal-dialog -->
+</div><!-- modal -->
 <script>
-$(".tonton").on("click", function() {
-	var link = $(this).data('link');
-	$("#judul_popup_streaming").html("SIARAN LANGSUNG - Ganda Putra<br>Pertandingan xxxx melawan yyyy");
-	$("#isi_popup_streaming").html("<iframe src='"+link+"?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
-	$("#popup_streaming").modal('show');
-});
+    $(".tonton").on("click", function() {
+        var link = $(this).data('link');
+        $("#judul_popup_streaming").html("SIARAN LANGSUNG - Ganda Putra<br>Pertandingan xxxx melawan yyyy");
+        $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
+        $("#popup_streaming").modal('show');
+    });
 
     $(function() {
         'use strict'

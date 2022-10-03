@@ -20,12 +20,12 @@ extract($_SESSION);
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-    <!-- <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css">
     <!-- DashForge CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.dashboard.css">
@@ -37,7 +37,7 @@ extract($_SESSION);
 
 <body>
     <aside class="aside aside-fixed">
-        <div class="aside-header" style='background-color:#64ff74;'>
+        <div class="aside-header">
             <a href="<?php echo base_url('admin') ?>" class="aside-logo"><img class="ht-35 w-35" src="<?php echo base_url('assets/img/favicon.png'); ?>"> PTWP</a>
             <a href="" class="aside-menu-link">
                 <i data-feather="menu"></i>
@@ -73,31 +73,31 @@ extract($_SESSION);
 					<li class="nav-label">Dashboard</li>
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
                 <li class="nav-label pt-3">Data Master</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_event" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Event</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_wasit" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Wasit</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_lapangan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Lapangan</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_event" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Event</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_wasit" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Wasit</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_lapangan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Lapangan</span></a></li>
 
                 <li class="nav-label pt-3">Konten & Berita</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_konten" class="menu_admin nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_konten" class="menu_admin nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
 
                 <li class="nav-label pt-3">Pemain & Tim</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
 
                 <li class="nav-label pt-3">Pertandingan</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
-                
-				<li class="nav-label pt-3">Score</li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
-                <li class="nav-item"><a style='cursor:pointer;' menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+
+                <li class="nav-label pt-3">Score</li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
             </ul>
         </div>
     </aside>
 
-    <div class="content ht-100v pd-0" style='background-color:#fff8e6;'>
+    <div class="content ht-100v pd-0">
         <div class="content-header">
             <div class="content-search">
                 <i data-feather="search"></i>
@@ -192,7 +192,7 @@ extract($_SESSION);
         var form_data = new FormData();
         // form_data.append('xxx', 'xxx');
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/"+$(this).attr('menu_admin'),
+            url: "<?php echo base_url(); ?>admin/" + $(this).attr('menu_admin'),
             type: 'POST',
             cache: false,
             contentType: false,
