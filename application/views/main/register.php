@@ -8,7 +8,7 @@
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
                     <div class="pd-t-20 wd-100p lh-1">
                         <div class="form-group">
-                            <label>Nip <small class="tx-danger">(Harus 18 Digit)</small></label>
+                            <label>Nip <small class="tx-danger">(Jika Non Pegawai Nip Tidak Usah Diisi, Jika Pegawai Nip Harus 18 Digit)</small></label>
                             <input type="text" class="form-control" placeholder='198701262006041002' maxlength='18' id='nip' name='nip'>
                         </div>
                         <div class="form-group">
@@ -157,7 +157,7 @@
                     // showConfirmButton: false,
                     // timer: 1000
                     // });
-                    location.replace("<?php echo base_url(); ?>");
+                    location.replace("<?php echo base_url(); ?>login");
                 }
             }
         });

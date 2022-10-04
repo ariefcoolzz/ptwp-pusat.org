@@ -41,37 +41,46 @@ class Login extends CI_Controller
 		else {
 			if ($q->num_rows() > 0) {
 				$query = $q->result();
-				$user = array(
-					'id_user' => $query[0]->id_user,
-					'username' => $query[0]->username,
-					'nama' => $query[0]->nama,
-					'FotoPegawai' => $query[0]->FotoPegawai,
-					'FotoFormal' => $query[0]->FotoFormal,
-					'id_panitia' => $query[0]->id_panitia,
-					'panitia' => $query[0]->panitia,
-					'session_id'	=> md5(uniqid($sessid, TRUE)),
-					'ip_address'	=> $this->input->ip_address(),
-					'user_agent'	=> substr($this->input->user_agent(), 0, 120),
-					'last_activity'	=> time(),
-				);
-				// print_r($user);die;
-				$this->session->set_userdata($user); //Save ke Session
-                        $sess = array(
-                        'id_user' => $query[0]->id_user,
-                        'session_id'	=> md5(uniqid($sessid, TRUE)),
-                        'ip_address'	=> $this->input->ip_address(),
-                        'last_login'	=> date('Y-m-d H:i:s'),
-                        'last_activity'	=> date('Y-m-d H:i:s'),
-                        'user_agent'	=> substr($this->input->user_agent(), 0, 120),
-                        'uri'	=> base_url().'login',
-                        'current_page'	=> base_url().'login',
-                        
-                        );
-				$this->basic->update_log($sess);
-				// $level = $this->session->userdata('level');
-				redirect('/admin');
-
-			} else {
+				IF(!($query[0]->aktif > 0))
+					{
+						$this->form_validation->set_message('validateUser', 'Harap Menunggu, User Anda Belum Di Setujui Oleh Pengurus Pusat');
+						$this->session->set_flashdata('error_msg', '<div class="alert alert-danger text-center">Harap Menunggu, User Anda Belum Di Setujui Oleh Pengurus Pusat</div>');
+						$this->template->load('ptwp_template', 'admin/login_v', $data);
+					}
+				ELSE
+					{
+						$user = array(
+							'id_user' => $query[0]->id_user,
+							'username' => $query[0]->username,
+							'nama' => $query[0]->nama,
+							'FotoPegawai' => $query[0]->FotoPegawai,
+							'FotoFormal' => $query[0]->FotoFormal,
+							'id_panitia' => $query[0]->id_panitia,
+							'panitia' => $query[0]->panitia,
+							'session_id'	=> md5(uniqid($sessid, TRUE)),
+							'ip_address'	=> $this->input->ip_address(),
+							'user_agent'	=> substr($this->input->user_agent(), 0, 120),
+							'last_activity'	=> time(),
+						);
+						// print_r($user);die;
+						$this->session->set_userdata($user); //Save ke Session
+								$sess = array(
+								'id_user' => $query[0]->id_user,
+								'session_id'	=> md5(uniqid($sessid, TRUE)),
+								'ip_address'	=> $this->input->ip_address(),
+								'last_login'	=> date('Y-m-d H:i:s'),
+								'last_activity'	=> date('Y-m-d H:i:s'),
+								'user_agent'	=> substr($this->input->user_agent(), 0, 120),
+								'uri'	=> base_url().'login',
+								'current_page'	=> base_url().'login',
+								
+								);
+						$this->basic->update_log($sess);
+						// $level = $this->session->userdata('level');
+						redirect('/admin');
+					}
+			} 
+			else {
 				$this->form_validation->set_message('validateUser', 'Username atau password salah');
 				$this->session->set_flashdata('error_msg', '<div class="alert alert-danger text-center">Password salah</div>');
 				$this->template->load('ptwp_template', 'admin/login_v', $data);
