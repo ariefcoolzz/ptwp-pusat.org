@@ -14,6 +14,18 @@ class Main extends CI_Controller
 		// $this->basic->squrity();
 	}
 
+	public function register_get_pegawai()
+	{
+		// DIE($_POST['nip']);
+		$data = $this->Model_main->register_get_pegawai($_POST['nip']);
+		IF($data->num_rows())
+			{
+				$R = $data->row_array();
+				echo JSON_ENCODE(array("status" => $status, "nama" => $R['nama'], "no_wa" => $R['NomorHandphone']));
+			}
+	}
+
+	
 	public function register()
 	{
 		$data['judul'] = "Halaman Register";
