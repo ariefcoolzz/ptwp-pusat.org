@@ -63,6 +63,7 @@ if (isset($_POST['id_pemain'])) {
         placeholder: 'Minimal 4 Karakter',
         templateResult: formatState,
         templateSelection: formatState,
+        allowClear: true,
         ajax: { //bawaan nya > Kirim data method $_GET['q'];
             delay: 250, // wait 250 milliseconds before triggering the request
             url: "<?php echo base_url(); ?>admin/get_data_id_nama",
