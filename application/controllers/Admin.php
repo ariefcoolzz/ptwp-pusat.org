@@ -150,11 +150,10 @@ class Admin extends CI_Controller
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
-		$id_event = $this->input->post('id_event');
+		$data['id_event'] = $id_event = $this->input->post('id_event');
 		$event 	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
-		OB_START();
-		$this->load->view("admin/data_pemain_" . $event['jenis_pertandingan']);
-		$konten_menu = ob_get_clean();
+
+		$konten_menu = $this->load->view("admin/data_pemain_" . $event['jenis_pertandingan'], $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 	
@@ -179,6 +178,7 @@ class Admin extends CI_Controller
 			}
 		ELSE
 			{
+			$_POST['id_kontingen'] 	= $_SESSION['id_satker_parent'];
 				$status = $this->basic->insert_data('data_pemain', $_POST);
 			}
 			
