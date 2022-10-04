@@ -198,17 +198,21 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	
 	public function data_event_simpan()
 	{
-		$where = array('id_event' => $_POST['id_event']);
-		$cek_event = $this->basic->get_data_where($where, 'data_event');
-		if ($cek_event->num_rows()) {
-			$where = array('id_event' => $_POST['id_event']);
-			$status = $this->basic->update_data($where, 'data_event', $_POST);
-		} else {
-			$status = $this->basic->insert_data('data_event', $_POST);
-		}
-
+		// PRINT_R($_POST);DIE();
+		$status = FALSE;
+		IF(ISSET($_POST['id_event']))
+			{
+				$where = array('id_event' => $_POST['id_event']);
+				$status = $this->basic->update_data($where, 'data_event', $_POST);
+			}
+		ELSE
+			{
+				$status = $this->basic->insert_data('data_event', $_POST);
+			}
+		
 		OB_START();
 		$this->load->view("admin/data_event");
 		$konten_menu = ob_get_clean();
