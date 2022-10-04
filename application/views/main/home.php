@@ -131,7 +131,7 @@
                             </li>
                         </ul>
                         <div class="card-footer text-center tx-13">
-                            <span data-link="https://youtube.com/embed/yub_Kjyeqsg" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
+                            <span data-link="https://www.youtube.com/embed/r4oZV5cEKu8" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
                         </div><!-- card-footer -->
                     </div>
                 </div>
