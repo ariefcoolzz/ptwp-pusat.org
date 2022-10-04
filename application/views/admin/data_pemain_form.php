@@ -57,6 +57,7 @@ if (ISSET($_POST['id_pemain'])) {
 </div>
 <script>
 	$(".select_nama").select2({
+		templateResult: formatState,
 		ajax: { //bawaan nya > Kirim data method $_GET['q'];
 			delay: 250, // wait 250 milliseconds before triggering the request
 			url: "<?php echo base_url(); ?>admin/get_data_id_nama",
@@ -64,6 +65,12 @@ if (ISSET($_POST['id_pemain'])) {
 			// Additional AJAX parameters go here; see the end of this chapter for the full code of this example
 		}
 	});
+	
+	function formatState (state) {
+		if (!state.id) { return state.text; }
+		var $state = $('' + state.text + '');
+		return $state;
+	}
 	
     $("#simpan").on('click', function(){
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
