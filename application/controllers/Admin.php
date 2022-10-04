@@ -153,11 +153,13 @@ class Admin extends CI_Controller
 	
 	public function data_pemain_simpan()
 	{
-		$where = array('id_pemain' => $_POST['id_pemain']);
+		// PRINT_R($_POST);DIE();
+		IF($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1; ELSE $_POST['is_dharmayukti'] = 0;
+		$where = array('id_pemain' => $_POST['id_pemain'],'is_dharmayukti' => $_POST['is_dharmayukti']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
 		IF($cek_pemain->num_rows())
 			{
-				$where = array('id_pemain' => $_POST['id_pemain']);
+				$where = array('id_pemain' => $_POST['id_pemain'],'is_dharmayukti' => $_POST['is_dharmayukti']);
 				$status = $this->basic->update_data($where, 'data_pemain', $_POST);
 			}
 		ELSE

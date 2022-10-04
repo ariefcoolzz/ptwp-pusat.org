@@ -73,10 +73,9 @@ if (isset($_POST['id_pemain'])) {
     }
 
     $("#simpan").on('click', function() {
-		
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
-        form_data.append('is_dharmayukti', $("#is_dharmayukti").val());
+        form_data.append('is_dharmayukti', $("#is_dharmayukti").is(":checked"));
         form_data.append('id_pemain', $("#id_pemain").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",
