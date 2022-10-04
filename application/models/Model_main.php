@@ -4,7 +4,9 @@ class Model_main extends CI_Model
 	function register_get_pegawai($nip)
 	{
 		$this->db->select("A.nama");
-		$this->db->from('view_pemain AS A');
+		$this->db->select("A.NomorHandphone");
+		$this->db->select("A.id_satker_parent");
+		$this->db->from('data_pegawai_all AS A');
 		$this->db->where('A.nip', $nip);
 		$query = $this->db->get();
 		// DIE($this->db->last_query());

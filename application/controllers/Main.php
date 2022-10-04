@@ -18,10 +18,11 @@ class Main extends CI_Controller
 	{
 		// DIE($_POST['nip']);
 		$data = $this->Model_main->register_get_pegawai($_POST['nip']);
+		// echo ($data->num_rows());
 		IF($data->num_rows())
 			{
 				$R = $data->row_array();
-				echo JSON_ENCODE(array("status" => $status, "nama" => $R['nama'], "no_wa" => $R['NomorHandphone']));
+				echo JSON_ENCODE(array("nama" => $R['nama'], "no_wa" => $R['NomorHandphone'], "id_satker_parent" => $R['id_satker_parent']));
 			}
 	}
 

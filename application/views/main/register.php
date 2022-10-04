@@ -40,7 +40,7 @@
                             <select id='id_satker_parent' name='id_satker_parent' class="form-control">
                                 <option></option>
                                 <?php
-                                $rekap = $this->basic->get_data_where('LevelSatker = 2', 'tmst_satker', 'UrutanTingkatBanding ASC');
+                                $rekap = $this->basic->get_data_where("(IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'", 'tmst_satker', 'UrutanTingkatBanding ASC');
                                 $no = 0;
                                 if ($rekap->num_rows()) {
                                     foreach ($rekap->result_array() as $R) {
@@ -85,12 +85,21 @@
 </div><!-- content -->
 
 <script>
+	$("#nip").on("keyup", function() {
+		register_get_pegawai($(this).val());
+	});
+	
 	$("#nip").on("change", function() {
+		register_get_pegawai($(this).val());
+	});
+	
+	function register_get_pegawai(nip)
+	{
 		// alert($(this).val().length);
-		if($(this).val().length == '18')
+		if(nip.length == '18')
 			{
 				var form_data = new FormData();
-				form_data.append('nip', $(this).val());
+				form_data.append('nip', nip);
 				$.ajax({
 					url: "<?php echo base_url(); ?>register_get_pegawai",
 					type: 'POST',
@@ -100,12 +109,16 @@
 					data: form_data,
 					dataType: 'json',
 					success: function(json) {
-						$("#nama").val("ddd");
-						$("#no_wa").val("eee");
+						$("#nama").val(json.nama);
+						$("#nama").attr("readonly", "readonly");
+						$("#no_wa").val(json.no_wa);
+						$("#no_wa").attr("readonly", "readonly");
+						$("#id_satker_parent").val(json.id_satker_parent);
+						$("#id_satker_parent").attr("readonly", "readonly");
 					}
 				});
 			}
-	});
+	}
 	
     $("#form_register").submit(function(e) {
         // alert();skip();
