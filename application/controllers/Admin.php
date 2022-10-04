@@ -50,6 +50,11 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function data_user_tabel()
+	{
+		$konten_menu = $this->load->view("admin/data_user_tabel", "", TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	
 	public function data_user_form()
 	{

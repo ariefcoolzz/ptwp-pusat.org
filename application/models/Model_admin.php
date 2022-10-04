@@ -196,4 +196,18 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+
+	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function get_data_user($data)
+	{
+		$id_panitia = $this->input->post('id_panitia');
+		$this->db->from('view_user AS A');
+		if ($data['id_panitia']) $this->db->where('A.id_panitia', $data['id_panitia']);
+		if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 }

@@ -36,14 +36,7 @@ if (ISSET($_POST['id_user'])) {
                                 <label class="control-label">Password :</label>
                                 <input id='password' class='form-control' value="<?php IF(ISSET($R)) echo $R['password']; ?>">
                             </div>
-							<div class="form-group">
-                                <label class="control-label">Level :</label>
-                                <select class='form-control' id='level'>
-									<option value='1' <?php IF(ISSET($R) AND $R['level'] == 1) echo "selected"; ?>><?php echo level(1); ?></option>
-									<option value='2' <?php IF(ISSET($R) AND $R['level'] == 2) echo "selected"; ?>><?php echo level(2); ?></option>
-									<option value='3' <?php IF(ISSET($R) AND $R['level'] == 3) echo "selected"; ?>><?php echo level(3); ?></option>
-								</select>
-							</div>
+							
                             <div id='biodata'></div>
                         </div>
                     </div>
