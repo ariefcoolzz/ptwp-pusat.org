@@ -74,7 +74,7 @@ extract($_SESSION);
                     <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
 				<?php IF(IN_ARRAY($_SESSION['id_panitia'],ARRAY(0,1))) { ?>
                 <li class="nav-label pt-3">Data Master</li>
-                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User Pengurus</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User (Panitia)</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_event" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Event</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_wasit" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Wasit</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_lapangan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Lapangan</span></a></li>
