@@ -24,9 +24,22 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function get_data_id_nama_dharmayukti()
+	{
+		if (isset($_GET['q']) and STRLEN($_GET['q']) >= 4) {
+			$keyword = $_GET['q'];
+			$data = $this->Model_admin->model_get_data_id_nama_dharmayukti($keyword);
+			// PRINT_R($data->result_array());DIE();
+			$hasil = array("results" => $data->result_array());
+			// PRINT_R($hasil);DIE();
+			echo JSON_ENCODE($hasil);
+		}
+	}
+
 	public function index()
 	{
 		$data['judul'] = "Halaman Admin";
+		$data['list_event'] = $this->basic->get_data('data_event');
 		$this->template->load('admin_template', 'admin/home', $data);
 	}
 
@@ -205,9 +218,11 @@ class Admin extends CI_Controller
 
 	public function data_pemain()
 	{
-		$data['list_pemain'] = $this->basic->get_data('view_pemain');
+		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
+		$id_event = $this->input->post('id_event');
+		$event 	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
 		OB_START();
-		$this->load->view("admin/data_pemain");
+		$this->load->view("admin/data_pemain_" . $event['jenis_pertandingan']);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -222,10 +237,13 @@ class Admin extends CI_Controller
 
 	public function data_pemain_simpan()
 	{
-		$where = array('id_pemain' => $_POST['id_pemain']);
+		// PRINT_R($_POST);DIE();
+		if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
+		else $_POST['is_dharmayukti'] = 0;
+		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
 		if ($cek_pemain->num_rows()) {
-			$where = array('id_pemain' => $_POST['id_pemain']);
+			$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
 			$status = $this->basic->update_data($where, 'data_pemain', $_POST);
 		} else {
 			$status = $this->basic->insert_data('data_pemain', $_POST);

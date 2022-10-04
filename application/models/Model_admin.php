@@ -16,6 +16,22 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
+	function model_get_data_id_nama_dharmayukti($keyword = NULL)
+	{
+		$this->db->select("A.id_pegawai AS id");
+		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
+		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/xxx.jpg&w=200'>\",B.NamaAnggotaKeluarga,' Istri dari ', A.nama,' (Dharmayukti)</div>') AS text");
+		$this->db->from("data_pegawai_all AS A");
+		$this->db->join("tmst_keluarga AS B", "A.id_pegawai = B.IdPegawai AND B.JenisHubunganKeluarga = '9'", "LEFT");
+		$this->db->where("(B.NamaAnggotaKeluarga LIKE '%$keyword%')");
+		$this->db->where("(A.id_satker = '$_SESSION[id_satker_parent]' OR  A.id_satker_parent = '$_SESSION[id_satker_parent]')");
+		$this->db->limit("100");
+		$query = $this->db->get();
+		// echo($this->db->last_query());
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
 	function data_tim($id_kategori = false)
 	{
 		$this->db->select("A.*, C.kategori");
