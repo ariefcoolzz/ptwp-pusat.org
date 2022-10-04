@@ -27,7 +27,20 @@ if (ISSET($_POST['id_pemain'])) {
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
-                                <input id='id_pemain' class='form-control' value="<?php IF(ISSET($R)) echo $R['id_pemain']; ?>">
+								
+								<select name='id_pemain' id='id_pemain' class='form-control select_nama'>
+									<?php
+									if (isset($R)) {
+										$data = $this->m_master->model_data_pegawai($R['id_pegawai']);
+										if ($data->num_rows()) {
+											foreach ($data->result_array() as $S) {
+												echo "<option value='$S[id_pegawai]' selected>$S[nip] > $S[nama_gelar]</option>";
+											}
+										}
+									}
+									?>
+								</select>
+								<small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
                             <div id='biodata'></div>
                         </div>
@@ -43,7 +56,21 @@ if (ISSET($_POST['id_pemain'])) {
     </div>
 </div>
 <script>
-
+	$(".select_nama").select2({
+		templateResult: formatState,
+		ajax: { //bawaan nya > Kirim data method $_GET['q'];
+			delay: 250, // wait 250 milliseconds before triggering the request
+			url: "<?php echo base_url(); ?>admin/get_data_id_nama",
+			dataType: 'json'
+			// Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+		}
+	});
+	
+	function formatState (state) {
+		if (!state.id) { return state.text; }
+		var $state = $('' + state.text + '');
+		return $state;
+	}
 	
     $("#simpan").on('click', function(){
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');

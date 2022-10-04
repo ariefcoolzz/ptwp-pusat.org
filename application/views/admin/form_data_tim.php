@@ -129,5 +129,6 @@ if ($id_tim) $txt_simpan = "UPDATE";
         var valueSelected = this.value;
         get_tim();
     });
+	
     // tinyMCE.EditorManager.execCommand('mceAddEditor',true, '.mymce'); 
 </script>

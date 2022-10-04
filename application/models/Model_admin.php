@@ -1,6 +1,20 @@
 <?php
 class Model_admin extends CI_Model
 {
+	function model_get_data_id_nama($keyword = NULL)
+	{
+		$this->db->select("A.id_pegawai AS id");
+		$this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='wd-40' src='https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"'>\",A.nama,' > ',A.nip,'</span>') AS text");
+		$this->db->from("data_pegawai_all AS A");
+		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
+		$this->db->where("(A.id_satker = '$_SESSION[id_satker_parent]' OR  A.id_satker_parent = '$_SESSION[id_satker_parent]')");
+		$this->db->limit("100");
+		$query = $this->db->get();
+		// echo($this->db->last_query());
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	
 	function data_tim($id_kategori = false)
 	{
 		$this->db->select("A.*, C.kategori");

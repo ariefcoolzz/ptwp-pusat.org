@@ -84,13 +84,14 @@ extract($_SESSION);
                 <li class="nav-label pt-3">Konten & Berita</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_konten" class="menu_admin nav-link"><i data-feather="shopping-bag"></i> <span>Data Konten</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
+				<?php } ?>
 				
-				
+				<?php IF(IN_ARRAY($_SESSION['id_panitia'],ARRAY(0,1,2,3))) { ?>
                 <li class="nav-label pt-3">Pemain & Tim</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
-
-                <li class="nav-label pt-3">Pertandingan</li>
+				
+				<li class="nav-label pt-3">Pertandingan</li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
 				<?php } ?>

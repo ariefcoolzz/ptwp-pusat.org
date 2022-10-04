@@ -12,6 +12,18 @@ class Admin extends CI_Controller
 		$this->basic->squrity();
 	}
 
+	public function get_data_id_nama()
+	{
+		if (isset($_GET['q']) and STRLEN($_GET['q']) >= 4) {
+			$keyword = $_GET['q'];
+			$data = $this->Model_admin->model_get_data_id_nama($keyword);
+			// PRINT_R($data->result_array());DIE();
+			$hasil = array("results" => $data->result_array());
+			// PRINT_R($hasil);DIE();
+			echo JSON_ENCODE($hasil);
+		}
+	}
+	
 	public function index()
 	{
 		$data['judul'] = "Halaman Admin";
