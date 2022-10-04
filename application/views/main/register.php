@@ -22,24 +22,24 @@
                         <div class="form-group">
                             <label>Panitia <small class="tx-danger">(admin berhak merubah jabatan panitia anda sewaktu waktu)</small></label>
                             <select id='id_panitia' name='id_panitia' class="form-control">
-								<option></option>
+                                <option></option>
                                 <?php
                                 $rekap = $this->basic->get_data('master_panitia');
                                 $no = 0;
                                 if ($rekap->num_rows()) {
                                     foreach ($rekap->result_array() as $R) {
                                         $no++;
-                                        IF($R['id_panitia'] > 0) echo "<option value='$R[id_panitia]'>$R[panitia]</option>";
+                                        if ($R['id_panitia'] > 0) echo "<option value='$R[id_panitia]'>$R[panitia]</option>";
                                     }
                                 }
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Satuan Kerja</label>
+                            <label>Pengurus Daerah</label>
                             <select id='id_satker_parent' name='id_satker_parent' class="form-control">
                                 <option></option>
-								<?php
+                                <?php
                                 $rekap = $this->basic->get_data_where('LevelSatker = 2', 'tmst_satker', 'UrutanTingkatBanding ASC');
                                 $no = 0;
                                 if ($rekap->num_rows()) {
