@@ -1,4 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
+
+
 <div class="content content-fixed content-auth">
     <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
@@ -78,6 +80,16 @@
             <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
                 <div class="mx-lg-wd-500 mx-xl-wd-550">
                     <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid" alt="">
+					<?php
+					$rekap = $this->basic->get_data('view_user');
+					$no = 0;
+					if ($rekap->num_rows()) {
+						foreach ($rekap->result_array() as $R) {
+							$no++;
+							IF($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
+						}
+					}
+					?>
                 </div>
             </div><!-- media-body -->
         </div><!-- media -->
