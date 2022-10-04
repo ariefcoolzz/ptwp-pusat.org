@@ -1,6 +1,16 @@
 <?php
 class Model_main extends CI_Model
 {
+	function register_get_pegawai($nip)
+	{
+		$this->db->select("A.nama");
+		$this->db->from('view_pemain AS A');
+		$this->db->where('A.nip', $nip);
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	
 	function register_simpan($R)
 	{
 		// PRINT_R($R);DIE();
@@ -8,7 +18,7 @@ class Model_main extends CI_Model
 		
 		IF(!ISSET($R['id_user']))
 			{
-				$R['aktif'] = 1;
+				$R['aktif'] = 0;
 				$R['date_created'] = DATE('Y-m-d H:i:s');
 				$status = $this->db->insert('data_user', $R);
 				// DIE($this->db->last_query());
@@ -49,6 +59,7 @@ class Model_main extends CI_Model
 		$this->db->select("(SELECT COUNT(*) FROM data_statistik_konten WHERE id_konten = A.id) as total_dilihat");
 		$this->db->from('data_konten AS A');
 		$this->db->where('A.cat_id', $cat_id);
+		$this->db->order_by('A.date_created DESC');
 		if ($limit) $this->db->limit($limit);
 		$query = $this->db->get();
 		// die($this->db->last_query());
