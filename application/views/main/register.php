@@ -85,6 +85,28 @@
 </div><!-- content -->
 
 <script>
+	$("#nip").on("change", function() {
+		// alert($(this).val().length);
+		if($(this).val().length == '18')
+			{
+				var form_data = new FormData();
+				form_data.append('nip', $(this).val());
+				$.ajax({
+					url: "<?php echo base_url(); ?>register_get_pegawai",
+					type: 'POST',
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: form_data,
+					dataType: 'json',
+					success: function(json) {
+						$("#nama").val("ddd");
+						$("#no_wa").val("eee");
+					}
+				});
+			}
+	});
+	
     $("#form_register").submit(function(e) {
         // alert();skip();
         e.preventDefault();
