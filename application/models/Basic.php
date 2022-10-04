@@ -94,7 +94,7 @@ class Basic extends CI_Model
 	{
 		$this->db->where($whereconditon);
 		$res = $this->db->update($tableName, $data);
-		// DIE($this->db->last_query());
+		DIE($this->db->last_query());
 		return $res;
 	}
 	public function delete_data($whereconditon, $tableName)

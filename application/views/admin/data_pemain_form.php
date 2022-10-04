@@ -30,18 +30,9 @@ if (isset($_POST['id_pemain'])) {
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <input type='checkbox' id='is_dharmayukti'> Dharmayukti<br>
                                 <label class="control-label">Nama :</label>
-                                <select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
-                                    <?php
-                                    if (isset($R)) {
-                                        $data = $this->m_master->model_data_pegawai($R['id_pegawai']);
-                                        if ($data->num_rows()) {
-                                            foreach ($data->result_array() as $S) {
-                                                echo "<option value='$S[id_pegawai]' selected>$S[nip] > $S[nama_gelar]</option>";
-                                            }
-                                        }
-                                    }
-                                    ?>
+								<select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
                                 </select>
                                 <small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
@@ -73,6 +64,7 @@ if (isset($_POST['id_pemain'])) {
     });
 
     function formatState(state) {
+		
         if (!state.id) {
             return state.text;
         }
@@ -83,6 +75,7 @@ if (isset($_POST['id_pemain'])) {
     $("#simpan").on('click', function() {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
+        form_data.append('is_dharmayukti', $("#is_dharmayukti").is(":checked"));
         form_data.append('id_pemain', $("#id_pemain").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",
