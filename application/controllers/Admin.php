@@ -63,6 +63,33 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+
+	public function data_user_aktivasi()
+	{
+		$id_user 		= $this->input->post('id_user');
+		$aktif			= $this->input->post('aktif');
+		$nomor			= $this->input->post('nomor');
+		$where 	= array('id_user' => $id_user);
+		$update = array('aktif' => $aktif);
+		$res = $this->basic->update_data($where, 'data_user', $update);
+		if ($res) {
+			OB_START();
+			if ($aktif) {
+				echo '<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '" checked>
+					<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-success">Aktif</span></label>
+				</div>';
+			} else {
+				echo '<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '">
+					<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-danger">Belum Aktif</span></label>
+				</div>';
+			}
+
+			$konten_menu = ob_get_clean();
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		}
+	}
 	
 	public function data_user_hapus()
 	{
