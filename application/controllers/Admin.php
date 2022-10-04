@@ -139,8 +139,9 @@ class Admin extends CI_Controller
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
 		$id_event = $this->input->post('id_event');
+		$event 	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
 		OB_START();
-		$this->load->view("admin/data_pemain_" . $id_event);
+		$this->load->view("admin/data_pemain_" . $event['jenis_pertandingan']);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
