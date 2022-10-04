@@ -30,8 +30,9 @@ if (isset($_POST['id_pemain'])) {
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
+                                <input type='checkbox' id='is_dharmayukti'> Dharmayukti<br>
                                 <label class="control-label">Nama :</label>
-                                <select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
+								<select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
                                 </select>
                                 <small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
@@ -72,8 +73,10 @@ if (isset($_POST['id_pemain'])) {
     }
 
     $("#simpan").on('click', function() {
+		
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
+        form_data.append('is_dharmayukti', $("#is_dharmayukti").val());
         form_data.append('id_pemain', $("#id_pemain").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",
