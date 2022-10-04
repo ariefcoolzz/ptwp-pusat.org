@@ -459,26 +459,54 @@
                     </div>
                 </div><!-- card-header -->
                 <div class="card-body pd-20">
-                    <ul class="activity tx-13">
-                        <li class="activity-item">
+                    <div class="activity-body">
+                        <div class="tx-center tx-rubik">
+                            <h1 class="tx-40 lh-1 tx-normal tx-spacing--2 mg-b-5 mg-r-5">9.999.999</h1>
+                            <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-15">Total Pengunjung</h6>
+                        </div>
+                        <table class="table-dashboard-two">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-primary"></div>
+                                    </td>
+                                    <td class="tx-medium">Hari Ini</td>
+                                    <td class="text-right">3.000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-warning"></div>
+                                    </td>
+                                    <td class="tx-medium">Minggu Ini</td>
+                                    <td class="text-right">20.000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-pink"></div>
+                                    </td>
+                                    <td class="tx-medium">Bulan Ini</td>
+                                    <td class="text-right">100.000</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-teal"></div>
+                                    </td>
+                                    <td class="tx-medium">Tahun Ini</td>
+                                    <td class="text-right">1.000.000</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- activity-body -->
+                    <!-- <li class="activity-item">
                             <div class="activity-icon bg-primary-light tx-primary">
                                 <i data-feather="trending-up"></i>
                             </div>
                             <div class="activity-body">
-                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati cupiditate impedit, vero deleniti dolor perferendis quo! Obcaecati aut odit minus laudantium dolores architecto blanditiis alias enim, quam quae eaque iure et accusantium commodi eum maxime consequatur. Fugiat natus rerum, obcaecati odio unde vel laboriosam at, ipsam, eos temporibus accusamus facilis.</p>
-                            </div><!-- activity-body -->
-                        </li><!-- activity-item -->
-                        <li class="activity-item">
-                            <div class="activity-icon bg-primary-light tx-primary">
-                                <i data-feather="trending-up"></i>
-                            </div>
-                            <div class="activity-body">
-                                <!-- <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a> -->
-                                <!-- <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
-                                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script> -->
-                            </div><!-- activity-body -->
-                        </li><!-- activity-item -->
-                    </ul><!-- activity -->
+                                <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a> 
+                                 <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
+                                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script> 
+                            </div>activity-body -->
+                    <!-- </li>activity-item -->
                 </div><!-- card-body -->
             </div><!-- card -->
         </div>
