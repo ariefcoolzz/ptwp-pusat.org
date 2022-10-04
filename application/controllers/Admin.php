@@ -27,6 +27,7 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = "Halaman Admin";
+		$data['list_event'] = $this->basic->get_data('data_event');
 		$this->template->load('admin_template', 'admin/home', $data);
 	}
 
@@ -136,9 +137,10 @@ class Admin extends CI_Controller
 	
 	public function data_pemain()
 	{
-		$data['list_pemain'] = $this->basic->get_data('view_pemain');
+		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
+		$id_event = $this->input->post('id_event');
 		OB_START();
-		$this->load->view("admin/data_pemain");
+		$this->load->view("admin/data_pemain_" . $id_event);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
