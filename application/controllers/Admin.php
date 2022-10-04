@@ -23,7 +23,7 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE($hasil);
 		}
 	}
-	
+
 	public function get_data_id_nama_dharmayukti()
 	{
 		if (isset($_GET['q']) and STRLEN($_GET['q']) >= 4) {
@@ -35,7 +35,7 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE($hasil);
 		}
 	}
-	
+
 	public function index()
 	{
 		$data['judul'] = "Halaman Admin";
@@ -67,7 +67,7 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_user()
 	{
 		OB_START();
@@ -80,7 +80,7 @@ class Admin extends CI_Controller
 		$konten_menu = $this->load->view("admin/data_user_tabel", "", TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_user_form()
 	{
 		OB_START();
@@ -115,7 +115,7 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 		}
 	}
-	
+
 	public function data_user_hapus()
 	{
 		$where = array('id_user' => $_POST['id_user']);
@@ -125,28 +125,97 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
-	
+
+
 	public function data_user_simpan()
 	{
 		$where = array('id_user' => $_POST['id_user']);
 		$cek_user = $this->basic->get_data_where($where, 'data_user');
-		IF($cek_user->num_rows())
-			{
-				$where = array('id_user' => $_POST['id_user']);
-				$status = $this->basic->update_data($where, 'data_user', $_POST);
-			}
-		ELSE
-			{
-				$status = $this->basic->insert_data('data_user', $_POST);
-			}
-			
+		if ($cek_user->num_rows()) {
+			$where = array('id_user' => $_POST['id_user']);
+			$status = $this->basic->update_data($where, 'data_user', $_POST);
+		} else {
+			$status = $this->basic->insert_data('data_user', $_POST);
+		}
+
 		OB_START();
 		$this->load->view("admin/data_user");
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
-	
+
+	public function data_event()
+	{
+		OB_START();
+		$this->load->view("admin/data_event");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_event_tabel()
+	{
+		$konten_menu = $this->load->view("admin/data_event_tabel", "", TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_event_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_event_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_event_aktivasi()
+	{
+		$id_event 		= $this->input->post('id_event');
+		$aktif			= $this->input->post('aktif');
+		$nomor			= $this->input->post('nomor');
+		$where 	= array('id_event' => $id_event);
+		$update = array('aktif' => $aktif);
+		$res = $this->basic->update_data($where, 'data_event', $update);
+		if ($res) {
+			OB_START();
+			if ($aktif) {
+				echo '<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '" checked>
+					<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-success">Aktif</span></label>
+				</div>';
+			} else {
+				echo '<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '">
+					<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-danger">Belum Aktif</span></label>
+				</div>';
+			}
+
+			$konten_menu = ob_get_clean();
+			echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		}
+	}
+	public function data_event_hapus()
+	{
+		$where = array('id_event' => $_POST['id_event']);
+		$status = $this->basic->delete_data($where, 'data_event');
+		OB_START();
+		$this->load->view("admin/data_event");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_event_simpan()
+	{
+		$where = array('id_event' => $_POST['id_event']);
+		$cek_event = $this->basic->get_data_where($where, 'data_event');
+		if ($cek_event->num_rows()) {
+			$where = array('id_event' => $_POST['id_event']);
+			$status = $this->basic->update_data($where, 'data_event', $_POST);
+		} else {
+			$status = $this->basic->insert_data('data_event', $_POST);
+		}
+
+		OB_START();
+		$this->load->view("admin/data_event");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+
+
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
@@ -156,7 +225,7 @@ class Admin extends CI_Controller
 		$konten_menu = $this->load->view("admin/data_pemain_" . $event['jenis_pertandingan'], $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_pemain_form()
 	{
 		OB_START();
@@ -164,12 +233,13 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_pemain_simpan()
 	{
 		// PRINT_R($_POST);DIE();
-		IF($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1; ELSE $_POST['is_dharmayukti'] = 0;
-		$where = array('id_pemain' => $_POST['id_pemain'],'is_dharmayukti' => $_POST['is_dharmayukti']);
+		if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
+		else $_POST['is_dharmayukti'] = 0;
+		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
 		IF($cek_pemain->num_rows())
 			{
@@ -187,7 +257,7 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_tim()
 	{
 		$data['judul'] = "DATA TIM PEMAIN";
@@ -347,7 +417,7 @@ class Admin extends CI_Controller
 			redirect('admin/data_berita');
 		}
 	}
-	
+
 	public function hapus_data_konten()
 	{
 		$id_konten = $this->input->post('id_konten');
@@ -639,7 +709,7 @@ class Admin extends CI_Controller
 			}
 		}
 	}
-	
+
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 	public function score_manage()
 	{
@@ -648,7 +718,7 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function score_manage_form()
 	{
 		OB_START();
@@ -656,7 +726,7 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function score_manage_hapus()
 	{
 		$where = array('id_user' => $_POST['id_user']);
@@ -666,27 +736,24 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
-	
+
+
 	public function score_manage_simpan()
 	{
 		$where = array('id_user' => $_POST['id_user']);
 		$cek_user = $this->basic->get_data_where($where, 'score_manage');
-		IF($cek_user->num_rows())
-			{
-				$where = array('id_user' => $_POST['id_user']);
-				$status = $this->basic->update_data($where, 'score_manage', $_POST);
-			}
-		ELSE
-			{
-				$status = $this->basic->insert_data('score_manage', $_POST);
-			}
-			
+		if ($cek_user->num_rows()) {
+			$where = array('id_user' => $_POST['id_user']);
+			$status = $this->basic->update_data($where, 'score_manage', $_POST);
+		} else {
+			$status = $this->basic->insert_data('score_manage', $_POST);
+		}
+
 		OB_START();
 		$this->load->view("admin/score_manage");
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
-	
+
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 }

@@ -15,7 +15,7 @@ class Model_admin extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
-	
+
 	function model_get_data_id_nama_dharmayukti($keyword = NULL)
 	{
 		$this->db->select("A.id_pegawai AS id");
@@ -240,16 +240,13 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	function get_data_pemain($jenis_kelamin = false, $is_official = false)
+
+	function get_data_event($data)
 	{
 		$id_event = $this->input->post('id_event');
-		$id_panitia = $this->input->post('id_panitia');
-		$this->db->from('view_pemain AS A');
-		$this->db->where('A.id_event', $id_event);
-		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_satker_parent', $_SESSION['id_satker_parent']);
-		if ($jenis_kelamin) $this->db->where('A.jenis_kelamin', $jenis_kelamin);
-		if ($is_official) $this->db->where('A.is_official', '1');
-		else $this->db->where('A.is_official', '0');
+		$this->db->from('data_event');
+		// if ($data['id_event']) $this->db->where('A.id_event', $data['id_event']);
+		// if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
