@@ -7,7 +7,7 @@
         </ol>
         <div class="carousel-inner bg-secondary">
             <div class="carousel-item active">
-                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ptwp_2021_pg2.jpg" class="d-block mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <!-- <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block  mx-auto w-100" alt="...">
+                <img src="<?php echo base_url() ?>assets/img/ucapan.jpg" class="d-block  mx-auto w-100" alt="...">
                 <div class="carousel-caption">
                     <h1 class="text-white">PTWP</h1>
                     <p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p>
