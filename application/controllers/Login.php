@@ -56,6 +56,7 @@ class Login extends CI_Controller
 							'FotoPegawai' => $query[0]->FotoPegawai,
 							'FotoFormal' => $query[0]->FotoFormal,
 							'id_panitia' => $query[0]->id_panitia,
+							'id_satker_parent' => $query[0]->id_satker_parent,
 							'panitia' => $query[0]->panitia,
 							'session_id'	=> md5(uniqid($sessid, TRUE)),
 							'ip_address'	=> $this->input->ip_address(),
