@@ -1,3 +1,8 @@
+<style>
+    .select2-container .select2-selection--single {
+        height: 125px !important;
+    }
+</style>
 <?php
 $txt_simpan = "SIMPAN";
 if (isset($_POST['id_pemain'])) {
@@ -22,13 +27,11 @@ if (isset($_POST['id_pemain'])) {
         <div class="card">
             <div class="card-body">
                 <form id='form_konten' enctype="multipart/form-data">
-
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
-
-                                <select name='id_pemain' id='id_pemain' class='form-control select_nama'>
+                                <select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
                                     <?php
                                     if (isset($R)) {
                                         $data = $this->m_master->model_data_pegawai($R['id_pegawai']);
@@ -59,6 +62,7 @@ if (isset($_POST['id_pemain'])) {
     $(".select_nama").select2({
         placeholder: 'Minimal 4 Karakter',
         templateResult: formatState,
+        templateSelection: formatState,
         ajax: { //bawaan nya > Kirim data method $_GET['q'];
             delay: 250, // wait 250 milliseconds before triggering the request
             url: "<?php echo base_url(); ?>admin/get_data_id_nama",
