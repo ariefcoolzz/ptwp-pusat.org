@@ -14,7 +14,7 @@
         <span id='tambah' class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</span>
     </div>
 </div>
-<div class="row mb-4">
+<div class="row mb-4" id="card_tambah">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <input type='checkbox' id='is_dharmayukti'> Dharmayukti<br>
+                                <input type='checkbox' id='is_dharmayukti'> Dharmayukti <input type='checkbox' id='is_official' value='1'> Official / Manager<br>
                                 <label class="control-label">Nama :</label>
 
                                 <div id='div_id_pemain'>
@@ -105,7 +105,6 @@
         </div>
         <div class="card mb-2">
             <div class="card-body">
-                <?php echo $this->session->flashdata('msg'); ?>
                 <h5 class="text-center"> DATA PEMAIN BEREGU PUTRA </h5>
                 <div data-label="Example" class="df-example demo-table">
                     <div class="table-responsive">
@@ -156,7 +155,6 @@
         </div>
         <div class="card mb-2">
             <div class="card-body">
-                <?php echo $this->session->flashdata('msg'); ?>
                 <h5 class="text-center"> DATA PEMAIN BEREGU PUTRI </h5>
                 <div data-label="Example" class="df-example demo-table">
                     <div class="table-responsive">
@@ -208,6 +206,9 @@
     </div>
 </div>
 <script>
+    $(document).ready(function() {
+        $("#card_tambah").hide();
+    });
     $('[data-toggle="tooltip"]').tooltip();
 
     $('.datatable-pemain').DataTable({
@@ -218,8 +219,11 @@
             // info: false
         }
     });
-
+    // $("#card_tambah").hide();
     $("#tambah").on('click', function() {
+        $("#card_tambah").toggle();
+    });
+    $("#tambah_lama").on('click', function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -264,6 +268,7 @@
             if (result.isConfirmed) {
                 var form_data = new FormData();
                 form_data.append('id_pemain', $(this).data('id_pemain'));
+                form_data.append('id_event', '<?php echo $id_event; ?>');
                 $.ajax({
                     url: "<?php echo base_url(); ?>admin/hapus_data_pemain",
                     type: 'POST',
@@ -359,18 +364,23 @@
 
         var id_pemain = 0;
         var is_dharmayukti = 0;
+        var is_official = 0;
         if ($("#is_dharmayukti").is(":checked") == true) {
-            id_pemain = $("#id_pemain").val();
+            id_pemain = $("#id_pemain_dharmayukti").val();
             is_dharmayukti = 1;
         } else {
-            id_pemain = $("#id_pemain_dharmayukti").val();
+            id_pemain = $("#id_pemain").val();
             is_dharmayukti = 0;
+        }
+        if ($("#is_official").is(":checked") == true) {
+            is_official = 1;
         }
 
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
         form_data.append('is_dharmayukti', is_dharmayukti);
         form_data.append('id_pemain', id_pemain);
+        form_data.append('is_official', is_official);
         form_data.append('id_event', '<?php echo $id_event; ?>');
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",
@@ -382,11 +392,11 @@
             dataType: 'json',
             success: function(json) {
                 if (json.status !== true) {
+                    $("#simpan").html('Simpan').prop("disabled", false);
                     Swal.fire({
-                        icon: 'success',
-                        title: 'Simpan Data Gagal',
-                        showConfirmButton: false,
-                        timer: 1000
+                        icon: 'error',
+                        title: 'Peringatan',
+                        html: "<div style='text-align:justify;'>" + json.pesan + "</div>"
                     });
                 } else {
                     Swal.fire({

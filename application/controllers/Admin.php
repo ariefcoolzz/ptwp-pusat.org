@@ -236,26 +236,52 @@ class Admin extends CI_Controller
 
 	public function data_pemain_simpan()
 	{
-		// PRINT_R($_POST);DIE();
+		// echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
+		// die();
+		$_POST['id_kontingen'] 	= $_SESSION['id_satker_parent'];
+		if ($_POST['is_official']) {
+			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
+			if ($cek_official->num_rows() >= 2) {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'OFFICIAL / MANAGER MAKSIMAL 2 ORANG'));
+				return;
+			}
+		}
+		$cek_pegawai = $this->basic->get_data_where(array('id_pegawai' => $_POST['id_pemain']), 'data_pegawai_all')->row_array();
+		// echo '<pre>';
+		// print_r($cek_pegawai);
+		// echo '</pre>';
+		// die();
+		if ($cek_pegawai['jenis_kelamin'] == 'Pria') {
+			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0'), 'view_pemain');
+			if ($cek_pemain_pria->num_rows() >= 8) {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
+				return;
+			}
+			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_official' => '0'), 'view_pemain');
+			if ($cek_karyawan->num_rows() >= 3 && $cek_pegawai['is_subdit'] !== '1') {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN KARYAWAN PUTRA BEREGU MAKSIMAL 3 ORANG'));
+				return;
+			}
+		} else {
+		}
 		if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		else $_POST['is_dharmayukti'] = 0;
+		if ($_POST)
 		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
 		IF($cek_pemain->num_rows())
 			{
 				$where = array('id_pemain' => $_POST['id_pemain'],'is_dharmayukti' => $_POST['is_dharmayukti']);
 				$status = $this->basic->update_data($where, 'data_pemain', $_POST);
-			}
-		ELSE
-			{
-			$_POST['id_kontingen'] 	= $_SESSION['id_satker_parent'];
+		} else {
 				$status = $this->basic->insert_data('data_pemain', $_POST);
 			}
-			
-		OB_START();
-		$this->load->view("admin/data_pemain");
-		$konten_menu = ob_get_clean();
-		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+
+		if ($status) {
+			$this->data_pemain();
+		} else {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
+		}
 	}
 
 	public function data_tim()
@@ -565,7 +591,7 @@ class Admin extends CI_Controller
 		} else {
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
 		}
-		redirect('admin/data_pemain');
+		$this->data_pemain();
 	}
 	public function hapus_data_tim()
 	{
