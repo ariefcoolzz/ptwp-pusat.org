@@ -383,15 +383,14 @@
     </div>
 </div>
 
-<div class="content mg-0 mg-b-50 bd-t bg-indigo">
+<div class="content mg-0 bd-t bg-indigo">
     <div class="row">
         <div class="col-sm mt-2">
             <div class="card bd-0 ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
-                    <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0 tx-uppercase">Hubungi Kami</h6>
+                    <div class="d-sm-flex align-items-center justify-content-between bd-b">
+                        <h6 class="mg-b-0 tx-uppercase tx-bolder">Hubungi Kami</h6>
                     </div>
-                    <hr>
                 </div><!-- card-header -->
                 <div class="card-body">
                     <ul class="activity tx-13">
@@ -425,25 +424,28 @@
         </div>
 
         <div class="col-sm mt-2">
-            <div class="card bd-0 ht-300">
+            <div class="card ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
-                    <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0 tx-uppercase">Alamat</h6>
+                    <div class="d-sm-flex align-items-center justify-content-between bd-b">
+                        <h6 class="mg-b-0 tx-uppercase tx-bolder">Alamat</h6>
                     </div>
-                    <hr>
                 </div><!-- card-header -->
-                <div class="card-body pd-20">
+                <div class="card-body pd-x-20">
                     <ul class="activity tx-13">
                         <li class="activity-item">
                             <div class="activity-icon bg-primary-light tx-primary">
                                 <i data-feather="map-pin"></i>
                             </div>
                             <div class="activity-body">
-                                <p class="mg-t-2"><strong>Mahkamah Agung Republik Indonesia, Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</strong></p>
+                                <p class=""><strong>Mahkamah Agung Republik Indonesia, Jalan Merdeka Utara Nomor 9-13 Jakarta Pusat</strong></p>
                                 <div class="gmap_canvas"><iframe id="gmap_canvas" src="https://maps.google.com/maps?q=-6.1703139180026465,%20106.82647773719846&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=&amp;output=embed" width="200" height="100" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></div>
                             </div><!-- activity-body -->
                         </li><!-- activity-item -->
-
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="map-pin"></i>
+                            </div>
+                        </li><!-- activity-item -->
                     </ul><!-- activity -->
                 </div><!-- card-body -->
             </div><!-- card -->
@@ -452,10 +454,9 @@
         <div class="col-sm mt-2">
             <div class="card bd-0 ht-300">
                 <div class="card-header pd-b-0 pd-x-20 bd-b-0">
-                    <div class="d-sm-flex align-items-center justify-content-between">
-                        <h6 class="mg-b-0 tx-uppercase">Pengunjung</h6>
+                    <div class="d-sm-flex align-items-center justify-content-between bd-b">
+                        <h6 class="mg-b-0 tx-uppercase tx-bolder">Pengunjung</h6>
                     </div>
-                    <hr>
                 </div><!-- card-header -->
                 <div class="card-body pd-20">
                     <ul class="activity tx-13">
@@ -464,9 +465,17 @@
                                 <i data-feather="trending-up"></i>
                             </div>
                             <div class="activity-body">
+                                <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati cupiditate impedit, vero deleniti dolor perferendis quo! Obcaecati aut odit minus laudantium dolores architecto blanditiis alias enim, quam quae eaque iure et accusantium commodi eum maxime consequatur. Fugiat natus rerum, obcaecati odio unde vel laboriosam at, ipsam, eos temporibus accusamus facilis.</p>
+                            </div><!-- activity-body -->
+                        </li><!-- activity-item -->
+                        <li class="activity-item">
+                            <div class="activity-icon bg-primary-light tx-primary">
+                                <i data-feather="trending-up"></i>
+                            </div>
+                            <div class="activity-body">
                                 <!-- <a href='https://thesiswritingservice.net/'>thesiswritingservice.net</a> -->
-                                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
-                                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script>
+                                <!-- <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=07d0b5799e22a941edacd6e4a14846342b8cdb72'></script>
+                                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/890217/t/6"></script> -->
                             </div><!-- activity-body -->
                         </li><!-- activity-item -->
                     </ul><!-- activity -->
