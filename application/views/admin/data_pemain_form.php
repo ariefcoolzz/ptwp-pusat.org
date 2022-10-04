@@ -27,18 +27,7 @@ if (isset($_POST['id_pemain'])) {
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
-
                                 <select name='id_pemain' id='id_pemain' class='form-control select_nama'>
-                                    <?php
-                                    if (isset($R)) {
-                                        $data = $this->m_master->model_data_pegawai($R['id_pegawai']);
-                                        if ($data->num_rows()) {
-                                            foreach ($data->result_array() as $S) {
-                                                echo "<option value='$S[id_pegawai]' selected>$S[nip] > $S[nama_gelar]</option>";
-                                            }
-                                        }
-                                    }
-                                    ?>
                                 </select>
                                 <small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
@@ -68,6 +57,7 @@ if (isset($_POST['id_pemain'])) {
     });
 
     function formatState(state) {
+		
         if (!state.id) {
             return state.text;
         }
