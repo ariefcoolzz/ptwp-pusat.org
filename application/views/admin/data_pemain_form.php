@@ -32,9 +32,18 @@ if (isset($_POST['id_pemain'])) {
                             <div class="form-group">
                                 <input type='checkbox' id='is_dharmayukti'> Dharmayukti<br>
                                 <label class="control-label">Nama :</label>
-								<select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
-                                </select>
-                                <small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
+								
+								<div id='div_id_pemain'>
+									<select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
+									</select>
+                                </div>
+								
+								<div id='div_id_pemain_dharmayukti'>
+									<select name='id_pemain' id='id_pemain_dharmayukti' class='form-control select_nama_dharmayukti' style="height: 100px;">
+									</select>
+								</div>
+                                
+								<small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
                             <div id='biodata'></div>
                         </div>
@@ -62,6 +71,19 @@ if (isset($_POST['id_pemain'])) {
             // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
         }
     });
+	
+	$(".select_nama_dharmayukti").select2({
+        placeholder: 'Minimal 4 Karakter',
+        templateResult: formatState,
+        templateSelection: formatState,
+        allowClear: true,
+        ajax: { //bawaan nya > Kirim data method $_GET['q'];
+            delay: 250, // wait 250 milliseconds before triggering the request
+            url: "<?php echo base_url(); ?>admin/get_data_id_nama_dharmayukti",
+            dataType: 'json'
+            // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+        }
+    });
 
     function formatState(state) {
 		
@@ -71,12 +93,41 @@ if (isset($_POST['id_pemain'])) {
         var $state = $('' + state.text + '');
         return $state;
     }
-
+	
+	$("#div_id_pemain_dharmayukti").hide();
+	$("#is_dharmayukti").on('click', function() {
+		// alert($(this).is(":checked"));
+		if($(this).is(":checked") == true)
+			{
+				$("#div_id_pemain").hide();
+				$("#div_id_pemain_dharmayukti").show();
+			}
+		else
+			{
+				$("#div_id_pemain").show();
+				$("#div_id_pemain_dharmayukti").hide();
+			}
+	});
+	
     $("#simpan").on('click', function() {
+		
+		var id_pemain = 0;
+		var is_dharmayukti = 0;
+		if($("#is_dharmayukti").is(":checked") == true)
+			{
+				id_pemain = $("#id_pemain").val();
+				is_dharmayukti = 1;
+			}
+		else
+			{
+				id_pemain = $("#id_pemain_dharmayukti").val();
+				is_dharmayukti = 0;
+			}
+		
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
-        form_data.append('is_dharmayukti', $("#is_dharmayukti").is(":checked"));
-        form_data.append('id_pemain', $("#id_pemain").val());
+        form_data.append('is_dharmayukti', is_dharmayukti);
+        form_data.append('id_pemain', id_pemain);
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",
             type: 'POST',
