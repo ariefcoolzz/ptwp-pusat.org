@@ -4,7 +4,7 @@
 <div class="content content-fixed content-auth">
     <div class="container">
         <div class="media align-items-stretch justify-content-center ht-100p">
-            <form id="form_register" method="post">
+            <form id="form_register" method="post" enctype="multipart/form-data">
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
                     <div class="pd-t-20 wd-100p lh-1">
                         <div class="form-group">
@@ -58,7 +58,7 @@
                                 <label class="mg-b-0-f">File SK Pengurus Daerah<small class="tx-danger"> (File yang di-ijinkan .pdf dan maksimal 2MB)</small></label>
                             </div>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input type="file" class="custom-file-input" id="file_upload" name="file_upload">
                                 <label class="custom-file-label" for="customFile">Unggah File Pendukung</label>
                             </div>
                         </div>

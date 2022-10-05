@@ -35,6 +35,25 @@ class Main extends CI_Controller
 
 	public function register_simpan()
 	{
+		// echo '<pre>';
+		// print_r($_FILES);
+		// echo '</pre>';
+		//FILE UPLOAD
+		$config = array(
+			'upload_path'			=> './file_upload/dokumen',
+			'allowed_types'			=> 'pdf',
+			'max_size'				=> 2048,
+			'overwrite'				=> true,
+			'file_name'				=> MD7($_POST['id_satker_parent']) . ".pdf"
+		);
+		$this->load->library('upload', $config);
+		if (!empty($_FILES['file_upload']['name'])) {
+			if (!$this->upload->do_upload('file_upload')) {
+				$msg = $this->upload->display_errors();
+				die(JSON_ENCODE(array("status" => FALSE, "pesan" => $msg)));
+			}
+		}
+		// die();
 		$status = FALSE;
 		if ($_POST['password'] === $_POST['password_confirm']) {
 			$status = $this->Model_main->register_simpan($_POST);
