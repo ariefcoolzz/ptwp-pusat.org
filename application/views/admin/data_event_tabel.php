@@ -103,8 +103,8 @@
             }
         });
     });
-	
-	 $(".edit").on('click', function() {
+
+    $(".table").on('click', '.edit', function(e) {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
@@ -136,7 +136,8 @@
         });
     });
 
-    $(".hapus").on('click', function() {
+    $(".table").on('click', '.hapus', function(e) {
+        e.preventDefault();
         Swal.fire({
             title: 'Apakah kamu yakin?',
             text: "Data tidak bisa dikembalikan!",
