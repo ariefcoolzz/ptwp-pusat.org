@@ -252,8 +252,9 @@ class Model_admin extends CI_Model
 			$this->db->where('A.is_dharmayukti', '0');
 		}
 		if ($jenis_kelamin == "Wanita") {
-			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
-			$this->db->or_where('A.is_dharmayukti', '1');
+			// $this->db->where('A.jenis_kelamin', $jenis_kelamin);
+			// $this->db->or_where('A.is_dharmayukti', '1');
+			$this->db->where("(A.jenis_kelamin = '" . $jenis_kelamin . "' OR A.is_dharmayukti = '1')");
 		}
 		if ($is_official) $this->db->where('A.is_official', '1');
 		else $this->db->where('A.is_official', '0');

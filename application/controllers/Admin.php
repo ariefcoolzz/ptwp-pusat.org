@@ -59,9 +59,13 @@ class Admin extends CI_Controller
 	{
 		$data['judul'] = "DATA MENU BERITA";
 		$data['cat_id'] = 1;
-		$where = array('cat_id' => 1);
-		$order_by = 'id DESC';
-		$data['list_konten'] = $this->basic->get_data_where($where, 'data_konten', $order_by);
+		// $where = array('cat_id' => 1);
+		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where(array('cat_id' => '3', 'user_created' => $_SESSION['id_satker_parent']));
+		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) $this->db->where_in('cat_id', array('1', '3'));
+
+		$this->db->order_by('id DESC');
+
+		$data['list_konten'] = $this->basic->get_data('data_konten');
 		OB_START();
 		$this->load->view("admin/data_konten", $data);
 		$konten_menu = ob_get_clean();
@@ -261,6 +265,12 @@ class Admin extends CI_Controller
 				return;
 			}
 		}
+		if ($_POST['is_dharmayukti']) {
+			$id_keluarga = $_POST['id_pemain'];
+			$_POST['id_keluarga'] = $id_keluarga;
+			$cek_suami = $this->basic->get_data_where(array('IdAnggotaKeluarga' => $id_keluarga), 'tmst_keluarga')->row_array();
+			$_POST['id_pemain'] = $cek_suami['IdPegawai'];
+		}
 		$cek_pegawai = $this->basic->get_data_where(array('id_pegawai' => $_POST['id_pemain']), 'data_pegawai_all')->row_array();
 		// echo '<pre>';
 		// print_r($cek_pegawai);
@@ -285,12 +295,7 @@ class Admin extends CI_Controller
 				return;
 			}
 		}
-		if ($_POST['is_dharmayukti']) {
-			$id_keluarga = $_POST['id_pemain'];
-			$_POST['id_keluarga'] = $id_keluarga;
-			$cek_suami = $this->basic->get_data_where(array('IdAnggotaKeluarga' => $id_keluarga), 'tmst_keluarga')->row_array();
-			$_POST['id_pemain'] = $cek_suami['IdPegawai'];
-		}
+		
 		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		// else $_POST['is_dharmayukti'] = 0;
 		if ($_POST)

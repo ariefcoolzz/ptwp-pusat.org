@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $no = $list_konten->num_rows();
+                            $no = 1;
                                 foreach ($list_konten->result_array() as $R) {
                                     echo '<tr>';
                                     echo "<td>" . $no . "</td>";
@@ -47,7 +47,7 @@
                                         <span style="cursor:pointer" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></span></td>';
                                     echo "</div>";
                                     echo "</tr>";
-                                    $no--;
+                                    $no++;
                                 }
                                 ?>
                             </tbody>
