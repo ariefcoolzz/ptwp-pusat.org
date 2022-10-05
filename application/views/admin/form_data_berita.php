@@ -108,9 +108,9 @@ if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) $is_pusat = true;
         ],
         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons",
         images_upload_url: "<?php echo base_url('admin/upload_file') ?>",
-        // relative_urls : false,
-        // remove_script_host : false,
-        // document_base_url : 'https://ptwp-pusat.org' // PENGATURAN UNTUK DI SERVER
+        relative_urls: false,
+        remove_script_host: false,
+        document_base_url: 'https://ptwp-pusat.org' // PENGATURAN UNTUK DI SERVER
     });
     $("#form_konten").submit(function(e) {
         e.preventDefault();
