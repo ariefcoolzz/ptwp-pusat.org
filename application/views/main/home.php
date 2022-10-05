@@ -56,7 +56,7 @@
 <div class="content mg-0">
     <div class="row no-gutters">
         <div class="col-lg-3 col-sm tx-center">
-            <img src="<?php echo ('assets/img/register-tennis.png'); ?>" alt="thumbnails" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" data-aos="zoom-in" data-aos-duration="1000">
         </div>
         <div class="col-lg-9 col-sm my-auto">
             <div data-aos="zoom-in" data-aos-duration="3000">
