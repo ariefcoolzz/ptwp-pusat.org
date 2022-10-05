@@ -21,23 +21,29 @@
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
+                            <input type='checkbox' id='is_dharmayukti'> Dharmayukti <input type='checkbox' id='is_official' value='1'> Official / Manager<br>
                             <div class="form-group">
-                                <input type='checkbox' id='is_dharmayukti'> Dharmayukti <input type='checkbox' id='is_official' value='1'> Official / Manager<br>
                                 <label class="control-label">Nama :</label>
-
                                 <div id='div_id_pemain'>
                                     <select name='id_pemain' id='id_pemain' class='form-control select_nama' style="height: 100px;">
                                     </select>
                                 </div>
-
                                 <div id='div_id_pemain_dharmayukti'>
                                     <select name='id_pemain' id='id_pemain_dharmayukti' class='form-control select_nama_dharmayukti' style="height: 100px;">
                                     </select>
                                 </div>
-
                                 <small class='text-danger'>Pemain Hanya bisa di wilayah Tingkat Bandingnya</small>
                             </div>
                             <div id='biodata'></div>
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading tx-bolder">Pernyataan</h4>
+                        <p class="text-justify">Saya setuju, seluruh data yang diinput ke dalam aplikasi ini adalah valid dan benar serta telah disetujui oleh <b>Ketua Umum Pengurus PTWP Dearah</b> masing-masing.
+                            Apabila data yang diinput tidak benar, maka <b>Pengurus Daerah</b> terkait bersedia menerima sanksi yang ditetapkan oleh <b>Pengurus PTWP Pusat</b></p>
+                        <hr>
+                        <div class="tx-center">
+                            <input type="checkbox" id="is_setuju"> Setuju
                         </div>
                     </div>
                     <div class="row text-center mx-4 mt-3">
