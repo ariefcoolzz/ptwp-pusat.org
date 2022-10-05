@@ -268,8 +268,9 @@ class Admin extends CI_Controller
 			}
 		} else {
 			$cek_pemain_putri = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Wanita', 'is_official' => '0'), 'view_pemain');
-			if ($cek_pemain_putri->num_rows() >= 5) {
-				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRI BEREGU MAKSIMAL 8 ORANG'));
+			$cek_pemain_dyk = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_dharmayukti' => '1', 'is_official' => '0'), 'view_pemain');
+			if (($cek_pemain_putri->num_rows() + $cek_pemain_dyk->num_rows()) >= 6) {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRI BEREGU MAKSIMAL 6 ORANG'));
 				return;
 			}
 		}
