@@ -80,6 +80,17 @@
                             </div>
                             <input type="password" class="form-control" placeholder="Konfirmasi Password" id='password_confirm' name='password_confirm'>
                         </div>
+                        <div class="wd-400">
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-heading tx-bolder">Pernyataan</h4>
+                                <p class="text-justify">Saya setuju, seluruh data yang diinput ke dalam aplikasi ini adalah valid dan benar serta telah disetujui oleh <b>Ketua Umum Pengurus PTWP Dearah</b> masing-masing.
+                                    Apabila data yang diinput tidak benar, maka <b>Pengurus Daerah</b> terkait bersedia menerima sanksi yang ditetapkan oleh <b>Pengurus PTWP Pusat</b></p>
+                                <hr>
+                                <div class="tx-center">
+                                    <input type="checkbox" id="is_setuju"> Setuju
+                                </div>
+                            </div>
+                        </div>
                         <button id="btn-simpan" type="submit" class="btn btn-brand-02 btn-block">Daftar</button>
                         <div class="divider-text">Atau</div>
                         <div class="tx-13 mg-t-20 tx-center">Sudah Mempunyai Akun? <a href="<?php echo base_url('admin'); ?>">Login</a></div>
@@ -87,23 +98,13 @@
                 </div><!-- sign-wrapper -->
             </form>
             <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-none d-lg-flex pos-relative">
-                <div class="mx-lg-wd-500 mx-xl-wd-550">
+                <div class="lg-wd-500 xl-wd-550">
                     <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid wd-400" alt="">
                     <div class="card ht-350">
                         <div class="sticky-top card-header d-flex align-items-center justify-content-between">
                             <h6 class="mg-b-0">Daftar Pengurus</h6>
                         </div>
                         <ul class="list-group list-group-flush tx-13 scrollbar-sm pos-relative" id="scroll">
-                            <!-- <li class="list-group-item d-flex pd-sm-x-20">
-                                <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-gray-400"><i class="icon ion-md-close"></i></span></div>
-                                <div class="pd-sm-l-10">
-                                    <p class="tx-medium mg-b-0">Payment failed from #087651</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">Mar 19, 2019, 12:54pm</small>
-                                </div>
-                                <div class="mg-l-auto text-right">
-                                    <small class="tx-12 tx-danger mg-b-0">Belum Divalidasi</small>
-                                </div>
-                            </li> -->
                             <?php
                             $rekap = $this->basic->get_data('view_user');
                             $no = 0;
@@ -212,5 +213,15 @@
                 }
             }
         });
+    });
+
+    $("#btn-simpan").prop('disabled', true);
+    $("#is_setuju").on('click', function() {
+        // alert($(this).is(":checked"));
+        if ($(this).is(":checked") == true) {
+            $("#btn-simpan").removeAttr('disabled');
+        } else {
+            $("#btn-simpan").prop('disabled', true);
+        }
     });
 </script>
