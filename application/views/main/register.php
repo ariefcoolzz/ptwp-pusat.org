@@ -86,19 +86,59 @@
                     </div>
                 </div><!-- sign-wrapper -->
             </form>
-            <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
+            <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-none d-lg-flex pos-relative">
                 <div class="mx-lg-wd-500 mx-xl-wd-550">
-                    <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid" alt="">
-                    <?php
-                    $rekap = $this->basic->get_data('view_user');
-                    $no = 0;
-                    if ($rekap->num_rows()) {
-                        foreach ($rekap->result_array() as $R) {
-                            $no++;
-                            if ($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
-                        }
-                    }
-                    ?>
+                    <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid wd-400" alt="">
+                    <div class="card ht-350">
+                        <div class="sticky-top card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Daftar Pengurus</h6>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13 scrollbar-sm pos-relative" id="scroll">
+                            <!-- <li class="list-group-item d-flex pd-sm-x-20">
+                                <div class="avatar d-none d-sm-block"><span class="avatar-initial rounded-circle bg-gray-400"><i class="icon ion-md-close"></i></span></div>
+                                <div class="pd-sm-l-10">
+                                    <p class="tx-medium mg-b-0">Payment failed from #087651</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">Mar 19, 2019, 12:54pm</small>
+                                </div>
+                                <div class="mg-l-auto text-right">
+                                    <small class="tx-12 tx-danger mg-b-0">Belum Divalidasi</small>
+                                </div>
+                            </li> -->
+                            <?php
+                            $rekap = $this->basic->get_data('view_user');
+                            $no = 0;
+                            if ($rekap->num_rows()) {
+                                foreach ($rekap->result_array() as $R) {
+                                    $no++;
+                                    if ($R['aktif'] == "1") {
+                                        $icon_validasi = "<span class='avatar-initial rounded-circle bg-teal'><i class='icon ion-md-checkmark'></i></span>";
+                                    } elseif ($R['aktif'] == "0") {
+                                        $icon_validasi = "<span class='avatar-initial rounded-circle bg-danger'><i class='icon ion-md-close'></i></span>";
+                                    };
+                                    if ($R['aktif'] == "1") {
+                                        $validasi = "<small class='tx-12 tx-success mg-b-0'>Sudah Divalidasi</small>";
+                                    } elseif ($R['aktif'] == "0") {
+                                        $validasi = "<small class='tx-12 tx-danger mg-b-0'>Belum Divalidasi</small>";
+                                    };
+                                    // if ($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
+                                    if ($R['id_panitia'] > 0) echo "
+                                     <li class='list-group-item d-flex pd-sm-x-20'>
+                                        <div class='avatar d-none d-sm-block'>$icon_validasi</div>
+                                            <div class='pd-sm-l-10 d-flex flex-column'>
+                                            <p class='tx-medium mg-b-0'>$R[nama]</p>
+                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[panitia]</small>
+                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker_parent]</small>
+                                            </div>
+                                        <div class='mg-l-auto text-right'>
+                                            $validasi
+                                        </div>
+                                    </li>
+                                    ";
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </div><!-- card -->
                 </div>
             </div><!-- media-body -->
         </div><!-- media -->
@@ -106,6 +146,10 @@
 </div><!-- content -->
 
 <script>
+    const scroll = new PerfectScrollbar('#scroll', {
+        suppressScrollX: true
+    });
+
     $("#nip").on("keyup", function() {
         register_get_pegawai($(this).val());
     });
