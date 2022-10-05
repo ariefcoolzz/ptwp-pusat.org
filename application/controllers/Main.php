@@ -36,9 +36,11 @@ class Main extends CI_Controller
 	public function register_simpan()
 	{
 		// echo '<pre>';
-		// print_r($_FILES);
+		// print_r($_POST);
 		// echo '</pre>';
+		// die();
 		//FILE UPLOAD
+		$status = FALSE;
 		$config = array(
 			'upload_path'			=> './file_upload/dokumen',
 			'allowed_types'			=> 'pdf',
@@ -54,7 +56,7 @@ class Main extends CI_Controller
 			}
 		}
 		// die();
-		$status = FALSE;
+		
 		if ($_POST['password'] === $_POST['password_confirm']) {
 			$status = $this->Model_main->register_simpan($_POST);
 		}
