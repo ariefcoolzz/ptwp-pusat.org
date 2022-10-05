@@ -67,7 +67,7 @@
                             <h6 class="tx-12 tx-lg-14 tx-semibold tx-uppercase tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA <span class="tx-normal tx-color-03">(PTWP XIX)</span></h6>
                             <div class="d-flex flex-column">
                                 <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
-                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Batas Akhir Sampai 5 November 2022)</h6>
+                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Pendaftaran Dimulai 5 Oktober 2022 s.d 11 November 2022)</h6>
                             </div>
                         </div><!-- media-body -->
                     </div><!-- media -->
