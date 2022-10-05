@@ -21,17 +21,18 @@
             <div class="row">
                 <div class="col-lg-12 col-xl-12">
                     <div class="row row-sm mg-b-25">
-                        <?php foreach ($berita_ptwp_pusat->result_array() as $R) {
+                        <?php foreach ($list_berita->result_array() as $R) {
                             $intro = substr(strip_tags($R['isi']), 0, 50);
                             // $intro = substr($R['isi'], 0, 200);
-                            if ($R['img'] == "") {
+                            preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $R['isi'], $img); //BUAT DAPETIN GAMBAR PERTAMA DALAM ISI
+                            if (empty($img)) {
                                 $gambar = base_url('assets/img/gambar.jpg');
                                 // $gambar = base_url('assets/img/no_images.png');
                             } else {
-                                if (filter_var($R['img'], FILTER_VALIDATE_URL))
-                                    $gambar = $R['img'];
+                                if (filter_var($img['src'], FILTER_VALIDATE_URL))
+                                    $gambar = $img['src'];
                                 else
-                                    $gambar = base_url($R['img']);
+                                    $gambar = base_url($img['src']);
                             }
                         ?>
                             <div class="col-md-4 mg-t-20">
@@ -43,7 +44,7 @@
                                     <div class="card-body tx-13">
                                         <h5><a href="<?php echo base_url('main/page/') . $R['alias'] ?>"><?php echo $R['judul'] ?></a></h5>
                                         <p class="mg-b-0 text-justify"><?php echo $intro ?> ...</p>
-                                        <span class="tx-12 h6">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?></span>
+                                        <span class="tx-12 h6">Tanggal Berita : <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?></span>
                                     </div><!-- card-body -->
                                     <div class="card-footer tx-13">
                                         <span class="tx-color-03">Dilihat <?php echo $R['total_dilihat']; ?>x</span>

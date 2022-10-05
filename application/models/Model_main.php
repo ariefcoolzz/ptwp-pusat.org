@@ -58,9 +58,14 @@ class Model_main extends CI_Model
 	function get_data_konten_list($cat_id, $limit = null)
 	{
 		$this->db->select("A.*");
+		$this->db->select("B.nama as nama_creator");
+		$this->db->select("C.NamaSatker as nama_satker");
 		$this->db->select("(SELECT COUNT(*) FROM data_statistik_konten WHERE id_konten = A.id) as total_dilihat");
 		$this->db->from('data_konten AS A');
+		$this->db->join("view_user AS B", "A.user_created = B.id_user", 'left');
+		$this->db->join("tmst_satker AS C", "B.id_satker_parent = C.IdSatker", 'left');
 		$this->db->where('A.cat_id', $cat_id);
+		$this->db->where('A.is_publish', '1');
 		$this->db->order_by('A.date_created DESC');
 		if ($limit) $this->db->limit($limit);
 		$query = $this->db->get();

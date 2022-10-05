@@ -88,7 +88,7 @@ extract($_SESSION);
                     <li class="nav-label pt-3">Konten & Berita</li>
                     <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
                 <?php } ?>
-                <li class="nav-label pt-3">Kejuaaraan / Event</li>
+                <!-- <li class="nav-label pt-3">Kejuaaraan / Event</li>
                 <select id="list_event" class="filter form-control">
                     <?php
                     if ($list_event->num_rows() > 0) {
@@ -99,7 +99,7 @@ extract($_SESSION);
                         }
                     }
                     ?>
-                </select>
+                </select> -->
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) { ?>
                     <li class="nav-label pt-3">Pemain & Tim</li>
 
@@ -126,11 +126,18 @@ extract($_SESSION);
 
     <div class="content ht-100v pd-0">
         <div class="content-header">
-            <div class="content-search">
-                <i data-feather="search"></i>
-                <input type="search" class="form-control" placeholder="Search...">
-            </div>
-            <nav class="nav">
+            <select id="list_event" class="filter form-control col-lg-6">
+                <?php
+                if ($list_event->num_rows() > 0) {
+                    foreach ($list_event->result_array() as $R) {
+                        $selected = '';
+                        if ($R['is_aktif']) $selected = "selected";
+                        echo '<option value="' . $R['id_event'] . '" ' . $selected . '>' . $R['nama'] . '</option>';
+                    }
+                }
+                ?>
+            </select>
+            <nav class="nav mg-l-10">
                 <a href="<?php echo base_url('') ?>" target="_blank" class="nav-link" data-toggle="tooltip" data-placement="left" title="Halaman Utama PTWP"><i data-feather="chrome" class="text-primary"></i></a>
             </nav>
         </div><!-- content-header -->

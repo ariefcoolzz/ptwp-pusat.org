@@ -11,7 +11,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Data Pemain</li>
             </ol>
         </nav>
-        <span id='tambah' class="btn-tambah btn btn-info btn-xs"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</span>
+        <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>
     </div>
 </div>
 <div class="row mb-4" id="card_tambah">
@@ -97,7 +97,7 @@
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
-                                        <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     $no++;
@@ -147,7 +147,7 @@
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
-                                        <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     $no++;
@@ -216,7 +216,7 @@
                                         echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                         echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                         echo '<td>
-                                            <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
+                                            <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                         echo "</td>";
                                         echo "</tr>";
                                     }
