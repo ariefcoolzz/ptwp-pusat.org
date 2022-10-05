@@ -106,6 +106,7 @@
                                 <div class="pd-l-10">
                                     <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
@@ -150,6 +151,7 @@
                                 <div class="pd-l-10">
                                     <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
@@ -194,6 +196,7 @@
                                 <div class="pd-l-10">
                                     <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
@@ -238,6 +241,7 @@
                                 <div class="pd-l-10">
                                     <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">

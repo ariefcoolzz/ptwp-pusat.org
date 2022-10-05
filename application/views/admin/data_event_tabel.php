@@ -1,17 +1,14 @@
 <div class="table-responsive">
-    <table class="datatable-user table table-primary mg-b-0">
+    <table class="datatable-event table table-primary table-striped mg-b-0">
         <thead class="thead-primary">
             <tr class="text-center">
                 <th class="wd-20">No</th>
                 <th>Tanggal Mulai</th>
                 <th>Tanggal Selesai</th>
                 <th>Nama</th>
-                <!-- <th>Jenis Kelamin</th> -->
                 <th>Is Aktif</th>
                 <th>Jenis Pertandingan</th>
                 <th>Keterangan</th>
-                <!-- <th>Satuan Kerja</th>
-                <th>Status</th> -->
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -23,35 +20,17 @@
                 foreach ($rekap->result_array() as $R) {
                     echo '<tr align="center" data-id_event ="' . $R['id_event'] . '">';
                     echo "<td>" . $no . "</td>";
-                    // if (!empty($R['FotoPegawai']) or !empty($R['FotoFormal'])) {
-                    //     echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
-                    // } else {
-                    //     echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
-                    // }
-                    echo "<td align='left'>" . $R['tanggal_mulai'] . "</td>";
-                    // echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
-                    echo "<td align='left'>" . $R['tanggal_selesai'] . "</td>";
+                    echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal_mulai']) . "</td>";
+                    echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal_selesai']) . "</td>";
                     echo "<td align='left'>" . $R['nama'] . "</td>";
-                    echo "<td align='left'>" . $R['is_aktif'] . "</td>";
-                    echo "<td align='left'>" . $R['jenis_pertandingan'] . "</td>";
-                    echo "<td align='left'>" . $R['keterangan'] . "</td>";
-                    // if ($R['aktif'])
-                    //     echo '<td class="td_aktivasi">
-                    //     <div class="custom-control custom-switch">
-                    //         <input type="checkbox" class="custom-control-input aktivasi" data-no="' . $no . '" id="customSwitch_' . $no . '" checked>
-                    //         <label class="custom-control-label" for="customSwitch_' . $no . '"><span class="badge badge-success">Aktif</span></label>
-                    //     </div>
-                    //     </td>';
-                    // else
-                    //     echo '<td class="td_aktivasi">
-                    //     <div class="custom-control custom-switch">
-                    //         <input type="checkbox" class="custom-control-input aktivasi" data-no="' . $no . '" id="customSwitch_' . $no . '">
-                    //         <label class="custom-control-label" for="customSwitch_' . $no . '"><span class="badge badge-danger">Belum Aktif</span></label>
-                    //     </div>
-                    //     </td>';
+                    echo "<td>" . $R['is_aktif'] . "</td>";
+                    echo "<td>" . $R['jenis_pertandingan'] . "</td>";
+                    echo "<td>" . $R['keterangan'] . "</td>";
                     echo '<td>';
-                    echo '<span data-id_event="' . $R['id_event'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
-                    echo '<span data-id_event="' . $R['id_event'] . '" class="edit  btn btn-xs btn-outline-warning btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa fa-edit"></i></span>';
+                    echo '<div class="btn-group-vertical">';
+                    echo '<a href="javascript:void(0)" data-id_event="' . $R['id_event'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a href="javascript:void(0)">';
+                    echo '<a href="javascript:void(0)" data-id_event="' . $R['id_event'] . '" class="edit  btn btn-xs btn-outline-warning btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa fa-edit"></i></a href="javascript:void(0)">';
+                    echo "</div>";
                     echo "</td>";
                     echo "</tr>";
                     $no++;
@@ -62,7 +41,9 @@
     </table>
 </div><!-- table-responsive -->
 <script>
+    $('[data-toggle="tooltip"]').tooltip();
     $('.datatable-event').DataTable({
+        ordering: false,
         language: {
             searchPlaceholder: 'Pencarian...',
             sSearch: '',
@@ -103,8 +84,8 @@
             }
         });
     });
-	
-	 $(".edit").on('click', function() {
+
+    $(".edit").on('click', function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten").html($("#loader_html").html());
