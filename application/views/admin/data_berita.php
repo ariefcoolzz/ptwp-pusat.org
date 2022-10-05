@@ -16,26 +16,29 @@
                 <?php echo $this->session->flashdata('msg'); ?>
                 <div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-primary">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Judul Konten / Page</th>
-                                    <th scope="col">Alias</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Aksi</th>
+                        <table id="tabel_berita" class="datatable-pemain table table-primary mg-b-0">
+                            <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th>No</th>
+                                    <th>ID</th>
+                                    <th>Judul Konten / Page</th>
+                                    <th>Informasi</th>
+                                    <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                            $no = $list_konten->num_rows();
+                                $no = 1;
                                 foreach ($list_konten->result_array() as $R) {
                                     echo '<tr>';
                                     echo "<td>" . $no . "</td>";
                                     echo "<td align='center'>" . $R['id'] . "</td>";
-                                    echo "<td align='left'>" . $R['judul'] . "</td>";
-                                    echo "<td>" . $R['alias'] . "</td>";
+                                    echo "<td align='left'>" . $R['judul'] . " <br> <smal class='tx-gray-600'><i> alias : " . $R['alias'] . "</i></smal></td>";
+                                    echo "<td>
+                                    " . format_tanggal('ddmmmmyyyyhis', $R['date_created']) . "
+                                    <br>Creator : " . $R['nama'] . "
+                                    <br>" . $R['panitia'] . " - " . $R['nama_satker'] . "</td>";
                                     if ($R['is_publish']) {
                                         echo '<td><span class="badge badge-success">Dipublikasikan</span></td>';
                                     } else {
@@ -45,9 +48,9 @@
                                         <div class="btn-group">
                                         <span style="cursor:pointer" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></span>
                                         <span style="cursor:pointer" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></span></td>';
-                                    echo "</div>";
+                                    echo "</div></td>";
                                     echo "</tr>";
-                                    $no--;
+                                    $no++;
                                 }
                                 ?>
                             </tbody>
@@ -59,8 +62,16 @@
     </div>
 </div>
 <script>
+    $('#tabel_berita').DataTable({
+        language: {
+            searchPlaceholder: 'Pencarian...',
+            sSearch: '',
+            lengthMenu: '_MENU_ Berita/Halaman',
+            // info: false
+        }
+    });
+
     $('[data-toggle="tooltip"]').tooltip();
-    var cat_id = <?php echo $cat_id; ?>;
     $(".btn-tambah").on("click", function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
@@ -72,9 +83,8 @@
 
         var form_data = new FormData();
         form_data.append('id_konten', $(this).attr('id_konten'));
-        form_data.append('cat_id', cat_id);
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/form_data_konten",
+            url: "<?php echo base_url(); ?>admin/form_data_berita",
             type: 'POST',
             cache: false,
             contentType: false,
@@ -94,24 +104,7 @@
             }
         });
     });
-    // $(".btn-hapus").on("click", function() {
-    //     var form_data = new FormData();
-    //     form_data.append('id_konten', $(this).attr('id_konten'));
-    //     $.ajax({
-    //         url: "<?php echo base_url(); ?>admin/hapus_data_konten",
-    //         type: 'POST',
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         data: form_data,
-    //         dataType: 'json',
-    //         success: function(html) {
-    //             alert(html); // CET DISINI SWEET ALERT
-    //         }
-    //     });
-    // });
 
-    var cat_id = <?php echo $cat_id; ?>;
     $('.btn-hapus').on('click', function(e) {
         e.preventDefault();
         Swal.fire({
@@ -127,7 +120,6 @@
             if (result.isConfirmed) {
                 var form_data = new FormData();
                 form_data.append('id_konten', $(this).attr('id_konten'));
-                form_data.append('cat_id', cat_id);
                 $.ajax({
                     url: "<?php echo base_url(); ?>admin/hapus_data_konten",
                     type: 'POST',
