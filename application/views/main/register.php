@@ -55,6 +55,15 @@
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-between mg-b-5">
+                                <label class="mg-b-0-f">File SK Pengurus Daerah<small class="tx-danger"> (File yang di-ijinkan .pdf dan maksimal 2MB)</small></label>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Unggah File Pendukung</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="d-flex justify-content-between mg-b-5">
                                 <label class="mg-b-0-f">Username</label>
                             </div>
                             <input type="text" class="form-control" placeholder="Username" id='username' name='username'>
@@ -80,16 +89,16 @@
             <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 align-items-center d-none d-lg-flex pos-relative">
                 <div class="mx-lg-wd-500 mx-xl-wd-550">
                     <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid" alt="">
-					<?php
-					$rekap = $this->basic->get_data('view_user');
-					$no = 0;
-					if ($rekap->num_rows()) {
-						foreach ($rekap->result_array() as $R) {
-							$no++;
-							IF($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
-						}
-					}
-					?>
+                    <?php
+                    $rekap = $this->basic->get_data('view_user');
+                    $no = 0;
+                    if ($rekap->num_rows()) {
+                        foreach ($rekap->result_array() as $R) {
+                            $no++;
+                            if ($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
+                        }
+                    }
+                    ?>
                 </div>
             </div><!-- media-body -->
         </div><!-- media -->
@@ -97,41 +106,39 @@
 </div><!-- content -->
 
 <script>
-	$("#nip").on("keyup", function() {
-		register_get_pegawai($(this).val());
-	});
-	
-	$("#nip").on("change", function() {
-		register_get_pegawai($(this).val());
-	});
-	
-	function register_get_pegawai(nip)
-	{
-		// alert($(this).val().length);
-		if(nip.length == '18')
-			{
-				var form_data = new FormData();
-				form_data.append('nip', nip);
-				$.ajax({
-					url: "<?php echo base_url(); ?>register_get_pegawai",
-					type: 'POST',
-					cache: false,
-					contentType: false,
-					processData: false,
-					data: form_data,
-					dataType: 'json',
-					success: function(json) {
-						$("#nama").val(json.nama);
-						$("#nama").attr("readonly", "readonly");
-						$("#no_wa").val(json.no_wa);
-						$("#no_wa").attr("readonly", "readonly");
-						$("#id_satker_parent").val(json.id_satker_parent);
-						$("#id_satker_parent").attr("readonly", "readonly");
-					}
-				});
-			}
-	}
-	
+    $("#nip").on("keyup", function() {
+        register_get_pegawai($(this).val());
+    });
+
+    $("#nip").on("change", function() {
+        register_get_pegawai($(this).val());
+    });
+
+    function register_get_pegawai(nip) {
+        // alert($(this).val().length);
+        if (nip.length == '18') {
+            var form_data = new FormData();
+            form_data.append('nip', nip);
+            $.ajax({
+                url: "<?php echo base_url(); ?>register_get_pegawai",
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                dataType: 'json',
+                success: function(json) {
+                    $("#nama").val(json.nama);
+                    $("#nama").attr("readonly", "readonly");
+                    $("#no_wa").val(json.no_wa);
+                    $("#no_wa").attr("readonly", "readonly");
+                    $("#id_satker_parent").val(json.id_satker_parent);
+                    $("#id_satker_parent").attr("readonly", "readonly");
+                }
+            });
+        }
+    }
+
     $("#form_register").submit(function(e) {
         // alert();skip();
         e.preventDefault();
