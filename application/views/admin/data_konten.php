@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" id_konten="0" class="btn-tambah btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
+        <a href="#" id_konten="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
     </div>
 </div>
 <div class="row">
@@ -16,7 +16,7 @@
                 <?php echo $this->session->flashdata('msg'); ?>
                 <div>
                     <div class="table-responsive">
-                        <table class="table table-sm table-primary">
+                        <table id="tabel_konten" class="table table-sm table-primary table-striped mg-b-0">
                             <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -29,7 +29,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                            $no = $list_konten->num_rows();
+                                $no = $list_konten->num_rows();
                                 foreach ($list_konten->result_array() as $R) {
                                     echo '<tr>';
                                     echo "<td>" . $no . "</td>";
@@ -60,38 +60,51 @@
 </div>
 <script>
     $('[data-toggle="tooltip"]').tooltip();
+
+    $('#tabel_konten').DataTable({
+        ordering: false,
+        language: {
+            searchPlaceholder: 'Pencarian...',
+            sSearch: '',
+            lengthMenu: '_MENU_ Berita/Halaman',
+            // info: false
+        }
+    });
+
     var cat_id = <?php echo $cat_id; ?>;
-    $(".btn-tambah").on("click", function() {
-        //loader
-        $(".title_loader").text("Sedang Memuat Halaman");
-        $("#konten").html($("#loader_html").html());
-        // $('.nav-item.active').removeClass('active');
-        // $(this).closest('li.nav-item').addClass('active');
-        //loader
-        // skip();
+    $(document).ready(function() {
+        $(".table").on('click', '.btn-tambah', function(e) {
+            //loader
+            $(".title_loader").text("Sedang Memuat Halaman");
+            $("#konten").html($("#loader_html").html());
+            // $('.nav-item.active').removeClass('active');
+            // $(this).closest('li.nav-item').addClass('active');
+            //loader
+            // skip();
 
-        var form_data = new FormData();
-        form_data.append('id_konten', $(this).attr('id_konten'));
-        form_data.append('cat_id', cat_id);
-        $.ajax({
-            url: "<?php echo base_url(); ?>admin/form_data_konten",
-            type: 'POST',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            dataType: 'json',
-            success: function(html) {
-                if (html.status !== true) {
-                    location.reload();
-                } else {
-                    $("body").scrollTop('0px');
-                    $("#konten").fadeOut(300);
-                    $("#konten").html(html.konten_menu);
-                    $("#konten").fadeIn(300);
+            var form_data = new FormData();
+            form_data.append('id_konten', $(this).attr('id_konten'));
+            form_data.append('cat_id', cat_id);
+            $.ajax({
+                url: "<?php echo base_url(); ?>admin/form_data_konten",
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                dataType: 'json',
+                success: function(html) {
+                    if (html.status !== true) {
+                        location.reload();
+                    } else {
+                        $("body").scrollTop('0px');
+                        $("#konten").fadeOut(300);
+                        $("#konten").html(html.konten_menu);
+                        $("#konten").fadeIn(300);
 
+                    }
                 }
-            }
+            });
         });
     });
     // $(".btn-hapus").on("click", function() {
@@ -112,54 +125,56 @@
     // });
 
     var cat_id = <?php echo $cat_id; ?>;
-    $('.btn-hapus').on('click', function(e) {
-        e.preventDefault();
-        Swal.fire({
-            title: 'Apakah kamu yakin?',
-            text: "Data tidak bisa dikembalikan!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus saja!',
-            cancelButtonText: 'Batalkan saja!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var form_data = new FormData();
-                form_data.append('id_konten', $(this).attr('id_konten'));
-                form_data.append('cat_id', cat_id);
-                $.ajax({
-                    url: "<?php echo base_url(); ?>admin/hapus_data_konten",
-                    type: 'POST',
-                    contentType: false,
-                    processData: false,
-                    data: form_data,
-                    dataType: 'json',
-                    error: function() {
-                        alert('Something is wrong');
-                    },
-                    success: function(html) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Data Berhasil Di Delete...',
-                            showConfirmButton: false,
-                            timer: 2000
-                        });
-                        $("body").scrollTop('0px');
-                        $("#konten").fadeOut(300);
-                        $("#konten").html(html.konten_menu);
-                        $("#konten").fadeIn(300);
-                    }
-                });
-            } else {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Data Aman...',
-                    showConfirmButton: false,
-                    timer: 2000
-                });
+    $(document).ready(function() {
+        $(".table").on('click', '.btn-hapus', function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: 'Apakah kamu yakin?',
+                text: "Data tidak bisa dikembalikan!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, Hapus saja!',
+                cancelButtonText: 'Batalkan saja!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var form_data = new FormData();
+                    form_data.append('id_konten', $(this).attr('id_konten'));
+                    form_data.append('cat_id', cat_id);
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>admin/hapus_data_konten",
+                        type: 'POST',
+                        contentType: false,
+                        processData: false,
+                        data: form_data,
+                        dataType: 'json',
+                        error: function() {
+                            alert('Something is wrong');
+                        },
+                        success: function(html) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Berhasil Di Delete...',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            $("body").scrollTop('0px');
+                            $("#konten").fadeOut(300);
+                            $("#konten").html(html.konten_menu);
+                            $("#konten").fadeIn(300);
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Data Aman...',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
 
-            }
+                }
+            });
         });
     });
 </script>
