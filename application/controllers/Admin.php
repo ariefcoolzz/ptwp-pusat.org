@@ -255,8 +255,8 @@ class Admin extends CI_Controller
 		// print_r($cek_pegawai);
 		// echo '</pre>';
 		// die();
-		if ($cek_pegawai['jenis_kelamin'] == 'Pria') {
-			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0'), 'view_pemain');
+		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0') {
+			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_pemain_pria->num_rows() >= 8) {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
 				return;
@@ -267,9 +267,20 @@ class Admin extends CI_Controller
 				return;
 			}
 		} else {
+			$cek_pemain_putri = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Wanita', 'is_official' => '0'), 'view_pemain');
+			if ($cek_pemain_putri->num_rows() >= 5) {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRI BEREGU MAKSIMAL 8 ORANG'));
+				return;
+			}
 		}
-		if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
-		else $_POST['is_dharmayukti'] = 0;
+		if ($_POST['is_dharmayukti']) {
+			$id_keluarga = $_POST['id_pemain'];
+			$_POST['id_keluarga'] = $id_keluarga;
+			$cek_suami = $this->basic->get_data_where(array('IdAnggotaKeluarga' => $id_keluarga), 'tmst_keluarga')->row_array();
+			$_POST['id_pemain'] = $cek_suami['IdPegawai'];
+		}
+		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
+		// else $_POST['is_dharmayukti'] = 0;
 		if ($_POST)
 		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');

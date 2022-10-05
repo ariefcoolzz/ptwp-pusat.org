@@ -177,23 +177,44 @@
                                 $no = 1;
                                 $list_pemain = $this->Model_admin->get_data_pemain("Wanita", false);
                                 foreach ($list_pemain->result_array() as $R) {
-                                    echo '<tr align="center">';
-                                    echo "<td>" . $no . "</td>";
-                                    // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
-                                    // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
-                                    // } else {
-                                    // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
-                                    // }
-                                    echo "<td align='left'>" . $R['nama'] . "</td>";
-                                    echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
-                                    echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
-                                    echo "<td align='left'>" . $R['umur'] . "</td>";
-                                    echo "<td align='left'>" . $R['jabatan'] . "</td>";
-                                    echo "<td align='left'>" . $R['nama_satker'] . "</td>";
-                                    echo '<td>
-                                        <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
-                                    echo "</td>";
-                                    echo "</tr>";
+                                    if ($R['is_dharmayukti']) {
+                                        echo '<tr align="center">';
+                                        echo "<td>" . $no . "</td>";
+                                        // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
+                                        // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
+                                        // } else {
+                                        // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                        // }
+                                        echo "<td align='left'>" . $R['nama_istri'] . "</td>";
+                                        echo "<td align='left'>Dharmayukti</td>";
+                                        echo "<td align='left'>Wanita</td>";
+                                        echo "<td align='left'>-</td>";
+                                        echo "<td align='left'>Istri " . $R['nama'] . "</td>";
+                                        echo "<td align='left'>" . $R['jabatan'] . " <br>" . $R['nama_satker'] . "</td>";
+                                        echo '<td>
+                                            <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    } else {
+                                        echo '<tr align="center">';
+                                        echo "<td>" . $no . "</td>";
+                                        // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
+                                        // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
+                                        // } else {
+                                        // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                        // }
+                                        echo "<td align='left'>" . $R['nama'] . "</td>";
+                                        echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
+                                        echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
+                                        echo "<td align='left'>" . $R['umur'] . "</td>";
+                                        echo "<td align='left'>" . $R['jabatan'] . "</td>";
+                                        echo "<td align='left'>" . $R['nama_satker'] . "</td>";
+                                        echo '<td>
+                                            <span data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></span>';
+                                        echo "</td>";
+                                        echo "</tr>";
+                                    }
+                                   
                                     $no++;
                                 }
                                 ?>

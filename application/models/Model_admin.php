@@ -18,7 +18,7 @@ class Model_admin extends CI_Model
 
 	function model_get_data_id_nama_dharmayukti($keyword = NULL)
 	{
-		$this->db->select("A.id_pegawai AS id");
+		$this->db->select("B.IdAnggotaKeluarga AS id");
 		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
 		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/xxx.jpg&w=200'>\",B.NamaAnggotaKeluarga,' Istri dari ', A.nama,' (Dharmayukti)</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
@@ -247,7 +247,12 @@ class Model_admin extends CI_Model
 		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $id_event);
 		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_kontingen', $_SESSION['id_satker_parent']);
-		if ($jenis_kelamin) $this->db->where('A.jenis_kelamin', $jenis_kelamin);
+		if ($jenis_kelamin == "Pria") {
+			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
+		} else {
+			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
+			$this->db->or_where('A.is_dharmayukti', '1');
+		}
 		if ($is_official) $this->db->where('A.is_official', '1');
 		else $this->db->where('A.is_official', '0');
 		$query = $this->db->get();
