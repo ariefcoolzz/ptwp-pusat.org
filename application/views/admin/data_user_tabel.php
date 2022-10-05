@@ -109,4 +109,93 @@
             }
         });
     });
+
+    $(".edit").on('click', function() {
+        //loader
+        $(".title_loader").text("Sedang Memuat Halaman");
+        $("#konten").html($("#loader_html").html());
+        // $('.nav-item.active').removeClass('active');
+        // $(this).closest('li.nav-item').addClass('active');
+        //loader
+        // skip();
+        var form_data = new FormData();
+        form_data.append('id_user', $(this).data('id_user'));
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/data_user_form",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    location.reload();
+                } else {
+                    $("body").scrollTop('0px');
+                    $("#konten").fadeOut(300);
+                    $("#konten").html(json.konten_menu);
+                    $("#konten").fadeIn(300);
+
+                }
+            }
+        });
+    });
+
+    $(".hapus").on('click', function() {
+        Swal.fire({
+            title: 'Apakah kamu yakin?',
+            text: "Data tidak bisa dikembalikan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus saja!',
+            cancelButtonText: 'Batalkan saja!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var form_data = new FormData();
+                form_data.append('id_user', $(this).data('id_user'));
+                $.ajax({
+                    url: "<?php echo base_url(); ?>admin/data_user_hapus",
+                    type: 'POST',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,
+                    dataType: 'json',
+                    success: function(html) {
+                        if (html.status !== true) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Data Gagal Di Hapus',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Data Berhasil Di Hapus',
+                                showConfirmButton: false,
+                                timer: 1000
+                            });
+                            $("body").scrollTop('0px');
+                            $("#konten").fadeOut(300);
+                            $("#konten").html(html.konten_menu);
+                            $("#konten").fadeIn(300);
+
+                        }
+                    }
+                });
+            } else {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Data Aman...',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+            }
+        });
+    });
 </script>
