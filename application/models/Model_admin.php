@@ -249,7 +249,8 @@ class Model_admin extends CI_Model
 		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_kontingen', $_SESSION['id_satker_parent']);
 		if ($jenis_kelamin == "Pria") {
 			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
-		} else {
+		}
+		if ($jenis_kelamin == "Wanita") {
 			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
 			$this->db->or_where('A.is_dharmayukti', '1');
 		}
