@@ -220,7 +220,7 @@
                                         echo "</td>";
                                         echo "</tr>";
                                     }
-                                   
+
                                     $no++;
                                 }
                                 ?>
@@ -384,6 +384,15 @@
         } else {
             $("#div_id_pemain").show();
             $("#div_id_pemain_dharmayukti").hide();
+        }
+    });
+    $("#simpan").hide();
+    $("#is_setuju").on('click', function() {
+        // alert($(this).is(":checked"));
+        if ($(this).is(":checked") == true) {
+            $("#simpan").show();
+        } else {
+            $("#simpan").hide();
         }
     });
 

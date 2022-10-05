@@ -242,6 +242,17 @@ class Admin extends CI_Controller
 	{
 		// echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
 		// die();
+		// echo '<pre>';
+		// print_r($_POST);
+		// echo '</pre>';
+		// die();
+		$id_pemain = $this->input->post('id_pemain');
+		// echo $id_pemain;
+		// die();
+		if (empty($id_pemain) or $id_pemain == 'null') {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'SILAHKAN PILIH PEMAIN / OFFICIAL TERLEBIH DAHULU'));
+			return;
+		}
 		$_POST['id_kontingen'] 	= $_SESSION['id_satker_parent'];
 		if ($_POST['is_official']) {
 			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
@@ -283,12 +294,12 @@ class Admin extends CI_Controller
 		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		// else $_POST['is_dharmayukti'] = 0;
 		if ($_POST)
-		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti']);
+		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti'], 'id_event' => $_POST['id_event']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
 		IF($cek_pemain->num_rows())
 			{
-				$where = array('id_pemain' => $_POST['id_pemain'],'is_dharmayukti' => $_POST['is_dharmayukti']);
-				$status = $this->basic->update_data($where, 'data_pemain', $_POST);
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'SUDAH ADA PEMAIN / OFFICIAL DENGAN NAMA TERSEBUT, SILAHKAN HAPUS TERLEBIH DAHULU'));
+			return;
 		} else {
 				$status = $this->basic->insert_data('data_pemain', $_POST);
 			}
