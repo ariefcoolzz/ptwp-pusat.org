@@ -1,10 +1,10 @@
 <?php
 $txt_simpan = "SIMPAN";
-if (ISSET($_POST['id_user'])) {
-	$txt_simpan = "UPDATE";
-	$R = $this->basic->get_data_where(array('id_user' => $_POST['id_user']), 'data_user')->row_array();
-	// echo "<pre>";
-	// print_r($data);die;
+if (isset($_POST['id_user'])) {
+    $txt_simpan = "UPDATE";
+    $R = $this->basic->get_data_where(array('id_user' => $_POST['id_user']), 'data_user')->row_array();
+    // echo "<pre>";
+    // print_r($data);die;
 }
 ?>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
@@ -24,19 +24,19 @@ if (ISSET($_POST['id_user'])) {
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label class="control-label">Nama :</label>
-                                <input id='id_user' class='form-control' value="<?php IF(ISSET($R)) echo $R['id_user']; ?>">
+                                <input id='id_user' class='form-control' value="<?php if (isset($R)) echo $R['id_user']; ?>">
                             </div>
-							<div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label">Username :</label>
-                                <input id='username' class='form-control' value="<?php IF(ISSET($R)) echo $R['username']; ?>">
+                                <input id='username' class='form-control' value="<?php if (isset($R)) echo $R['username']; ?>">
                             </div>
-							<div class="form-group">
+                            <div class="form-group">
                                 <label class="control-label">Password :</label>
-                                <input id='password' class='form-control' value="<?php IF(ISSET($R)) echo $R['password']; ?>">
+                                <input id='password' class='form-control' value="<?php if (isset($R)) echo $R['password']; ?>">
                             </div>
-							
+
                             <div id='biodata'></div>
                         </div>
                     </div>
@@ -51,12 +51,10 @@ if (ISSET($_POST['id_user'])) {
     </div>
 </div>
 <script>
-
-	
-    $("#simpan").on('click', function(){
+    $("#simpan").on('click', function() {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
-		var form_data = new FormData();
-		form_data.append('id_user',$("#id_user").val());
+        var form_data = new FormData();
+        form_data.append('id_user', $("#id_user").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_user_simpan",
             type: 'POST',
