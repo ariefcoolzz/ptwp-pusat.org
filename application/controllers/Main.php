@@ -65,7 +65,8 @@ class Main extends CI_Controller
 	public function index()
 	{
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
-		$data['berita_terbaru'] = $this->Model_main->get_data_konten_list('1', '3'); // KATEGORI 1 LIMIT 3
+		$data['berita_pusat'] = $this->Model_main->get_data_konten_list('1', '3'); // KATEGORI 1 LIMIT 3
+		$data['berita_daerah'] = $this->Model_main->get_data_konten_list('3', '3'); // KATEGORI 1 LIMIT 3
 		// $data['berita_terbaru'] = $this->basic->get_data_where_limit(array('cat_id' => '1'), 3, 'data_konten');
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}
@@ -93,7 +94,14 @@ class Main extends CI_Controller
 	public function berita_ptwp_pusat()
 	{
 		$data['judul'] = "Berita PTWP Pusat";
-		$data['berita_ptwp_pusat'] = $this->Model_main->get_data_konten_list('1'); // KATEGORI 1
+		$data['list_berita'] = $this->Model_main->get_data_konten_list('1'); // KATEGORI 1
+		// $data['berita_ptwp_pusat'] = $this->basic->get_data_where(array('cat_id' => '1'), 'data_konten');
+		$this->template->load('ptwp_template', 'main/berita_ptwp_pusat', $data);
+	}
+	public function berita_ptwp_daerah()
+	{
+		$data['judul'] = "Berita PTWP Daerah";
+		$data['list_berita'] = $this->Model_main->get_data_konten_list('3'); // KATEGORI 3 DAERAH
 		// $data['berita_ptwp_pusat'] = $this->basic->get_data_where(array('cat_id' => '1'), 'data_konten');
 		$this->template->load('ptwp_template', 'main/berita_ptwp_pusat', $data);
 	}

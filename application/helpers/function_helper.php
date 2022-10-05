@@ -311,6 +311,9 @@ function format_tanggal($str1, $str2)
 			case "wddmmmmyyyyhis":
 				return $w . ', ' . $dd . ' ' . $mmmm . ' ' . $yyyy . ' ' . substr($str2, 11, 8);
 				break;
+			case "ddmmmmyyyyhis":
+				return $dd . ' ' . $mmmm . ' ' . $yyyy . ' ' . substr($str2, 11, 8);
+				break;
 			case "wddmmmmyyyy":
 				return $w . ', ' . $dd . ' ' . $mmmm . ' ' . $yyyy;
 				break;

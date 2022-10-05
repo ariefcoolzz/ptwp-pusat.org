@@ -104,34 +104,34 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">6</h6>
-                                        <h6 class="nav-link">7</h6>
-                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">4</h6>
-                                        <h6 class="nav-link">3</h6>
-                                        <h6 class="nav-link">5</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
                         </ul>
                         <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/r4oZV5cEKu8" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
+                            <span data-link="https://www.youtube.com/embed/liPilO13aKs" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
                         </div><!-- card-footer -->
                     </div>
                 </div>
@@ -148,72 +148,28 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">6</h6>
-                                        <h6 class="nav-link">7</h6>
-                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">4</h6>
-                                        <h6 class="nav-link">3</h6>
-                                        <h6 class="nav-link">5</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="card-footer text-center tx-13">
-                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
-                        </div><!-- card-footer -->
-                    </div>
-                </div>
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">6</h6>
-                                        <h6 class="nav-link">7</h6>
-                                        <h6 class="nav-link">6</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">4</h6>
-                                        <h6 class="nav-link">3</h6>
-                                        <h6 class="nav-link">5</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
@@ -236,28 +192,72 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">6</h6>
-                                        <h6 class="nav-link">7</h6>
-                                        <h6 class="nav-link">6</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
                                     <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">4</h6>
-                                        <h6 class="nav-link">3</h6>
-                                        <h6 class="nav-link">5</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                        </div><!-- card-footer -->
+                    </div>
+                </div>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
                                     </nav>
                                 </div>
                             </li>
@@ -281,17 +281,18 @@
             <div class="card card-body pd-0">
                 <div class="marker marker-ribbon marker-primary pos-absolute t-10 l-0">Berita Terbaru PTWP Pusat</div>
                 <div class="media-list mg-t-35">
-                    <?php foreach ($berita_terbaru->result_array() as $R) {
+                    <?php foreach ($berita_pusat->result_array() as $R) {
                         $intro = substr(strip_tags($R['isi']), 0, 200);
                         // $intro = substr($R['isi'], 0, 200);
                     ?>
                         <div class="d-sm-flex pd-20 align-items-center" data-aos="zoom-in" data-aos-duration="2000">
                             <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
                                 <?php
-                                if ($R['img'] == "") {
+                                preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $R['isi'], $img); //BUAT DAPETIN GAMBAR PERTAMA DALAM ISI
+                                if (empty($img)) {
                                     echo  "<div class='pos-relative overflow-hidden rounded'><div class='marker-icon marker-primary pos-absolute t-0 l-0'><i data-feather='rss'></i></div><img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'></div>";
                                 } else {
-                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
+                                    echo "<img src='" . $img['src'] . "' class='img-fit-cover img-thumbnail'>";
                                 }
                                 ?>
                             </a>
@@ -299,7 +300,7 @@
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ...<a href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a></p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?>x </small>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?>x </small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
@@ -314,17 +315,18 @@
             <div class="card card-body pd-0">
                 <div class="marker marker-ribbon marker-success pos-absolute t-10 l-0">Berita Terbaru PTWP Daerah</div>
                 <div class=" media-list mg-t-35">
-                    <?php foreach ($berita_terbaru->result_array() as $R) {
+                    <?php foreach ($berita_daerah->result_array() as $R) {
                         $intro = substr(strip_tags($R['isi']), 0, 200);
                         // $intro = substr($R['isi'], 0, 200);
                     ?>
                         <div class="d-sm-flex pd-20 align-items-center" data-aos="zoom-in" data-aos-duration="2000">
                             <a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="wd-100 wd-md-50 wd-lg-100 ht-60 ht-md-40 ht-lg-60">
                                 <?php
-                                if ($R['img'] == "") {
+                                preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $R['isi'], $img); //BUAT DAPETIN GAMBAR PERTAMA DALAM ISI
+                                if (empty($img)) {
                                     echo  "<div class='pos-relative overflow-hidden rounded'><div class='marker-icon marker-success pos-absolute t-0 l-0'><i data-feather='rss'></i></div><img src='assets/img/gambar.jpg' class='img-fit-cover img-thumbnail'></div>";
                                 } else {
-                                    echo "<img src='$R[img]' class='img-fit-cover img-thumbnail'>";
+                                    echo "<img src='" . $img['src'] . "' class='img-fit-cover img-thumbnail'>";
                                 }
                                 ?>
 
@@ -333,14 +335,14 @@
                                 <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ...<a href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a></p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('wddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?>x </small>
+                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?> x </small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
                     <?php } ?>
                 </div>
                 <div class="card-footer text-center tx-13">
-                    <a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="link-03"><i data-feather="rss"></i> Berita Lainnya</a>
+                    <a href="<?php echo base_url('main/berita_ptwp_daerah') ?>" class="link-03"><i data-feather="rss"></i> Berita Lainnya</a>
                 </div>
             </div><!-- card-body -->
         </div><!-- col -->

@@ -58,16 +58,9 @@ class Admin extends CI_Controller
 	public function data_berita()
 	{
 		$data['judul'] = "DATA MENU BERITA";
-		$data['cat_id'] = 1;
-		// $where = array('cat_id' => 1);
-		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where(array('cat_id' => '3', 'user_created' => $_SESSION['id_satker_parent']));
-		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) $this->db->where_in('cat_id', array('1', '3'));
-
-		$this->db->order_by('id DESC');
-
-		$data['list_konten'] = $this->basic->get_data('data_konten');
+		$data['list_konten'] = $this->Model_admin->get_data_berita();
 		OB_START();
-		$this->load->view("admin/data_konten", $data);
+		$this->load->view("admin/data_berita", $data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -368,6 +361,30 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function form_data_berita()
+	{
+
+		$id_konten = $this->input->post('id_konten');
+
+		$data['id'] = $id_konten;
+		$data['isi'] = '';
+		$data['judul'] = '';
+		$data['img'] = '';
+		$data['alias'] = '';
+		$data['title'] = "FORM TAMBAH BERITA";
+		if (!empty($id_konten)) {
+			$q = $this->basic->get_data_where(array('id' => $id_konten), 'data_konten')->row_array();
+			$data = $q;
+			$data['title'] = "UBAH BERITA";
+			// echo "<pre>";
+			// print_r($data);
+			// die;
+		}
+		OB_START();
+		$this->load->view("admin/form_data_berita", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function form_data_tim()
 	{
 		$data['title'] = "FORM TAMBAH POOL";
@@ -442,6 +459,46 @@ class Admin extends CI_Controller
 		// print_r($data);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function form_data_berita_simpan()
+	{
+		$id = $this->input->post('id');
+		$data['judul'] = $this->input->post('judul');
+		$data['cat_id'] = $this->input->post('cat_id');
+		$data['alias'] = $this->input->post('alias');
+		$data['img'] = $this->input->post('img');
+		$data['isi'] = $this->input->post('isi_konten');
+		$data['is_publish'] = $this->input->post('is_publish');
+		$data['user_created'] = $_SESSION['id_user'];
+
+		if (empty($data['alias'])) {
+			$data['alias'] = strtolower(preg_replace('/\s+/', '_', $data['judul']));
+		}
+		$data['alias']  = preg_replace('/\s+/', '_', $data['alias']);
+		if (empty($data['is_publish'])) {
+			$data['is_publish'] = 0;
+		}
+		// preg_match('/<img.+src=[\'"](?P<src>.+?)[\'"].*>/i', $data['isi'], $data['img']);
+
+		// echo "<pre>";
+		// print_r($data);
+		// die;
+		if ($id > 0) {
+			$data['date_updated'] = date('Y-m-d H:i:s');
+			unset($data['user_created']);
+			$where = array('id' => $id);
+			$res = $this->basic->update_data($where, 'data_konten', $data);
+		} else {
+			$data['user_created'] = $this->session->userdata('id');
+			$data['date_created'] = date('Y-m-d H:i:s');
+			$res = $this->basic->insert_data('data_konten', $data);
+		}
+		if ($res) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
+		}
+		redirect('admin/data_berita');
 	}
 	public function form_data_konten_simpan()
 	{
