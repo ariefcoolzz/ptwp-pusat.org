@@ -104,7 +104,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -118,7 +118,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -148,7 +148,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -162,7 +162,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -192,7 +192,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -206,7 +206,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -236,7 +236,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Dika Andrian</p>
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">PA Jakarta Pusat</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">
@@ -250,7 +250,7 @@
                             <li class="list-group-item d-flex">
                                 <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
                                 <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Arief Kusuma Putra</p>
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
                                     <small class="tx-12 tx-color-03 mg-b-0">Ditjen Badilag</small>
                                 </div>
                                 <div class="mg-l-auto d-flex align-items-center">

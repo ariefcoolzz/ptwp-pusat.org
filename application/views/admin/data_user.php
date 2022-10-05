@@ -8,7 +8,7 @@
         </nav>
         <div class="row">
             <div class="form-group ml-4">
-                <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-info btn-md"><i class="fa fa-plus-circle"></i> Data User Pengurus</a>
+                <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data User Pengurus</a>
             </div>
             <div class="form-group ml-2">
                 <select id="id_panitia" class="filter form-control">
@@ -46,9 +46,6 @@
     </div>
 </div>
 <script>
-    $('[data-toggle="tooltip"]').tooltip();
-
-
     load_data();
     $(".filter").on('change', function() {
         load_data();
