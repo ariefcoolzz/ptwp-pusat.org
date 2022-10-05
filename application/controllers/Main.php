@@ -19,14 +19,13 @@ class Main extends CI_Controller
 		// DIE($_POST['nip']);
 		$data = $this->Model_main->register_get_pegawai($_POST['nip']);
 		// echo ($data->num_rows());
-		IF($data->num_rows())
-			{
-				$R = $data->row_array();
-				echo JSON_ENCODE(array("nama" => $R['nama'], "no_wa" => $R['NomorHandphone'], "id_satker_parent" => $R['id_satker_parent']));
-			}
+		if ($data->num_rows()) {
+			$R = $data->row_array();
+			echo JSON_ENCODE(array("nama" => $R['nama'], "no_wa" => $R['NomorHandphone'], "id_satker_parent" => $R['id_satker_parent']));
+		}
 	}
 
-	
+
 	public function register()
 	{
 		$data['judul'] = "Halaman Register";
@@ -35,6 +34,21 @@ class Main extends CI_Controller
 
 	public function register_simpan()
 	{
+		//VALIDASI 
+		$pesan = "";
+		EXTRACT($_POST);
+		// if ($nip == "") 					$pesan .= "Maaf... Nip Tidak Valid Harus Diisi<br>";
+		if ($nama == "") 				$pesan .= "Maaf... Nama Harus Diisi<br>";
+		if ($no_wa == "") 					$pesan .= "Maaf... No Whatsapp Harus Diisi<br>";
+		if ($id_panitia == "") 	$pesan .= "Maaf... Jenis Panitia Harus Dipilih<br>";
+		if ($id_satker_parent == "") 			$pesan .= "Maaf... Wilayah Pengurus Daerah Harus Dipilih<br>";
+		// if ($file_upload == "") 			$pesan .= "Maaf... Dokumen Pendukung Belum Diupload<br>";
+		if ($username == "") 				$pesan .= "Maaf... Username Harus Diisi<br>";
+		if ($password == "") 				$pesan .= "Maaf... Password Harus Diisi<br>";
+		if ($password_confirm == "") 				$pesan .= "Maaf... Konfirmasi Password Harus Diisi<br>";
+
+		if ($pesan != "") die(JSON_ENCODE(array("status" => FALSE, "pesan" => $pesan)));
+		//VALIDASI
 		// echo '<pre>';
 		// print_r($_FILES);
 		// echo '</pre>';

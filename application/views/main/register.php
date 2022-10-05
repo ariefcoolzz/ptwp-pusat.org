@@ -187,28 +187,34 @@
     $("#form_register").submit(function(e) {
         // alert();skip();
         e.preventDefault();
+        var form = $(this);
         // var text = $("#btn-simpan").html();
         // $("#btn-simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
-        var form_data = new FormData(this);
+        // var form_data = new FormData(this);
         $.ajax({
             url: "<?php echo base_url(); ?>register_simpan",
             type: 'POST',
             cache: false,
             contentType: false,
             processData: false,
-            data: form_data,
+            data: new FormData(this),
             dataType: 'json',
             success: function(json) {
                 // alert(json.status);
                 if (json.status !== true) {
-                    alert("Maaf, Pendaftaran Gagal");
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Peringatan... !!!',
+                        html: "<div style='text-align:justify;'>" + json.pesan + "</div>",
+                        // footer: '<a href="">Why do I have this issue?</a>'
+                    })
                 } else {
-                    // Swal.fire({
-                    // icon: 'success',
-                    // title: 'Simpan Data Berhasil',
-                    // showConfirmButton: false,
-                    // timer: 1000
-                    // });
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Simpan Data Berhasil',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
                     location.replace("<?php echo base_url(); ?>login");
                 }
             }

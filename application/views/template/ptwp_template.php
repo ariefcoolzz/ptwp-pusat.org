@@ -22,6 +22,7 @@
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css">
 
   <!-- DashForge CSS -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
@@ -46,6 +47,7 @@
   <script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
   <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
   <script src="<?php echo base_url(); ?>assets/js/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
