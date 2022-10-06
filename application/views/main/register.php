@@ -6,10 +6,10 @@
 
 <div class="content content-fixed content-auth">
     <div class="container">
-        <div class="media align-items-stretch justify-content-center ht-100p">
+        <div class="media d-flex flex-column flex-lg-row justify-content-center ht-100p">
             <form id="form_register" method="post" enctype="multipart/form-data">
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
-                    <div class="pd-t-20 wd-100p lh-1">
+                    <div class="pd-t-20 wd-400 lh-1">
                         <div class="form-group">
                             <label>Nip <small class="tx-danger">(Jika Non Pegawai Nip Tidak Usah Diisi, Jika Pegawai Nip Harus 18 Digit)</small></label>
                             <input type="text" class="form-control" placeholder='198701262006041002' maxlength='18' id='nip' name='nip'>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kontingen Pengurus Daerah</label>
-                            <select id='id_kontingen' name='id_kontingen' class="form-control select2">
+                            <select id='id_kontingen' name='id_kontingen' class="form-control select2 wd-400">
                                 <option></option>
                                 <?php
                                 $rekap = $this->basic->get_data_where("(IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'", 'tmst_satker', 'UrutanTingkatBanding ASC');
@@ -83,10 +83,10 @@
                             </div>
                             <input type="password" class="form-control" placeholder="Konfirmasi Password" id='password_confirm' name='password_confirm'>
                         </div>
-                        <div class="wd-400">
+                        <div>
                             <div class="alert alert-danger" role="alert">
                                 <h4 class="alert-heading tx-bolder">Pernyataan</h4>
-                                <p class="text-justify">Saya setuju, seluruh data yang diinput ke dalam aplikasi ini adalah valid dan benar serta telah disetujui oleh <b>Ketua Umum Pengurus PTWP Dearah</b> masing-masing.
+                                <p class="text-justify">Saya setuju, seluruh data yang diinput ke dalam aplikasi ini adalah valid dan benar serta telah disetujui oleh <b>Ketua Umum Pengurus PTWP Daerah</b> masing-masing.
                                     Apabila data yang diinput tidak benar, maka <b>Pengurus Daerah</b> terkait bersedia menerima sanksi yang ditetapkan oleh <b>Pengurus PTWP Pusat</b></p>
                                 <hr>
                                 <div class="tx-center">
@@ -100,8 +100,8 @@
                     </div>
                 </div><!-- sign-wrapper -->
             </form>
-            <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-none d-lg-flex pos-relative">
-                <div class="lg-wd-500 xl-wd-550">
+            <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-lg-flex pos-relative">
+                <div class="wd-400">
                     <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid wd-400" alt="">
                     <div class="card">
                         <div class="sticky-top card-header d-flex align-items-center justify-content-between">
@@ -115,14 +115,9 @@
                                 foreach ($rekap->result_array() as $R) {
                                     $no++;
                                     if ($R['aktif'] == "1") {
-                                        $icon_validasi = "<span class='avatar-initial rounded-circle bg-teal'><i class='icon ion-md-checkmark'></i></span>";
+                                        $validasi = "<small class='badge bg-success tx-12 text-light mg-b-0'><i class='icon ion-md-checkmark'></i> Sudah Divalidasi</small>";
                                     } elseif ($R['aktif'] == "0") {
-                                        $icon_validasi = "<span class='avatar-initial rounded-circle bg-danger'><i class='icon ion-md-close'></i></span>";
-                                    };
-                                    if ($R['aktif'] == "1") {
-                                        $validasi = "<small class='badge bg-success tx-12 text-light mg-b-0'>Sudah Divalidasi</small>";
-                                    } elseif ($R['aktif'] == "0") {
-                                        $validasi = "<small class='badge bg-danger tx-12 text-light mg-b-0'>Belum Divalidasi</small>";
+                                        $validasi = "<small class='badge bg-danger tx-12 text-light mg-b-0'><i class='icon ion-md-close'></i> Belum Divalidasi</small>";
                                     };
                                     // if ($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
                                     if ($R['id_panitia'] > 0) echo "
@@ -153,8 +148,10 @@
     const scroll = new PerfectScrollbar('#scroll', {
         suppressScrollX: true
     });
-	
-	$(".select2").select2();
+
+    $('select').select2({
+        theme: 'bootstrap4',
+    });
 
     $("#nip").on("keyup", function() {
         register_get_pegawai($(this).val());
