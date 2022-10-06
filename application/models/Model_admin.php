@@ -290,4 +290,14 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function get_data_wasit($data)
+	{
+		$id_event = $this->input->post('id_wasit');
+		$this->db->from('data_wasit');
+		// if ($data['id_event']) $this->db->where('A.id_event', $data['id_event']);
+		// if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
 }

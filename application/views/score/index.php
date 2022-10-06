@@ -3,8 +3,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
-	
+    <!-- <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script> -->
+
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/img/favicon.png">
 
@@ -26,9 +26,9 @@
 </head>
 
 <body>
-	<div id='konten'>
-		<?php $this->load->view("score/score_rekap"); ?>
-	</div>
+    <div id='konten'>
+        <?php $this->load->view("score/score_rekap"); ?>
+    </div>
 </body>
 
 <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
@@ -52,15 +52,15 @@
 
 <script>
     // $('#datatable').DataTable({
-        // responsive: true,
-        // language: {
-            // searchPlaceholder: 'Pencarian...',
-            // sSearch: '',
-            // lengthMenu: '_MENU_ Jenis/Halaman',
-        // }
+    // responsive: true,
+    // language: {
+    // searchPlaceholder: 'Pencarian...',
+    // sSearch: '',
+    // lengthMenu: '_MENU_ Jenis/Halaman',
+    // }
     // });
 
-    
+
 
     // $('[data-toggle="tooltip"]').tooltip();
 </script>

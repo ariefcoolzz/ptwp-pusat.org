@@ -195,27 +195,95 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	
+
 	public function data_event_simpan()
 	{
 		// PRINT_R($_POST);DIE();
 		$status = FALSE;
-		IF(ISSET($_POST['id_event']))
-			{
-				$where = array('id_event' => $_POST['id_event']);
-				$status = $this->basic->update_data($where, 'data_event', $_POST);
-			}
-		ELSE
-			{
-				$status = $this->basic->insert_data('data_event', $_POST);
-			}
-		
+		if (isset($_POST['id_event'])) {
+			$where = array('id_event' => $_POST['id_event']);
+			$status = $this->basic->update_data($where, 'data_event', $_POST);
+		} else {
+			$status = $this->basic->insert_data('data_event', $_POST);
+		}
+
 		OB_START();
 		$this->load->view("admin/data_event");
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
+	public function data_wasit()
+	{
+		OB_START();
+		$this->load->view("admin/data_wasit");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_wasit_tabel()
+	{
+		$konten_menu = $this->load->view("admin/data_wasit_tabel", "", TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_wasit_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_wasit_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	// public function data_wasit_aktivasi()
+	// {
+	// 	$id_wasit 		= $this->input->post('id_wasit');
+	// 	$aktif			= $this->input->post('aktif');
+	// 	$nomor			= $this->input->post('nomor');
+	// 	$where 	= array('id_wasit' => $id_wasit);
+	// 	$update = array('aktif' => $aktif);
+	// 	$res = $this->basic->update_data($where, 'data_wasit', $update);
+	// 	if ($res) {
+	// 		OB_START();
+	// 		if ($aktif) {
+	// 			echo '<div class="custom-control custom-switch">
+	// 				<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '" checked>
+	// 				<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-success">Aktif</span></label>
+	// 			</div>';
+	// 		} else {
+	// 			echo '<div class="custom-control custom-switch">
+	// 				<input type="checkbox" class="custom-control-input aktivasi" data-no="' . $nomor . '" id="customSwitch_' . $nomor . '">
+	// 				<label class="custom-control-label" for="customSwitch_' . $nomor . '"><span class="badge badge-danger">Belum Aktif</span></label>
+	// 			</div>';
+	// 		}
+
+	// 		$konten_menu = ob_get_clean();
+	// 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// 	}
+	// }
+	public function data_wasit_hapus()
+	{
+		$where = array('id_wasit' => $_POST['id_wasit']);
+		$status = $this->basic->delete_data($where, 'data_wasit');
+		OB_START();
+		$this->load->view("admin/data_wasit");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_wasit_simpan()
+	{
+		// PRINT_R($_POST);DIE();
+		$status = FALSE;
+		if (isset($_POST['id_wasit'])) {
+			$where = array('id_wasit' => $_POST['id_wasit']);
+			$status = $this->basic->update_data($where, 'data_wasit', $_POST);
+		} else {
+			$status = $this->basic->insert_data('data_wasit', $_POST);
+		}
+
+		OB_START();
+		$this->load->view("admin/data_wasit");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
 
 	public function data_pemain()
 	{
@@ -294,19 +362,18 @@ class Admin extends CI_Controller
 				return;
 			}
 		}
-		
+
 		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		// else $_POST['is_dharmayukti'] = 0;
 		if ($_POST)
-		$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti'], 'id_event' => $_POST['id_event']);
+			$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti'], 'id_event' => $_POST['id_event']);
 		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
-		IF($cek_pemain->num_rows())
-			{
+		if ($cek_pemain->num_rows()) {
 			echo JSON_ENCODE(array("status" => false, "pesan" => 'SUDAH ADA PEMAIN / OFFICIAL DENGAN NAMA TERSEBUT, SILAHKAN HAPUS TERLEBIH DAHULU'));
 			return;
 		} else {
-				$status = $this->basic->insert_data('data_pemain', $_POST);
-			}
+			$status = $this->basic->insert_data('data_pemain', $_POST);
+		}
 
 		if ($status) {
 			$this->data_pemain();
