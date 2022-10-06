@@ -291,7 +291,13 @@ class Admin extends CI_Controller
 		$data['id_event'] = $id_event = $this->input->post('id_event');
 		$event 	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
 
-		$konten_menu = $this->load->view("admin/data_pemain_" . $event['jenis_pertandingan'], $data, TRUE);
+		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) {
+			$konten_menu = $this->load->view("admin/data_pemain_list_" . $event['jenis_pertandingan'], $data, TRUE);
+		} else if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) {
+			$konten_menu = $this->load->view("admin/data_pemain_" . $event['jenis_pertandingan'], $data, TRUE);
+		} else {
+			$konten_menu = "HALAMAN TIDAK TERSEDIA";
+		}
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
@@ -567,7 +573,7 @@ class Admin extends CI_Controller
 				##SEND WA ##
 
 				$kirim_ke = array('6285712423460', '6282120494550', '628114043343', '6281281419338'); //PUTRA, REZA, ILMAN, CANDRA BOY
-				$data['pesan']	= $_SESSION['nama'] . 'Mengirim Berita Daerah dengan Judul : ' . $data['judul'] . ' |Harap segera dipublish';
+				$data['pesan']	= $_SESSION['nama'] . ' Mengirim Berita Daerah dengan Judul : "*' . $data['judul'] . '*" |Harap segera dipublish';
 				foreach ($kirim_ke as $R) {
 					$data['nowa']	= $R;
 					$this->kirim_wa($data);
