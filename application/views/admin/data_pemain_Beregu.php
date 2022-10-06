@@ -81,7 +81,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain(false, true);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, false, true);
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
@@ -131,7 +131,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain("Pria", false);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, "Pria", false);
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
@@ -181,7 +181,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain("Wanita", false);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, "Wanita", false);
                                 foreach ($list_pemain->result_array() as $R) {
                                     if ($R['is_dharmayukti']) {
                                         echo '<tr align="center">';
@@ -414,6 +414,7 @@
 
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
+        form_data.append('id_kontingen', '<?php echo $id_kontingen; ?>');
         form_data.append('is_dharmayukti', is_dharmayukti);
         form_data.append('id_pemain', id_pemain);
         form_data.append('is_official', is_official);
