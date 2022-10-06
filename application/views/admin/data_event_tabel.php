@@ -6,7 +6,7 @@
                 <th>Tanggal Mulai</th>
                 <th>Tanggal Selesai</th>
                 <th>Nama</th>
-                <th>Is Aktif</th>
+                <th>Aktif</th>
                 <th>Jenis Pertandingan</th>
                 <th>Keterangan</th>
                 <th>Aksi</th>
@@ -23,7 +23,7 @@
                     echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal_mulai']) . "</td>";
                     echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal_selesai']) . "</td>";
                     echo "<td align='left'>" . $R['nama'] . "</td>";
-                    echo "<td>" . $R['is_aktif'] . "</td>";
+                    echo "<td>" . YA($R['is_aktif']) . "</td>";
                     echo "<td>" . $R['jenis_pertandingan'] . "</td>";
                     echo "<td>" . $R['keterangan'] . "</td>";
                     echo '<td>';

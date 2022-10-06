@@ -50,7 +50,7 @@
                                 if ($rekap->num_rows()) {
                                     foreach ($rekap->result_array() as $R) {
                                         $no++;
-                                        echo "<option value='$R[IdSatker]'>$R[IdSatker] $R[NamaSatker]</option>";
+                                        echo "<option value='$R[IdSatker]'>$R[NamaSatker]</option>";
                                     }
                                 }
                                 ?>
