@@ -1,13 +1,5 @@
-<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
-    <div>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                <li class="breadcrumb-item"><a href="#">Score</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Manage Score</li>
-            </ol>
-        </nav>
-    </div>
-</div>
+<script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
+
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -32,7 +24,7 @@
                         <tbody>
                             <?php
                             $no = 1;
-                            $rekap = $this->Model_admin->score_manage();
+                            $rekap = $this->Model_score->score_rekap();
                             foreach ($rekap->result_array() as $R) {
                                 $key     = MD7($R['id_pertandingan']);
                                 $jenis     = $R['jenis'];
@@ -76,14 +68,14 @@
     $(".copy_link").on("click", function() {
         var key = $(this).data('key');
         var jenis = $(this).data('jenis');
-        var link = "<?php echo base_url(); ?>scoremanage/" + jenis + "/" + key;
+        var link = "<?php echo base_url(); ?>score/manage/" + jenis + "/" + key;
         alert("Hud Copy Hud > Copy Link Berhasil " + link);
     });
 
     $(".open_link").on("click", function() {
         var key = $(this).data('key');
         var jenis = $(this).data('jenis');
-        var link = "<?php echo base_url(); ?>scoremanage/" + jenis + "/" + key;
+        var link = "<?php echo base_url(); ?>score/manage/" + jenis + "/" + key;
         window.open(link, '_blank');
     });
 
