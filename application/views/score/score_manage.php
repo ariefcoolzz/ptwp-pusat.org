@@ -1,3 +1,4 @@
+<?php $this->load->view("score/@header"); ?>
 <div class="content-bd content-fixed tx-center">
 	<div class="container mg-y-30">
 		<?php
@@ -23,15 +24,14 @@
 					<a>Tanggal: <?php echo format_tanggal("wddmmmmyyyy", $R['tanggal']); ?> Jam <?php echo $R['waktu']; ?></a>
 					<a>Lapangan: <?php echo $R['lapangan']; ?></a>
 					<a>Nama: ... VS ...</a>
-
-					<a>Set</a>
 					<select id='set' class="form-control col-2">
-						<option value='0'>Pilih</option>
+						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
 						<option value='2'>Dua</option>
 						<option value='3'>Tiga</option>
 					</select>
 				</div>
+				<div id='manage_tombol' style='display:none;'>
 				<div class="card-body d-flex flex-column align-items-center">
 					<div class="h3 tx-bolder bd-b">Game</div>
 					<div class="row no-gutters wd-300">
@@ -85,6 +85,12 @@
 							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol wd-100 btn btn-lg btn-danger'><i class="fa fa-minus"></i> Kurang</button>
 						</div>
 					</div>
+					<div class="row no-gutters wd-300 mg-t-10">
+						<div class="col-12">
+						<button data-tipe='score' data-tim='' data-aksi='reset' class='tombol btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Score</button>
+						</div>
+					</div>
+				</div>
 				</div>
 			</div>
 		<?php
@@ -92,8 +98,21 @@
 		?>
 	</div>
 </div>
+<?php $this->load->view("score/@footer"); ?>
 <script>
 	$("#set").on("change", function() {
+		// alert($(this).val());
+		if($(this).val() == '0') 
+			{ 
+				$("#manage_tombol").hide(300); 
+				skip(); 
+			}
+		else
+			{ 
+				$("#manage_tombol").hide(300); 
+				$("#manage_tombol").show(300); 
+			}
+		
 		var form_data = new FormData();
 		form_data.append('jenis', "<?php echo $jenis; ?>");
 		form_data.append('key', "<?php echo $key; ?>");

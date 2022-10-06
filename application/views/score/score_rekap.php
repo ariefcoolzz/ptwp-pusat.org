@@ -1,4 +1,4 @@
-<div class="container">
+Harus Login<div class="container">
     <div class="card mg-y-30">
         <div class="card-header tx-center">
             <h1>SCORE PERTANDINGAN</h1>
@@ -16,6 +16,7 @@
                             <th>Tanggal</th>
                             <th>Jam</th>
                             <th>Lapangan</th>
+                            <th>Game & Score</th>
                             <?php /*<th>Tim A VS Tim B</th>*/ ?>
                             <th>Link Manage Score</th>
                         </tr>
@@ -39,8 +40,12 @@
                             echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal']) . "</td>";
                             echo "<td>" . $R['waktu'] . "</td>";
                             echo "<td>" . $R['lapangan'] . "</td>";
+                            echo "<td>$R[set1_tim_A] - $R[set1_tim_B]</td>";
                             // echo "<td><span class='badge bg-success text-light'>$R[nama_tim_A]</span> <span class='badge bg-success text-light'>$R[set1_tim_A]</span> <small>VS</small> <span class='badge bg-danger text-light'>$R[set1_tim_B]</span> <span class='badge bg-danger text-light'>$R[nama_tim_B]</span></td>";
-                            echo "<td><button class='edit btn btn-sm btn-primary' data-jenis='$jenis' data-key='$key'>Manage Score</button></td>";
+							echo "<td>
+										<span class='share btn btn-sm btn-success' data-jenis='$jenis' data-key='$key'>Share Score</span>
+										<span class='edit btn btn-sm btn-primary' data-jenis='$jenis' data-key='$key'>Manage Score</span>
+								</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -82,7 +87,10 @@
                             echo "<td>" . $R['waktu'] . "</td>";
                             echo "<td>" . $R['lapangan'] . "</td>";
                             // echo "<td><span class='badge bg-success text-light'>$R[nama_tim_A]</span> <span class='badge bg-success text-light'>$R[set1_tim_A]</span> <small>VS</small> <span class='badge bg-danger text-light'>$R[set1_tim_B]</span> <span class='badge bg-danger text-light'>$R[nama_tim_B]</span></td>";
-                            echo "<td><button class='edit btn btn-sm btn-primary' data-jenis='$jenis' data-key='$key'>Manage Score</button></td>";
+                            echo "<td>
+										<span class='share btn btn-sm btn-success' data-jenis='$jenis' data-key='$key'>Share Score</span>
+										<span class='edit btn btn-sm btn-primary' data-jenis='$jenis' data-key='$key'>Manage Score</span>
+								</td>";
                             echo "</tr>";
                         }
                         ?>
@@ -119,31 +127,58 @@
 
 
     $(document).ready(function() {
-        $(".table").on('click', '.edit', function(e) {
-            // var key = $(this).data('key');
-            // var jenis = $(this).data('jenis');
-            // var link = "<?php echo base_url(); ?>score/manage/" + jenis + "/" + key;
-            // window.open(link, '_blank');
+        $(".table").on('click', '.share', function(e) {
+            var key = $(this).data('key');
+            var jenis = $(this).data('jenis');
+            var link = "<?php echo base_url(); ?>score/share/" + jenis + "/" + key;
+            window.open(link, '_blank');
 
-            var form_data = new FormData();
-            form_data.append('jenis', $(this).data('jenis'));
-            form_data.append('key', $(this).data('key'));
-            $.ajax({
-                url: "<?php echo base_url(); ?>score/manage",
-                type: 'POST',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: form_data,
-                dataType: 'json',
-                success: function(json) {
-                    // alert(json.konten);
-                    $("body").scrollTop('0px');
-                    $("#konten").fadeOut(300);
-                    $("#konten").html(json.konten);
-                    $("#konten").fadeIn(300);
-                }
-            });
+            // var form_data = new FormData();
+            // form_data.append('jenis', $(this).data('jenis'));
+            // form_data.append('key', $(this).data('key'));
+            // $.ajax({
+                // url: "<?php echo base_url(); ?>score/manage",
+                // type: 'POST',
+                // cache: false,
+                // contentType: false,
+                // processData: false,
+                // data: form_data,
+                // dataType: 'json',
+                // success: function(json) {
+                    // // alert(json.konten);
+                    // $("body").scrollTop('0px');
+                    // $("#konten").fadeOut(300);
+                    // $("#konten").html(json.konten);
+                    // $("#konten").fadeIn(300);
+                // }
+            // });
+        });
+		
+		$(".table").on('click', '.edit', function(e) {
+            var key = $(this).data('key');
+            var jenis = $(this).data('jenis');
+            var link = "<?php echo base_url(); ?>score/manage/" + jenis + "/" + key;
+            window.open(link, '_blank');
+
+            // var form_data = new FormData();
+            // form_data.append('jenis', $(this).data('jenis'));
+            // form_data.append('key', $(this).data('key'));
+            // $.ajax({
+                // url: "<?php echo base_url(); ?>score/manage",
+                // type: 'POST',
+                // cache: false,
+                // contentType: false,
+                // processData: false,
+                // data: form_data,
+                // dataType: 'json',
+                // success: function(json) {
+                    // // alert(json.konten);
+                    // $("body").scrollTop('0px');
+                    // $("#konten").fadeOut(300);
+                    // $("#konten").html(json.konten);
+                    // $("#konten").fadeIn(300);
+                // }
+            // });
         });
     });
 </script>

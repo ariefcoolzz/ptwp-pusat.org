@@ -23,16 +23,15 @@ class Score extends CI_Controller
 	// 	$this->load->view("score/score_rekap");
 	// }
 
-	public function manage()
+	public function manage($jenis,$key)
 	{
 		// PRINT_R($_POST);DIE();
-		if (!IN_ARRAY($_POST['jenis'], array("penyisihan", "final"))) die("Maaf... Kategori ini tidak valid");
+		if (!IN_ARRAY($jenis, array("penyisihan", "final"))) die("Maaf... Kategori ini tidak valid");
 
-		OB_START();
-		$this->load->view("score/score_manage", $_POST);
-		$konten = ob_get_clean();
-
-		echo JSON_ENCODE(array("konten" => $konten));
+		$data['jenis'] 	= $jenis;
+		$data['key'] 	= $key;
+		
+		$this->load->view("score/score_manage", $data);
 	}
 
 	public function manage_set()
@@ -62,6 +61,34 @@ class Score extends CI_Controller
 		$ARRAY["game_tim_A"] 	= $data["set" . $_POST['set'] . "_tim_A"];
 		$ARRAY["game_tim_B"] 	= $data["set" . $_POST['set'] . "_tim_B"];
 
+		echo JSON_ENCODE($ARRAY);
+	}
+	
+	public function share($jenis,$key)
+	{
+		// PRINT_R($_POST);DIE();
+		if (!IN_ARRAY($jenis, array("penyisihan", "final"))) die("Maaf... Kategori ini tidak valid");
+
+		$data['jenis'] 	= $jenis;
+		$data['key'] 	= $key;
+		
+		$this->load->view("score/score_share", $data);
+	
+	}
+	
+	public function score_get()
+	{
+		// PRINT_R($_POST);DIE();
+		$function_model = "score_rekap_" . $_POST['jenis'];
+		$data = $this->Model_score->$function_model($_POST['key']);
+		$data = $data->row_array();
+		// PRINT_R($data->row_array());DIE();
+		$ARRAY["set1_tim_A"] = $data["set1_tim_A"];
+		$ARRAY["set1_tim_B"] = $data["set1_tim_B"];
+		$ARRAY["set2_tim_A"] = $data["set2_tim_A"];
+		$ARRAY["set2_tim_B"] = $data["set2_tim_B"];
+		$ARRAY["set3_tim_A"] = $data["set3_tim_A"];
+		$ARRAY["set3_tim_B"] = $data["set3_tim_B"];
 		echo JSON_ENCODE($ARRAY);
 	}
 }
