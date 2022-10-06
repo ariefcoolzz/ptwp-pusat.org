@@ -1,5 +1,8 @@
 <script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
 
+<link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
+<script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
+
 
 <div class="content content-fixed content-auth">
     <div class="container">
@@ -38,8 +41,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Pengurus Daerah</label>
-                            <select id='id_satker_parent' name='id_satker_parent' class="form-control">
+                            <label>Kontingen Pengurus Daerah</label>
+                            <select id='id_kontingen' name='id_kontingen' class="form-control select2">
                                 <option></option>
                                 <?php
                                 $rekap = $this->basic->get_data_where("(IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'", 'tmst_satker', 'UrutanTingkatBanding ASC');
@@ -128,7 +131,7 @@
                                             <div class='pd-sm-l-10 d-flex flex-column'>
                                             <p class='tx-medium mg-b-0'>$R[nama]</p>
                                             <small class='tx-12 tx-color-03 mg-b-0'>$R[panitia]</small>
-                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker_parent]</small>
+                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker]</small>
                                             </div>
                                         <div class='mg-l-auto text-right'>
                                             $validasi
@@ -146,10 +149,13 @@
     </div><!-- container -->
 </div><!-- content -->
 
+
 <script>
     const scroll = new PerfectScrollbar('#scroll', {
         suppressScrollX: true
     });
+	
+	$(".select2").select2();
 
     $("#nip").on("keyup", function() {
         register_get_pegawai($(this).val());
