@@ -8,7 +8,7 @@ class Model_admin extends CI_Model
 		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' <br>',A.nip,' <br>',A.nama_satker,' <br>',A.nama_satker_parent,'</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
-		$this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
+		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
@@ -24,7 +24,7 @@ class Model_admin extends CI_Model
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->join("tmst_keluarga AS B", "A.id_pegawai = B.IdPegawai AND B.JenisHubunganKeluarga = '9'", "LEFT");
 		$this->db->where("(B.NamaAnggotaKeluarga LIKE '%$keyword%' OR A.nama LIKE '%$keyword%')");
-		$this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
+		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
@@ -257,13 +257,13 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	function get_data_pemain($jenis_kelamin = false, $is_official = false)
+	function get_data_pemain($id_kontingen, $jenis_kelamin = false, $is_official = false)
 	{
 		$id_event = $this->input->post('id_event');
 		$id_panitia = $this->input->post('id_panitia');
 		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $id_event);
-		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_kontingen', $_SESSION['id_kontingen']);
+		$this->db->where('A.id_kontingen', $id_kontingen);
 		if ($jenis_kelamin == "Pria") {
 			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
 			$this->db->where('A.is_dharmayukti', '0');
@@ -288,6 +288,40 @@ class Model_admin extends CI_Model
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
+	}
+	function get_list_pemain_beregu($id_event)
+	{
+		$query = $this->db->query("SELECT A.`IdSatker` AS id_kontingen, A.`NamaSatker` AS nama_satker, 
+		IFNULL(B.total_official_blm,'0') AS total_official_blm,
+		IFNULL(B.total_official_sudah,'0') AS total_official_sudah,
+		IFNULL(B.total_putra_blm,'0') AS total_putra_blm,
+		IFNULL(B.total_putra_sudah,'0') AS total_putra_sudah,
+		IFNULL(B.total_putri_blm,'0') AS total_putri_blm,
+		IFNULL(B.total_putri_sudah,'0') AS total_putri_sudah
+		FROM tmst_satker AS A
+		LEFT JOIN 
+		(SELECT V.`id_kontingen` AS id_kontingen,
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official_sudah,
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_sudah,
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_sudah
+		FROM
+		view_pemain AS V
+		WHERE V.`id_event` = '2'
+		GROUP BY id_kontingen) 
+		AS B ON A.IdSatker = B.id_kontingen
+		WHERE (IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'
+		ORDER BY UrutanTingkatBanding ASC");
+		// die($this->db->last_query());
+		return $query;
+	}
+	function get_data_kontingen($id_kontingen)
+	{
+		$query = $this->db->query("SELECT NAMA_SATKER('$id_kontingen') as nama_kontingen")->row_array();
+		// die($this->db->last_query());
+		return $query['nama_kontingen'];
 	}
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	function get_data_wasit($data)

@@ -288,16 +288,25 @@ class Admin extends CI_Controller
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
-		$data['id_event'] = $id_event = $this->input->post('id_event');
-		$event 	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
-
+		$data['id_event'] = $this->input->post('id_event');
+		$data['event'] = $event 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
 		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) {
 			$konten_menu = $this->load->view("admin/data_pemain_list_" . $event['jenis_pertandingan'], $data, TRUE);
 		} else if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) {
+			$data['id_kontingen'] = $_SESSION['id_kontingen'];
 			$konten_menu = $this->load->view("admin/data_pemain_" . $event['jenis_pertandingan'], $data, TRUE);
 		} else {
 			$konten_menu = "HALAMAN TIDAK TERSEDIA";
 		}
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_pemain_detil_beregu()
+	{
+		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
+		$data['id_event'] = $this->input->post('id_event');
+		$data['id_kontingen'] = $id_event = $this->input->post('id_kontingen');
+		$data['event'] 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
+		$konten_menu = $this->load->view("admin/data_pemain_Beregu", $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
@@ -324,7 +333,7 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE(array("status" => false, "pesan" => 'SILAHKAN PILIH PEMAIN / OFFICIAL TERLEBIH DAHULU'));
 			return;
 		}
-		$_POST['id_kontingen'] 	= $_SESSION['id_kontingen'];
+		// $_POST['id_kontingen'] 	= $_SESSION['id_kontingen'];
 		if ($_POST['is_official']) {
 			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
 			if ($cek_official->num_rows() >= 2) {
