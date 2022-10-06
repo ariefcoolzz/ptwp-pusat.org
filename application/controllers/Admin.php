@@ -304,7 +304,7 @@ class Admin extends CI_Controller
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
 		$data['id_event'] = $this->input->post('id_event');
-		$data['id_kontingen'] = $id_event = $this->input->post('id_kontingen');
+		$data['id_kontingen'] = $this->input->post('id_kontingen');
 		$data['event'] 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
 		$konten_menu = $this->load->view("admin/data_pemain_Beregu", $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
