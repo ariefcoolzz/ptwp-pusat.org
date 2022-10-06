@@ -41,7 +41,7 @@ class Main extends CI_Controller
 		if ($nama == "") 				$pesan .= "Maaf... Nama Harus Diisi<br>";
 		if ($no_wa == "") 					$pesan .= "Maaf... No Whatsapp Harus Diisi<br>";
 		if ($id_panitia == "") 	$pesan .= "Maaf... Jenis Panitia Harus Dipilih<br>";
-		if ($id_satker_parent == "") 			$pesan .= "Maaf... Wilayah Pengurus Daerah Harus Dipilih<br>";
+		if ($id_kontingen == "") 			$pesan .= "Maaf... Wilayah Pengurus Daerah Harus Dipilih<br>";
 		// if ($file_upload == "") 			$pesan .= "Maaf... Dokumen Pendukung Belum Diupload<br>";
 		if ($username == "") 				$pesan .= "Maaf... Username Harus Diisi<br>";
 		if ($password == "") 				$pesan .= "Maaf... Password Harus Diisi<br>";
@@ -60,7 +60,7 @@ class Main extends CI_Controller
 			'allowed_types'			=> 'pdf',
 			'max_size'				=> 2048,
 			'overwrite'				=> true,
-			'file_name'				=> MD7($_POST['id_satker_parent']) . ".pdf"
+			'file_name'				=> MD7($_POST['id_kontingen']) . ".pdf"
 		);
 		$this->load->library('upload', $config);
 		if (!empty($_FILES['file_upload']['name'])) {

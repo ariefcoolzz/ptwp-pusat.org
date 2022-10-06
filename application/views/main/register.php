@@ -103,7 +103,7 @@
             <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-none d-lg-flex pos-relative">
                 <div class="lg-wd-500 xl-wd-550">
                     <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid wd-400" alt="">
-                    <div class="card ht-350">
+                    <div class="card">
                         <div class="sticky-top card-header d-flex align-items-center justify-content-between">
                             <h6 class="mg-b-0">Daftar Pengurus</h6>
                         </div>
@@ -120,15 +120,14 @@
                                         $icon_validasi = "<span class='avatar-initial rounded-circle bg-danger'><i class='icon ion-md-close'></i></span>";
                                     };
                                     if ($R['aktif'] == "1") {
-                                        $validasi = "<small class='tx-12 tx-success mg-b-0'>Sudah Divalidasi</small>";
+                                        $validasi = "<small class='badge bg-success tx-12 text-light mg-b-0'>Sudah Divalidasi</small>";
                                     } elseif ($R['aktif'] == "0") {
-                                        $validasi = "<small class='tx-12 tx-danger mg-b-0'>Belum Divalidasi</small>";
+                                        $validasi = "<small class='badge bg-danger tx-12 text-light mg-b-0'>Belum Divalidasi</small>";
                                     };
                                     // if ($R['id_panitia'] > 0) echo "$R[nama] $R[panitia] $R[nama_satker_parent] $R[aktif]<br>";
                                     if ($R['id_panitia'] > 0) echo "
                                      <li class='list-group-item d-flex pd-sm-x-20'>
-                                        <div class='avatar d-none d-sm-block'>$icon_validasi</div>
-                                            <div class='pd-sm-l-10 d-flex flex-column'>
+                                            <div class='pd-sm-l-11 d-flex flex-column'>
                                             <p class='tx-medium mg-b-0'>$R[nama]</p>
                                             <small class='tx-12 tx-color-03 mg-b-0'>$R[panitia]</small>
                                             <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker]</small>
