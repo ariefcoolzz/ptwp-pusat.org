@@ -50,7 +50,7 @@
                                 if ($rekap->num_rows()) {
                                     foreach ($rekap->result_array() as $R) {
                                         $no++;
-                                        echo "<option value='$R[IdSatker]'>$R[NamaSatker]</option>";
+                                        echo "<option value='$R[IdSatker]'>$R[IdSatker] $R[NamaSatker]</option>";
                                     }
                                 }
                                 ?>
@@ -130,7 +130,7 @@
                                             <div class='pd-sm-l-11 d-flex flex-column'>
                                             <p class='tx-medium mg-b-0'>$R[nama]</p>
                                             <small class='tx-12 tx-color-03 mg-b-0'>$R[panitia]</small>
-                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker]</small>
+                                            <small class='tx-12 tx-color-03 mg-b-0'>$R[nama_satker_kontingen]</small>
                                             </div>
                                         <div class='mg-l-auto text-right'>
                                             $validasi
