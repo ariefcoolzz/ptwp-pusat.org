@@ -63,7 +63,7 @@ class Model_main extends CI_Model
 		$this->db->select("(SELECT COUNT(*) FROM data_statistik_konten WHERE id_konten = A.id) as total_dilihat");
 		$this->db->from('data_konten AS A');
 		$this->db->join("view_user AS B", "A.user_created = B.id_user", 'left');
-		$this->db->join("tmst_satker AS C", "B.id_satker_parent = C.IdSatker", 'left');
+		$this->db->join("tmst_satker AS C", "B.id_kontingen = C.IdSatker", 'left');
 		$this->db->where('A.cat_id', $cat_id);
 		$this->db->where('A.is_publish', '1');
 		$this->db->order_by('A.date_created DESC');
