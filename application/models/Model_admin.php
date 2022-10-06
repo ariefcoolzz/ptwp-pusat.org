@@ -317,6 +317,12 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
+	function get_data_kontingen($id_kontingen)
+	{
+		$query = $this->db->query("SELECT NAMA_SATKER('$id_kontingen') as nama_kontingen")->row_array();
+		// die($this->db->last_query());
+		return $query['nama_kontingen'];
+	}
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	function get_data_wasit($data)
 	{

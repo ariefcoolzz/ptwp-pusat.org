@@ -8,7 +8,8 @@
         <div class="card mb-2">
             <div class="card-body">
                 <?php echo $this->session->flashdata('msg'); ?>
-                <h5 class="text-center"> DATA MANAJER / OFFICIAL </h5>
+                <!-- <h5 class="text-center"> DATA PEMAIN / OFFICIAL PIALA BEREGU </h5> -->
+                <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
                 <div data-label="Example" class="df-example demo-table">
                     <div class="table-responsive">
                         <table class="datatable-pemain table table-primary mg-b-0">

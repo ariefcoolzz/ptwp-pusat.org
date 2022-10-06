@@ -3,14 +3,18 @@
         height: 125px !important;
     }
 </style>
+<?php
+$nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
+?>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data Pemain</li>
+                <li class="breadcrumb-item active" aria-current="page">Data Pemain - <?php echo $nama_kontingen; ?></li>
             </ol>
         </nav>
+        <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
         <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>
     </div>
 </div>
