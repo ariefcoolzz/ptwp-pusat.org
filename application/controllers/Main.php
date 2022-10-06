@@ -77,7 +77,7 @@ class Main extends CI_Controller
 
 			##SEND WA ##
 
-			$kirim_ke = array('6285712423460', '6282120494550');
+			$kirim_ke = array('6285712423460', '6282120494550', '628114043343', '6281281419338'); //PUTRA, REZA, ILMAN, CANDRA BOY
 			$data['pesan']	= 'Terdapat Registrasi User atas Nama *' . $_POST['nama'] . '* pada Portal PTWP Pusat |Harap Segera diverifikasi';
 			foreach ($kirim_ke as $R) {
 				$data['nowa']	= $R;
