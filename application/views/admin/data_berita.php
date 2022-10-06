@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" id_konten="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
+        <a href="#" id="btn-tambah" id_konten="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Berita Baru</a>
     </div>
 </div>
 <div class="row">
@@ -46,7 +46,7 @@
                                     }
                                     echo '<td>
                                         <div class="btn-group">
-                                        <span style="cursor:pointer" id_konten="' . $R['id'] . '" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></span>
+                                        <span style="cursor:pointer" id_konten="' . $R['id'] . '" class="btn-edit btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Edit"><i class="fas fa-pencil-alt" ></i></span>
                                         <span style="cursor:pointer" id_konten="' . MD7($R['id']) . '" class="btn-hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa fa-times" ></i></span></td>';
                                     echo "</div></td>";
                                     echo "</tr>";
@@ -74,7 +74,39 @@
 
     $('[data-toggle="tooltip"]').tooltip();
     $(document).ready(function() {
-        $(".table").on('click', '.btn-tambah', function(e) {
+        $("#btn-tambah").on('click', function(e) {
+            //loader
+            $(".title_loader").text("Sedang Memuat Halaman");
+            $("#konten").html($("#loader_html").html());
+            // $('.nav-item.active').removeClass('active');
+            // $(this).closest('li.nav-item').addClass('active');
+            //loader
+            // skip();
+
+            var form_data = new FormData();
+            form_data.append('id_konten', $(this).attr('id_konten'));
+            $.ajax({
+                url: "<?php echo base_url(); ?>admin/form_data_berita",
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                dataType: 'json',
+                success: function(html) {
+                    if (html.status !== true) {
+                        location.reload();
+                    } else {
+                        $("body").scrollTop('0px');
+                        $("#konten").fadeOut(300);
+                        $("#konten").html(html.konten_menu);
+                        $("#konten").fadeIn(300);
+
+                    }
+                }
+            });
+        });
+        $("table").on('click', '.btn-edit', function(e) {
             //loader
             $(".title_loader").text("Sedang Memuat Halaman");
             $("#konten").html($("#loader_html").html());

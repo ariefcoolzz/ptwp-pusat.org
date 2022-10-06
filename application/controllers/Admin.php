@@ -250,7 +250,7 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE(array("status" => false, "pesan" => 'SILAHKAN PILIH PEMAIN / OFFICIAL TERLEBIH DAHULU'));
 			return;
 		}
-		$_POST['id_kontingen'] 	= $_SESSION['id_satker_parent'];
+		$_POST['id_kontingen'] 	= $_SESSION['id_kontingen'];
 		if ($_POST['is_official']) {
 			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
 			if ($cek_official->num_rows() >= 2) {
@@ -269,7 +269,7 @@ class Admin extends CI_Controller
 		// print_r($cek_pegawai);
 		// echo '</pre>';
 		// die();
-		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0') {
+		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0' and $_POST['is_official'] == '0') {
 			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_pemain_pria->num_rows() >= 8) {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
@@ -489,7 +489,7 @@ class Admin extends CI_Controller
 			$where = array('id' => $id);
 			$res = $this->basic->update_data($where, 'data_konten', $data);
 		} else {
-			$data['user_created'] = $this->session->userdata('id');
+			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
 		}
