@@ -1,10 +1,8 @@
 <?php
 $txt_simpan = "SIMPAN";
-if (isset($_POST['id_event'])) {
+if (isset($_POST['id_wasit'])) {
     $txt_simpan = "UPDATE";
-    $R = $this->basic->get_data_where(array('id_event' => $_POST['id_event']), 'data_event')->row_array();
-    // echo "<pre>";
-    // print_r($data);die;
+    $R = $this->basic->get_data_where(array('id_wasit' => $_POST['id_wasit']), 'data_wasit')->row_array();
 }
 ?>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
@@ -12,7 +10,7 @@ if (isset($_POST['id_event'])) {
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Form Event</li>
+                <li class="breadcrumb-item active" aria-current="page">Form wasit</li>
             </ol>
         </nav>
     </div>
@@ -24,34 +22,18 @@ if (isset($_POST['id_event'])) {
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="control-label" style="display:none">ID Event :</label>
-                                <input type='text' id='id_event' class='form-control' value="<?php if (isset($R)) echo $R['id_event']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Tanggal Mulai :</label>
-                                <input type='date' id='tanggal_mulai' class='form-control' value="<?php if (isset($R)) echo $R['tanggal_mulai']; ?>">
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Tanggal Selesai :</label>
-                                <input type='date' id='tanggal_selesai' class='form-control' value="<?php if (isset($R)) echo $R['tanggal_selesai']; ?>">
+                            <div class="form-group" style="display:none">
+                                <label class="control-label">ID Wasit :</label>
+                                <input type='text' id='id_wasit' class='form-control' value="<?php if (isset($R)) echo $R['id_wasit']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
                                 <input type='text' id='nama' class='form-control' value="<?php if (isset($R)) echo $R['nama']; ?>">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Jenis Pertandingan :</label>
-                                <select id='jenis_pertandingan' class='form-control'>
-                                    <option value='Perorangan' <?php if (isset($R) and $R['jenis_pertandingan'] == 'Perorangan') echo "selected"; ?>>Perorangan</option>
-                                    <option value='Beregu' <?php if (isset($R) and $R['jenis_pertandingan'] == 'Beregu') echo "selected"; ?>>Beregu</option>
-                                </select>
+                                <label class="control-label">NIP :</label>
+                                <input type='text' id='nip' class='form-control' value="<?php if (isset($R)) echo $R['nip']; ?>">
                             </div>
-                            <div class="form-group">
-                                <label class="control-label">Keterangan :</label>
-                                <textarea id='keterangan' class='form-control'><?php if (isset($R)) echo $R['keterangan']; ?></textarea>
-                            </div>
-
                             <div id='biodata'></div>
                         </div>
                     </div>
@@ -69,13 +51,11 @@ if (isset($_POST['id_event'])) {
     $("#simpan").on('click', function() {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
-        form_data.append('tanggal_mulai', $("#tanggal_mulai").val());
-        form_data.append('tanggal_selesai', $("#tanggal_selesai").val());
+        form_data.append('id_wasit', $("#id_wasit").val());
         form_data.append('nama', $("#nama").val());
-        form_data.append('jenis_pertandingan', $("#jenis_pertandingan").val());
-        form_data.append('keterangan', $("#keterangan").val());
+        form_data.append('nip', $("#nip").val());
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/data_event_simpan",
+            url: "<?php echo base_url(); ?>admin/data_wasit_simpan",
             type: 'POST',
             cache: false,
             contentType: false,
