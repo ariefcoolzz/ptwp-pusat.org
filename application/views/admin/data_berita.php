@@ -6,7 +6,7 @@
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
             </ol>
         </nav>
-        <a href="#" id_konten="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Konten / Page Baru</a>
+        <a href="#" id="btn-tambah" id_konten="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Berita Baru</a>
     </div>
 </div>
 <div class="row">
@@ -74,7 +74,7 @@
 
     $('[data-toggle="tooltip"]').tooltip();
     $(document).ready(function() {
-        $(".table").on('click', '.btn-tambah', function(e) {
+        $("#btn-tambah").on('click', function(e) {
             //loader
             $(".title_loader").text("Sedang Memuat Halaman");
             $("#konten").html($("#loader_html").html());
