@@ -4,7 +4,9 @@
             <div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-style1 mg-b-10">
-                        <li class="breadcrumb-item"><a href="#">Profil</a></li>
+                        <li class="breadcrumb-item"><a href="#"><?php if ($konten['cat_id'] == '0') {
+                                                                    echo "Halaman";
+                                                                } else echo "Berita"; ?></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
                     </ol>
                 </nav>
