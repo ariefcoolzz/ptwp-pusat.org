@@ -26,15 +26,15 @@ if (isset($_POST['id_user'])) {
                         <div class="col-lg-6">
                             <div class="form-group d-none">
                                 <label class="control-label">Nama :</label>
-                                <input id='id_user' class='form-control' value="<?php if (isset($R)) echo $R['id_user']; ?>">
+                                <input text='number' id='id_user' class='form-control' value="<?php if (isset($R)) echo $R['id_user']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Username :</label>
-                                <input id='username' class='form-control' value="<?php if (isset($R)) echo $R['username']; ?>">
+                                <input type='text' id='username' class='form-control' value="<?php if (isset($R)) echo $R['username']; ?>">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Password :</label>
-                                <input id='password' class='form-control' value="<?php if (isset($R)) echo $R['password']; ?>">
+                                <input type='password' id='password' class='form-control' value="<?php if (isset($R)) echo $R['password']; ?>">
                             </div>
 
                             <div id='biodata'></div>
