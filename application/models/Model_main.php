@@ -44,7 +44,7 @@ class Model_main extends CI_Model
 		if (isset($_SERVER['HTTP_REFERER'])) $data['referal']		= $_SERVER['HTTP_REFERER'];
 
 		$this->db->insert('data_statistik_konten', $data);
-		die($this->db->last_query());
+		// die($this->db->last_query());
 	}
 	function get_data_konten($alias)
 	{
