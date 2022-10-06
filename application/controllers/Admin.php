@@ -493,7 +493,7 @@ class Admin extends CI_Controller
 			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
-			$kirim_wa = 1;
+			if ($data['cat_id'] == '3') $kirim_wa = 1;
 		}
 		if ($res) {
 			if ($kirim_wa) {
