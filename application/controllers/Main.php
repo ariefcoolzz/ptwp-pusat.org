@@ -73,10 +73,42 @@ class Main extends CI_Controller
 		
 		if ($_POST['password'] === $_POST['password_confirm']) {
 			$status = $this->Model_main->register_simpan($_POST);
+
+
+			##SEND WA ##
+
+			$kirim_ke = array('6285712423460', '6282120494550');
+			$data['pesan']	= 'Terdapat Registrasi User atas Nama *' . $_POST['nama'] . '* pada Portal PTWP Pusat |Harap Segera diverifikasi';
+			foreach ($kirim_ke as $R) {
+				$data['nowa']	= $R;
+				$this->kirim_wa($data);
+			}
 		}
 		echo JSON_ENCODE(array("status" => $status));
 	}
+	function kirim_wa($data)
+	{
+		##SEND WA ##
+		$this->load->library('encryption');
+		$key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.6UeJp52ITYbGsfOCWrzUkfyNU2tbmeu6wpKaFqlRlY0';
+		$token_key = array('authorization:' . $key);
+		$url = 'https://simtepa.badilag.net/api/send_wa';
+		$data['cek']	= true;
+		$data['app']	= 'PORTAL PTWP PUSAT';
 
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $token_key);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$response = curl_exec($ch);
+		$err = curl_error($ch);
+
+		curl_close($ch);
+	}
 
 	public function index()
 	{
