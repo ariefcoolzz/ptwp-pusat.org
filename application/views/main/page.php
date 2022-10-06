@@ -17,7 +17,12 @@
     <div class="content">
         <div class="row">
             <div class="col-sm"></div>
-            <div class="watermark col-sm-8"> <?php echo $konten['isi']; ?></div>
+            <div class="watermark col-sm-8">
+                <?php
+                $isi = str_replace('src="file_upload', 'src="http://ptwp-pusat.org/file_upload', $konten['isi']);
+                echo $isi;
+                ?>
+            </div>
             <div class="col-sm"></div>
         </div>
     </div>

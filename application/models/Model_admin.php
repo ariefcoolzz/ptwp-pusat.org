@@ -8,7 +8,7 @@ class Model_admin extends CI_Model
 		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' <br>',A.nip,' <br>',A.nama_satker,' <br>',A.nama_satker_parent,'</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
-		$this->db->where("(A.id_satker = '$_SESSION[id_satker_parent]' OR  A.id_satker_parent = '$_SESSION[id_satker_parent]')");
+		$this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
@@ -24,7 +24,7 @@ class Model_admin extends CI_Model
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->join("tmst_keluarga AS B", "A.id_pegawai = B.IdPegawai AND B.JenisHubunganKeluarga = '9'", "LEFT");
 		$this->db->where("(B.NamaAnggotaKeluarga LIKE '%$keyword%' OR A.nama LIKE '%$keyword%')");
-		$this->db->where("(A.id_satker = '$_SESSION[id_satker_parent]' OR  A.id_satker_parent = '$_SESSION[id_satker_parent]')");
+		$this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
@@ -244,10 +244,10 @@ class Model_admin extends CI_Model
 	{
 		$this->db->from('data_konten AS A');
 		$this->db->join("view_user AS B", "A.user_created = B.id_user", 'left');
-		$this->db->join("tmst_satker AS C", "B.id_satker_parent = C.IdSatker", 'left');
+		$this->db->join("tmst_satker AS C", "B.id_kontingen = C.IdSatker", 'left');
 		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) {
 			$this->db->where(array('cat_id' => '3'));
-			$this->db->where("(B.id_satker_parent = '" . $_SESSION['id_satker_parent'] . "' OR A.user_created = '" . $_SESSION['id_user'] . "')");
+			$this->db->where("(B.id_kontingen = '" . $_SESSION['id_kontingen'] . "' OR A.user_created = '" . $_SESSION['id_user'] . "')");
 		}
 		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) $this->db->where_in('cat_id', array('1', '3'));
 
@@ -263,7 +263,7 @@ class Model_admin extends CI_Model
 		$id_panitia = $this->input->post('id_panitia');
 		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $id_event);
-		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_kontingen', $_SESSION['id_satker_parent']);
+		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where('A.id_kontingen', $_SESSION['id_kontingen']);
 		if ($jenis_kelamin == "Pria") {
 			$this->db->where('A.jenis_kelamin', $jenis_kelamin);
 			$this->db->where('A.is_dharmayukti', '0');

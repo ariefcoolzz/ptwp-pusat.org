@@ -64,7 +64,7 @@
                         </div>
                         </td>';
                     echo "<td class='tx-center'>
-                        <a href='" . base_url() . 'file_upload/dokumen/' . MD7($R['id_satker_parent']) . ".pdf' target='_blank'  class='btn btn-xs btn-outline-primary btn-rounded' data-toggle='tooltip' data-placement='top' title='Dokumen'><i class='fas fa fa-file'></i></a>'
+                        <a href='" . base_url() . 'file_upload/dokumen/' . MD7($R['id_kontingen']) . ".pdf' target='_blank'  class='btn btn-xs btn-outline-primary btn-rounded' data-toggle='tooltip' data-placement='top' title='Dokumen'><i class='fas fa fa-file'></i></a>'
                         </td>";
                     echo '<td>';
                     echo '<div class="btn-group-vertical">';
