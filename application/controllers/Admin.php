@@ -550,6 +550,7 @@ class Admin extends CI_Controller
 		// echo "<pre>";
 		// print_r($data);
 		// die;
+		$kirim_wa = 0;
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
 			unset($data['user_created']);
@@ -559,8 +560,19 @@ class Admin extends CI_Controller
 			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
+			if ($data['cat_id'] == '3') $kirim_wa = 1;
 		}
 		if ($res) {
+			if ($kirim_wa) {
+				##SEND WA ##
+
+				$kirim_ke = array('6285712423460', '6282120494550', '628114043343', '6281281419338'); //PUTRA, REZA, ILMAN, CANDRA BOY
+				$data['pesan']	= $_SESSION['nama'] . 'Mengirim Berita Daerah dengan Judul : ' . $data['judul'] . ' |Harap segera dipublish';
+				foreach ($kirim_ke as $R) {
+					$data['nowa']	= $R;
+					$this->kirim_wa($data);
+				}
+			}
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
 		} else {
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Disimpan.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></div>');
@@ -936,6 +948,28 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
+	function kirim_wa($data)
+	{
+		##SEND WA ##
+		$this->load->library('encryption');
+		$key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.6UeJp52ITYbGsfOCWrzUkfyNU2tbmeu6wpKaFqlRlY0';
+		$token_key = array('authorization:' . $key);
+		$url = 'https://simtepa.badilag.net/api/send_wa';
+		$data['cek']	= true;
+		$data['app']	= 'PORTAL PTWP PUSAT';
 
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $token_key);
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		$response = curl_exec($ch);
+		$err = curl_error($ch);
+
+		curl_close($ch);
+	}
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 }
