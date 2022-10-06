@@ -306,6 +306,9 @@
 .watermark::after {
   content: "";
   background: url(../img/favicon.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
   opacity: 0.1;
   top: 0;
   left: 0;
