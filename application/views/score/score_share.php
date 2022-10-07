@@ -1,5 +1,11 @@
 <?php $this->load->view("score/@header"); ?>
 <div class="pos-relative">
+	<div class="pos-fixed t-30 l-30">
+		<img src="<?php echo base_url('assets/img/favicon.png'); ?>" class="wd-60" alt="">
+	</div>
+	<div class="pos-fixed t-30 r-30">
+		<h3 class="tx-roboto tx-danger">LIVE</h3>
+	</div>
 	<div class="pos-fixed b-30 l-30">
 		<div class="card wd-400">
 			<div class="card-body bg-indigo rounded-lg">
@@ -35,6 +41,9 @@
 				</ul>
 			</div>
 		</div>
+	</div>
+	<div class="pos-fixed b-30 r-30">
+		<img src="<?php echo base_url('assets/img/logo_ptwp_xix.png'); ?>" class="wd-80 ht-80 rounded-circle" alt="">
 	</div>
 </div>
 <?php $this->load->view("score/@footer"); ?>
