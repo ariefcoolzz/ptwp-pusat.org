@@ -33,8 +33,8 @@ if (isset($_POST['id_lapangan'])) {
                             <div class="form-group">
                                 <label class="control-label">Jenis Lapangan :</label>
                                 <select id='jenis' class='form-control'>
-                                    <option value='In Door' <?php if (isset($R) and $R['jenis'] == '0') echo "selected"; ?>>In Door</option>
-                                    <option value='Out Door' <?php if (isset($R) and $R['jenis'] == '1') echo "selected"; ?>>Out Door</option>
+                                    <option value='0' <?php if (isset($R) and $R['jenis'] == '0') echo "selected"; ?>>In Door</option>
+                                    <option value='1' <?php if (isset($R) and $R['jenis'] == '1') echo "selected"; ?>>Out Door</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -66,7 +66,7 @@ if (isset($_POST['id_lapangan'])) {
     $("#simpan").on('click', function() {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
-        // form_data.append('id_lapangan', $("#id_lapangan").val());
+        form_data.append('id_lapangan', $("#id_lapangan").val());
         form_data.append('lapangan', $("#lapangan").val());
         form_data.append('jenis', $("#jenis").val());
         form_data.append('alamat', $("#alamat").val());

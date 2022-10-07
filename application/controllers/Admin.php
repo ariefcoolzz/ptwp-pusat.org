@@ -200,7 +200,7 @@ class Admin extends CI_Controller
 	{
 		// PRINT_R($_POST);DIE();
 		$status = FALSE;
-		if (isset($_POST['id_event'])) {
+		if ($_POST['id_event'] > 0) {
 			$where = array('id_event' => $_POST['id_event']);
 			$status = $this->basic->update_data($where, 'data_event', $_POST);
 		} else {
@@ -318,7 +318,7 @@ class Admin extends CI_Controller
 	{
 		// PRINT_R($_POST);DIE();
 		$status = FALSE;
-		if (isset($_POST['id_lapangan'])) {
+		if ($_POST['id_lapangan'] > 0) {
 			$where = array('id_lapangan' => $_POST['id_lapangan']);
 			$status = $this->basic->update_data($where, 'master_lapangan', $_POST);
 		} else {
