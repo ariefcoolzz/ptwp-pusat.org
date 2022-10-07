@@ -272,7 +272,7 @@ class Admin extends CI_Controller
 	{
 		// PRINT_R($_POST);DIE();
 		$status = FALSE;
-		if (isset($_POST['id_wasit'])) {
+		if ($_POST['id_wasit'] > 0) {
 			$where = array('id_wasit' => $_POST['id_wasit']);
 			$status = $this->basic->update_data($where, 'data_wasit', $_POST);
 		} else {
