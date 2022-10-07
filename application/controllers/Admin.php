@@ -380,13 +380,7 @@ class Admin extends CI_Controller
 			return;
 		}
 		// $_POST['id_kontingen'] 	= $_SESSION['id_kontingen'];
-		if ($_POST['is_official']) {
-			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
-			if ($cek_official->num_rows() >= 2) {
-				echo JSON_ENCODE(array("status" => false, "pesan" => 'OFFICIAL / MANAGER MAKSIMAL 2 ORANG'));
-				return;
-			}
-		}
+		
 		if ($_POST['is_dharmayukti']) {
 			$id_keluarga = $_POST['id_pemain'];
 			$_POST['id_keluarga'] = $id_keluarga;
@@ -407,6 +401,12 @@ class Admin extends CI_Controller
 			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_official' => '0'), 'view_pemain');
 			if ($cek_karyawan->num_rows() >= 3 && $cek_pegawai['is_subdit'] !== '1') {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN KARYAWAN PUTRA BEREGU MAKSIMAL 3 ORANG'));
+				return;
+			}
+		} else if ($_POST['is_official']) {
+			$cek_official = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_official' => $_POST['is_official']), 'data_pemain');
+			if ($cek_official->num_rows() >= 2) {
+				echo JSON_ENCODE(array("status" => false, "pesan" => 'OFFICIAL / MANAGER MAKSIMAL 2 ORANG'));
 				return;
 			}
 		} else {
