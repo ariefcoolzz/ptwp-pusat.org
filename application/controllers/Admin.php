@@ -285,6 +285,52 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
+	public function data_lapangan()
+	{
+		OB_START();
+		$this->load->view("admin/data_lapangan");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_lapangan_tabel()
+	{
+		$konten_menu = $this->load->view("admin/data_lapangan_tabel", "", TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_lapangan_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_lapangan_form");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_lapangan_hapus()
+	{
+		$where = array('id_lapangan' => $_POST['id_lapangan']);
+		$status = $this->basic->delete_data($where, 'master_lapangan');
+		OB_START();
+		$this->load->view("admin/data_lapangan");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_lapangan_simpan()
+	{
+		// PRINT_R($_POST);DIE();
+		$status = FALSE;
+		if (isset($_POST['id_lapangan'])) {
+			$where = array('id_lapangan' => $_POST['id_lapangan']);
+			$status = $this->basic->update_data($where, 'master_lapangan', $_POST);
+		} else {
+			$status = $this->basic->insert_data('master_lapangan', $_POST);
+		}
+
+		OB_START();
+		$this->load->view("admin/data_lapangan");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();

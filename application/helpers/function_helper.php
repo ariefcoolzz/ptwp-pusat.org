@@ -1,65 +1,65 @@
-<?php	
-	function pool($hrf)
-		{
-			$huruf[1] = "A";
-			$huruf[2] = "B";
-			$huruf[3] = "C";
-			$huruf[4] = "D";
-			$huruf[5] = "E";
-			$huruf[6] = "F";
-			$huruf[7] = "G";
-			$huruf[8] = "H";
-			$huruf[9] = "I";
-			$huruf[10] = "J";
-			$huruf[11] = "K";
-			$huruf[12] = "L";
-			$huruf[13] = "M";
-			$huruf[14] = "N";
-			$huruf[15] = "O";
-			$huruf[16] = "P";
-			$huruf[17] = "Q";
-			$huruf[18] = "R";
-			$huruf[19] = "S";
-			$huruf[20] = "T";
-			$huruf[21] = "U";
-			$huruf[22] = "V";
-			$huruf[23] = "W";
-			$huruf[24] = "X";
-			$huruf[25] = "Y";
-			$huruf[26] = "Z";
-			
-			return $huruf[$hrf];
+<?php
+function pool($hrf)
+{
+	$huruf[1] = "A";
+	$huruf[2] = "B";
+	$huruf[3] = "C";
+	$huruf[4] = "D";
+	$huruf[5] = "E";
+	$huruf[6] = "F";
+	$huruf[7] = "G";
+	$huruf[8] = "H";
+	$huruf[9] = "I";
+	$huruf[10] = "J";
+	$huruf[11] = "K";
+	$huruf[12] = "L";
+	$huruf[13] = "M";
+	$huruf[14] = "N";
+	$huruf[15] = "O";
+	$huruf[16] = "P";
+	$huruf[17] = "Q";
+	$huruf[18] = "R";
+	$huruf[19] = "S";
+	$huruf[20] = "T";
+	$huruf[21] = "U";
+	$huruf[22] = "V";
+	$huruf[23] = "W";
+	$huruf[24] = "X";
+	$huruf[25] = "Y";
+	$huruf[26] = "Z";
+
+	return $huruf[$hrf];
+}
+
+function tanggal($tgl)
+{
+	if ($tgl != "") return "'" . $tgl->format('Y-m-d') . "'";
+	else return "NULL";
+}
+
+function kosong($str)
+{
+	if (IS_OBJECT($str)) {
+		return tanggal($str);
+	} else {
+		if ($str != "") return '"' . STR_REPLACE('"', "'", $str) . '"';
+		else return "NULL";
+	}
+}
+
+function rupiah($angka, $format = NULL)
+{
+	if ($angka == 0) {
+		if ($format == NULL) {
+			return "-";
+		} else {
+			return $format;
 		}
-		
-	function tanggal($tgl)
-		{
-			IF($tgl != "") return "'".$tgl->format('Y-m-d')."'"; ELSE return "NULL";
-		}
-		
-	function kosong($str) 
-		{
-			IF(IS_OBJECT($str))
-				{
-					return tanggal($str);
-				}
-			ELSE
-				{
-					IF($str != "") return '"'.STR_REPLACE('"',"'",$str).'"'; ELSE return "NULL";
-				}
-		}
-	
-	function rupiah($angka,$format=NULL)
-		{
-			if($angka==0)
-				{
-					if($format==NULL){return "-";}else{return $format;}
-				}
-			else
-				{
-					return number_format($angka,0,',','.');
-				}
-		}	
-		
+	} else {
+		return number_format($angka, 0, ',', '.');
+	}
+}
+
 function bilangan($str)
 {
 	$hasil = intval(str_replace(".", "", $str));
@@ -70,6 +70,12 @@ function jenis_kelamin($str)
 {
 	if ($str == "L") return "Laki-Laki";
 	else return "Perempuan";
+}
+
+function jenis_lapangan($str)
+{
+	if ($str == "0") return "In Door";
+	else return "Out Door";
 }
 
 function flag($str)
@@ -117,28 +123,29 @@ function jenis_usulan($int)
 }
 
 function tahap_hakim($int)
-		{
-			$array[1] = "Usulan";
-			$array[2] = "Rapat WKMA";
-			$array[3] = "Rapat KMA";
-			
-			return $array[$int];
-		}
-		
-	function tahap_proses_tpm_hakim($tahap,$proses)
-		{
-			$hasil = "";
-			
-			$array[0] = "Proses";
-			$array[1] = "Tolak";
-			$array[2] = "Tunda";
-			$array[3] = "Setujui";
-			
-			IF($tahap == 3) $keterangan_proses = " (".$array[$proses].")"; ELSE $keterangan_proses = "";
-			
-			return tahap_hakim($tahap).$keterangan_proses;
-		}
-		
+{
+	$array[1] = "Usulan";
+	$array[2] = "Rapat WKMA";
+	$array[3] = "Rapat KMA";
+
+	return $array[$int];
+}
+
+function tahap_proses_tpm_hakim($tahap, $proses)
+{
+	$hasil = "";
+
+	$array[0] = "Proses";
+	$array[1] = "Tolak";
+	$array[2] = "Tunda";
+	$array[3] = "Setujui";
+
+	if ($tahap == 3) $keterangan_proses = " (" . $array[$proses] . ")";
+	else $keterangan_proses = "";
+
+	return tahap_hakim($tahap) . $keterangan_proses;
+}
+
 function tahap_panitera($int)
 {
 	$array[1] = "Usulan";
@@ -164,26 +171,27 @@ function tahap_proses_tpm_panitera($tahap, $proses)
 }
 
 function tahap_jurusita($int)
-	{
-		$array[1] = "Usulan";
-		$array[2] = "Rapat Dirjen";
-		
-		return $array[$int];
-	}
-	
-function tahap_proses_tpm_jurusita($tahap,$proses)
-	{
-		$hasil = "";
-		
-		$array[0] = "Proses";
-		$array[1] = "Tolak";
-		$array[2] = "Tunda";
-		$array[3] = "Setujui";
-		
-		IF($tahap == 2) $keterangan_proses = " (".$array[$proses].")"; ELSE $keterangan_proses = "";
-		
-		return tahap_jurusita($tahap).$keterangan_proses;
-	}
+{
+	$array[1] = "Usulan";
+	$array[2] = "Rapat Dirjen";
+
+	return $array[$int];
+}
+
+function tahap_proses_tpm_jurusita($tahap, $proses)
+{
+	$hasil = "";
+
+	$array[0] = "Proses";
+	$array[1] = "Tolak";
+	$array[2] = "Tunda";
+	$array[3] = "Setujui";
+
+	if ($tahap == 2) $keterangan_proses = " (" . $array[$proses] . ")";
+	else $keterangan_proses = "";
+
+	return tahap_jurusita($tahap) . $keterangan_proses;
+}
 
 function format_tanggal($str1, $str2)
 {
@@ -621,4 +629,3 @@ function cdn_foto($foto1 = null, $foto2 = null, $size = '120')
 	$cdn = "//images.weserv.nl/?url=" . $img . "&w=" . $size;
 	return $cdn;
 }
-
