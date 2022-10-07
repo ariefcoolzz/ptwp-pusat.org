@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="pos-fixed b-30 r-30">
-		<img src="<?php echo base_url('assets/img/Logo-Maskot.png'); ?>" class="wd-60 ht-60" alt="">
+		<img src="<?php echo base_url('assets/img/maskot.png'); ?>" class="ht-150" alt="">
 	</div>
 </div>
 <?php $this->load->view("score/@footer"); ?>
