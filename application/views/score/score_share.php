@@ -8,7 +8,7 @@
 	</div>
 	<div class="pos-fixed b-30 l-30">
 		<div class="card wd-400">
-			<div class="card-body bg-indigo rounded-lg">
+			<div class="card-body bg-secondary rounded-lg">
 				<ul class="list-group list-group-flush tx-13">
 					<li class="list-group-item d-flex pd-sm-x-20">
 						<div class="avatar"><img src="<?php echo base_url('assets/img/default.png'); ?>" class="rounded-circle" alt=""></div>
@@ -19,7 +19,9 @@
 						<div class="mg-l-auto d-flex align-self-center">
 							<nav class="nav nav-icon-only">
 								<a class="nav-link tx-20" id='set1_tim_A'>0</a>
+								<a class="nav-link tx-20">|</a>
 								<a class="nav-link tx-20" id='set2_tim_A'>0</a>
+								<a class="nav-link tx-20">|</a>
 								<a class="nav-link tx-20" id='set3_tim_A'>0</a>
 							</nav>
 						</div>
@@ -33,7 +35,9 @@
 						<div class="mg-l-auto d-flex align-self-center">
 							<nav class="nav nav-icon-only">
 								<a class="nav-link tx-20" id='set1_tim_B'>0</a>
+								<a class="nav-link tx-20">|</a>
 								<a class="nav-link tx-20" id='set2_tim_B'>0</a>
+								<a class="nav-link tx-20">|</a>
 								<a class="nav-link tx-20" id='set3_tim_B'>0</a>
 							</nav>
 						</div>
