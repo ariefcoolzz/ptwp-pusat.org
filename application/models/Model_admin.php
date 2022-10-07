@@ -5,14 +5,14 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select("A.id_pegawai AS id");
 		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
-		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' <br>',A.nip,' <br>',A.nama_satker,' <br>',A.nama_satker_parent,'</div>') AS text");
+		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' <br>',A.nip,' <br>',A.nama_satker,' <br>',NAMA_SATKER('$_SESSION[id_kontingen]'),'</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
 		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
-		// DIE($this->db->last_query());
+		// die($this->db->last_query());
 		return $query;
 	}
 
