@@ -9,7 +9,7 @@
         <div class="media d-flex flex-column flex-lg-row justify-content-center ht-100p">
             <form id="form_register" method="post" enctype="multipart/form-data">
                 <div class="sign-wrapper mg-lg-r-50 mg-xl-r-60">
-                    <div class="pd-t-20 wd-400 lh-1">
+                    <div class="pd-t-20 wd-350 lh-1">
                         <div class="form-group">
                             <label>Nip <small class="tx-danger">(Jika Non Pegawai Nip Tidak Usah Diisi, Jika Pegawai Nip Harus 18 Digit)</small></label>
                             <input type="text" class="form-control" placeholder='198701262006041002' maxlength='18' id='nip' name='nip'>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label>Kontingen Pengurus Daerah</label>
-                            <select id='id_kontingen' name='id_kontingen' class="form-control select2 wd-400">
+                            <select id='id_kontingen' name='id_kontingen' class="form-control select2">
                                 <option></option>
                                 <?php
                                 $rekap = $this->basic->get_data_where("(IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'", 'tmst_satker', 'UrutanTingkatBanding ASC');
@@ -101,13 +101,13 @@
                 </div><!-- sign-wrapper -->
             </form>
             <div class="media-body pd-y-30 pd-lg-x-50 pd-xl-x-60 d-lg-flex pos-relative">
-                <div class="wd-400">
-                    <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid wd-400" alt="">
+                <div class="wd-350">
+                    <img src="<?php echo base_url('assets/img/sign-up.png'); ?>" class="img-fluid" alt="">
                     <div class="card">
-                        <div class="sticky-top card-header d-flex align-items-center justify-content-between">
+                        <div class="card-header d-flex align-items-center justify-content-between">
                             <h6 class="mg-b-0">Daftar Pengurus</h6>
                         </div>
-                        <ul class="list-group list-group-flush tx-13 scrollbar-sm pos-relative" id="scroll">
+                        <ul class="list-group list-group-flush tx-13 scrollbar-sm pos-relative ht-450" id="scroll">
                             <?php
                             $rekap = $this->basic->get_data('view_user');
                             $no = 0;
