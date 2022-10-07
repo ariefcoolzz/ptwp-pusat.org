@@ -1,4 +1,5 @@
-<?php $this->load->view("score/@header"); ?>
+<?php 
+$this->load->view("score/@header"); ?>
 <div class="container">
     <div class="card mg-y-30">
         <div class="card-body">
