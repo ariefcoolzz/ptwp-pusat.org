@@ -301,10 +301,10 @@
                                 ?>
                             </a>
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                                <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Pusat</a>
+                                <h6 class="d-block tx-uppercase tx-primary tx-11 tx-medium mg-b-5">PTWP Pusat</h6>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ...<a href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a></p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?>x </small>
+                                <small><b><?php echo $R['nama_creator'] ?></b>, <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?>x </small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
@@ -336,10 +336,10 @@
 
                             </a>
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                                <a href="" class="d-block tx-uppercase tx-11 tx-medium mg-b-5">PTWP Daerah</a>
+                                <h6 class="d-block tx-uppercase tx-primary tx-11 tx-medium mg-b-5"><?php echo $R['nama_satker'] ?></h6>
                                 <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo $R['judul'] ?></a></h6>
                                 <p class="tx-color-03 tx-13 mg-b-0"><?php echo $intro ?> ...<a href="<?php echo base_url('main/page/') . $R['alias'] ?>">Selengkapnya</a></p>
-                                <small class="fw-bold">Tanggal Berita : <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?> x </small>
+                                <small><b><?php echo $R['nama_creator'] ?></b>, <?php echo format_tanggal('ddmmmmyyyyhis', $R['date_created']) ?> || Dilihat <?php echo $R['total_dilihat'] ?> x </small>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">

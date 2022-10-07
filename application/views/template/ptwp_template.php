@@ -149,7 +149,7 @@
             <div class="d-lg-flex">
               <ul>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="nav-sub-link"><i data-feather="rss"></i>Berita PTWP Pusat</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/berita_ptwp_pusat') ?>" class="nav-sub-link"><i data-feather="rss"></i> Berita PTWP Daerah</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/berita_ptwp_daerah') ?>" class="nav-sub-link"><i data-feather="rss"></i> Berita PTWP Daerah</a></li>
               </ul>
             </div>
           </div><!-- nav-sub -->

@@ -20,12 +20,9 @@ if (isset($_POST['id_wasit'])) {
         <div class="card">
             <div class="card-body">
                 <form id='form_konten' enctype="multipart/form-data">
+                    <input type='hidden' id='id_wasit' class='form-control' value="<?php if (isset($R)) echo $R['id_wasit']; ?>">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group" style="display:none">
-                                <label class="control-label">ID Wasit :</label>
-                                <input type='text' id='id_wasit' class='form-control' value="<?php if (isset($R)) echo $R['id_wasit']; ?>">
-                            </div>
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
                                 <input type='text' id='nama' class='form-control' value="<?php if (isset($R)) echo $R['nama']; ?>">

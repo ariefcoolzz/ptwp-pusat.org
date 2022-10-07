@@ -3,14 +3,18 @@
         height: 125px !important;
     }
 </style>
+<?php
+$nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
+?>
 <div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
     <div>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-style1 mg-b-10">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data Pemain</li>
+                <li class="breadcrumb-item active" aria-current="page">Data Pemain - <?php echo $nama_kontingen; ?></li>
             </ol>
         </nav>
+        <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
         <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>
     </div>
 </div>
@@ -81,7 +85,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain(false, true);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, false, true);
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
@@ -131,7 +135,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain("Pria", false);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, "Pria", false);
                                 foreach ($list_pemain->result_array() as $R) {
                                     echo '<tr align="center">';
                                     echo "<td>" . $no . "</td>";
@@ -181,7 +185,7 @@
                             <tbody>
                                 <?php
                                 $no = 1;
-                                $list_pemain = $this->Model_admin->get_data_pemain("Wanita", false);
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, "Wanita", false);
                                 foreach ($list_pemain->result_array() as $R) {
                                     if ($R['is_dharmayukti']) {
                                         echo '<tr align="center">';
@@ -414,6 +418,7 @@
 
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
+        form_data.append('id_kontingen', '<?php echo $id_kontingen; ?>');
         form_data.append('is_dharmayukti', is_dharmayukti);
         form_data.append('id_pemain', id_pemain);
         form_data.append('is_official', is_official);
