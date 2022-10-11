@@ -22,9 +22,19 @@ if (isset($_POST['id_lapangan'])) {
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group d-none">
                                 <label class="control-label">ID Lapangan :</label>
                                 <input type='text' id='id_lapangan' class='form-control' value="<?php if (isset($R)) echo $R['id_lapangan']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Event :</label>
+                                <select id='event' class='form-control' required>
+                                    <option value=''>Pilih</option>
+                                    <?php foreach($event as $row):?>
+                                    <!-- <option value="<?php echo $row->id_event;?>"><?php echo $row->id_event;?></option> -->
+                                    <?php endforeach;?>
+                                    <!-- <option value='2' <?php if (isset($R) and $R['id_event'] == '2') echo "selected"; ?>>2022</option> -->
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Lapangan :</label>

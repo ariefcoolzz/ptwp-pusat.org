@@ -324,12 +324,12 @@ class Model_admin extends CI_Model
 		return $query['nama_kontingen'];
 	}
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	
+	//DONIE EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 	function get_data_wasit($data)
 	{
-		$id_event = $this->input->post('id_wasit');
+		$id_wasit = $this->input->post('id_wasit');
 		$this->db->from('data_wasit');
-		// if ($data['id_event']) $this->db->where('A.id_event', $data['id_event']);
-		// if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -337,7 +337,7 @@ class Model_admin extends CI_Model
 
 	function get_data_lapangan($data)
 	{
-		$id_event = $this->input->post('id_lapangan');
+		$id_lapangan = $this->input->post('id_lapangan');
 		$this->db->from('master_lapangan');
 		// if ($data['id_event']) $this->db->where('A.id_event', $data['id_event']);
 		// if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);

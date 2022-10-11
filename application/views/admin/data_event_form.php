@@ -24,8 +24,8 @@ if (isset($_POST['id_event'])) {
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label class="control-label" style="display:none">ID Event :</label>
+                            <div class="form-group d-none">
+                                <label class="control-label">ID Event :</label>
                                 <input type='text' id='id_event' class='form-control' value="<?php if (isset($R)) echo $R['id_event']; ?>">
                             </div>
                             <div class="form-group">

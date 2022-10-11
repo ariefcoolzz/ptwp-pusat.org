@@ -3,6 +3,7 @@
         <thead class="thead-primary">
             <tr class="text-center">
                 <th class="wd-20">No</th>
+                <th>Event</th>
                 <th>Lapangan</th>
                 <th>Jenis Lapangan</th>
                 <th>Alamat Lapangan</th>
@@ -18,10 +19,12 @@
                 foreach ($rekap->result_array() as $R) {
                     echo '<tr align="center" data-id_lapangan ="' . $R['id_lapangan'] . '">';
                     echo "<td>" . $no . "</td>";
+                    echo "<td align='left'>" . ($R['id_event']) . "</td>";
                     echo "<td align='left'>" . $R['lapangan'] . "</td>";
                     echo "<td align='left'>" . jenis_lapangan($R['jenis']) . "</td>";
                     echo "<td align='left'>" . $R['alamat'] . "</td>";
-                    echo "<td align='left'>" . $R['longitude'], $R['latitude'] . "</td>";
+                    // echo "<td align='left'>" . $R['longitude'], $R['latitude'] . "</td>";
+                    echo '<td align="center"> <a href="http://www.google.com/maps/place/' . $R['longitude'] . ', ' . $R['latitude'] . '" target="_blank">' . $R['longitude'] . ', ' . $R['latitude'] . '</a></td>';
                     echo '<td>';
                     echo '<div class="btn-group-vertical">';
                     echo '<a href="javascript:void(0)" data-id_lapangan="' . $R['id_lapangan'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a href="javascript:void(0)">';
@@ -46,40 +49,6 @@
             lengthMenu: '_MENU_ wasit/Halaman',
         }
     });
-    // $("#dt-table").on('change', '.aktivasi', function() {
-    //     var ini = this;
-    //     var check;
-    //     if (this.checked) {
-    //         check = '1';
-    //     } else {
-    //         check = '0';
-    //     }
-    //     var id_lapangan = $(this).closest('tr').data('id_lapangan');
-    //     var nomor = $(this).data('no');
-
-    //     var form_data = new FormData();
-    //     form_data.append('id_lapangan', id_lapangan);
-    //     form_data.append('aktif', check);
-    //     form_data.append('nomor', nomor);
-    //     $.ajax({
-    //         url: "<?php echo base_url(); ?>admin/data_wasit_aktivasi",
-    //         type: 'POST',
-    //         cache: false,
-    //         contentType: false,
-    //         processData: false,
-    //         data: form_data,
-    //         dataType: 'json',
-    //         success: function(json) {
-    //             if (json.status !== true) {
-    //                 alert();
-    //                 skip();
-    //             } else {
-    //                 var ono = $(ini).closest('tr').find('.td_aktivasi');
-    //                 ono.html(json.konten_menu);
-    //             }
-    //         }
-    //     });
-    // });
 
     $(".table").on('click', '.edit', function(e) {
         $(".title_loader").text("Sedang Memuat Halaman");
