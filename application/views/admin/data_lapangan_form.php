@@ -30,10 +30,14 @@ if (isset($_POST['id_lapangan'])) {
                                 <label class="control-label">Event :</label>
                                 <select id='event' class='form-control' required>
                                     <option value=''>Pilih</option>
-                                    <?php foreach($event as $row):?>
-                                    <!-- <option value="<?php echo $row->id_event;?>"><?php echo $row->id_event;?></option> -->
-                                    <?php endforeach;?>
-                                    <!-- <option value='2' <?php if (isset($R) and $R['id_event'] == '2') echo "selected"; ?>>2022</option> -->
+                                    <?php 
+									$rekap = $this->Model_admin->get_data_event($_POST);
+									if ($rekap->num_rows()) {
+										foreach ($rekap->result_array() as $M) {
+											echo "<option value='$M[id_event]'>$M[nama]</option>";
+										}
+									}
+									?>
                                 </select>
                             </div>
                             <div class="form-group">
