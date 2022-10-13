@@ -654,10 +654,11 @@ class Admin extends CI_Controller
 		// print_r($_POST);die;
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
+			unset($data['user_created']);
 			$where = array('id' => $id);
 			$res = $this->basic->update_data($where, 'data_konten', $data);
 		} else {
-			$data['user_created'] = $this->session->userdata('id');
+			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
 		}
