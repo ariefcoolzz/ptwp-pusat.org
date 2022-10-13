@@ -73,7 +73,7 @@
 
     var cat_id = <?php echo $cat_id; ?>;
     $(document).ready(function() {
-        $(".table").on('click', '.btn-tambah', function(e) {
+        $("#konten").on('click', '.btn-tambah', function(e) {
             //loader
             $(".title_loader").text("Sedang Memuat Halaman");
             $("#konten").html($("#loader_html").html());
