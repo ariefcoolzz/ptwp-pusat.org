@@ -1,4 +1,9 @@
-<div class="content-fixed">
+<div class="content-fixed pos-relative">
+    <div class="pos-absolute z-index-10 mt-2">
+        <audio controls autoplay>
+            <source src="<?php echo base_url('assets/hymne.mp3') ?>" type="audio/mpeg">
+        </audio>
+    </div>
     <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#slideshow" data-slide-to="0" class="active"></li>
@@ -389,8 +394,8 @@
     </div>
 </div>
 <div class="content bd-t">
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-<div class="elfsight-app-d693ad37-ed40-4579-9793-6d26affa75c1"></div>
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <div class="elfsight-app-d693ad37-ed40-4579-9793-6d26affa75c1"></div>
 </div>
 <div class="content mg-0 bd-t bg-indigo">
     <div class="row">

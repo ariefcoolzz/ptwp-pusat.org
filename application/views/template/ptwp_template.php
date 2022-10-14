@@ -160,10 +160,6 @@
       </ul>
     </div><!-- navbar-menu-wrapper -->
     <div class="navbar-right">
-      <audio controls autoplay>
-        <source src="<?php echo base_url('assets/hymne.mpeg') ?>" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
       <a href="https://www.youtube.com/channel/UCucjQaYC0Sf60-paJeEPA7Q" target="_blank" class="btn btn-social"><i class="fab fa-youtube"></i></a>
       <a href="https://www.instagram.com/ptwp.pusat/" target="_blank" class="btn btn-social"><i class="fab fa-instagram"></i></a>
       <!-- <a href="#" class="btn btn-social"><i class="fab fa-facebook"></i></a> -->
