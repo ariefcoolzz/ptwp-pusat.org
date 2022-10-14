@@ -1,9 +1,4 @@
 <div class="content-fixed pos-relative">
-    <div class="pos-absolute z-index-10 mt-2">
-        <audio controls autoplay>
-            <source src="<?php echo base_url('assets/hymne.mp3') ?>" type="audio/mpeg">
-        </audio>
-    </div>
     <div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#slideshow" data-slide-to="0" class="active"></li>
