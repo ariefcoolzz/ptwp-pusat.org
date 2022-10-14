@@ -84,7 +84,7 @@ extract($_SESSION);
 
                 <?php } ?>
 
-                <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
+                <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3, 7))) { ?>
                     <li class="nav-label pt-3">Konten & Berita</li>
                     <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
                 <?php } ?>
