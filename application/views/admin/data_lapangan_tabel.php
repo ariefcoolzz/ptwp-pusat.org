@@ -19,11 +19,10 @@
                 foreach ($rekap->result_array() as $R) {
                     echo '<tr align="center" data-id_lapangan ="' . $R['id_lapangan'] . '">';
                     echo "<td>" . $no . "</td>";
-                    echo "<td align='left'>" . ($R['id_event']) . "</td>";
+                    echo "<td align='left'>" . ($R['nama']) . "</td>";
                     echo "<td align='left'>" . $R['lapangan'] . "</td>";
                     echo "<td align='left'>" . jenis_lapangan($R['jenis']) . "</td>";
                     echo "<td align='left'>" . $R['alamat'] . "</td>";
-                    // echo "<td align='left'>" . $R['longitude'], $R['latitude'] . "</td>";
                     echo '<td align="center"> <a href="http://www.google.com/maps/place/' . $R['longitude'] . ', ' . $R['latitude'] . '" target="_blank">' . $R['longitude'] . ', ' . $R['latitude'] . '</a></td>';
                     echo '<td>';
                     echo '<div class="btn-group-vertical">';

@@ -55,6 +55,8 @@ if (isset($_POST['id_user'])) {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
         form_data.append('id_user', $("#id_user").val());
+        form_data.append('username', $("#username").val());
+        form_data.append('password', $("#password").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_user_simpan",
             type: 'POST',

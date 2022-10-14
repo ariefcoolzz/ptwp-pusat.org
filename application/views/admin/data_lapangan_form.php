@@ -28,8 +28,8 @@ if (isset($_POST['id_lapangan'])) {
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Event :</label>
-                                <select id='event' class='form-control' required>
-                                    <option value=''>Pilih</option>
+                                <select id='id_event' class='form-control' required>
+                                    <!-- <option value=''>Pilih</option> -->
                                     <?php 
 									$rekap = $this->Model_admin->get_data_event($_POST);
 									if ($rekap->num_rows()) {
@@ -81,6 +81,7 @@ if (isset($_POST['id_lapangan'])) {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
         form_data.append('id_lapangan', $("#id_lapangan").val());
+        form_data.append('id_event', $("#id_event").val());
         form_data.append('lapangan', $("#lapangan").val());
         form_data.append('jenis', $("#jenis").val());
         form_data.append('alamat', $("#alamat").val());

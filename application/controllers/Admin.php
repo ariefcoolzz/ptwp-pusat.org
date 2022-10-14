@@ -398,7 +398,7 @@ class Admin extends CI_Controller
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
 				return;
 			}
-			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_official' => '0'), 'view_pemain');
+			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_karyawan->num_rows() >= 3 && $cek_pegawai['is_subdit'] !== '1') {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN KARYAWAN PUTRA BEREGU MAKSIMAL 3 ORANG'));
 				return;
@@ -654,10 +654,11 @@ class Admin extends CI_Controller
 		// print_r($_POST);die;
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
+			unset($data['user_created']);
 			$where = array('id' => $id);
 			$res = $this->basic->update_data($where, 'data_konten', $data);
 		} else {
-			$data['user_created'] = $this->session->userdata('id');
+			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
 		}

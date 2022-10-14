@@ -338,7 +338,8 @@ class Model_admin extends CI_Model
 	function get_data_lapangan($data)
 	{
 		$id_lapangan = $this->input->post('id_lapangan');
-		$this->db->from('master_lapangan');
+		$this->db->from('master_lapangan AS A');
+		$this->db->join("data_event AS B", "A.id_event = B.id_event", 'left');
 		// if ($data['id_event']) $this->db->where('A.id_event', $data['id_event']);
 		// if ($data['aktif'] >= 0)		 $this->db->where('A.aktif', $data['aktif']);
 		$query = $this->db->get();
