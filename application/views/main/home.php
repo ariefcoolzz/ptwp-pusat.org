@@ -56,13 +56,13 @@
 <div class="content mg-0">
     <div class="row no-gutters">
         <div class="col-lg-3 col-sm tx-center">
-            <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
         </div>
         <div class="col-lg-9 col-sm my-auto">
             <div data-aos="zoom-in" data-aos-duration="3000">
                 <div class="d-md-flex align-items-center justify-content-between">
                     <div class="media align-sm-items-center">
-                        <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-50 wd-lg-70">
+                        <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-70 wd-md-40 wd-lg-40 wd-xl-65">
                         <div class="media-body mg-l-15">
                             <h6 class="tx-12 tx-lg-14 tx-semibold tx-uppercase tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA <span class="tx-normal tx-color-03">(PTWP XIX)</span></h6>
                             <div class="d-flex flex-column">
