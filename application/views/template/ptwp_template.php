@@ -112,8 +112,9 @@
               <ul>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/technical_meeting'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Technical Meeting</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/rundown_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Rundown Pertandingan</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/simtem_undian_IX'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Simtem Undian</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/tempat_jadwal'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Tempat & Jadwal</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/data_pemain'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Daftar Pemain</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/daftar_lapangan'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Daftar Lapangan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/akomodasi_semarang'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Akomodasi</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
