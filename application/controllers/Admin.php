@@ -72,6 +72,26 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+	public function data_sewa_mobil()
+	{
+		OB_START();
+		$this->load->view("admin/data_sewa_mobil");
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_transparansi_keuangan()
+	{
+		OB_START();
+		$q = $this->Model_main->get_data_konten('laporan_keuangan')->row_array();
+		if (!empty($q)) {
+			$this->Model_main->log_data_konten($q['id']);
+			$data['judul'] = $q['judul'];
+			$data['konten'] = $q;
+		}
+		$this->load->view("main/page", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	public function data_user_tabel()
 	{
 		$konten_menu = $this->load->view("admin/data_user_tabel", "", TRUE);
@@ -654,7 +674,6 @@ class Admin extends CI_Controller
 		// print_r($_POST);die;
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
-			unset($data['user_created']);
 			$where = array('id' => $id);
 			$res = $this->basic->update_data($where, 'data_konten', $data);
 		} else {
