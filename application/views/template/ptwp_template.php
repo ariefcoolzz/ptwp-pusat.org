@@ -86,7 +86,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
                 <li class="nav-label mg-t-20">Keuangan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/surat_pemberitahuan_virtual_account_ptwp') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Virtual Akun</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/laporan_keuangan') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Laporan Keuangan</a></li>
+                <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/page/laporan_keuangan') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Laporan Keuangan</a></li> -->
               </ul>
               <ul>
                 <li class="nav-label">Pengurus Pusat</li>

@@ -88,6 +88,8 @@ extract($_SESSION);
                     <li class="nav-label pt-3">Konten & Berita</li>
                     <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_berita" class="menu_admin nav-link"><i data-feather="rss"></i> <span>Data Berita</span></a></li>
                 <?php } ?>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_sewa_mobil" class="menu_admin nav-link"><i data-feather="truck"></i> <span>Sewa Mobil</span></a></li>
+                <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_transparansi_keuangan" class="menu_admin nav-link"><i data-feather="dollar-sign"></i> <span>Laporan Keuangan</span></a></li>
                 <!-- <li class="nav-label pt-3">Kejuaaraan / Event</li>
                 <select id="list_event" class="filter form-control">
                     <?php
