@@ -389,8 +389,10 @@
     </div>
 </div>
 <div class="content bd-t">
-    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-    <div class="elfsight-app-d693ad37-ed40-4579-9793-6d26affa75c1"></div>
+    <div loading="lazy" data-mc-src="8f1b99c6-7213-4325-9b96-4a2bb3292ab4#instagram"></div>
+
+    <script src="https://cdn2.woxo.tech/a.js#6353e01945ee441dbffbdacf" async data-usrc>
+    </script>
 </div>
 <div class="content mg-0 bd-t bg-indigo">
     <div class="row">
