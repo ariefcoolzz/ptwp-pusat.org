@@ -2,6 +2,16 @@
 class Model_score extends CI_Model
 {
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function get_id_pertandingan($jenis, $key)
+	{
+		$this->db->select("A.id_pertandingan");
+		$this->db->from("data_babak_$jenis AS A");
+		$this->db->where("MD7(A.id_pertandingan)",$key); 
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query->row_array()['id_pertandingan'];
+	}
+
 	function score_rekap_penyisihan($key = NULL)
 	{
 		$this->db->select("'penyisihan' AS 'jenis'");
@@ -37,11 +47,52 @@ class Model_score extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+
+	function score_point_detail($P)
+	{
+		$this->db->select("A.*");
+		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->from("data_babak_".$P['jenis']."_score AS A");
+		$this->db->where("MD7(A.id_pertandingan)",$P['key']);
+		$this->db->where("A.`set`",$P['set']);
+		$this->db->where("A.`game`",$P['game']);
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
 	
-	function manage_tombol($P)
+	function manage_tombol_game($P)
 	{
 		//Contoh Query = UPDATE data_babak_final SET set1_tim_B = (set1_tim_B - 1) WHERE id_pertandingan = 1
 		$query = "UPDATE data_babak_".$P['jenis']." SET set".$P['set']."_tim_".$P['tim']." = (set".$P['set']."_tim_".$P['tim']." ".$P['aksi']." 1) WHERE MD7(id_pertandingan) = '".$P['key']."'";
+		$status = $this->db->query($query);
+		// DIE($this->db->last_query());
+		return $status;
+	}
+
+	function manage_tombol_point($P)
+	{
+		$this->db->select("A.id_pertandingan");
+		$this->db->from("data_babak_".$P['jenis']."_score AS A");
+		$this->db->where("A.`set`",$P['set']);
+		$this->db->where("A.`game`",$P['game']);
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		IF(!$query->num_rows())
+			{
+				$jenis					= $P['jenis'];
+				// PRINT_R($P);DIE();
+				$I['id_pertandingan']	= $this->get_id_pertandingan($P['jenis'],$P['key']);;
+				$I['set']				= $P['set'];
+				$I['game']				= $P['game'];
+				
+				$status = $this->db->insert("data_babak_".$jenis."_score", $I);
+				// DIE($this->db->last_query());
+			}
+		
+		//Contoh Query = UPDATE data_babak_final SET set1_tim_B = (set1_tim_B - 1) WHERE id_pertandingan = 1
+		$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = (id_point_tim_".$P['tim']." ".$P['aksi']." 1) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
 		$status = $this->db->query($query);
 		// DIE($this->db->last_query());
 		return $status;

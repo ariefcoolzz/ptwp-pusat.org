@@ -14,11 +14,9 @@
 					<?php
 					if ($jenis == 'final') {
 						if ($R['per'] == 1) echo "Final";
-						else {
-					?>Per: <?php echo $R['per']; ?> Final<?php
-														}
-													}
-															?>
+						else { ?>Per: <?php echo $R['per']; ?> Final<?php }
+					}
+					?>
 					<?php if ($jenis == 'penyisihan') { ?>Pool: <?php echo $R['pool']; ?><?php } ?>
 
 					<a>Tanggal: <?php echo format_tanggal("wddmmmmyyyy", $R['tanggal']); ?> Jam <?php echo $R['waktu']; ?></a>
@@ -36,58 +34,69 @@
 					<div class="h3 tx-bolder bd-b">Game</div>
 					<div class="row no-gutters wd-300">
 						<div class="col-6">
-							<button data-tipe='game' data-tim='A' data-aksi='+' class='tombol wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
+							<button data-tipe='game' data-tim='A' data-aksi='+' class='tombol_game wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> <br>Tambah</button>
 						</div>
 						<div class="col-6">
-							<button data-tipe='game' data-tim='B' data-aksi='+' class='tombol wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
+							<button data-tipe='game' data-tim='B' data-aksi='+' class='tombol_game wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> <br>Tambah</button>
 						</div>
 					</div>
 					<div class="row no-gutters wd-300 mg-t-10">
 						<div class="col-6">
-							<div id='game_tim_A' class='tombol wd-100 tx-40 badge'></div>
+							<div id='game_tim_A' class='wd-100 tx-40 badge'></div>
 						</div>
 						<div class="col-6">
-							<div id='game_tim_B' class='tombol wd-100 tx-40 badge'></div>
+							<div id='game_tim_B' class='wd-100 tx-40 badge'></div>
 
 						</div>
 					</div>
 					<div class="row no-gutters wd-300 mg-t-10">
 						<div class="col-6">
-							<button data-tipe='game' data-tim='A' data-aksi='-' class='tombol wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
+							<button data-tipe='game' data-tim='A' data-aksi='-' class='tombol_game wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
 						</div>
 						<div class="col-6">
-							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
+							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol_game wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
 						</div>
 					</div>
 					<div class="h3 tx-bolder bd-b mg-t-30">Score</div>
-					<div class="row no-gutters wd-300">
-						<div class="col-6">
-							<button data-tipe='game' data-tim='A' data-aksi='+' class='tombol wd-100 btn btn-lg btn-success'><i class="fa fa-plus"></i> Tambah</button>
+					<select id='game' class="form-control col-2 mb-3">
+						<option value='0'>Pilih Game</option>
+						<?php 
+						FOR($ke=1;$ke<=10;$ke++)
+							{
+								echo "<option value='$ke'>Game Ke: ".($ke)."</option>";
+							}
+						?>
+					</select>
+					<div id='manage_tombol_point' style='display:none;'>
+						<div class="row no-gutters wd-300">
+							<div class="col-6">
+								<button data-tipe='point' data-tim='A' data-aksi='+' class='tombol_point wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
+							</div>
+							<div class="col-6">
+								<button data-tipe='point' data-tim='B' data-aksi='+' class='tombol_point wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
+							</div>
 						</div>
-						<div class="col-6">
-							<button data-tipe='game' data-tim='B' data-aksi='+' class='tombol wd-100 btn btn-lg btn-success'><i class="fa fa-plus"></i> Tambah</button>
-						</div>
-					</div>
-					<div class="row no-gutters wd-300 mg-t-10">
-						<div class="col-6">
-							<div id='game_tim_A' class='tombol wd-100 tx-40 badge'></div>
-						</div>
-						<div class="col-6">
-							<div id='game_tim_B' class='tombol wd-100 tx-40 badge'></div>
+						<div class="row no-gutters wd-300 mg-t-10">
+							<div class="col-6">
+								<div id='point_tim_A' class='wd-100 tx-40 badge'></div>
+							</div>
+							<div class="col-6">
+								<div id='point_tim_B' class='wd-100 tx-40 badge'></div>
 
+							</div>
 						</div>
-					</div>
-					<div class="row no-gutters wd-300 mg-t-10">
-						<div class="col-6">
-							<button data-tipe='game' data-tim='A' data-aksi='-' class='tombol wd-100 btn btn-lg btn-danger'><i class="fa fa-minus"></i> Kurang</button>
+						<div class="row no-gutters wd-300 mg-t-10">
+							<div class="col-6">
+								<button data-tipe='point' data-tim='A' data-aksi='-' class='tombol_point wd-100 btn btn-lg btn-danger'><i class="fa fa-minus"></i> Kurang</button>
+							</div>
+							<div class="col-6">
+								<button data-tipe='point' data-tim='B' data-aksi='-' class='tombol_point wd-100 btn btn-lg btn-danger'><i class="fa fa-minus"></i> Kurang</button>
+							</div>
 						</div>
-						<div class="col-6">
-							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol wd-100 btn btn-lg btn-danger'><i class="fa fa-minus"></i> Kurang</button>
-						</div>
-					</div>
-					<div class="row no-gutters wd-300 mg-t-10">
-						<div class="col-12">
-						<button data-tipe='score' data-tim='' data-aksi='reset' class='tombol btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Score</button>
+						<div class="row no-gutters wd-300 mg-t-10">
+							<div class="col-12">
+							<button data-tipe='reset_point' data-tim='' data-aksi='reset' class='reset_point btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Point</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -104,13 +113,13 @@
 		// alert($(this).val());
 		if($(this).val() == '0') 
 			{ 
-				$("#manage_tombol").hide(300); 
+				$("#manage_tombol").fadeOut(300); 
 				skip(); 
 			}
 		else
 			{ 
-				$("#manage_tombol").hide(300); 
-				$("#manage_tombol").show(300); 
+				$("#manage_tombol").fadeOut(300); 
+				$("#manage_tombol").fadeIn(300); 
 			}
 		
 		var form_data = new FormData();
@@ -133,7 +142,41 @@
 		});
 	});
 
-	$(".tombol").on("click", function() {
+	$("#game").on("change", function() {
+		// alert($(this).val());
+		if($(this).val() == '0') 
+			{ 
+				$("#manage_tombol_point").fadeOut(300); 
+				skip(); 
+			}
+		else
+			{ 
+				$("#manage_tombol_point").fadeOut(300); 
+				$("#manage_tombol_point").fadeIn(300); 
+			}
+		
+		var form_data = new FormData();
+		form_data.append('jenis', "<?php echo $jenis; ?>");
+		form_data.append('key', "<?php echo $key; ?>");
+		form_data.append('set', $("#set").val());
+		form_data.append('game', $(this).val());
+		$.ajax({
+			url: "<?php echo base_url(); ?>score/manage_point",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,
+			dataType: 'json',
+			success: function(json) {
+				// alert(json.konten_button);
+				$("#point_tim_A").text(json.point_tim_A);
+				$("#point_tim_B").text(json.point_tim_B);
+			}
+		});
+	});
+
+	$(".tombol_game").on("click", function() {
 		if ($("#set").val() == '0') {
 			alert("Maaf... Set Harus Dipilih Terlebih Dahulu... !!!");
 			skip();
@@ -146,7 +189,7 @@
 		form_data.append('tim', $(this).data('tim'));
 		form_data.append('aksi', $(this).data('aksi'));
 		$.ajax({
-			url: "<?php echo base_url(); ?>score/manage_tombol",
+			url: "<?php echo base_url(); ?>score/manage_tombol_game",
 			type: 'POST',
 			cache: false,
 			contentType: false,
@@ -157,6 +200,40 @@
 				if (json.status === true) {
 					$("#game_tim_A").text(json.game_tim_A);
 					$("#game_tim_B").text(json.game_tim_B);
+				}
+			}
+		});
+	});
+
+	$(".tombol_point").on("click", function() {
+		if ($("#set").val() == '0') {
+			alert("Maaf... Set Harus Dipilih Terlebih Dahulu... !!!");
+			skip();
+		}
+		if ($("#game").val() == '0') {
+			alert("Maaf... Game Ke Harus Dipilih Terlebih Dahulu... !!!");
+			skip();
+		}
+		var form_data = new FormData();
+		form_data.append('jenis', "<?php echo $jenis; ?>");
+		form_data.append('key', "<?php echo $key; ?>");
+		form_data.append('set', $("#set").val());
+		form_data.append('game', $("#game").val());
+		form_data.append('tipe', $(this).data('tipe'));
+		form_data.append('tim', $(this).data('tim'));
+		form_data.append('aksi', $(this).data('aksi'));
+		$.ajax({
+			url: "<?php echo base_url(); ?>score/manage_tombol_point",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,
+			dataType: 'json',
+			success: function(json) {
+				if (json.status === true) {
+					$("#point_tim_A").text(json.point_tim_A);
+					$("#point_tim_B").text(json.point_tim_B);
 				}
 			}
 		});

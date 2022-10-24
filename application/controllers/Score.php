@@ -46,11 +46,30 @@ class Score extends CI_Controller
 		echo JSON_ENCODE($ARRAY);
 	}
 
-	public function manage_tombol()
+	public function manage_point()
+	{
+		// PRINT_R($_POST);DIE();
+		$data = $this->Model_score->score_point_detail($_POST);
+		IF(!$data->num_rows())
+			{
+				$ARRAY["point_tim_A"] = 0;
+				$ARRAY["point_tim_B"] = 0;
+			}
+		ELSE 
+			{
+				$data = $data->row_array();
+				// PRINT_R($data->row_array());DIE();
+				$ARRAY["point_tim_A"] = $data["point_tim_A"];
+				$ARRAY["point_tim_B"] = $data["point_tim_B"];
+			}
+		echo JSON_ENCODE($ARRAY);
+	}
+
+	public function manage_tombol_game()
 	{
 		// PRINT_R($_POST);DIE();
 
-		$status = $this->Model_score->manage_tombol($_POST);
+		$status = $this->Model_score->manage_tombol_game($_POST);
 
 		$function_model = "score_rekap_" . $_POST['jenis'];
 		$data = $this->Model_score->$function_model($_POST['key']);
@@ -60,6 +79,23 @@ class Score extends CI_Controller
 		$ARRAY['status'] 		= $status;
 		$ARRAY["game_tim_A"] 	= $data["set" . $_POST['set'] . "_tim_A"];
 		$ARRAY["game_tim_B"] 	= $data["set" . $_POST['set'] . "_tim_B"];
+
+		echo JSON_ENCODE($ARRAY);
+	}
+
+	public function manage_tombol_point()
+	{
+		// PRINT_R($_POST);DIE();
+
+		$status = $this->Model_score->manage_tombol_point($_POST);
+
+		$data = $this->Model_score->score_point_detail($_POST);
+		$data = $data->row_array();
+		// PRINT_R($data->row_array());DIE();
+
+		$ARRAY['status'] 		= $status;
+		$ARRAY["point_tim_A"] 	= $data["point_tim_A"];
+		$ARRAY["point_tim_B"] 	= $data["point_tim_B"];
 
 		echo JSON_ENCODE($ARRAY);
 	}
