@@ -115,8 +115,9 @@ class Score extends CI_Controller
 	public function score_get()
 	{
 		// PRINT_R($_POST);DIE();
-		$function_model = "score_rekap_" . $_POST['jenis'];
-		$data = $this->Model_score->$function_model($_POST['key']);
+
+		//BUAT GET GAME
+		$data = $this->Model_score->get_game($_POST['jenis'], $_POST['key']);
 		$data = $data->row_array();
 		// PRINT_R($data->row_array());DIE();
 		$ARRAY["set1_tim_A"] = $data["set1_tim_A"];
@@ -125,6 +126,14 @@ class Score extends CI_Controller
 		$ARRAY["set2_tim_B"] = $data["set2_tim_B"];
 		$ARRAY["set3_tim_A"] = $data["set3_tim_A"];
 		$ARRAY["set3_tim_B"] = $data["set3_tim_B"];
+
+		//BUAT GET POINT, GAME YANG TERAKHIR
+		$data = $this->Model_score->get_point($_POST['jenis'], $_POST['key']);
+		$data = $data->row_array();
+
+		$ARRAY["point_tim_A"] = $data["point_tim_A"];
+		$ARRAY["point_tim_B"] = $data["point_tim_B"];
+
 		echo JSON_ENCODE($ARRAY);
 	}
 }

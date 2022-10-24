@@ -7,42 +7,9 @@
 		<h3 class="tx-roboto tx-danger">LIVE</h3>
 	</div>
 	<div class="pos-fixed b-30 l-30">
-		<div class="card wd-400">
-			<div class="card-body bg-secondary rounded-lg">
-				<ul class="list-group list-group-flush tx-13">
-					<li class="list-group-item d-flex pd-sm-x-20">
-						<div class="avatar"><img src="<?php echo base_url('assets/img/default.png'); ?>" class="rounded-circle" alt=""></div>
-						<div class="pd-l-10">
-							<p class="tx-medium mg-b-0">Pemain 1</p>
-							<small class="tx-12 tx-color-03 mg-b-0">Tim A</small>
-						</div>
-						<div class="mg-l-auto d-flex align-self-center">
-							<nav class="nav nav-icon-only">
-								<a class="nav-link tx-20" id='set1_tim_A'>0</a>
-								<a class="nav-link tx-20">|</a>
-								<a class="nav-link tx-20" id='set2_tim_A'>0</a>
-								<a class="nav-link tx-20">|</a>
-								<a class="nav-link tx-20" id='set3_tim_A'>0</a>
-							</nav>
-						</div>
-					</li>
-					<li class="list-group-item d-flex pd-x-20">
-						<div class="avatar"><img src="<?php echo base_url('assets/img/default.png'); ?>" class="rounded-circle" alt=""></div>
-						<div class="pd-l-10">
-							<p class="tx-medium mg-b-0">Pemain 2</p>
-							<small class="tx-12 tx-color-03 mg-b-0">Tim B</small>
-						</div>
-						<div class="mg-l-auto d-flex align-self-center">
-							<nav class="nav nav-icon-only">
-								<a class="nav-link tx-20" id='set1_tim_B'>0</a>
-								<a class="nav-link tx-20">|</a>
-								<a class="nav-link tx-20" id='set2_tim_B'>0</a>
-								<a class="nav-link tx-20">|</a>
-								<a class="nav-link tx-20" id='set3_tim_B'>0</a>
-							</nav>
-						</div>
-					</li>
-				</ul>
+		<div class="card wd-400"> 
+			<div class="card-body bg-secondary rounded">
+				<?php $this->load->view('score/score_share_tabel_'.$jenis); ?>
 			</div>
 		</div>
 	</div>
@@ -76,6 +43,8 @@
 				$("#set2_tim_B").text(json.set2_tim_B);
 				$("#set3_tim_A").text(json.set3_tim_A);
 				$("#set3_tim_B").text(json.set3_tim_B);
+				$("#point_tim_A").text(json.point_tim_A);
+				$("#point_tim_B").text(json.point_tim_B);
 			}
 		});
 	}

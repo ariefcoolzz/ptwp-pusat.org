@@ -12,6 +12,34 @@ class Model_score extends CI_Model
 		return $query->row_array()['id_pertandingan'];
 	}
 
+	function get_game($jenis, $key)
+	{
+		$this->db->select("A.set1_tim_A");
+		$this->db->select("A.set2_tim_A");
+		$this->db->select("A.set3_tim_A");
+		$this->db->select("A.set1_tim_B");
+		$this->db->select("A.set2_tim_B");
+		$this->db->select("A.set3_tim_B");
+		$this->db->from("data_babak_".$jenis." AS A");
+		$this->db->where("MD7(A.id_pertandingan)",$key); 
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
+	function get_point($jenis, $key)
+	{
+		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->from("data_babak_".$jenis."_score AS A");
+		$this->db->where("MD7(A.id_pertandingan)",$key); 
+		$this->db->order_by("`set` DESC, `game` DESC"); 
+		$this->db->limit(1); 
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
 	function score_rekap_penyisihan($key = NULL)
 	{
 		$this->db->select("'penyisihan' AS 'jenis'");
@@ -75,6 +103,7 @@ class Model_score extends CI_Model
 	{
 		$this->db->select("A.id_pertandingan");
 		$this->db->from("data_babak_".$P['jenis']."_score AS A");
+		$this->db->where("MD7(A.id_pertandingan)",$P['key']);
 		$this->db->where("A.`set`",$P['set']);
 		$this->db->where("A.`game`",$P['game']);
 		$query = $this->db->get();

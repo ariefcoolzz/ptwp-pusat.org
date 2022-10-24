@@ -1,7 +1,7 @@
 Harus Login<div class="container">
     <div class="card mg-y-30">
         <div class="card-header tx-center">
-            <h1>SCORE PERTANDINGAN</h1>
+            <h1>BABAK FINAL</h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -51,7 +51,17 @@ Harus Login<div class="container">
                         ?>
                     </tbody>
                 </table>
-                <hr>
+                    </div>
+                    </div>
+                    </div>
+              
+                
+                <div class="card mg-y-30">
+        <div class="card-header tx-center">
+            <h1>BABAK FINAL</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
                 <table id="datatable-score2" class="table table-primary table-striped w-100">
                     <thead>
                         <tr class="text-center">

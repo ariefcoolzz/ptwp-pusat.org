@@ -57,8 +57,7 @@
 							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol_game wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
 						</div>
 					</div>
-					<div class="h3 tx-bolder bd-b mg-t-30">Point</div>
-					<select id='game' class="form-control col-2 mb-3">
+					<select id='game' class="form-control col-2 mt-3 mb-3">
 						<option value='0'>Pilih Game</option>
 						<?php 
 						FOR($ke=1;$ke<=10;$ke++)
@@ -68,6 +67,7 @@
 						?>
 					</select>
 					<div id='manage_tombol_point' style='display:none;'>
+						<div class="h3 tx-bolder bd-b m-30">Point</div>
 						<div class="row no-gutters wd-300">
 							<div class="col-6">
 								<button data-tipe='point' data-tim='A' data-aksi='+' class='tombol_point wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
@@ -121,6 +121,9 @@
 				$("#manage_tombol").fadeOut(300); 
 				$("#manage_tombol").fadeIn(300); 
 			}
+		
+		$("#game").val('0'); //diset untuk memilih lagi
+		$("#manage_tombol_point").fadeOut(); //diset untuk memilih lagi
 		
 		var form_data = new FormData();
 		form_data.append('jenis', "<?php echo $jenis; ?>");
