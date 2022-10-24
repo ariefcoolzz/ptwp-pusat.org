@@ -93,7 +93,10 @@ class Model_score extends CI_Model
 	function manage_tombol_game($P)
 	{
 		//Contoh Query = UPDATE data_babak_final SET set1_tim_B = (set1_tim_B - 1) WHERE id_pertandingan = 1
-		$query = "UPDATE data_babak_".$P['jenis']." SET set".$P['set']."_tim_".$P['tim']." = (set".$P['set']."_tim_".$P['tim']." ".$P['aksi']." 1) WHERE MD7(id_pertandingan) = '".$P['key']."'";
+		IF($P['aksi'] == "+") 
+			$query = "UPDATE data_babak_".$P['jenis']." SET set".$P['set']."_tim_".$P['tim']." = IF(set".$P['set']."_tim_".$P['tim']." >= 8,8,(set".$P['set']."_tim_".$P['tim']." + 1)) WHERE MD7(id_pertandingan) = '".$P['key']."'";
+		ELSE
+			$query = "UPDATE data_babak_".$P['jenis']." SET set".$P['set']."_tim_".$P['tim']." = IF(set".$P['set']."_tim_".$P['tim']." <= 0,0,(set".$P['set']."_tim_".$P['tim']." - 1)) WHERE MD7(id_pertandingan) = '".$P['key']."'";
 		$status = $this->db->query($query);
 		// DIE($this->db->last_query());
 		return $status;
