@@ -25,7 +25,9 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                 <form id='form_konten' enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-lg-6">
-                            <input type='checkbox' id='is_dharmayukti'> Dharmayukti <input type='checkbox' id='is_official' value='1'> Official / Manager<br>
+                            <input class="filter" type='checkbox' id='is_dharmayukti' value='1'> Dharmayukti
+                            <input class="filter" type='checkbox' id='is_official' value='1'> Official / Manager
+                            <input class="filter" type='checkbox' id='is_veteran' value='1'> Veteran<br>
                             <div class="form-group">
                                 <label class="control-label">Nama :</label>
                                 <div id='div_id_pemain'>
@@ -234,6 +236,56 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                 </div><!-- df-example -->
             </div>
         </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="text-center"> DATA PEMAIN VETERAN</h5>
+                <div data-label="Example" class="df-example demo-table">
+                    <div class="table-responsive">
+                        <table class="datatable-pemain table table-primary mg-b-0">
+                            <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th class="wd-20">No</th>
+                                    <!-- <th>Foto</th> -->
+                                    <th>Nama</th>
+                                    <th>Nip</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Usia</th>
+                                    <th>Jabatan</th>
+                                    <th>Satuan Kerja</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                $list_pemain = $this->Model_admin->get_data_pemain($id_kontingen, false, false, true); // PARAMETER 4 IS VETERAN
+                                foreach ($list_pemain->result_array() as $R) {
+                                    echo '<tr align="center">';
+                                    echo "<td>" . $no . "</td>";
+                                    // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
+                                    // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
+                                    // } else {
+                                    // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                    // }
+                                    echo "<td align='left'>" . $R['nama'] . "</td>";
+                                    echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
+                                    echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
+                                    echo "<td align='left'>" . $R['umur'] . "</td>";
+                                    echo "<td align='left'>" . $R['jabatan'] . "</td>";
+                                    echo "<td align='left'>" . $R['nama_satker'] . "</td>";
+                                    echo '<td>
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
+                                    echo "</td>";
+                                    echo "</tr>";
+                                    $no++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div><!-- table-responsive -->
+                </div><!-- df-example -->
+            </div>
+        </div>
     </div>
 </div>
 <script>
@@ -352,7 +404,29 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         ajax: { //bawaan nya > Kirim data method $_GET['q'];
             delay: 250, // wait 250 milliseconds before triggering the request
             url: "<?php echo base_url(); ?>admin/get_data_id_nama",
-            dataType: 'json'
+            dataType: 'json',
+            data: function(data) {
+                var is_official = 0;
+                if ($('#is_official').is(":checked") == true) {
+                    is_official = 1;
+                }
+                var is_dharmayukti = 0;
+                if ($('#is_dharmayukti').is(":checked") == true) {
+                    is_dharmayukti = 1;
+                }
+                var is_veteran = 0;
+                if ($('#is_veteran').is(":checked") == true) {
+                    is_veteran = 1;
+                }
+                return {
+                    term: data.term,
+                    _type: 'query',
+                    q: data.term,
+                    official: is_official,
+                    dharmayukti: is_dharmayukti,
+                    veteran: is_veteran
+                };
+            }
             // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
         }
     });
@@ -380,15 +454,18 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
     }
 
     $("#div_id_pemain_dharmayukti").hide();
-    $("#is_dharmayukti").on('click', function() {
-        // alert($(this).is(":checked"));
-        if ($(this).is(":checked") == true) {
-            $("#div_id_pemain").hide();
-            $("#div_id_pemain_dharmayukti").show();
-        } else {
-            $("#div_id_pemain").show();
-            $("#div_id_pemain_dharmayukti").hide();
-        }
+    // $("#is_dharmayukti").on('click', function() {
+    //     // alert($(this).is(":checked"));
+    //     if ($(this).is(":checked") == true) {
+    //         $("#div_id_pemain").hide();
+    //         $("#div_id_pemain_dharmayukti").show();
+    //     } else {
+    //         $("#div_id_pemain").show();
+    //         $("#div_id_pemain_dharmayukti").hide();
+    //     }
+    // });
+    $(".filter").on('click', function() {
+        $(".filter").not(this).prop('checked', false);
     });
     $("#simpan").hide();
     $("#is_setuju").on('click', function() {
@@ -405,6 +482,7 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         var id_pemain = 0;
         var is_dharmayukti = 0;
         var is_official = 0;
+        var is_veteran = 0;
         if ($("#is_dharmayukti").is(":checked") == true) {
             id_pemain = $("#id_pemain_dharmayukti").val();
             is_dharmayukti = 1;
@@ -415,6 +493,9 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         if ($("#is_official").is(":checked") == true) {
             is_official = 1;
         }
+        if ($("#is_veteran").is(":checked") == true) {
+            is_veteran = 1;
+        }
 
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
@@ -422,6 +503,7 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         form_data.append('is_dharmayukti', is_dharmayukti);
         form_data.append('id_pemain', id_pemain);
         form_data.append('is_official', is_official);
+        form_data.append('is_veteran', is_veteran);
         form_data.append('id_event', '<?php echo $id_event; ?>');
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pemain_simpan",

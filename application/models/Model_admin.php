@@ -1,14 +1,15 @@
 <?php
 class Model_admin extends CI_Model
 {
-	function model_get_data_id_nama($keyword = NULL)
+	function model_get_data_id_nama($keyword = NULL, $veteran = 0)
 	{
 		$this->db->select("A.id_pegawai AS id");
 		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
-		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' <br>',A.nip,' <br>',A.nama_satker,' <br>',NAMA_SATKER('$_SESSION[id_kontingen]'),'</div>') AS text");
+		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' (',A.umur,')',' <br>',A.nip,' <br>',A.nama_satker,' <br>',NAMA_SATKER('$_SESSION[id_kontingen]'),'</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
 		if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) $this->db->where("(A.id_satker = '$_SESSION[id_kontingen]' OR  A.id_satker_parent = '$_SESSION[id_kontingen]')");
+		if ($veteran) $this->db->where("(A.umur >= '60' OR A.id_jabatan = '30')");
 		$this->db->limit("100");
 		$query = $this->db->get();
 		// echo($this->db->last_query());
@@ -257,7 +258,7 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	function get_data_pemain($id_kontingen, $jenis_kelamin = false, $is_official = false)
+	function get_data_pemain($id_kontingen, $jenis_kelamin = false, $is_official = false, $is_veteran = false)
 	{
 		$id_event = $this->input->post('id_event');
 		$id_panitia = $this->input->post('id_panitia');
@@ -274,7 +275,11 @@ class Model_admin extends CI_Model
 			$this->db->where("(A.jenis_kelamin = '" . $jenis_kelamin . "' OR A.is_dharmayukti = '1')");
 		}
 		if ($is_official) $this->db->where('A.is_official', '1');
-		else $this->db->where('A.is_official', '0');
+		else if ($is_veteran) $this->db->where('A.is_veteran', '1');
+		else {
+			$this->db->where('A.is_official', '0');
+			$this->db->where('A.is_veteran', '0');
+		}
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -297,16 +302,20 @@ class Model_admin extends CI_Model
 		IFNULL(B.total_putra_blm,'0') AS total_putra_blm,
 		IFNULL(B.total_putra_sudah,'0') AS total_putra_sudah,
 		IFNULL(B.total_putri_blm,'0') AS total_putri_blm,
-		IFNULL(B.total_putri_sudah,'0') AS total_putri_sudah
+		IFNULL(B.total_putri_sudah,'0') AS total_putri_sudah,
+		IFNULL(B.total_veteran_blm,'0') AS total_veteran_blm,
+		IFNULL(B.total_veteran_sudah,'0') AS total_veteran_sudah
 		FROM tmst_satker AS A
 		LEFT JOIN 
 		(SELECT V.`id_kontingen` AS id_kontingen,
 		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official_blm,
 		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official_sudah,
-		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_blm,
-		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_sudah,
-		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_blm,
-		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_sudah
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_veteran` = '1' THEN 1 ELSE 0 END) AS total_veteran_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_veteran` = '1' THEN 1 ELSE 0 END) AS total_veteran_sudah,
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_veteran` = '0' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_veteran` = '0' AND V.`is_official` = '0' AND V.`jenis_kelamin` = 'PRIA'  AND  V.`is_dharmayukti` = '0' THEN 1 ELSE 0 END) AS total_putra_sudah,
+		SUM(CASE WHEN V.`is_verifikasi` = '0' AND V.`is_veteran` = '0' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_blm,
+		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_veteran` = '0' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_sudah
 		FROM
 		view_pemain AS V
 		WHERE V.`id_event` = '2'

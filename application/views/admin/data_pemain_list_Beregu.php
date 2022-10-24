@@ -21,6 +21,7 @@
                                     <th>OFFICIAL</th>
                                     <th>BEREGU PUTRA</th>
                                     <th>BEREGU PUTRI</th>
+                                    <th>VETERAN</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -38,22 +39,27 @@
                                     $official = $R['total_official_blm'] + $R['total_official_sudah'];
                                     $putra = $R['total_putra_blm'] + $R['total_putra_sudah'];
                                     $putri = $R['total_putri_blm'] + $R['total_putri_sudah'];
-                                    $bg_official = 'bg-warning';
+                                    $veteran = $R['total_veteran_blm'] + $R['total_veteran_sudah'];
+                                    $bg_official = 'bg-success';
                                     if ($official == '2' && $official ==  $R['total_official_sudah']) $bg_official = 'bg-success';
-                                    if ($official <= '2') $bg_official = 'bg-warning';
+                                    if ($official < '2') $bg_official = 'bg-warning';
                                     if ($official == '0') $bg_official = 'bg-danger';
-                                    $bg_putra = 'bg-warning';
+                                    $bg_putra = 'bg-success';
                                     if ($putra == '8' && $putra ==  $R['total_putra_sudah']) $bg_putra = 'bg-success';
-                                    if ($putra <= '8') $bg_putra = 'bg-warning';
+                                    if ($putra < '8') $bg_putra = 'bg-warning';
                                     if ($putra == '0') $bg_putra = 'bg-danger';
-                                    $bg_putri = 'bg-warning';
+                                    $bg_putri = 'bg-success';
                                     if ($putri == '6' && $putri ==  $R['total_putri_sudah']) $bg_putri = 'bg-success';
-                                    if ($putri <= '6') $bg_putri = 'bg-warning';
+                                    if ($putri < '6') $bg_putri = 'bg-warning';
                                     if ($putri == '0') $bg_putri = 'bg-danger';
+                                    $bg_veteran = 'bg-success';
+                                    if ($veteran == '0') $bg_veteran = 'bg-danger';
+                                    // if ($veteran ==  $R['total_veteran_sudah']) $veteran = 'bg-success';
 
                                     echo "<td align='center' class='" . $bg_official . "'>" . $official . "</td>";
                                     echo "<td align='center' class='" . $bg_putra . "'>" . $putra . "</td>";
                                     echo "<td align='center' class='" . $bg_putri . "'>" . $putri . "</td>";
+                                    echo "<td align='center' class='" . $bg_veteran . "'>" . $veteran . "</td>";
                                     echo '<td>
                                         <a href="javascript:void(0)" data-id_kontingen="' . $R['id_kontingen'] . '" class="detil btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Detil"><i class="fas fa fa-play"></i></a>';
                                     echo "</td>";

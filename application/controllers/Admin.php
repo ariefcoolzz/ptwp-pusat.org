@@ -16,7 +16,9 @@ class Admin extends CI_Controller
 	{
 		if (isset($_GET['q']) and STRLEN($_GET['q']) >= 4) {
 			$keyword = $_GET['q'];
-			$data = $this->Model_admin->model_get_data_id_nama($keyword);
+			$veteran = $_GET['veteran'];
+			if ($_GET['dharmayukti'] == 1) $data = $this->Model_admin->model_get_data_id_nama_dharmayukti($keyword); //1 FUNGSI AJA BANG
+			else $data = $this->Model_admin->model_get_data_id_nama($keyword, $veteran);
 			// PRINT_R($data->result_array());DIE();
 			$hasil = array("results" => $data->result_array());
 			// PRINT_R($hasil);DIE();
@@ -412,13 +414,13 @@ class Admin extends CI_Controller
 		// print_r($cek_pegawai);
 		// echo '</pre>';
 		// die();
-		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0' and $_POST['is_official'] == '0') {
-			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
+		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0' and $_POST['is_official'] == '0' and $_POST['is_veteran'] == '0') {
+			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0', 'is_veteran' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_pemain_pria->num_rows() >= 8) {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
 				return;
 			}
-			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
+			$cek_karyawan = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_subdit !=' => '1', 'is_veteran' => '0', 'is_official' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_karyawan->num_rows() >= 3 && $cek_pegawai['is_subdit'] !== '1') {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN KARYAWAN PUTRA BEREGU MAKSIMAL 3 ORANG'));
 				return;
@@ -429,9 +431,11 @@ class Admin extends CI_Controller
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'OFFICIAL / MANAGER MAKSIMAL 2 ORANG'));
 				return;
 			}
+		} else if ($_POST['is_veteran']) {
+			//nothing
 		} else {
-			$cek_pemain_putri = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Wanita', 'is_official' => '0'), 'view_pemain');
-			$cek_pemain_dyk = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_dharmayukti' => '1', 'is_official' => '0'), 'view_pemain');
+			$cek_pemain_putri = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Wanita', 'is_veteran' => '0', 'is_official' => '0'), 'view_pemain');
+			$cek_pemain_dyk = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'is_dharmayukti' => '1', 'is_veteran' => '0', 'is_official' => '0'), 'view_pemain');
 			if (($cek_pemain_putri->num_rows() + $cek_pemain_dyk->num_rows()) >= 6) {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRI BEREGU MAKSIMAL 6 ORANG'));
 				return;
