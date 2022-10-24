@@ -121,7 +121,11 @@ class Model_score extends CI_Model
 			}
 		
 		//Contoh Query = UPDATE data_babak_final SET set1_tim_B = (set1_tim_B - 1) WHERE id_pertandingan = 1
-		$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = (id_point_tim_".$P['tim']." ".$P['aksi']." 1) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+		IF($P['aksi'] == "+") 
+			$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." >= 4,4,(id_point_tim_".$P['tim']." + 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+		ELSE
+			$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." <= 0,0,(id_point_tim_".$P['tim']." - 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+		// DIE($query);
 		$status = $this->db->query($query);
 		// DIE($this->db->last_query());
 		return $status;

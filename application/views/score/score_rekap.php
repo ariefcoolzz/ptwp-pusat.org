@@ -30,6 +30,11 @@ Harus Login<div class="container">
                             $jenis     = $R['jenis'];
                             $no++;
 
+                            $score = "";
+                            IF($R['set1_tim_A'] > 0 OR $R['set1_tim_B'] > 0) $score .= "Set 1: $R[set1_tim_A] - $R[set1_tim_B]";
+                            IF($R['set2_tim_A'] > 0 OR $R['set2_tim_B'] > 0) $score .= "<br>Set 2: $R[set2_tim_A] - $R[set2_tim_B]";
+                            IF($R['set3_tim_A'] > 0 OR $R['set3_tim_B'] > 0) $score .= "<br>Set 3: $R[set3_tim_A] - $R[set3_tim_B]";
+
                             echo "<tr class='tx-center'>";
                             echo "<td>" . $R['id_pertandingan'] . "</td>";
                             // echo "<td>" . $R['jenis'] . "</td>";
@@ -40,7 +45,7 @@ Harus Login<div class="container">
                             echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal']) . "</td>";
                             echo "<td>" . $R['waktu'] . "</td>";
                             echo "<td>" . $R['lapangan'] . "</td>";
-                            echo "<td>$R[set1_tim_A] - $R[set1_tim_B]</td>";
+                            echo "<td>$score</td>";
                             // echo "<td><span class='badge bg-success text-light'>$R[nama_tim_A]</span> <span class='badge bg-success text-light'>$R[set1_tim_A]</span> <small>VS</small> <span class='badge bg-danger text-light'>$R[set1_tim_B]</span> <span class='badge bg-danger text-light'>$R[nama_tim_B]</span></td>";
 							echo "<td>
 										<span class='share btn btn-sm btn-success' data-jenis='$jenis' data-key='$key'>Share Score</span>
@@ -56,9 +61,9 @@ Harus Login<div class="container">
                     </div>
               
                 
-                <div class="card mg-y-30">
+        <div class="card mg-y-30">
         <div class="card-header tx-center">
-            <h1>BABAK FINAL</h1>
+            <h1>BABAK PENYISIHAN</h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -73,6 +78,7 @@ Harus Login<div class="container">
                             <th>Tanggal</th>
                             <th>Jam</th>
                             <th>Lapangan</th>
+                            <th>Score</th>
                             <th>Link Manage Score</th>
                             <?php /*<th>Tim A VS Tim B</th>*/ ?>
                         </tr>
@@ -86,6 +92,11 @@ Harus Login<div class="container">
                             $jenis     = $R['jenis'];
                             $no++;
 
+                            $score = "";
+                            IF($R['set1_tim_A'] > 0 OR $R['set1_tim_B'] > 0) $score .= "Set 1: $R[set1_tim_A] - $R[set1_tim_B]";
+                            IF($R['set2_tim_A'] > 0 OR $R['set2_tim_B'] > 0) $score .= "<br>Set 2: $R[set2_tim_A] - $R[set2_tim_B]";
+                            IF($R['set3_tim_A'] > 0 OR $R['set3_tim_B'] > 0) $score .= "<br>Set 3: $R[set3_tim_A] - $R[set3_tim_B]";
+
                             echo "<tr class='tx-center'>";
                             echo "<td>" . $R['id_pertandingan'] . "</td>";
                             // echo "<td>" . $R['jenis'] . "</td>";
@@ -96,6 +107,7 @@ Harus Login<div class="container">
                             echo "<td>" . format_tanggal('ddmmyyyy', $R['tanggal']) . "</td>";
                             echo "<td>" . $R['waktu'] . "</td>";
                             echo "<td>" . $R['lapangan'] . "</td>";
+                            echo "<td>$score</td>";
                             // echo "<td><span class='badge bg-success text-light'>$R[nama_tim_A]</span> <span class='badge bg-success text-light'>$R[set1_tim_A]</span> <small>VS</small> <span class='badge bg-danger text-light'>$R[set1_tim_B]</span> <span class='badge bg-danger text-light'>$R[nama_tim_B]</span></td>";
                             echo "<td>
 										<span class='share btn btn-sm btn-success' data-jenis='$jenis' data-key='$key'>Share Score</span>
