@@ -57,7 +57,7 @@
 							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol_game wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
 						</div>
 					</div>
-					<div class="h3 tx-bolder bd-b mg-t-30">Score</div>
+					<div class="h3 tx-bolder bd-b mg-t-30">Point</div>
 					<select id='game' class="form-control col-2 mb-3">
 						<option value='0'>Pilih Game</option>
 						<?php 
