@@ -1,4 +1,6 @@
-Harus Login<div class="container">
+<h1>Harus Login</h1>
+<h1>Bikin Log Penginput</h1>
+<div class="container">
     <div class="card mg-y-30">
         <div class="card-header tx-center">
             <h1>BABAK FINAL</h1>
