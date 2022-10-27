@@ -479,16 +479,12 @@ $nama_kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
 
     $("#simpan").on('click', function() {
 
-        var id_pemain = 0;
+        var id_pemain = $("#id_pemain").val();
         var is_dharmayukti = 0;
         var is_official = 0;
         var is_veteran = 0;
         if ($("#is_dharmayukti").is(":checked") == true) {
-            id_pemain = $("#id_pemain_dharmayukti").val();
             is_dharmayukti = 1;
-        } else {
-            id_pemain = $("#id_pemain").val();
-            is_dharmayukti = 0;
         }
         if ($("#is_official").is(":checked") == true) {
             is_official = 1;
