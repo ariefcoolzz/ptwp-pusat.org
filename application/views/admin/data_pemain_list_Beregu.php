@@ -60,8 +60,10 @@
                                     echo "<td align='center' class='" . $bg_putra . "'>" . $putra . "</td>";
                                     echo "<td align='center' class='" . $bg_putri . "'>" . $putri . "</td>";
                                     echo "<td align='center' class='" . $bg_veteran . "'>" . $veteran . "</td>";
-                                    echo '<td>
-                                        <a href="javascript:void(0)" data-id_kontingen="' . $R['id_kontingen'] . '" class="detil btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Detil"><i class="fas fa fa-play"></i></a>';
+                                    echo
+                                    '<td>
+                                        <a href="javascript:void(0)" data-id_kontingen="' . $R['id_kontingen'] . '" class="detil btn btn-xs btn-outline-primary btn-rounded" data-toggle="tooltip" data-placement="top" title="Detil"><i class="fas fa fa-play"></i></a>
+                                        <a href="' . base_url('admin/data_pemain_export/Beregu/' . $R['id_kontingen']) . '" target="_blank" class="btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Export Excell"><i class="far fa-file-excel"></i></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     $no++;
