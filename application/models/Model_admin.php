@@ -330,7 +330,7 @@ class Model_admin extends CI_Model
 	{
 		$query = $this->db->query("SELECT NAMA_SATKER('$id_kontingen') as nama_kontingen")->row_array();
 		// die($this->db->last_query());
-		return $query['nama_kontingen'];
+		return $query;
 	}
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	
