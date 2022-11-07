@@ -353,6 +353,20 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
+	public function data_pemain_export($jenis, $id_kontingen)
+	{
+		$data['id_kontingen'] = $id_kontingen;
+		$_POST['id_event'] = 2; //MANUAL DLU AH
+		$kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
+		$data['kontingen'] = $kontingen;
+		header("Content-type: application/vnd-ms-excel");
+		header("Content-Disposition: attachment; filename=data_pemain_" . $kontingen['nama_kontingen'] . ".xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		$tabel = $this->load->view("admin/data_pemain_" . $jenis . "_export", $data, TRUE);
+		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
+		echo $tabel;
+	}
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
