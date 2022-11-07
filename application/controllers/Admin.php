@@ -1004,49 +1004,77 @@ class Admin extends CI_Controller
 	}
 
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	public function score_manage()
+	// public function score_manage()
+	// {
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+	// public function score_manage_form()
+	// {
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage_form");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+	// public function score_manage_hapus()
+	// {
+	// 	$where = array('id_user' => $_POST['id_user']);
+	// 	$status = $this->basic->delete_data($where, 'score_manage');
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+
+	// public function score_manage_simpan()
+	// {
+	// 	$where = array('id_user' => $_POST['id_user']);
+	// 	$cek_user = $this->basic->get_data_where($where, 'score_manage');
+	// 	if ($cek_user->num_rows()) {
+	// 		$where = array('id_user' => $_POST['id_user']);
+	// 		$status = $this->basic->update_data($where, 'score_manage', $_POST);
+	// 	} else {
+	// 		$status = $this->basic->insert_data('score_manage', $_POST);
+	// 	}
+
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	// }
+
+
+	public function data_drawing()
 	{
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
+		$konten_menu = $this->load->view("admin/data_drawing", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-	public function score_manage_form()
+	public function data_drawing_acak()
 	{
-		OB_START();
-		$this->load->view("admin/score_manage_form");
-		$konten_menu = ob_get_clean();
+		$konten_menu = $this->load->view("admin/data_drawing_acak", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-	public function score_manage_hapus()
+	public function data_pool()
 	{
-		$where = array('id_user' => $_POST['id_user']);
-		$status = $this->basic->delete_data($where, 'score_manage');
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
+		$konten_menu = $this->load->view("admin/data_pool", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-
-	public function score_manage_simpan()
+	public function data_pool_rekap()
 	{
-		$where = array('id_user' => $_POST['id_user']);
-		$cek_user = $this->basic->get_data_where($where, 'score_manage');
-		if ($cek_user->num_rows()) {
-			$where = array('id_user' => $_POST['id_user']);
-			$status = $this->basic->update_data($where, 'score_manage', $_POST);
-		} else {
-			$status = $this->basic->insert_data('score_manage', $_POST);
-		}
-
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
-		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+		$konten_menu = $this->load->view("admin/data_pool_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+
+	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 	function kirim_wa($data)
 	{
 		##SEND WA ##
@@ -1070,5 +1098,5 @@ class Admin extends CI_Controller
 
 		curl_close($ch);
 	}
-	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	
 }
