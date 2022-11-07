@@ -1061,6 +1061,16 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function data_drawing_copy()
+	{
+		// echo JSON_DECODE($_POST['data_batch']);
+		// die();
+		// PRINT_R(JSON_DECODE($_POST['data_batch']));
+		$status = $this->Model_admin->model_data_drawing_copy($_POST['data_batch']);
+		
+	}
+
+
 	public function data_pool()
 	{
 		$konten_menu = $this->load->view("admin/data_pool", NULL, TRUE);

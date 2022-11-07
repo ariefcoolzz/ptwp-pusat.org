@@ -232,7 +232,7 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select('A.*');
 		$this->db->from('tmst_satker AS A');
-		$this->db->where('A.LevelSatker', 2);
+		$this->db->where('A.LevelSatker <= 2');
 		$this->db->order_by('RAND()');
 		$query = $this->db->get();
 		// die($this->db->last_query());
@@ -248,6 +248,16 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
+
+	function model_data_drawing_copy($data_batch)
+	{
+		$data_batch = JSON_DECODE($data_batch);
+		$query = $this->db->insert_batch('data_pool', $data_batch); 
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 

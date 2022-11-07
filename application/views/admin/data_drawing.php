@@ -11,10 +11,7 @@ Jumlah Kontingen
 
 <script>
      $("#drawing_acak").on('click', function() {
-    if(confirm("Apakah Benar Anda Ingin Men Draw ???"))
-        {
-            if(confirm("Apakah Anda benar benar yakin ???"))
-        {
+    
             $(".title_loader").text("Sedang Memuat Halaman");
             $("#konten_drawing").html($("#loader_html").html());
             // $('.nav-item.active').removeClass('active');
@@ -22,7 +19,6 @@ Jumlah Kontingen
             //loader
             // skip();
             var form_data = new FormData();
-            form_data.append('pool', $("#pool").val());
             form_data.append('jumlah_kontingen', $("#jumlah_kontingen").val());
             $.ajax({
                 url: "<?php echo base_url(); ?>admin/data_drawing_acak",
@@ -42,6 +38,6 @@ Jumlah Kontingen
                     }
                 }
             });
-        }}
+        
     });
 </script>
