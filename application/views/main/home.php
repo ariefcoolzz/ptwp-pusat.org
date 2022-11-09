@@ -278,6 +278,33 @@
 
 <div class="content mg-0">
     <div class="divider-text">
+        <h4>Pengumuman Terbaru</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-xl">
+            <div class="card card-body pd-0">
+                <div class="marker marker-ribbon marker-primary pos-absolute t-10 l-0">Pengumuman PTWP Pusat</div>
+                <div class="media-list mg-t-35">
+                    <?php foreach ($data_pengumuman->result_array() as $R) { ?>
+                        <div class="d-sm-flex pd-20 align-items-center" data-aos="zoom-in" data-aos-duration="2000">
+                            <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
+                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo format_tanggal('ddmmyy', $R['date_created']) . ' - ' . $R['judul'] ?></a></h6>
+                            </div><!-- media-body -->
+                        </div>
+                        <hr class="mg-0">
+                    <?php } ?>
+                </div>
+                <div class="card-footer text-center tx-13">
+                    <a href="<?php echo base_url('main/pengumuman_ptwp_pusat') ?>" class="link-03"><i data-feather="rss"></i> Pengumuman Lainnya</a>
+                </div>
+            </div><!-- card-body -->
+        </div><!-- col -->
+
+    </div>
+</div>
+
+<div class="content mg-0">
+    <div class="divider-text">
         <h4>Berita Terbaru</h4>
     </div>
     <div class="row">

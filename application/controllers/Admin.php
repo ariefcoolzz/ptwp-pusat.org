@@ -635,6 +635,7 @@ class Admin extends CI_Controller
 		$data['img'] = $this->input->post('img');
 		$data['isi'] = $this->input->post('isi_konten');
 		$data['is_publish'] = $this->input->post('is_publish');
+		$data['is_pengumuman'] = $this->input->post('is_pengumuman');
 		$data['user_created'] = $_SESSION['id_user'];
 
 		if (empty($data['alias'])) {
@@ -687,9 +688,15 @@ class Admin extends CI_Controller
 		$data['img'] = $this->input->post('img');
 		$data['isi'] = $this->input->post('isi_konten');
 		$data['is_publish'] = $this->input->post('is_publish');
+		$data['is_pengumuman'] = $this->input->post('is_pengumuman');
 
-		// echo "<pre>";
-		// print_r($_POST);die;
+		if (empty($data['alias'])) {
+			$data['alias'] = strtolower(preg_replace('/\s+/', '_', $data['judul']));
+		}
+		$data['alias']  = preg_replace('/\s+/', '_', $data['alias']);
+		if (empty($data['is_publish'])) {
+			$data['is_publish'] = 0;
+		}
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
 			$where = array('id' => $id);

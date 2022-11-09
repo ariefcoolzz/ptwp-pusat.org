@@ -28,13 +28,13 @@ if ($id) $txt_simpan = "UPDATE";
                                 <input type="text" name='judul' class="form-control" value="<?php echo $judul ?>">
                             </div>
                         </div>
-						 <div class="col-lg-2">
+                        <div class="col-lg-2">
                             <div class="form-group">
                                 <label class="control-label">Publish:</label>
-								<select name='is_publish' class='form-control'>
-									<option value='1' <?php IF(ISSET($is_publish) AND $is_publish == 1) echo "selected"; ?>>Publish</option>
-									<option value='0' <?php IF(ISSET($is_publish) AND $is_publish == 0) echo "selected"; ?>>Not Publish</option>
-								</select>
+                                <select name='is_publish' class='form-control'>
+                                    <option value='1' <?php if (isset($is_publish) and $is_publish == 1) echo "selected"; ?>>Publish</option>
+                                    <option value='0' <?php if (isset($is_publish) and $is_publish == 0) echo "selected"; ?>>Not Publish</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -48,8 +48,11 @@ if ($id) $txt_simpan = "UPDATE";
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label class="control-label">Image Thumbnail :</label>
-                                <input type="text" name='img' class="form-control" value="<?php echo $img ?>">
+                                <label class="control-label">Pengumuman? :</label>
+                                <select name='is_pengumuman' class='form-control'>
+                                    <option value='0' <?php if (isset($is_pengumuman) and $is_pengumuman == 0) echo "selected"; ?>>Bukan Pengumuman</option>
+                                    <option value='1' <?php if (isset($is_pengumuman) and $is_pengumuman == 1) echo "selected"; ?>>Pengumuman</option>
+                                </select>
                             </div>
 
                         </div>
