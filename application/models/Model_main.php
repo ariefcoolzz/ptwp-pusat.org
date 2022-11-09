@@ -83,7 +83,7 @@ class Model_main extends CI_Model
 		$this->db->join("tmst_satker AS C", "B.id_kontingen = C.IdSatker", 'left');
 		$this->db->where('A.is_pengumuman', '1');
 		$this->db->where('A.is_publish', '1');
-		$this->db->order_by('A.date_created DESC');
+		$this->db->order_by('A.date_updated DESC');
 		if ($limit) $this->db->limit($limit);
 		$query = $this->db->get();
 		// die($this->db->last_query());

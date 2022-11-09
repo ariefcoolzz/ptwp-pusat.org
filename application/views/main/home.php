@@ -288,7 +288,7 @@
                     <?php foreach ($data_pengumuman->result_array() as $R) { ?>
                         <div class="d-sm-flex pd-20 align-items-center" data-aos="zoom-in" data-aos-duration="2000">
                             <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
-                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo format_tanggal('ddmmyy', $R['date_created']) . ' - ' . $R['judul'] ?></a></h6>
+                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo format_tanggal('ddmmyy', $R['date_updated']) . ' - ' . $R['judul'] ?></a></h6>
                             </div><!-- media-body -->
                         </div>
                         <hr class="mg-0">
