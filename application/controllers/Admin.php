@@ -704,6 +704,7 @@ class Admin extends CI_Controller
 		} else {
 			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
+			$data['date_updated'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
 		}
 		if ($res) {
