@@ -10,6 +10,7 @@
                 <?php echo $this->session->flashdata('msg'); ?>
                 <!-- <h5 class="text-center"> DATA PEMAIN / OFFICIAL PIALA BEREGU </h5> -->
                 <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
+                <a href="<?php echo base_url('admin/data_pemain_export_all/' . $event['id_event']) ?>" target="_blank" class="btn btn-xs btn-success btn-rounded"><i class="far fa-file-excel"></i> EXPORT ALL DATA</a>
                 <div data-label="Example" class="df-example demo-table">
                     <div class="table-responsive">
                         <table class="datatable-pemain table table-primary mg-b-0">

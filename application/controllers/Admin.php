@@ -367,6 +367,18 @@ class Admin extends CI_Controller
 		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
 		echo $tabel;
 	}
+	public function data_pemain_export_all($id_event)
+	{
+		$data['event']	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
+		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);
+		header("Content-type: application/vnd-ms-excel");
+		header("Content-Disposition: attachment; filename=data_pemain_all.xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		$tabel = $this->load->view("admin/data_pemain_export_all", $data, TRUE);
+		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
+		echo $tabel;
+	}
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();

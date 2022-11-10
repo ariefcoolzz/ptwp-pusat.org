@@ -357,6 +357,15 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
+	function get_list_pemain_all($id_event)
+	{
+		$query = $this->db->query("SELECT sat.`NamaSatker` as nama_kontingen, A.* FROM view_pemain AS A
+		left join tmst_satker as sat on A.id_kontingen = sat.`IdSatker`
+		WHERE A.id_event = '$id_event'
+		ORDER BY UrutanTingkatBanding ASC, A.is_official DESC, is_veteran ASC, is_dharmayukti ASC, jenis_kelamin ASC");
+		// die($this->db->last_query());
+		return $query;
+	}
 	function get_data_kontingen($id_kontingen)
 	{
 		$query = $this->db->query("SELECT NAMA_SATKER('$id_kontingen') as nama_kontingen")->row_array();
