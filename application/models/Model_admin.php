@@ -239,6 +239,16 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
+	function model_master_lapangan($P)
+	{
+		$this->db->select('A.*');
+		$this->db->from('master_lapangan AS A');
+		IF(ISSET($P['id_event'])) $this->db->where('A.id_event', $P['id_event']);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
 	function model_data_pool_rekap()
 	{
 		$this->db->select('A.*');
@@ -277,11 +287,28 @@ class Model_admin extends CI_Model
 		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
 	}
+
+	function model_data_babak_penyisihan_pemain($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('B.nama');
+		$this->db->from('data_pemain AS A');
+		$this->db->join('view_pemain AS B', 'A.id_pemain=B.id_pegawai', 'left');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_kontingen'])) $this->db->where('A.id_kontingen', $P['id_kontingen']); 
+		IF(ISSET($P['beregu'])) $this->db->where('B.beregu', $P['beregu']); 
+		$this->db->order_by('nama ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	
 
 	function model_data_babak_penyisihan_generate($P)
 	{

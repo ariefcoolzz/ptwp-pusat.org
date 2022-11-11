@@ -11,15 +11,16 @@
                     <th> Beregu </th>
                     <th> Pool </th>
                     <th> Urutan </th>
-                    <th> Kategori </th>
                     <th> Kontingen Tim A </th>
                     <th> Kontingen Tim B </th>
+                    <th> Kategori </th>
                     <th> Tanggal </th>
                     <th> Waktu </th>
                     <th> Lapangan </th>
                     <th> Nama Tim A </th>
                     <th> Nama Tim B </th>
-                    <th> Score </th>
+                    <th> Score Tim A</th>
+                    <th> Score Tim B</th>
                     <th> Action </th>
                 </tr>
             ";
@@ -30,15 +31,16 @@
             echo '<td>'.$R['beregu'].'</td>';
             echo '<td>'.$R['pool'].'</td>';
             echo '<td>'.$R['urutan'].'</td>';
-            echo '<td>'.$R['kategori'].'</td>';
             echo '<td>'.$R['kontingen_tim_A'].'</td>';
             echo '<td>'.$R['kontingen_tim_B'].'</td>';
+            echo '<td>'.$R['kategori'].'</td>';
             echo '<td>'.$R['tanggal'].'</td>';
             echo '<td>'.$R['waktu'].'</td>';
             echo '<td>'.$R['lapangan'].'</td>';
             echo '<td>'.$R['nama_tim_A'].'</td>';
             echo '<td>'.$R['nama_tim_B'].'</td>';
-            echo '<td>abc abc</td>';
+            echo '<td>'.$R['set1_tim_A'].'</td>';
+            echo '<td>'.$R['set1_tim_B'].'</td>';
             echo "<td>
                     <span class='btn btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</span>
                 </td>";
@@ -50,3 +52,28 @@
         echo "</table>";
     }
 ?>
+<script>
+    $(".edit").on('click', function() {
+        var form_data = new FormData();
+        form_data.append('id_event', $("#list_event").val());
+        form_data.append('id_pertandingan', $(this).data('id_pertandingan'));
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_form",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    location.reload();
+                } else {
+                    $("#modal").modal('show');
+                    $("#modal_judul").html("Edit Data Pertandingan");
+                    $("#modal_isi").html(json.konten_menu);
+                }
+            }
+        });
+    });
+</script>

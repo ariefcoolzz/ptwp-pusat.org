@@ -14,8 +14,8 @@
         <div class="card">
             <div class="card-body">
 				<div class='col-12'>
-					<span id='tambah' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> Tambah Data Babak Penyisihan</span>
-					<span id='generate' class="btn btn-warning btn-xs float-right"><i class="fa fa-plus-circle"></i> Generate Data Dari Pool</span>
+					<!-- <span id='tambah' class="btn btn-success btn-xs"><i class="fa fa-plus-circle"></i> Tambah Data Babak Penyisihan</span> -->
+					<span id='generate' class="btn btn-warning btn-xs float-left"><i class="fa fa-plus-circle"></i> Generate Data Dari Pool</span>
 				</div>
 				<div id='konten_menu'></div>
 			</div>
