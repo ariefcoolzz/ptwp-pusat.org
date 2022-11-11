@@ -201,32 +201,196 @@ class Model_admin extends CI_Model
 	}
 
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	function score_manage()
+	// function score_manage()
+	// {
+	// 	$this->db->select("'penyisihan' AS 'jenis'");
+	// 	$this->db->select("A.id_pertandingan");
+	// 	$this->db->select("A.id_event");
+	// 	$this->db->select("A.id_kategori");
+	// 	$this->db->select("A.pool");
+	// 	$this->db->select("A.urutan");
+	// 	$this->db->select("A.tanggal");
+	// 	$this->db->select("A.waktu");
+	// 	$this->db->select("A.id_lapangan");
+	// 	$this->db->select("A.id_tim_A");
+	// 	$this->db->select("A.id_tim_B");
+	// 	$this->db->select("A.set1_tim_A");
+	// 	$this->db->select("A.set1_tim_B");
+	// 	$this->db->select("B.lapangan");
+	// 	$this->db->select("KATEGORI(A.id_kategori) AS kategori");
+	// 	// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
+	// 	// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+	// 	$this->db->from('data_babak_penyisihan AS A');
+	// 	$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
+	// 	$this->db->order_by("A.id_event DESC, A.id_kategori ASC, A.pool ASC, A.urutan ASC");
+	// 	$query = $this->db->get();
+	// 	// DIE($this->db->last_query());
+	// 	return $query;
+	// }
+
+	function model_tmst_satker()
 	{
-		$this->db->select("'penyisihan' AS 'jenis'");
-		$this->db->select("A.id_pertandingan");
-		$this->db->select("A.id_event");
-		$this->db->select("A.id_kategori");
-		$this->db->select("A.pool");
-		$this->db->select("A.urutan");
-		$this->db->select("A.tanggal");
-		$this->db->select("A.waktu");
-		$this->db->select("A.id_lapangan");
-		$this->db->select("A.id_tim_A");
-		$this->db->select("A.id_tim_B");
-		$this->db->select("A.set1_tim_A");
-		$this->db->select("A.set1_tim_B");
-		$this->db->select("B.lapangan");
-		$this->db->select("KATEGORI(A.id_kategori) AS kategori");
-		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
-		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
-		$this->db->from('data_babak_penyisihan AS A');
-		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
-		$this->db->order_by("A.id_event DESC, A.id_kategori ASC, A.pool ASC, A.urutan ASC");
+		$this->db->select('A.*');
+		$this->db->from('tmst_satker AS A');
+		$this->db->where('A.LevelSatker <= 2');
+		$this->db->order_by('RAND()');
 		$query = $this->db->get();
-		// DIE($this->db->last_query());
+		// die($this->db->last_query());
 		return $query;
 	}
+
+	function model_master_lapangan($P)
+	{
+		$this->db->select('A.*');
+		$this->db->from('master_lapangan AS A');
+		IF(ISSET($P['id_event'])) $this->db->where('A.id_event', $P['id_event']);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_pool_rekap()
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
+		$this->db->from('data_pool AS A');
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_pool_set_kontingen($P)
+	{
+		$this->db->where('id_event', $P['id_event']);
+		$this->db->where('pool', $P['pool']);
+		$this->db->where('urutan', $P['urutan']);
+		$query = $this->db->update('data_pool', $P); 
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_drawing_copy($data_batch)
+	{
+		$data_batch = JSON_DECODE($data_batch);
+		$query = $this->db->insert_batch('data_pool', $data_batch); 
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_babak_penyisihan_rekap($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
+		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
+		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_babak_penyisihan_pemain($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('B.nama');
+		$this->db->from('data_pemain AS A');
+		$this->db->join('view_pemain AS B', 'A.id_pemain=B.id_pegawai', 'left');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_kontingen'])) $this->db->where('A.id_kontingen', $P['id_kontingen']); 
+		IF(ISSET($P['beregu'])) $this->db->where('B.beregu', $P['beregu']); 
+		$this->db->order_by('nama ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	
+
+	function model_data_babak_penyisihan_generate($P)
+	{
+		$this->db->select('A.id_event');
+		$this->db->select('A.beregu');
+		$this->db->select('A.pool');
+		$this->db->select('A.urutan');
+		$this->db->select('A.id_kontingen AS id_kontingen_tim_A');
+		$this->db->select("(SELECT GROUP_CONCAT(id_kontingen ORDER BY urutan ASC SEPARATOR '|') FROM data_pool WHERE id_event = A.id_event AND beregu = A.beregu AND pool = A.pool AND urutan > A.urutan ORDER BY urutan ASC) AS id_kontingen_tim_lawan");
+		$this->db->from('data_pool AS A');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		$this->db->where('A.id_kontingen IS NOT NULL');
+		$this->db->having('id_kontingen_tim_lawan IS NOT NULL');
+		$this->db->order_by('A.id_event ASC, A.beregu ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		//die($this->db->last_query());
+		$status = false;
+		IF($query->num_rows())
+			{
+				$no = 0;
+				$urutan = 0;
+				$pool = "A";
+				FOREACH($query->result_array() AS $R)
+					{
+						$ajpk = EXPLODE('|', $R['id_kontingen_tim_lawan']); //jpk = jumlah pool kontingen
+						// echo "Ketemu ".COUNT($ajpk)." $R[id_kontingen_tim_lawan]<br>";
+						FOR($u=0;$u < COUNT($ajpk);$u++)
+							{
+								$urutan++;
+								IF($pool != $R['pool']) 
+									{ 
+										$urutan=1; 
+										$pool = $R['pool'];
+									}
+								$FIX['id_event'] = $R['id_event'];
+								$FIX['beregu'] = $R['beregu'];
+								$FIX['pool'] = $R['pool'];
+								$FIX['urutan'] = $urutan;
+								$FIX['id_kontingen_tim_A'] = $R['id_kontingen_tim_A'];
+								$FIX['id_kontingen_tim_B'] = $ajpk[$u];
+
+								$this->db->select('A.id_kategori');
+								$this->db->from('master_kategori_pemain AS A');
+								$this->db->where('A.beregu', $R['beregu']);
+								$this->db->order_by('A.urutan ASC');
+								$kategori = $this->db->get(); 
+								IF($kategori->num_rows())
+									{
+										FOREACH($kategori->result_array() AS $k) 
+											{
+												$FIX['id_kategori'] = $k['id_kategori'];
+												$no++;
+												// echo "$no. $FIX[id_event] $FIX[beregu] $FIX[pool] $FIX[urutan] $FIX[id_kategori] = $R[id_kontingen_tim_A] vs $ajpk[$u] ($R[id_kontingen_tim_lawan])<br>";
+												
+												//Pengecekan tabel data_babak_penyisihan, Jika sudah ada tidak di insert
+												$this->db->select('A.id_pertandingan');
+												$this->db->from('data_babak_penyisihan AS A');
+												$this->db->where('A.id_event', $FIX['id_event']);
+												$this->db->where('A.beregu', $FIX['beregu']);
+												$this->db->where('A.pool', $FIX['pool']);
+												$this->db->where('A.urutan', $FIX['urutan']);
+												$this->db->where('A.id_kategori', $FIX['id_kategori']);
+												$cek = $this->db->get(); 
+												//Pengecekan tabel data_babak_penyisihan, Jika sudah ada tidak di insert
+												IF(!$cek->num_rows())
+													{
+														$status = $this->db->insert('data_babak_penyisihan', $FIX);
+													}
+												else {
+													$this->db->where('id_pertandingan', $cek->row_array()['id_pertandingan']);
+													$status = $this->db->update('data_babak_penyisihan', $FIX);
+												}
+											}
+									}
+							}
+						// echo " xxx<br>";	
+					}
+			}
+		return $status;
+	}
+
+	
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 
@@ -323,6 +487,15 @@ class Model_admin extends CI_Model
 		AS B ON A.IdSatker = B.id_kontingen
 		WHERE (IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'
 		ORDER BY UrutanTingkatBanding ASC");
+		// die($this->db->last_query());
+		return $query;
+	}
+	function get_list_pemain_all($id_event)
+	{
+		$query = $this->db->query("SELECT sat.`NamaSatker` as nama_kontingen, A.* FROM view_pemain AS A
+		left join tmst_satker as sat on A.id_kontingen = sat.`IdSatker`
+		WHERE A.id_event = '$id_event'
+		ORDER BY UrutanTingkatBanding ASC, A.is_official DESC, is_veteran ASC, is_dharmayukti ASC, jenis_kelamin ASC");
 		// die($this->db->last_query());
 		return $query;
 	}

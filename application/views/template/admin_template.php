@@ -105,22 +105,23 @@ extract($_SESSION);
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) { ?>
                     <li class="nav-label pt-3">Pemain & Tim</li>
 
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
 
                     <li class="nav-label pt-3">Pertandingan</li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pool</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
 
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_pertandingan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pertandingan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pertandingan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pertandingan</span></a></li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1, 2, 3))) { ?>
                     <li class="nav-label pt-3">Score</li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
+                    <li class="nav-item"><a menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
+                    <li class="nav-item"><a menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
                 <?php } ?>
             </ul>
         </div>
@@ -147,6 +148,20 @@ extract($_SESSION);
         <div class="content-body">
             <div id="konten" class="container-fluid pd-x-0">
                 <?php echo $body; ?>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div class="modal-content tx-14 bg-info">
+                    <div class="modal-header">
+                        <h6 class="modal_judul" id="modal_judul"> ................................ </h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal_isi" id="modal_isi" style="background-color:#e2eeff"> .................................. </div>
+                </div>
             </div>
         </div>
 
@@ -212,6 +227,12 @@ extract($_SESSION);
         </div>
     </div>
 </div>
+<style>
+    .menu_admin span{
+        color:#c8c8c8;
+        cursor:pointer;
+    }
+</style>
 <script>
     $(document).ready(function() {
         $('.nav-item.active').removeClass('active');

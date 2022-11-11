@@ -367,6 +367,18 @@ class Admin extends CI_Controller
 		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
 		echo $tabel;
 	}
+	public function data_pemain_export_all($id_event)
+	{
+		$data['event']	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
+		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);
+		header("Content-type: application/vnd-ms-excel");
+		header("Content-Disposition: attachment; filename=data_pemain_all.xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		$tabel = $this->load->view("admin/data_pemain_export_all", $data, TRUE);
+		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
+		echo $tabel;
+	}
 	public function data_pemain()
 	{
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
@@ -635,6 +647,7 @@ class Admin extends CI_Controller
 		$data['img'] = $this->input->post('img');
 		$data['isi'] = $this->input->post('isi_konten');
 		$data['is_publish'] = $this->input->post('is_publish');
+		$data['is_pengumuman'] = $this->input->post('is_pengumuman');
 		$data['user_created'] = $_SESSION['id_user'];
 
 		if (empty($data['alias'])) {
@@ -687,9 +700,15 @@ class Admin extends CI_Controller
 		$data['img'] = $this->input->post('img');
 		$data['isi'] = $this->input->post('isi_konten');
 		$data['is_publish'] = $this->input->post('is_publish');
+		$data['is_pengumuman'] = $this->input->post('is_pengumuman');
 
-		// echo "<pre>";
-		// print_r($_POST);die;
+		if (empty($data['alias'])) {
+			$data['alias'] = strtolower(preg_replace('/\s+/', '_', $data['judul']));
+		}
+		$data['alias']  = preg_replace('/\s+/', '_', $data['alias']);
+		if (empty($data['is_publish'])) {
+			$data['is_publish'] = 0;
+		}
 		if ($id > 0) {
 			$data['date_updated'] = date('Y-m-d H:i:s');
 			$where = array('id' => $id);
@@ -697,6 +716,7 @@ class Admin extends CI_Controller
 		} else {
 			$data['user_created'] = $this->session->userdata('id_user');
 			$data['date_created'] = date('Y-m-d H:i:s');
+			$data['date_updated'] = date('Y-m-d H:i:s');
 			$res = $this->basic->insert_data('data_konten', $data);
 		}
 		if ($res) {
@@ -1004,49 +1024,112 @@ class Admin extends CI_Controller
 	}
 
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	public function score_manage()
+	// public function score_manage()
+	// {
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+	// public function score_manage_form()
+	// {
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage_form");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+	// public function score_manage_hapus()
+	// {
+	// 	$where = array('id_user' => $_POST['id_user']);
+	// 	$status = $this->basic->delete_data($where, 'score_manage');
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	// }
+
+
+	// public function score_manage_simpan()
+	// {
+	// 	$where = array('id_user' => $_POST['id_user']);
+	// 	$cek_user = $this->basic->get_data_where($where, 'score_manage');
+	// 	if ($cek_user->num_rows()) {
+	// 		$where = array('id_user' => $_POST['id_user']);
+	// 		$status = $this->basic->update_data($where, 'score_manage', $_POST);
+	// 	} else {
+	// 		$status = $this->basic->insert_data('score_manage', $_POST);
+	// 	}
+
+	// 	OB_START();
+	// 	$this->load->view("admin/score_manage");
+	// 	$konten_menu = ob_get_clean();
+	// 	echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	// }
+
+
+	public function data_drawing()
 	{
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
+		$konten_menu = $this->load->view("admin/data_drawing", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-	public function score_manage_form()
+	public function data_drawing_acak()
 	{
-		OB_START();
-		$this->load->view("admin/score_manage_form");
-		$konten_menu = ob_get_clean();
+		$konten_menu = $this->load->view("admin/data_drawing_acak", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-	public function score_manage_hapus()
+	public function data_drawing_copy()
 	{
-		$where = array('id_user' => $_POST['id_user']);
-		$status = $this->basic->delete_data($where, 'score_manage');
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
+		// echo JSON_DECODE($_POST['data_batch']);
+		// die();
+		// PRINT_R(JSON_DECODE($_POST['data_batch']));
+		$status = $this->Model_admin->model_data_drawing_copy($_POST['data_batch']);
+		
+	}
+
+
+	public function data_pool()
+	{
+		$konten_menu = $this->load->view("admin/data_pool", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-
-	public function score_manage_simpan()
+	public function data_pool_rekap()
 	{
-		$where = array('id_user' => $_POST['id_user']);
-		$cek_user = $this->basic->get_data_where($where, 'score_manage');
-		if ($cek_user->num_rows()) {
-			$where = array('id_user' => $_POST['id_user']);
-			$status = $this->basic->update_data($where, 'score_manage', $_POST);
-		} else {
-			$status = $this->basic->insert_data('score_manage', $_POST);
-		}
-
-		OB_START();
-		$this->load->view("admin/score_manage");
-		$konten_menu = ob_get_clean();
-		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+		$konten_menu = $this->load->view("admin/data_pool_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
+
+	public function data_pool_set_kontingen()
+	{
+		$status = $this->Model_admin->model_data_pool_set_kontingen($_POST);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+
+	public function data_babak_penyisihan_rekap()
+	{
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_babak_penyisihan_generate()
+	{
+		$this->Model_admin->model_data_babak_penyisihan_generate($_POST);
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
+	public function data_babak_penyisihan_form()
+	{
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_form", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 	function kirim_wa($data)
 	{
 		##SEND WA ##
@@ -1070,5 +1153,5 @@ class Admin extends CI_Controller
 
 		curl_close($ch);
 	}
-	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+	
 }

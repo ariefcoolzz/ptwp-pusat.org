@@ -176,53 +176,8 @@
                                 </div>
                             </li>
                         </ul>
-						 <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 1</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
-
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 2</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
                         <div class="card-footer text-center tx-13">
-                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
                         </div><!-- card-footer -->
                     </div>
                 </div>
@@ -267,12 +222,84 @@
                             </li>
                         </ul>
                         <div class="card-footer text-center tx-13">
-                            <a href="#popup_streaming" data-toggle="modal" data-animation="effect-scale" class="btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</a>
+                            <span data-link="https://www.youtube.com/embed/1dPwcIMfCpw" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
+                        </div><!-- card-footer -->
+                    </div>
+                </div>
+                <div class="col-sm col-xl-3 mg-t-3">
+                    <div class="card" data-aos="fade-left">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
+                            <div class="d-flex align-items-center tx-18">
+                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
+                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush tx-13">
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Pemain 1</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
+
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex">
+                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
+                                <div class="pd-l-10">
+                                    <p class="tx-dark mg-b-0">Pemain 2</p>
+                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
+                                </div>
+                                <div class="mg-l-auto d-flex align-items-center">
+                                    <nav class="nav nav-icon-only">
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                        <h6 class="nav-link">0</h6>
+                                    </nav>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="card-footer text-center tx-13">
+                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
                         </div><!-- card-footer -->
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="content mg-0">
+    <div class="divider-text">
+        <h4>Pengumuman Terbaru</h4>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-12 col-xl">
+            <div class="card card-body pd-0">
+                <div class="marker marker-ribbon marker-primary pos-absolute t-10 l-0">Pengumuman PTWP Pusat</div>
+                <div class="media-list mg-t-35">
+                    <?php foreach ($data_pengumuman->result_array() as $R) { ?>
+                        <div class="d-sm-flex pd-20 align-items-center" data-aos="zoom-in" data-aos-duration="2000">
+                            <div class="media-body mg-t-20 mg-sm-t-0 mg-sm-l-20">
+                                <h6><a href="<?php echo base_url('main/page/') . $R['alias'] ?>" class="link-01"><?php echo format_tanggal('ddmmyy', $R['date_updated']) . ' - ' . $R['judul'] ?></a></h6>
+                            </div><!-- media-body -->
+                        </div>
+                        <hr class="mg-0">
+                    <?php } ?>
+                </div>
+                <div class="card-footer text-center tx-13">
+                    <a href="<?php echo base_url('main/pengumuman_ptwp_pusat') ?>" class="link-03"><i data-feather="rss"></i> Pengumuman Lainnya</a>
+                </div>
+            </div><!-- card-body -->
+        </div><!-- col -->
+
     </div>
 </div>
 

@@ -86,7 +86,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/hymne_ptwp') ?>" class="nav-sub-link"><i data-feather="heart"></i> Hymne PTWP</a></li>
                 <li class="nav-label mg-t-20">Keuangan</li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/surat_pemberitahuan_virtual_account_ptwp') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Virtual Akun</a></li>
-                <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/page/laporan_keuangan') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Laporan Keuangan</a></li> -->
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/laporan_keuangan') ?>" class="nav-sub-link"><i data-feather="dollar-sign"></i> Laporan Keuangan</a></li>
               </ul>
               <ul>
                 <li class="nav-label">Pengurus Pusat</li>
@@ -119,6 +119,7 @@
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/akomodasi_semarang'); ?>" class="nav-sub-link"" class=" nav-sub-link"><i data-feather="check-circle"></i> Akomodasi</a></li>
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <?php /* <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li> */ ?>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/page/pedoman_pertandingan_xii'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Pedoman Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_jadwal_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
