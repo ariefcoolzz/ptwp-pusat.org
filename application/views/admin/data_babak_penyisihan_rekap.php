@@ -17,16 +17,21 @@
                     <th> Tanggal </th>
                     <th> Waktu </th>
                     <th> Lapangan </th>
-                    <th> Nama Tim A </th>
-                    <th> Nama Tim B </th>
-                    <th> Score Tim A</th>
-                    <th> Score Tim B</th>
+                    <th> Tim A </th>
+                    <th> Tim B </th>
                     <th> Action </th>
                 </tr>
             ";
         foreach($result->result_array() as $R){
+
+            $tim_A = $R['nama_pemain_tim_A']."<br>".if_null($R['set1_tim_A']);
+            $tim_B = $R['nama_pemain_tim_B']."<br>".if_null($R['set1_tim_B']);
+
+            if($R['set1_tim_A'] < 8) $classA = ""; ELSE $classA = "class='bg-success'";  
+            if($R['set1_tim_B'] < 8) $classB = ""; ELSE $classB = "class='bg-success'";  
+
             $no++;
-            echo '<tr>';
+            echo "<tr valign='top'>";
             echo '<td>'.$no.'</td>';
             echo '<td>'.$R['beregu'].'</td>';
             echo '<td>'.$R['pool'].'</td>';
@@ -37,10 +42,8 @@
             echo '<td>'.$R['tanggal'].'</td>';
             echo '<td>'.$R['waktu'].'</td>';
             echo '<td>'.$R['lapangan'].'</td>';
-            echo '<td>'.$R['nama_tim_A'].'</td>';
-            echo '<td>'.$R['nama_tim_B'].'</td>';
-            echo '<td>'.$R['set1_tim_A'].'</td>';
-            echo '<td>'.$R['set1_tim_B'].'</td>';
+            echo "<td align='center' $classA>$tim_A</td>";
+            echo "<td align='center' $classB>$tim_B</td>";
             echo "<td>
                     <span class='btn btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</span>
                 </td>";

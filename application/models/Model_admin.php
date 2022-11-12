@@ -285,6 +285,9 @@ class Model_admin extends CI_Model
 		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
 		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
 		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
+		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
@@ -308,7 +311,34 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	
+
+	function model_data_babak_penyisihan_simpan($P)
+	{
+		IF($P['id_pemain2_tim_A'] != "") 
+			{
+				$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'].",".$P['id_pemain2_tim_A'];
+			} 
+		ELSE {
+			$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'];
+		}
+		IF($P['id_pemain2_tim_B'] != "") 
+			{
+				$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'].",".$P['id_pemain2_tim_B'];
+			} 
+		ELSE {
+			$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'];
+		}
+
+		UNSET($P['id_pemain1_tim_A']);
+		UNSET($P['id_pemain2_tim_A']);
+		UNSET($P['id_pemain1_tim_B']);
+		UNSET($P['id_pemain2_tim_B']);
+
+		$this->db->where('id_pertandingan', $P['id_pertandingan']);
+		$query = $this->db->update('data_babak_penyisihan', $P); 
+		die($this->db->last_query());
+		return $query;
+	}
 
 	function model_data_babak_penyisihan_generate($P)
 	{
