@@ -629,3 +629,11 @@ function cdn_foto($foto1 = null, $foto2 = null, $size = '120')
 	$cdn = "//images.weserv.nl/?url=" . $img . "&w=" . $size;
 	return $cdn;
 }
+
+function if_null($int)
+{
+	IF(!$int > 0)
+		return "";
+	else 
+		return $int;
+}

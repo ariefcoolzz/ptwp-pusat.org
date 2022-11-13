@@ -1103,6 +1103,39 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function data_pool_set_kontingen()
+	{
+		$status = $this->Model_admin->model_data_pool_set_kontingen($_POST);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+
+	public function data_babak_penyisihan_rekap()
+	{
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_babak_penyisihan_generate()
+	{
+		$this->Model_admin->model_data_babak_penyisihan_generate($_POST);
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_babak_penyisihan_form()
+	{
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_form", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_babak_penyisihan_simpan()
+	{
+		$status = $this->Model_admin->model_data_babak_penyisihan_simpan($_POST);
+		unset($_POST['id_pertandingan']);
+		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 	function kirim_wa($data)
