@@ -6,7 +6,7 @@ IF($result->num_rows()) $R = $result->row_array();
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <input type='hidden' id='id_pertandingan'>
+                <input type='text' id='id_pertandingan'>
                 <div class='row'>
                     <div class='col-6'>
                         <table border='1'>
@@ -166,33 +166,51 @@ IF($result->num_rows()) $R = $result->row_array();
                         </table>
                         </div>
                         <?php
+                            // PRINT_R($R);
                             IF(ISSET($R)){
-                                IF($R['tunggal_ganda'] == "ganda") echo "<script>$('#id_pemain2_tim_A').show();$('#id_pemain2_tim_B').show();</script>";
+                                echo $R['tunggal_ganda'];
+                                IF($R['tunggal_ganda'] == "ganda") 
+                                    {
+                                        
+
+                                        echo "<script>";
+                                            echo "$('#id_pemain2_tim_A').show();";
+                                            echo "$('#id_pemain2_tim_B').show();";
+
+                                            
+                                        echo "</script>";
+                                    }
+                                $E_A = EXPLODE(',',$R['id_pemain_tim_A']);
+                                $E_B = EXPLODE(',',$R['id_pemain_tim_B']);
                                 echo "<script>";
                                     echo "$('#id_pertandingan').val('$R[id_pertandingan]');";
                                     echo "$('#tanggal').val('$R[tanggal]');";
                                     echo "$('#waktu').val('$R[waktu]');";
                                     echo "$('#id_lapangan').val('$R[id_lapangan]');";
-                                    $E_A = EXPLODE(',',$R['id_pemain_tim_A']);
-                                    IF(!COUNT($E_A))
-                                        {
-                                            echo "$('#id_pemain1_tim_A').val('$R[id_pemain_tim_A]');";
-                                        }
-                                    ELSE
-                                        {
-                                            echo "$('#id_pemain1_tim_A').val('$E_A[0]');";
-                                            echo "$('#id_pemain2_tim_A').val('$E_A[1]');";
-                                        }
-                                    $E_B = EXPLODE(',',$R['id_pemain_tim_A']);
-                                    IF(!COUNT($E_B))
-                                        {
-                                            echo "$('#id_pemain1_tim_B').val('$R[id_pemain_tim_B]');";
-                                        }
-                                    ELSE
-                                        {
-                                            echo "$('#id_pemain1_tim_B').val('$E_B[0]');";
-                                            echo "$('#id_pemain2_tim_B').val('$E_B[1]');";
-                                        }
+                                    IF(ISSET($E_A[0])) echo "$('#id_pemain1_tim_A').val('$E_A[0]');";
+                                    IF(ISSET($E_A[1])) echo "$('#id_pemain2_tim_A').val('$E_A[1]');";
+
+                                    IF(ISSET($E_B[0])) echo "$('#id_pemain1_tim_B').val('$E_B[0]');";
+                                    IF(ISSET($E_B[1])) echo "$('#id_pemain2_tim_B').val('$E_B[1]');";
+                                    // echo "tttt".COUNT($E_A);
+                                    // IF(!COUNT($E_A))
+                                    //     {
+                                    //         echo "$('#id_pemain1_tim_A').val('$R[id_pemain_tim_A]');";
+                                    //     }
+                                    // ELSE
+                                    //     {
+                                    //         echo "$('#id_pemain1_tim_A').val('$E_A[0]');";
+                                    //         echo "$('#id_pemain2_tim_A').val('$E_A[1]');";
+                                    //     }
+                                    // 
+                                    // IF(!COUNT($E_B))
+                                    //     {
+                                    //         echo "$('#id_pemain1_tim_B').val('$R[id_pemain_tim_B]');";
+                                    //     }
+                                    // ELSE
+                                    //     {
+                                    //         
+                                    //     }
                                     echo "$('#set1_tim_A').val('$R[set1_tim_A]');";
                                     echo "$('#set1_tim_B').val('$R[set1_tim_B]');";
                                     echo "$('#set2_tim_A').val('$R[set2_tim_A]');";

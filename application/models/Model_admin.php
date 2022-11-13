@@ -336,7 +336,7 @@ class Model_admin extends CI_Model
 
 		$this->db->where('id_pertandingan', $P['id_pertandingan']);
 		$query = $this->db->update('data_babak_penyisihan', $P); 
-		die($this->db->last_query());
+		// die($this->db->last_query());
 		return $query;
 	}
 
