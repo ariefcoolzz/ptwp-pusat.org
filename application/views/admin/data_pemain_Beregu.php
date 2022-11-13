@@ -14,8 +14,17 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                 <li class="breadcrumb-item active" aria-current="page">Data Pemain - <?php echo $kontingen['nama_kontingen']; ?></li>
             </ol>
         </nav>
+
         <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
-        <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>
+        <?php
+        // if ($event['tanggal_selesai'] >= date('Y-m-d')) {
+        if ('2022-11-11' >= date('Y-m-d')) {
+            echo '<a href="javascript:void(0)" id="tambah" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>';
+        } else {
+            echo '<h4 class="text-danger">Pendaftaran Telah Berakhir</h4>';
+        }
+        ?>
+
         <?php
         if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) { ?>
             <a href="<?php echo base_url('admin/data_pemain_export/Beregu/' . $id_kontingen); ?>" target='_blank' id='tambah' class="btn-tambah btn btn-success"><i class="far fa-file-excel"></i> Export Excell</a>
