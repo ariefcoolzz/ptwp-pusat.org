@@ -114,7 +114,7 @@ extract($_SESSION);
                     -  <span class='menu_admin' menu_admin="tabel_babak_penyisihan_rekap">Tabel Babak Penyisihan</span><br>
                     </li>
                     <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a>
-                    -  <span class='menu_admin' menu_admin="bagan_babak_final_rekap">Bagan Babak Penyisihan</span>
+                    -  <span class='menu_admin' menu_admin="skema_babak_final_rekap">Skema Babak Penyisihan</span>
                     </li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
