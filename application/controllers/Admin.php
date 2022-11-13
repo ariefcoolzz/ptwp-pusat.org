@@ -1136,6 +1136,19 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function tabel_babak_penyisihan_rekap()
+	{
+		$konten_menu = $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function bagan_babak_final_rekap()
+	{
+		$konten_menu = $this->load->view("admin/bagan_babak_final_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 	function kirim_wa($data)

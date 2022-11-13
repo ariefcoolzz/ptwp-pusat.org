@@ -420,7 +420,18 @@ class Model_admin extends CI_Model
 		return $status;
 	}
 
-	
+	function model_tabel_babak_penyisihan_rekap($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
+		$this->db->from('data_pool AS A');
+		// $this->db->where('A.pool', 'A');
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 

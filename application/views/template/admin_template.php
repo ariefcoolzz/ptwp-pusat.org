@@ -71,7 +71,7 @@ extract($_SESSION);
             <ul class="nav nav-aside">
                 <?php /*
 					<li class="nav-label">Dashboard</li>
-                    <li class="nav-item"><a href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
+                    < class="nav-item">< href="<?php echo base_url('admin'); ?>" class="nav-link"><i data-feather="pie-chart"></i> <span>Dashboard</span></a></li> */ ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) { ?>
                     <li class="nav-label pt-3">Data Master</li>
                     <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_user" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data User (Panitia)</span></a></li>
@@ -110,8 +110,12 @@ extract($_SESSION);
 
                     <li class="nav-label pt-3">Pertandingan</li>
                     <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pool</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a>
+                    -  <span class='menu_admin' menu_admin="tabel_babak_penyisihan_rekap">Tabel Babak Penyisihan</span><br>
+                    </li>
+                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a>
+                    -  <span class='menu_admin' menu_admin="bagan_babak_final_rekap">Bagan Babak Penyisihan</span>
+                    </li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
 
