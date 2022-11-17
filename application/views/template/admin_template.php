@@ -155,9 +155,9 @@ extract($_SESSION);
 
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content tx-14 bg-info">
+                <div class="modal-content bg-primary">
                     <div class="modal-header">
-                        <h6 class="modal_judul" id="modal_judul"> ................................ </h6>
+                        <h6 class="modal_judul tx-white" id="modal_judul"> ................................ </h6>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
