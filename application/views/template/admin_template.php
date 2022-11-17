@@ -106,16 +106,14 @@ extract($_SESSION);
                     <li class="nav-label pt-3">Pemain & Tim</li>
 
                     <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Tim</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="users"></i> <span>Data Tim</span></a></li>
 
                     <li class="nav-label pt-3">Pertandingan</li>
-                    <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pool</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Babak Penyisihan</span></a>
-                    -  <span class='menu_admin' menu_admin="tabel_babak_penyisihan_rekap">Tabel Babak Penyisihan</span><br>
-                    </li>
-                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="user"></i> <span>Babak Turnamen</span></a>
-                    -  <span class='menu_admin' menu_admin="skema_babak_final_rekap">Skema Babak Penyisihan</span>
-                    </li>
+                    <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="tabel_babak_penyisihan_rekap" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Babak Turnamen</span></a></li>
+                    <li class="nav-item"><a menu_admin="skema_babak_final_rekap" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Penyisihan</span></a></li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
 
@@ -124,8 +122,8 @@ extract($_SESSION);
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1, 2, 3))) { ?>
                     <li class="nav-label pt-3">Score</li>
-                    <li class="nav-item"><a menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="user"></i> <span>Manage Score</span></a></li>
-                    <li class="nav-item"><a menu_admin="score_share" class="menu_admin nav-link"><i data-feather="user"></i> <span>Share Score</span></a></li>
+                    <li class="nav-item"><a menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="circle"></i> <span>Manage Score</span></a></li>
+                    <li class="nav-item"><a menu_admin="score_share" class="menu_admin nav-link"><i data-feather="circle"></i> <span>Share Score</span></a></li>
                 <?php } ?>
             </ul>
         </div>
@@ -154,7 +152,7 @@ extract($_SESSION);
                 <?php echo $body; ?>
             </div>
         </div>
-        
+
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div class="modal-content tx-14 bg-info">
@@ -232,9 +230,9 @@ extract($_SESSION);
     </div>
 </div>
 <style>
-    .menu_admin span{
-        color:#c8c8c8;
-        cursor:pointer;
+    .menu_admin span {
+        color: #c8c8c8;
+        cursor: pointer;
     }
 </style>
 <script>

@@ -1,29 +1,22 @@
-<div class="d-sm-flex align-items-center justify-content-between mg-b-20 mg-lg-b-25 mg-xl-b-30">
+<div class="d-sm-flex align-items-center justify-content-between">
     <div>
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb breadcrumb-style1 mg-b-10">
+            <ol class="breadcrumb breadcrumb-style1">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Data Pool</li>
             </ol>
         </nav>
         <div class="row">
             <div class="form-group ml-4">
-                <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data Pool</a>
-                <a href="javascript:void(0)" id='drawing' class="btn-drawing btn btn-danger"><i class="fa fa-plus-circle"></i> Drawing</a>
+                <!-- <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data Pool</a> -->
+                <a href="javascript:void(0)" id='drawing' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Drawing</a>
             </div>
         </div>
-
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div data-label="Example" class="df-example demo-table" id="konten_menu">
-
-                </div><!-- df-example -->
-            </div>
-        </div>
+<div class="card">
+    <div class="card-body">
+        <div id="konten_menu"></div>
     </div>
 </div>
 <script>
@@ -57,7 +50,7 @@
 
     $("#drawing").on('click', function() {
         //loader
-        
+
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten_menu").html($("#loader_html").html());
         // $('.nav-item.active').removeClass('active');

@@ -1,16 +1,19 @@
-
 <?php
 $no = 1;
 $rekap = $this->Model_admin->model_data_pool_rekap();
 if ($rekap->num_rows()) {
-    echo "<table border='1'>";
+    echo "<div class='table-responsive'>";
+    echo "<table class='table table-primary table-striped table-borderless table-hover'>";
     echo "
+            <thead class='text-center align-middle'>
             <tr>
                 <th>No.</th>
                 <th>Pool</th>
                 <th>Urutan</th>
                 <th>Nama Kontingen/Satker</th>
             </tr>
+            </thead>
+            <tbody class='text-center'>
         ";
 
     $satker = $this->Model_admin->model_tmst_satker();
@@ -20,16 +23,16 @@ if ($rekap->num_rows()) {
             $option_satker .= "<option value='$S[IdSatker]'>$S[NamaSatker]</option>";
         }
     }
-    $no=0;
+    $no = 0;
     foreach ($rekap->result_array() as $R) {
         $no++;
         echo "
                 <tr>
-                    <td>$no</td>
+                    <td class='tx-bold'>$no</td>
                     <td>$R[pool]</td>
                     <td>$R[urutan]</td>
-                    <td>
-                        <select class='form-control select2 id_kontingen' id='id_kontingen$no' data-id_event='$R[id_event]'  data-pool='$R[pool]' data-urutan='$R[urutan]'>
+                    <td class='text-left'>
+                        <select class='w-50 form-control select2 id_kontingen' id='id_kontingen$no' data-id_event='$R[id_event]'  data-pool='$R[pool]' data-urutan='$R[urutan]'>
                             <option></option>
                             $option_satker
                         </select>
@@ -40,7 +43,7 @@ if ($rekap->num_rows()) {
                 </tr>
             ";
     }
-    echo "</table>";
+    echo "</tbody></table></div>";
 }
 ?>
 <script>
