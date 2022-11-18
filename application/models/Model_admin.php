@@ -251,10 +251,14 @@ class Model_admin extends CI_Model
 
 	function model_data_pool_rekap()
 	{
+		$id_event 	= $_POST['id_event'];
+		$jenis 		= $_POST['jenis_regu'];
 		$this->db->select('A.*');
 		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
 		$this->db->from('data_pool AS A');
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$this->db->where('A.beregu', $jenis);
+		$this->db->where('A.id_event', $id_event);
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;

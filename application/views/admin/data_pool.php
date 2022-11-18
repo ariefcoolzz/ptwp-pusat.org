@@ -10,6 +10,10 @@
             <div class="form-group ml-4">
                 <!-- <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data Pool</a> -->
                 <a href="javascript:void(0)" id='drawing' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Drawing</a>
+                <select class="form-control" id='jenis_regu'>
+                    <option value='putra' selected>Putra</option>
+                    <option value='putri'>Putri</option>
+                </select>
             </div>
         </div>
     </div>
@@ -24,11 +28,15 @@
     $(".filter").on('change', function() {
         load_data();
     });
+    $("#jenis_regu").on('change', function() {
+        load_data();
+    });
 
     function load_data() {
         var form_data = new FormData();
         // form_data.append('id_panitia', $("#id_panitia").val());
-        // form_data.append('aktif', $("#is_aktif").val());
+        form_data.append('id_event', $("#list_event").val());
+        form_data.append('jenis_regu', $("#jenis_regu").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pool_rekap",
             type: 'POST',
@@ -47,7 +55,6 @@
             }
         });
     }
-
     $("#drawing").on('click', function() {
         //loader
 
