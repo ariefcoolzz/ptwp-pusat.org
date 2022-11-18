@@ -54,7 +54,7 @@
 </div><!-- content -->
 
 <div class="content mg-0">
-    <div class="row no-gutters">
+    <!-- <div class="row no-gutters">
         <div class="col-lg-3 col-sm tx-center">
             <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
         </div>
@@ -69,10 +69,35 @@
                                 <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
                                 <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Pendaftaran Dimulai 5 Oktober 2022 s.d 11 November 2022)</h6>
                             </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
+                        <a href="<?php echo base_url('register'); ?>" role="button" class="btn btn-lg btn-primary btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="edit" class="mg-r-5"></i> DAFTAR PTWP</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row no-gutters">
+        <div class="col-lg-3 col-sm tx-center">
+            <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
+        </div>
+        <div class="col-lg-9 col-sm my-auto">
+            <div data-aos="zoom-in" data-aos-duration="3000">
+                <div class="d-md-flex align-items-center justify-content-between">
+                    <div class="media align-sm-items-center">
+                        <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-70 wd-md-40 wd-lg-40 wd-xl-65">
+                        <div class="media-body mg-l-15">
+                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-spacing-1 mg-b-5">Live Streaming Technical Meeting Turnamen Tennis Beregu Ke-19 Ketua Mahkamah Agung Republik Indonesia</h6>
+                            <div class="d-flex flex-column">
+                                <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
+                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Hari Jum'at, 18 November 2022, Pukul 14:00 WIB)</h6>
+                            </div>
                         </div><!-- media-body -->
                     </div><!-- media -->
                     <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
-                        <a href="<?php echo base_url('register'); ?>" role="button" class="btn btn-lg btn-primary btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="edit" class="mg-r-5"></i> DAFTAR PTWP</a>
+                        <a href="https://s.id/TechnicalMeetingKMACupXIX" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a>
                     </div>
                 </div>
             </div>
