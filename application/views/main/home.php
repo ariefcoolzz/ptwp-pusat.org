@@ -524,7 +524,7 @@
                 <div class="card-body pd-20">
                     <div class="activity-body">
                         <div class="tx-center tx-rubik">
-                            <h1 class="tx-40 lh-1 tx-normal tx-spacing--2 mg-b-5 mg-r-5">9.999.999</h1>
+                            <h1 class="tx-40 lh-1 tx-normal tx-spacing--2 mg-b-5 mg-r-5"><?php echo number_format($statistik['total_all'], '0', '.', '.'); ?></h1>
                             <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-15">Total Pengunjung</h6>
                         </div>
                         <table class="table-dashboard-two">
@@ -534,28 +534,28 @@
                                         <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-primary"></div>
                                     </td>
                                     <td class="tx-medium">Hari Ini</td>
-                                    <td class="text-right">3.000</td>
+                                    <td class="text-right"><?php echo number_format($statistik['today'], '0', '.', '.'); ?></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-warning"></div>
                                     </td>
                                     <td class="tx-medium">Minggu Ini</td>
-                                    <td class="text-right">20.000</td>
+                                    <td class="text-right"><?php echo number_format($statistik['minggu'], '0', '.', '.'); ?></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-pink"></div>
                                     </td>
                                     <td class="tx-medium">Bulan Ini</td>
-                                    <td class="text-right">100.000</td>
+                                    <td class="text-right"><?php echo number_format($statistik['bulan'], '0', '.', '.'); ?></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="wd-12 ht-12 rounded-circle bd bd-3 bd-teal"></div>
                                     </td>
                                     <td class="tx-medium">Tahun Ini</td>
-                                    <td class="text-right">1.000.000</td>
+                                    <td class="text-right"><?php echo number_format($statistik['tahun'], '0', '.', '.'); ?></td>
                                 </tr>
                             </tbody>
                         </table>

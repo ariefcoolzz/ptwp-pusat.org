@@ -116,6 +116,7 @@ class Main extends CI_Controller
 		$data['berita_pusat'] = $this->Model_main->get_data_konten_list('1', '3'); // KATEGORI 1 LIMIT 3
 		$data['berita_daerah'] = $this->Model_main->get_data_konten_list('3', '3'); // KATEGORI 1 LIMIT 3
 		$data['data_pengumuman'] = $this->Model_main->get_data_pengumuman('5'); // KATEGORI 1 LIMIT 3
+		$data['statistik'] = $this->Model_main->get_count_statistik(); // STATISTIK
 		// $data['berita_terbaru'] = $this->basic->get_data_where_limit(array('cat_id' => '1'), 3, 'data_konten');
 		$this->template->load('ptwp_template', 'main/home', $data);
 	}

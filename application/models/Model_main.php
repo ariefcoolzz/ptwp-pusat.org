@@ -247,4 +247,42 @@ class Model_main extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+	function get_count_statistik()
+	{
+		$q = $this->db->query("
+		SELECT COUNT(DISTINCT(ip_address)) AS today 
+		FROM data_statistik_konten
+		WHERE DATE(waktu_akses) = CURDATE()
+		")->row_array();
+		$data['today'] = $q['today'];
+
+		$q = $this->db->query("
+		SELECT COUNT(DISTINCT(ip_address)) as minggu
+		FROM   data_statistik_konten
+		WHERE  YEARWEEK(`waktu_akses`, 1) = YEARWEEK(CURDATE(), 1)
+		")->row_array();
+		$data['minggu'] = $q['minggu'];
+
+		$q = $this->db->query("
+		SELECT COUNT(DISTINCT(ip_address)) AS bulan
+		FROM data_statistik_konten
+		WHERE MONTH(waktu_akses) = MONTH(CURRENT_DATE())
+		AND YEAR(waktu_akses) = YEAR(CURRENT_DATE())
+		")->row_array();
+		$data['bulan'] = $q['bulan'];
+
+		$q = $this->db->query("
+		SELECT COUNT(DISTINCT(ip_address)) AS tahun
+		FROM data_statistik_konten
+		WHERE YEAR(waktu_akses) = YEAR(CURRENT_DATE())
+		")->row_array();
+		$data['tahun'] = $q['tahun'];
+
+		$q = $this->db->query("
+		SELECT COUNT(DISTINCT(ip_address)) AS total
+		FROM data_statistik_konten
+		")->row_array();
+		$data['total_all'] = $q['total'];
+		return $data;
+	}
 }
