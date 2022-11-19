@@ -332,12 +332,22 @@ class Model_admin extends CI_Model
 	function model_data_babak_penyisihan_pemain($P)
 	{
 		$this->db->select('A.*');
-		$this->db->select('B.nama');
-		$this->db->from('data_pemain AS A');
-		$this->db->join('view_pemain AS B', 'A.id_pemain=B.id_pegawai', 'left');
+		$this->db->select("IF(A.is_dharmayukti = '0', A.nama, A.nama_istri) AS nama");
+		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		$this->db->where('A.is_official', '0');  
+		$this->db->where('A.is_veteran', '0');  
 		IF(ISSET($P['id_kontingen'])) $this->db->where('A.id_kontingen', $P['id_kontingen']); 
-		IF(ISSET($P['beregu'])) $this->db->where('B.beregu', $P['beregu']); 
+		
+		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putra') 
+			{
+				$this->db->where('A.is_dharmayukti', '0');
+				$this->db->where('A.beregu', 'putra'); 
+			} 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putri') 
+			{
+				$this->db->where("((A.beregu = 'putra' AND A.is_dharmayukti = '1') OR A.beregu = 'putri')");
+			} 
 		$this->db->order_by('nama ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
