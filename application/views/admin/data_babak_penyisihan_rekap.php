@@ -1,4 +1,5 @@
 <?php
+// PRINT_R($_POST);DIE();
 $result = $this->Model_admin->model_data_babak_penyisihan_rekap($_POST);
 if (!$result->num_rows()) {
     echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";

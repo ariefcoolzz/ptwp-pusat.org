@@ -228,6 +228,16 @@ class Model_admin extends CI_Model
 	// 	return $query;
 	// }
 
+	function model_rule($id_event, $field = NULL)
+	{
+		IF($field == NULL) $this->db->select('A.*'); ELSE $this->db->select('A.'.$field);
+		$this->db->from('rule AS A');
+		$this->db->where('A.id_event', $id_event);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		IF($field == NULL) return $query; ELSE return $query->row_array()[$field];
+	}
+
 	function model_tmst_satker()
 	{
 		$this->db->select('A.*');
@@ -249,13 +259,14 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
-	function model_data_pool_distinct($P)
+	function model_data_pool_kontingen_group($P)
 	{
-		$this->db->select('DISTINCT A.pool');
+		$this->db->select('A.id_kontingen');
+		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
 		$this->db->from('data_pool AS A');
-		$this->db->where('A.beregu', $P['beregu']);
-		$this->db->where('A.id_event', $P['id_event']);
-		$this->db->order_by('A.pool ASC');
+		$this->db->where('A.id_kontingen IS NOT NULL');
+		$this->db->group_by('A.id_kontingen');
+		$this->db->order_by('nama_satker ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -309,6 +320,9 @@ class Model_admin extends CI_Model
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 
+		IF(ISSET($P['pool']) AND $P['pool'] != "all") $this->db->where('A.pool', $P['pool']); 
+		IF(ISSET($P['id_kontingen_tim_A']) AND $P['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $P['id_kontingen_tim_A']); 
+		IF(ISSET($P['id_kontingen_tim_B']) AND $P['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $P['id_kontingen_tim_B']); 
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
 		$query = $this->db->get();
 		// die($this->db->last_query());

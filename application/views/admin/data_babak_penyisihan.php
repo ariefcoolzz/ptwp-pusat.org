@@ -10,18 +10,58 @@
 </div>
 <div class="card">
 	<div class="card-body">
-	<div class="row" style='border:0px solid green;'>
-		<div class="col-6 form-group">
-			<!-- <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data Pool</a> -->
-			<a href="javascript:void(0)" id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Dari Pool</a>
-		</div>
+	<a href="javascript:void(0)" id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Dari Pool</a>
+			
+	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
-			<select class="form-control float-right" id='beregu'>
+			<select class="form-control" id='beregu'>
 				<option value='all' selected>Semua Regu</option>
 				<option value='putra'>Beregu Putra</option>
 				<option value='putri'>Beregu Putri</option>
 			</select>
 		</div>
+		<div class='col-6'>
+			<select class="form-control" id='pool'>
+				<option value='all' selected>Semua Pool</option>
+				<?php
+					$jumlah_pool = 26; //sampai Z
+					FOR($i=1;$i<=$jumlah_pool;$i++)
+						{
+							echo "<option value='".pool($i)."'>Pool ".pool($i)."</option>";
+						}
+				?>
+			</select>
+		</div>
+	</div>
+	<div class="row mt-3 mb-3" style='border:0px solid green;'>
+		<div class='col-6'>
+			<select class="form-control" id='id_kontingen_tim_A'>
+				<option value='all'>Semua Kontingen A</option>
+				<?php
+					$result = $this->Model_admin->model_data_pool_kontingen_group();
+					if ($result->num_rows()) {
+						foreach ($result->result_array() as $R) {
+							echo "<option value='$R[id_kontingen]'>$R[nama_satker]</option>";
+						}
+					}
+				?>
+			</select>
+		</div>
+		<div class='col-6'>
+			<select class="form-control" id='id_kontingen_tim_B'>
+				<option value='all'>Semua Kontingen B</option>
+				<?php
+					$result = $this->Model_admin->model_data_pool_kontingen_group();
+					if ($result->num_rows()) {
+						foreach ($result->result_array() as $R) {
+							echo "<option value='$R[id_kontingen]'>$R[nama_satker]</option>";
+						}
+					}
+				?>
+			</select>
+		</div>
+	</div>
+	<div class='row'>
 		<div class='col-12' id="konten_menu"></div>
 	</div>
 </div>
@@ -37,8 +77,8 @@
 		}
 	});
 
-	$("#beregu").on('change', function() {
-		load()
+	$("#beregu,#pool,#id_kontingen_tim_A,#id_kontingen_tim_B").on('change', function() {
+		load();
 	});
 
 	load();
@@ -48,6 +88,9 @@
 		var form_data = new FormData();
 		form_data.append('id_event', $("#list_event").val());
 		form_data.append('beregu', $("#beregu").val());
+		form_data.append('pool', $("#pool").val());
+		form_data.append('id_kontingen_tim_A', $("#id_kontingen_tim_A").val());
+		form_data.append('id_kontingen_tim_B', $("#id_kontingen_tim_B").val());
 		$.ajax({
 			url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_rekap",
 			type: 'POST',
@@ -61,7 +104,9 @@
 					location.reload();
 				} else {
 					$("body").scrollTop('0px');
+					$("#konten_menu").hide(300);
 					$("#konten_menu").html(json.konten_menu);
+					$("#konten_menu").show(300);
 				}
 			}
 		});
@@ -87,7 +132,9 @@
 							location.reload();
 						} else {
 							$("body").scrollTop('0px');
+							$("#konten_menu").hide(300);
 							$("#konten_menu").html(json.konten_menu);
+							$("#konten_menu").show(300);
 						}
 					}
 				});
