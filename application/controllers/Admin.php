@@ -1117,9 +1117,9 @@ class Admin extends CI_Controller
 
 	public function data_babak_penyisihan_generate()
 	{
-		$this->Model_admin->model_data_babak_penyisihan_generate($_POST);
+		$status = $this->Model_admin->model_data_babak_penyisihan_generate($_POST);
 		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
-		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
 	public function data_babak_penyisihan_form()

@@ -267,6 +267,7 @@ class Model_admin extends CI_Model
 		$this->db->where('id_event', $P['id_event']);
 		$this->db->where('pool', $P['pool']);
 		$this->db->where('urutan', $P['urutan']);
+		$this->db->where('beregu', $P['beregu']);
 		$query = $this->db->update('data_pool', $P); 
 		// die($this->db->last_query());
 		return $query;

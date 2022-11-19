@@ -33,7 +33,12 @@ if ($rekap->num_rows()) {
                     <td>$R[pool]</td>
                     <td>$R[urutan]</td>
                     <td class='text-left'>
-                        <select class='w-50 form-control select2 id_kontingen' id='id_kontingen$no' data-id_event='$R[id_event]'  data-pool='$R[pool]' data-urutan='$R[urutan]'>
+                        <select class='w-50 form-control select2 id_kontingen' id='id_kontingen$no' 
+                            data-id_event='$R[id_event]'  
+                            data-pool='$R[pool]' 
+                            data-urutan='$R[urutan]'
+                            data-beregu='$R[beregu]'
+                        >
                             <option></option>
                             $option_satker
                         </select>
@@ -55,6 +60,7 @@ if ($rekap->num_rows()) {
         form_data.append('id_event', $(this).data('id_event'));
         form_data.append('pool', $(this).data('pool'));
         form_data.append('urutan', $(this).data('urutan'));
+        form_data.append('beregu', $(this).data('beregu'));
         form_data.append('id_kontingen', $(this).val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pool_set_kontingen",
