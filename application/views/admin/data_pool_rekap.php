@@ -1,8 +1,8 @@
 <?php
 $no = 1;
-$rekap = $this->Model_admin->model_data_pool_rekap();
+$rekap = $this->Model_admin->model_data_pool_rekap($_POST);
 if ($rekap->num_rows()) {
-    echo "<h1>POOL TIM REGU " . STRTOUPPER($_POST['jenis_regu']) . "</h1>";
+    echo "<h1>POOL TIM REGU " . STRTOUPPER($_POST['beregu']) . "</h1>";
     echo "<div class='table-responsive'>";
     echo "<table class='table table-primary table-striped table-borderless table-hover'>";
     echo "

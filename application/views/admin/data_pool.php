@@ -10,7 +10,7 @@
             <div class="form-group ml-4">
                 <!-- <a href="javascript:void(0)" id='tambah' class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Data Pool</a> -->
                 <a href="javascript:void(0)" id='drawing' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Drawing</a>
-                <select class="form-control" id='jenis_regu'>
+                <select class="form-control" id='beregu'>
                     <option value='putra' selected>Putra</option>
                     <option value='putri'>Putri</option>
                 </select>
@@ -25,10 +25,8 @@
 </div>
 <script>
     load_data();
-    $(".filter").on('change', function() {
-        load_data();
-    });
-    $("#jenis_regu").on('change', function() {
+
+    $("#beregu").on('change', function() {
         load_data();
     });
 
@@ -36,7 +34,7 @@
         var form_data = new FormData();
         // form_data.append('id_panitia', $("#id_panitia").val());
         form_data.append('id_event', $("#list_event").val());
-        form_data.append('jenis_regu', $("#jenis_regu").val());
+        form_data.append('beregu', $("#beregu").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_pool_rekap",
             type: 'POST',
@@ -50,14 +48,16 @@
                     alert();
                     skip();
                 } else {
+                    $("#konten_menu").fadeOut(300);
                     $("#konten_menu").html(json.konten_menu);
+                    $("#konten_menu").fadeIn(300);
                 }
             }
         });
     }
+
     $("#drawing").on('click', function() {
         //loader
-
         $(".title_loader").text("Sedang Memuat Halaman");
         $("#konten_menu").html($("#loader_html").html());
         // $('.nav-item.active').removeClass('active');
@@ -79,7 +79,6 @@
                 } else {
                     $("body").scrollTop('0px');
                     $("#konten_menu").html(json.konten_menu);
-
                 }
             }
         });

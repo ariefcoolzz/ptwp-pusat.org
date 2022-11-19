@@ -249,16 +249,14 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
-	function model_data_pool_rekap()
+	function model_data_pool_rekap($P)
 	{
-		$id_event 	= $_POST['id_event'];
-		$jenis 		= $_POST['jenis_regu'];
 		$this->db->select('A.*');
 		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
 		$this->db->from('data_pool AS A');
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
-		$this->db->where('A.beregu', $jenis);
-		$this->db->where('A.id_event', $id_event);
+		$this->db->where('A.beregu', $P['beregu']);
+		$this->db->where('A.id_event', $P['id_event']);
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -295,6 +293,8 @@ class Model_admin extends CI_Model
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
 		$query = $this->db->get();
 		// die($this->db->last_query());
