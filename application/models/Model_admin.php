@@ -249,6 +249,18 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
+	function model_data_pool_distinct($P)
+	{
+		$this->db->select('DISTINCT A.pool');
+		$this->db->from('data_pool AS A');
+		$this->db->where('A.beregu', $P['beregu']);
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->order_by('A.pool ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
 	function model_data_pool_rekap($P)
 	{
 		$this->db->select('A.*');
@@ -264,6 +276,7 @@ class Model_admin extends CI_Model
 
 	function model_data_pool_set_kontingen($P)
 	{
+		IF(!$P['id_kontingen'] > 0) $P['id_kontingen'] = NULL;
 		$this->db->where('id_event', $P['id_event']);
 		$this->db->where('pool', $P['pool']);
 		$this->db->where('urutan', $P['urutan']);

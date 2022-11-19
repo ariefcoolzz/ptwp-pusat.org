@@ -39,7 +39,7 @@ if ($rekap->num_rows()) {
                             data-urutan='$R[urutan]'
                             data-beregu='$R[beregu]'
                         >
-                            <option></option>
+                            <option value=''> -------------------- Bye -------------------- </option>
                             $option_satker
                         </select>
                         <script>
