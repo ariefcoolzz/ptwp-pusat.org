@@ -259,7 +259,7 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
-	function model_data_pool_kontingen_group($P)
+	function model_data_pool_kontingen_group()
 	{
 		$this->db->select('A.id_kontingen');
 		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
