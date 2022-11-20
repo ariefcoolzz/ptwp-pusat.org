@@ -8,7 +8,7 @@
 	</div> -->
 	<div class="pos-fixed t-10 l-10">
 		<div class="card wd-350">
-			<div class="card-body p-0">
+			<div class="card-body p-0 border border-dark">
 				<?php $this->load->view('score/score_share_tabel_' . $jenis); ?>
 			</div>
 		</div>
