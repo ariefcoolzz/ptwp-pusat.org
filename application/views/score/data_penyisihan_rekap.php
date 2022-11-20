@@ -29,7 +29,7 @@ if (!$result->num_rows()) {
         <tbody>
             ";
     foreach ($result->result_array() as $R) {
-		$key     = MD7($R['id_pertandingan']);
+        $key     = MD7($R['id_pertandingan']);
 
         $tim_A = nama_singkat($R['nama_pemain_tim_A']) . "<br>" . if_null($R['set1_tim_A']);
         $tim_B = nama_singkat($R['nama_pemain_tim_B']) . "<br>" . if_null($R['set1_tim_B']);
@@ -40,7 +40,7 @@ if (!$result->num_rows()) {
         else $classB = "class='bg-success'";
 
         $no++;
-        echo "<tr valign='top'>";
+        echo "<tr class='tx-center'>";
         echo '<td>' . $no . '</td>';
         echo '<td>' . $R['beregu'] . '</td>';
         echo '<td>' . $R['pool'] . '</td>';
@@ -51,13 +51,15 @@ if (!$result->num_rows()) {
         echo '<td>' . $R['tanggal'] . '</td>';
         echo '<td>' . $R['waktu'] . '</td>';
         echo '<td>' . $R['lapangan'] . '</td>';
-        echo "<td align='center' $classA>$tim_A</td>";
-        echo "<td align='center' $classB>$tim_B</td>";
+        echo "<td $classA>$tim_A</td>";
+        echo "<td $classB>$tim_B</td>";
         echo "<td>
-                    <span class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'><i class='fa fa-edit'></i> Edit</span>
-					<span class='btn btn-sm btn-success share' data-key='$key'>Share Score</span>
-					<span class='btn btn-sm btn-primary manage' data-key='$key'>Manage Score</span>
-                </td>";
+                <div class='btn-group-vertical'>
+                    <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</button>
+					<button class='btn btn-sm btn-success share' data-key='$key'>Share Score</button>
+					<button class='btn btn-sm btn-primary manage' data-key='$key'>Manage Score</button>
+                </div>
+            </td>";
 
         // echo '<td class="text-center"><a href="#" onClick="tambah_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
         // <a href="#" onClick="hapus_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td></td>';
@@ -102,16 +104,16 @@ if (!$result->num_rows()) {
     });
 
     $(".table").on('click', '.share', function(e) {
-        var jenis   = "penyisihan";
-        var key     = $(this).data('key');
-        var link    = "<?php echo base_url(); ?>score/share/"  + jenis + '/' + key;
+        var jenis = "penyisihan";
+        var key = $(this).data('key');
+        var link = "<?php echo base_url(); ?>score/share/" + jenis + '/' + key;
         window.open(link, '_blank');
     });
 
-	$(".table").on('click', '.manage', function(e) {
-        var jenis   = "penyisihan";
-        var key     = $(this).data('key');
-        var link    = "<?php echo base_url(); ?>score/manage/" + jenis + '/' + key;
+    $(".table").on('click', '.manage', function(e) {
+        var jenis = "penyisihan";
+        var key = $(this).data('key');
+        var link = "<?php echo base_url(); ?>score/manage/" + jenis + '/' + key;
         window.open(link, '_blank');
     });
 </script>
