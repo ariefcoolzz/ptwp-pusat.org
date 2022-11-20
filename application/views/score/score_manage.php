@@ -21,7 +21,7 @@
 
 					<a>Tanggal: <?php echo format_tanggal("wddmmmmyyyy", $R['tanggal']); ?> Jam <?php echo $R['waktu']; ?></a>
 					<a>Lapangan: <?php echo $R['lapangan']; ?></a>
-					<a>Nama: ... VS ...</a>
+					<a>Nama: <?php echo $R['nama_pemain_tim_A']; ?> VS <?php echo $R['nama_pemain_tim_B']; ?></a>
 					<select id='set' class="form-control col-2">
 						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
@@ -95,11 +95,12 @@
 						</div>
 						<div class="row no-gutters wd-300 mg-t-10">
 							<div class="col-12">
-							<button data-tipe='point' data-tim='' data-aksi='reset' class='reset_point btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Point</button>
+							<span data-tipe='point' data-tim='' data-aksi='reset' class='reset_point btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Point</span>
+							<span data-tipe='point' data-tim='' data-aksi='hapus' class='hapus_point btn btn-lg btn-secondary'><i class="fa fa-minus"></i> Hapus Point</span>
 							</div>
 						</div>
 
-						<div id='log_penyisihan'>
+						<div id='log_penyisihan' class='mt-3 ml-auto mr-auto'>
 							<?php 
 								$this->load->view('score/@log_penyisihan', $R); 
 							?>
@@ -258,10 +259,9 @@
 		form_data.append('set', $("#set").val());
 		form_data.append('game', $("#game").val());
 		form_data.append('tipe', $(this).data('tipe'));
-		form_data.append('tim', $(this).data('tim'));
 		form_data.append('aksi', $(this).data('aksi'));
 		$.ajax({
-			url: "<?php echo base_url(); ?>score/manage_tombol_point",
+			url: "<?php echo base_url(); ?>score/manage_reset_point",
 			type: 'POST',
 			cache: false,
 			contentType: false,
@@ -278,4 +278,33 @@
 			}
 		});
 	});
+
+	$(".hapus_point").on("click", function() {
+		var form_data = new FormData();
+		form_data.append('jenis', "<?php echo $jenis; ?>");
+		form_data.append('key', "<?php echo $key; ?>");
+		form_data.append('set', $("#set").val());
+		form_data.append('game', $("#game").val());
+		form_data.append('tipe', $(this).data('tipe'));
+		form_data.append('aksi', $(this).data('aksi'));
+		$.ajax({
+			url: "<?php echo base_url(); ?>score/manage_hapus_point",
+			type: 'POST',
+			cache: false,
+			contentType: false,
+			processData: false,
+			data: form_data,
+			dataType: 'json',
+			success: function(json) {
+				if (json.status === true) {
+					$("#point_tim_A").text(json.point_tim_A);
+					$("#point_tim_B").text(json.point_tim_B);
+
+					$("#log_penyisihan").html(json.log_penyisihan);
+				}
+			}
+		});
+	});
+
+
 </script>

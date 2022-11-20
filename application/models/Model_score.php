@@ -176,8 +176,8 @@ class Model_score extends CI_Model
 		$this->db->select("A.*");
 		$this->db->select("B.lapangan");
 		$this->db->select("KATEGORI(A.id_kategori) AS kategori");
-		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_A) AS nama_tim_A");
-		// $this->db->select("(SELECT CONCAT(NAMA_PEMAIN(id_pemain1), IF(id_pemain2 IS NULL, '', CONCAT(' / ', NAMA_PEMAIN(id_pemain2)))) FROM data_tim WHERE id_tim = A.id_tim_B) AS nama_tim_B");
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
 		IF($key != NULL) $this->db->where("MD7(A.id_pertandingan)",$key); 
@@ -245,7 +245,7 @@ class Model_score extends CI_Model
 			{
 				$jenis					= $P['jenis'];
 				// PRINT_R($P);DIE();
-				$I['id_pertandingan']	= $this->get_id_pertandingan($P['jenis'],$P['key']);;
+				$I['id_pertandingan']	= $this->get_id_pertandingan($P['jenis'],$P['key']);
 				$I['set']				= $P['set'];
 				$I['game']				= $P['game'];
 				
@@ -260,6 +260,35 @@ class Model_score extends CI_Model
 			$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." <= 0,0,(id_point_tim_".$P['tim']." - 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
 		// DIE($query);
 		$status = $this->db->query($query);
+		// DIE($this->db->last_query());
+		return $status;
+	}
+
+	function manage_reset_point($P)
+	{
+		$FIX['id_pertandingan']= $this->get_id_pertandingan($P['jenis'],$P['key']);
+		$FIX['set'] = $P['set'];
+		$FIX['game'] = $P['game'];
+		$FIX['id_point_tim_A'] = NULL;
+		$FIX['id_point_tim_B'] = NULL;
+		$this->db->where('id_pertandingan', $FIX['id_pertandingan']);
+		$this->db->where('set', $FIX['set']);
+		$this->db->where('game', $FIX['game']);
+		$status = $this->db->update('data_babak_'.$P['jenis'].'_score', $FIX); 
+		return $status;
+	}
+
+	function manage_hapus_point($P)
+	{
+		$FIX['id_pertandingan']= $this->get_id_pertandingan($P['jenis'],$P['key']);
+		$FIX['set'] = $P['set'];
+		$FIX['game'] = $P['game'];
+		$FIX['id_point_tim_A'] = NULL;
+		$FIX['id_point_tim_B'] = NULL;
+		$this->db->where('id_pertandingan', $FIX['id_pertandingan']);
+		$this->db->where('set', $FIX['set']);
+		$this->db->where('game', $FIX['game']);
+		$status = $this->db->delete('data_babak_'.$P['jenis'].'_score'); 
 		// DIE($this->db->last_query());
 		return $status;
 	}
