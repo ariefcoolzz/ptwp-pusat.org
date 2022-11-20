@@ -55,7 +55,7 @@ if (!$result->num_rows()) {
         echo "<td>
                     <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'><i class='fa fa-edit'></i> Edit</button>
 					<span class='share btn btn-sm btn-success' data-key='$key'>Share Score</span>
-					<span class='edit btn btn-sm btn-primary' data-key='$key'>Manage Score</span>
+					<span class='btn btn-sm btn-primary' data-key='$key'>Manage Score</span>
                 </td>";
 
         // echo '<td class="text-center"><a href="#" onClick="tambah_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
@@ -76,12 +76,12 @@ if (!$result->num_rows()) {
         }
     });
 
-    $(".edit").on('click', function() {
+    $(".table").on('click', '.edit', function(e) {
         var form_data = new FormData();
         form_data.append('id_event', $("#list_event").val());
         form_data.append('id_pertandingan', $(this).data('id_pertandingan'));
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_form",
+            url: "<?php echo base_url(); ?>score/score_form",
             type: 'POST',
             cache: false,
             contentType: false,
@@ -99,30 +99,30 @@ if (!$result->num_rows()) {
             }
         });
     });
-	$(".table").on('click', '.edit', function(e) {
-            var key = $(this).data('key');
-            //var jenis = $(this).data('jenis');
-            var link = "<?php echo base_url(); ?>score/manage/" + key;
-            window.open(link, '_blank');
 
-            // var form_data = new FormData();
-            // form_data.append('jenis', $(this).data('jenis'));
-            // form_data.append('key', $(this).data('key'));
-            // $.ajax({
-                // url: "<?php echo base_url(); ?>score/manage",
-                // type: 'POST',
-                // cache: false,
-                // contentType: false,
-                // processData: false,
-                // data: form_data,
-                // dataType: 'json',
-                // success: function(json) {
-                    // // alert(json.konten);
-                    // $("body").scrollTop('0px');
-                    // $("#konten").fadeOut(300);
-                    // $("#konten").html(json.konten);
-                    // $("#konten").fadeIn(300);
-                // }
-            // });
-        });
+	$(".table").on('click', '.manage', function(e) {
+        var key = $(this).data('key');
+        //var jenis = $(this).data('jenis');
+        var link = "<?php echo base_url(); ?>score/manage/" + key;
+        window.open(link, '_blank');
+        // var form_data = new FormData();
+        // form_data.append('jenis', $(this).data('jenis'));
+        // form_data.append('key', $(this).data('key'));
+        // $.ajax({
+            // url: "<?php echo base_url(); ?>score/manage",
+            // type: 'POST',
+            // cache: false,
+            // contentType: false,
+            // processData: false,
+            // data: form_data,
+            // dataType: 'json',
+            // success: function(json) {
+                // // alert(json.konten);
+                // $("body").scrollTop('0px');
+                // $("#konten").fadeOut(300);
+                // $("#konten").html(json.konten);
+                // $("#konten").fadeIn(300);
+            // }
+        // });
+    });
 </script>

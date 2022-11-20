@@ -12,6 +12,31 @@ class Model_score extends CI_Model
 		return $query->row_array()['id_pertandingan'];
 	}
 
+	function model_data_babak_penyisihan_rekap($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
+		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
+		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
+		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 
+		IF(ISSET($P['pool']) AND $P['pool'] != "all") $this->db->where('A.pool', $P['pool']); 
+		IF(ISSET($P['id_kontingen_tim_A']) AND $P['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $P['id_kontingen_tim_A']); 
+		IF(ISSET($P['id_kontingen_tim_B']) AND $P['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $P['id_kontingen_tim_B']); 
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+
 	function get_game($jenis, $key)
 	{
 		$this->db->select("A.set1_tim_A");

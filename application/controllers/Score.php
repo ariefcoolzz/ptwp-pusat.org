@@ -16,13 +16,25 @@ class Score extends CI_Controller
 	public function index()
 	{
 		$this->template->load('score_template', 'score/score');
-		// $this->load->view("score/index");
 	}
 
+	public function penyisihan()
+	{
+		$this->template->load('score_template', 'score/score_penyisihan');
+	}
+
+	
 	// public function score_rekap()
 	// {
 	// 	$this->load->view("score/score_rekap");
 	// }
+
+	public function score_form()
+	{
+		$konten_menu = $this->load->view("score/score_form", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
 
 	public function manage($jenis,$key)
 	{
