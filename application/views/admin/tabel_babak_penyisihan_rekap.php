@@ -1,4 +1,5 @@
 <?php 
+// PRINT_R($_POST);DIE();
     $result = $this->Model_admin->model_tabel_babak_penyisihan_rekap($_POST);
     IF(!$result->num_rows()){
         echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";
@@ -23,7 +24,7 @@
         echo "     
                     <th> Menang </th>
                     <th> Kalah </th>
-                    <th colspan='3'> Set </th>
+                    <!-- <th colspan='3'> Set </th> -->
                     <th colspan='3'> Game </th>
                     <th> Peringkat </th>
                 </tr>
@@ -50,6 +51,7 @@
         }
 
         $jumlah_game_penyisihan_putra = $this->Model_admin->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putra');
+        $jumlah_game_penyisihan_putri = $this->Model_admin->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putri');
         
         foreach($result->result_array() as $R){
             $jumlah = 0;
@@ -74,8 +76,6 @@
                         IF(ISSET($score_tim_B[1][4][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][4][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
                         IF(ISSET($score_tim_B[1][5][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][5][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
 
-                        $jumlah++;
-
                         IF(ISSET($score_tim_A[1][1][$iktA][$iktB]) AND $score_tim_A[1][1][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++; 
                         IF(ISSET($score_tim_A[1][2][$iktA][$iktB]) AND $score_tim_A[1][2][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++; 
                         IF(ISSET($score_tim_A[1][3][$iktA][$iktB]) AND $score_tim_A[1][3][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++; 
@@ -92,19 +92,31 @@
                         IF(ISSET($score_tim_A[1][6][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][6][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
                         IF(ISSET($score_tim_A[1][7][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][7][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
                         IF(ISSET($score_tim_A[1][8][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][8][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
+
+                        IF(ISSET($score_tim_A[1][6][$iktA][$iktB]) AND $score_tim_A[1][6][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++; 
+                        IF(ISSET($score_tim_A[1][7][$iktA][$iktB]) AND $score_tim_A[1][7][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++; 
+                        IF(ISSET($score_tim_A[1][8][$iktA][$iktB]) AND $score_tim_A[1][8][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++; 
+
+                        IF(ISSET($score_tim_A[1][6][$iktA][$iktB]) AND $score_tim_A[1][6][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
+                        IF(ISSET($score_tim_A[1][7][$iktA][$iktB]) AND $score_tim_A[1][7][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
+                        IF(ISSET($score_tim_A[1][8][$iktA][$iktB]) AND $score_tim_A[1][8][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
                     }
                 }
 
+                $jumlah = $menang + $kalah;
+
+                $menang_persentase = ROUND($menang / $jumlah * 100,2);
+                $kalah_persentase  = ROUND($kalah  / $jumlah * 100,2);
                 
-                echo "<td rowspan='2'>$jumlah $menang</td>";
+                echo "<td rowspan='2'>$menang</td>";
                 echo "<td rowspan='2'>$kalah</td>";
+                echo "<td rowspan='2'>$menang_persentase%</td>";
+                echo "<td rowspan='2'>$kalah_persentase%</td>";
+                echo "<td rowspan='2'>100%</td>";
                 echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
-                echo "<td rowspan='2'></td>";
+                // echo "<td rowspan='2'></td>";
+                // echo "<td rowspan='2'></td>";
+                // echo "<td rowspan='2'></td>";
             echo '</tr>';
             echo "<tr valign='top'>";
             foreach($result->result_array() as $L){

@@ -464,6 +464,7 @@ class Model_admin extends CI_Model
 
 	function model_tabel_babak_penyisihan_rekap($P)
 	{
+		// PRINT_R($P);DIE();
 		$this->db->select('A.*');
 		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
 		$this->db->select('NAMA_SATKER_SINGKAT(A.id_kontingen) AS nama_satker_singkat');
