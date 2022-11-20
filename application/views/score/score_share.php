@@ -1,21 +1,28 @@
 <?php $this->load->view("score/@header"); ?>
 <div class="pos-relative">
-	<div class="pos-fixed t-30 l-30">
+	<!-- <div class="pos-fixed t-30 l-30">
 		<img src="<?php echo base_url('assets/img/favicon.png'); ?>" class="wd-60" alt="">
 	</div>
 	<div class="pos-fixed t-30 r-30">
 		<h3 class="tx-roboto tx-danger">LIVE</h3>
-	</div>
-	<div class="pos-fixed b-30 l-30">
-		<div class="card wd-400"> 
-			<div class="card-body bg-secondary rounded">
-				<?php $this->load->view('score/score_share_tabel_'.$jenis); ?>
+	</div> -->
+	<div class="pos-fixed t-10 l-10">
+		<div class="card wd-350">
+			<div class="card-body p-0">
+				<?php $this->load->view('score/score_share_tabel_' . $jenis); ?>
 			</div>
 		</div>
 	</div>
-	<div class="pos-fixed b-30 r-30">
+	<!-- <div class="pos-fixed b-30 l-30">
+		<div class="card wd-400">
+			<div class="card-body bg-secondary rounded">
+				<?php $this->load->view('score/score_share_tabel_' . $jenis); ?>
+			</div>
+		</div>
+	</div> -->
+	<!-- <div class="pos-fixed b-30 r-30">
 		<img src="<?php echo base_url('assets/img/maskot.png'); ?>" class="ht-150" alt="">
-	</div>
+	</div> -->
 </div>
 <?php $this->load->view("score/@footer"); ?>
 <script>

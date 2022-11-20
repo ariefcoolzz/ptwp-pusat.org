@@ -155,14 +155,14 @@ extract($_SESSION);
 
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content bg-primary">
-                    <div class="modal-header">
-                        <h6 class="modal_judul tx-white" id="modal_judul"> ................................ </h6>
+                <div class="modal-content">
+                    <div class="modal-header pd-x-20 pd-sm-x-30 bg-primary">
+                        <h5 class="modal_judul tx-white" id="modal_judul"> ................................ </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal_isi" id="modal_isi" style="background-color:#e2eeff"> .................................. </div>
+                    <div class="modal-body modal_isi" id="modal_isi"> .................................. </div>
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@ extract($_SESSION);
         <footer class="footer">
             <div>
                 <span>&copy; 2021 PTWP-PUSAT.ORG </span>
-                <span>Design by <a>ADIL</a></span>
+                <!-- <span>Design by <a>ADIL</a></span> -->
             </div>
             <div>
                 <nav class="nav">
