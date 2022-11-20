@@ -208,8 +208,8 @@ class Score extends CI_Controller
 		$ARRAY["set3_tim_B"] = $data["set3_tim_B"];
 		$ARRAY["nama_satker_A"] = $data["nama_satker_A"];
 		$ARRAY["nama_satker_B"] = $data["nama_satker_B"];
-		$ARRAY["nama_pemain_tim_A"] = $data["nama_pemain_tim_A"];
-		$ARRAY["nama_pemain_tim_B"] = $data["nama_pemain_tim_B"];
+		$ARRAY["nama_pemain_tim_A"] = nama_singkat($data["nama_pemain_tim_A"]);
+		$ARRAY["nama_pemain_tim_B"] = nama_singkat($data["nama_pemain_tim_B"]);
 
 		//BUAT GET POINT, GAME YANG TERAKHIR
 		$data = $this->Model_score->get_point($_POST['jenis'], $_POST['key']);

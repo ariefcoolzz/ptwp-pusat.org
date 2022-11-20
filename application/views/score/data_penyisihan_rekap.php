@@ -31,8 +31,8 @@ if (!$result->num_rows()) {
     foreach ($result->result_array() as $R) {
 		$key     = MD7($R['id_pertandingan']);
 
-        $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']);
-        $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']);
+        $tim_A = nama_singkat($R['nama_pemain_tim_A']) . "<br>" . if_null($R['set1_tim_A']);
+        $tim_B = nama_singkat($R['nama_pemain_tim_B']) . "<br>" . if_null($R['set1_tim_B']);
 
         if ($R['set1_tim_A'] < 8) $classA = "";
         else $classA = "class='bg-success'";

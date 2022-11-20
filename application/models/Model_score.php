@@ -138,7 +138,7 @@ class Model_score extends CI_Model
 		$this->db->from("data_babak_".$jenis." AS A");
 		$this->db->where("MD7(A.id_pertandingan)",$key); 
 		$query = $this->db->get();
-		// DIE($this->db->last_query());
+		DIE($this->db->last_query());
 		return $query;
 	}
 

@@ -5,8 +5,30 @@ class Coba extends CI_Controller
 
 	public function index()
 	{
-		$data['judul'] = "Halaman Login";
-		$this->template->load('ptwp_template', 'admin/login_v', $data);
+		$nama = "Dika Andrian Pradana Putra Permana<br>Arief Kusuma Putra";
+
+		
+		$hasil = '';
+		$PEMAIN = EXPLODE("<br>", $nama);
+		IF(COUNT($PEMAIN) >= 0)
+			{
+				FOR($a=0;$a<COUNT($PEMAIN);$a++)
+					{
+
+						// $hasil = $PEMAIN[$a];
+						$EXP = EXPLODE(" ", $PEMAIN[$a]);
+						IF(COUNT($EXP) > 0)
+							{
+								$hasil .= $EXP[0]." ";
+								FOR($i=1;$i<COUNT($EXP);$i++)
+									{
+										$hasil .= SUBSTR($EXP[$i],0,1)."."; 
+									}
+							}
+						$hasil .= "<br>";
+					}
+			}
+		echo $hasil;
 	}
 
 	public function pass_coba()
