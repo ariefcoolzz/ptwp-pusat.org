@@ -13,9 +13,10 @@
 	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
 			<select class="form-control" id='beregu'>
-				<option value='all' selected>Semua Regu</option>
+				<option value='' selected>----------------------------------- Pilih Regu -----------------------------------</option>
 				<option value='putra'>Beregu Putra</option>
 				<option value='putri'>Beregu Putri</option>
+				<option value='all'>Semua Regu</option>
 			</select>
 		</div>
 		<div class='col-6'>
@@ -64,6 +65,33 @@
 	</div>
 </div>
 
+<div id="loader_html" class="container-fluid" style="display:none">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-title-box">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <h4 class="title_loader page-title m-0 text-center"></h4>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end page-title-box -->
+        </div>
+    </div>
+    <!-- end page title -->
+    <div class="row justify-content-center">
+        <div class="col-xl-12 justify-content-center">
+            <div class="card" style="border:none">
+                <div class="justify-content-center mx-auto">
+                    <div class="lds-dual-ring"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
@@ -93,8 +121,10 @@
 		load();
 	});
 
-	load();
+	//load();
 	function load() {
+		if($("#beregu").val() == '') { alert("Silahkan Pilih Regu Terlebih Dahulu... !!!"); skip(); }
+
 		$(".title_loader").text("Sedang Memuat Halaman");
 		$("#konten_menu").html($("#loader_html").html());
 		var form_data = new FormData();

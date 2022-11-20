@@ -151,6 +151,19 @@ class Model_score extends CI_Model
 		return $query;
 	}
 
+	function get_point_and_game($jenis, $id_pertandingan)
+	{
+		$this->db->select("A.*");
+		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->from("data_babak_".$jenis."_score AS A");
+		$this->db->where("A.id_pertandingan",$id_pertandingan); 
+		$this->db->order_by("`set` ASC, `game` ASC"); 
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
 	function score_rekap_penyisihan($key = NULL)
 	{
 		$this->db->select("'penyisihan' AS 'jenis'");

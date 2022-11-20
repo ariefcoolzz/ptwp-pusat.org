@@ -25,8 +25,8 @@
 					<select id='set' class="form-control col-2">
 						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
-						<option value='2'>Dua</option>
-						<option value='3'>Tiga</option>
+						<option value='2' disabled>Dua</option>
+						<option value='3' disabled>Tiga</option>
 					</select>
 				</div>
 				<div id='manage_tombol' style='display:none;'>
@@ -60,7 +60,7 @@
 					<select id='game' class="form-control col-2 mt-3 mb-3">
 						<option value='0'>Pilih Game</option>
 						<?php 
-						FOR($ke=1;$ke<=10;$ke++)
+						FOR($ke=1;$ke<=15;$ke++) // 8 vs 7
 							{
 								echo "<option value='$ke'>Game Ke: ".($ke)."</option>";
 							}
@@ -98,6 +98,11 @@
 							<button data-tipe='reset_point' data-tim='' data-aksi='reset' class='reset_point btn btn-lg btn-warning'><i class="fa fa-minus"></i> Reset Point</button>
 							</div>
 						</div>
+					</div>
+					<div id='get_point_and_game'>
+						<?php 
+							$this->load->view('score/@log_penyisihan', $R); 
+						?>
 					</div>
 				</div>
 				</div>
