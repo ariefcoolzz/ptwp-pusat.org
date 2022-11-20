@@ -22,7 +22,7 @@
 					<a>Tanggal: <?php echo format_tanggal("wddmmmmyyyy", $R['tanggal']); ?> Jam <?php echo $R['waktu']; ?></a>
 					<a>Lapangan: <?php echo $R['lapangan']; ?></a>
 					<a>Nama: <?php echo $R['nama_pemain_tim_A']; ?> VS <?php echo $R['nama_pemain_tim_B']; ?></a>
-					<select id='set' class="form-control col-12">
+					<select id='set' class="form-control col-sm-12 col-lg-4">
 						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
 						<option value='2' disabled>Dua</option>
@@ -57,7 +57,7 @@
 							<button data-tipe='game' data-tim='B' data-aksi='-' class='tombol_game wd-100 btn btn-lg btn-danger'><i class="fa fa-minus-circle"></i> Kurang</button>
 						</div>
 					</div>
-					<select id='game' class="form-control col-12 mt-3 mb-3">
+					<select id='game' class="form-control col-sm-12 col-lg-4 mt-3 mb-3">
 						<option value='0'>Pilih Game</option>
 						<?php 
 						FOR($ke=1;$ke<=15;$ke++) // 8 vs 7
