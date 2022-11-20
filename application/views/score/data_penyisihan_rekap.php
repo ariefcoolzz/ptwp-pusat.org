@@ -1,6 +1,7 @@
 <?php
-// PRINT_R($_POST);DIE();
-$result = $this->Model_admin->model_data_babak_penyisihan_rekap($_POST);
+// PRINT_R($_SESSION);
+// DIE();
+$result = $this->Model_score->model_data_penyisihan_rekap($_POST);
 if (!$result->num_rows()) {
     echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";
 } else {
@@ -81,7 +82,7 @@ if (!$result->num_rows()) {
         form_data.append('id_event', $("#list_event").val());
         form_data.append('id_pertandingan', $(this).data('id_pertandingan'));
         $.ajax({
-            url: "<?php echo base_url(); ?>score/score_form",
+            url: "<?php echo base_url(); ?>score/data_penyisihan_form",
             type: 'POST',
             cache: false,
             contentType: false,

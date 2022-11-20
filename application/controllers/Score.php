@@ -15,24 +15,40 @@ class Score extends CI_Controller
 
 	public function index()
 	{
+		$_SESSION['id_event'] = 2;
 		$this->template->load('score_template', 'score/score');
 	}
 
 	public function penyisihan()
 	{
-		$this->template->load('score_template', 'score/score_penyisihan');
+		$this->template->load('score_template', 'score/data_penyisihan');
 	}
 
+	public function data_penyisihan_rekap()
+	{
+		$_SESSION = $_POST; //disessionin aja biar gak pusing pake parameter
+		// PRINT_R($_SESSION);DIE();
+		$konten_menu = $this->load->view("score/data_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
 	
 	// public function score_rekap()
 	// {
 	// 	$this->load->view("score/score_rekap");
 	// }
 
-	public function score_form()
+	public function data_penyisihan_form()
 	{
-		$konten_menu = $this->load->view("score/score_form", NULL, TRUE);
+		$konten_menu = $this->load->view("score/data_penyisihan_form", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_penyisihan_simpan()
+	{
+		$status = $this->Model_score->model_data_penyisihan_simpan($_POST);
+		unset($_POST['id_pertandingan']);
+		$konten_menu = $this->load->view("score/data_penyisihan_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
 
@@ -149,9 +165,5 @@ class Score extends CI_Controller
 
 		echo JSON_ENCODE($ARRAY);
 	}
-	public function score_rekap()
-	{
-		$konten_menu = $this->load->view("score/score_rekap", NULL, TRUE);
-		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	}
+	
 }

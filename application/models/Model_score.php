@@ -12,7 +12,41 @@ class Model_score extends CI_Model
 		return $query->row_array()['id_pertandingan'];
 	}
 
-	function model_data_babak_penyisihan_rekap($P)
+	function model_master_lapangan()
+	{
+		$this->db->select('A.*');
+		$this->db->from('master_lapangan AS A');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_pemain($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select("IF(A.is_dharmayukti = '0', A.nama, A.nama_istri) AS nama");
+		$this->db->from('view_pemain AS A');
+		$this->db->where('A.id_event', $_SESSION['id_event']); 
+		$this->db->where('A.is_official', '0');  
+		$this->db->where('A.is_veteran', '0');  
+		IF(ISSET($P['id_kontingen'])) $this->db->where('A.id_kontingen', $P['id_kontingen']); 
+		
+		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putra') 
+			{
+				$this->db->where('A.is_dharmayukti', '0');
+				$this->db->where('A.beregu', 'putra'); 
+			} 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putri') 
+			{
+				$this->db->where("((A.beregu = 'putra' AND A.is_dharmayukti = '1') OR A.beregu = 'putri')");
+			} 
+		$this->db->order_by('nama ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_penyisihan_rekap($P)
 	{
 		$this->db->select('A.*');
 		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
@@ -23,7 +57,59 @@ class Model_score extends CI_Model
 		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
 		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
-		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		$this->db->where('A.id_event', $_SESSION['id_event']);
+		IF($_SESSION['beregu'] != "all") $this->db->where('A.beregu', $_SESSION['beregu']); 
+		IF($_SESSION['pool'] != "all") $this->db->where('A.pool', $_SESSION['pool']); 
+		IF($_SESSION['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $_SESSION['id_kontingen_tim_A']); 
+		IF($_SESSION['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $_SESSION['id_kontingen_tim_B']); 
+		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC, A.id_kategori');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_penyisihan_simpan($P)
+	{
+		IF($P['id_pemain2_tim_A'] != "") 
+			{
+				$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'].",".$P['id_pemain2_tim_A'];
+			} 
+		ELSE {
+			$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'];
+		}
+		IF($P['id_pemain2_tim_B'] != "") 
+			{
+				$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'].",".$P['id_pemain2_tim_B'];
+			} 
+		ELSE {
+			$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'];
+		}
+
+		UNSET($P['id_pemain1_tim_A']);
+		UNSET($P['id_pemain2_tim_A']);
+		UNSET($P['id_pemain1_tim_B']);
+		UNSET($P['id_pemain2_tim_B']);
+
+		$P['id_event'] = $_SESSION['id_event'];
+		$this->db->where('id_pertandingan', $P['id_pertandingan']);
+		$query = $this->db->update('data_babak_penyisihan', $P); 
+		//die($this->db->last_query());
+		return $query;
+	}
+
+	function model_form($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
+		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
+		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
+		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
+		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $_SESSION['id_event']); 
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 

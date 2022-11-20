@@ -64,6 +64,20 @@
 	</div>
 </div>
 
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header pd-x-20 pd-sm-x-30 bg-primary">
+                <h5 class="modal_judul tx-white" id="modal_judul"> ................................ </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body modal_isi" id="modal_isi"> .................................. </div>
+        </div>
+    </div>
+</div>
+
 <script>
 	$('[data-toggle="tooltip"]').tooltip();
 
@@ -90,7 +104,7 @@
 		form_data.append('id_kontingen_tim_A', $("#id_kontingen_tim_A").val());
 		form_data.append('id_kontingen_tim_B', $("#id_kontingen_tim_B").val());
 		$.ajax({
-			url: "<?php echo base_url(); ?>score/score_rekap",
+			url: "<?php echo base_url(); ?>score/data_penyisihan_rekap",
 			type: 'POST',
 			cache: false,
 			contentType: false,
