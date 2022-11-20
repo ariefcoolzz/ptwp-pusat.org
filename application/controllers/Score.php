@@ -9,12 +9,13 @@ class Score extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Model_score');
+		$this->load->model('Model_admin');
 		// $this->basic->squrity();
 	}
 
 	public function index()
 	{
-		$this->template->load('score_template', 'score/score_rekap');
+		$this->template->load('score_template', 'score/score');
 		// $this->load->view("score/index");
 	}
 
@@ -135,5 +136,10 @@ class Score extends CI_Controller
 		$ARRAY["point_tim_B"] = $data["point_tim_B"];
 
 		echo JSON_ENCODE($ARRAY);
+	}
+	public function score_rekap()
+	{
+		$konten_menu = $this->load->view("score/score_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 }
