@@ -3,8 +3,8 @@
         <td>
             <div class='d-flex'>
                 <div class="pd-l-10">
-                    <p class="tx-medium mg-b-0">Pemain A</p>
-                    <small class="tx-12  mg-b-0">Pangda A</small>
+                    <p class="tx-medium mg-b-0" id='nama_pemain_tim_A'></p>
+                    <small class="tx-12  mg-b-0" id='nama_satker_A'></small>
                 </div>
             </div>
         </td>
@@ -16,8 +16,8 @@
         <td>
             <div class='d-flex'>
                 <div class="pd-l-10">
-                    <p class="tx-medium mg-b-0">Pemain B</p>
-                    <small class="tx-12  mg-b-0">Pangda B</small>
+                    <p class="tx-medium mg-b-0" id='nama_pemain_tim_B'></p>
+                    <small class="tx-12  mg-b-0" id='nama_satker_B'></small>
                 </div>
             </div>
         </td>
