@@ -138,14 +138,14 @@
             
         }
         echo "</table>";
-    }
+}
                     arsort($temp_menang);
-                    $i = 1;
+                    $i = 0;
                     $val_temp = null;
                     foreach ($temp_menang as $key => $val) {
-                        echo "<script>$('#peringkat_" . $key . "').html('" . $i . "');</script>";
                         if ($val !== $val_temp) $i++;
                         $val_temp = $val;
+                        echo "<script>$('#peringkat_" . $key . "').html('" . $i . "');</script>";
                     }
 ?>
 <script>
