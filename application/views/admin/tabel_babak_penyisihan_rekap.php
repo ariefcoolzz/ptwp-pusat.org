@@ -57,6 +57,10 @@
             $jumlah = 0;
             $menang = 0;
             $kalah  = 0;
+            
+            $menang_game = 0;
+            $kalah_game  = 0;
+
 
             $no++;
             echo "<tr valign='top'>";
@@ -70,11 +74,11 @@
                     $iktB = $L['id_kontingen'];
                     // echo "$iktA $iktB<br>";
                     IF($L['beregu'] == 'putra'){
-                        IF(ISSET($score_tim_B[1][1][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][1][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_B[1][2][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][2][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_B[1][3][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][3][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_B[1][4][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][4][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_B[1][5][$iktA][$iktB])) echo "<td> ".$score_tim_B[1][5][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
+                        IF(!ISSET($score_tim_B[1][1][$iktA][$iktB])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_B[1][1][$iktA][$iktB]." </td>"; $menang_game += $score_tim_A[1][1][$iktA][$iktB]; $kalah_game += $score_tim_B[1][1][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_B[1][2][$iktA][$iktB])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_B[1][2][$iktA][$iktB]." </td>"; $menang_game += $score_tim_A[1][2][$iktA][$iktB]; $kalah_game += $score_tim_B[1][2][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_B[1][3][$iktA][$iktB])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_B[1][3][$iktA][$iktB]." </td>"; $menang_game += $score_tim_A[1][3][$iktA][$iktB]; $kalah_game += $score_tim_B[1][3][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_B[1][4][$iktA][$iktB])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_B[1][4][$iktA][$iktB]." </td>"; $menang_game += $score_tim_A[1][4][$iktA][$iktB]; $kalah_game += $score_tim_B[1][4][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_B[1][4][$iktA][$iktB])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_B[1][5][$iktA][$iktB]." </td>"; $menang_game += $score_tim_A[1][5][$iktA][$iktB]; $kalah_game += $score_tim_B[1][5][$iktA][$iktB]; } 
 
                         IF(ISSET($score_tim_A[1][1][$iktA][$iktB]) AND $score_tim_A[1][1][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++; 
                         IF(ISSET($score_tim_A[1][2][$iktA][$iktB]) AND $score_tim_A[1][2][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++; 
@@ -89,9 +93,9 @@
                         IF(ISSET($score_tim_A[1][5][$iktA][$iktB]) AND $score_tim_A[1][5][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++; 
                     }
                     IF($L['beregu'] == 'putri'){
-                        IF(ISSET($score_tim_A[1][6][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][6][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_A[1][7][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][7][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
-                        IF(ISSET($score_tim_A[1][8][$iktB][$iktA])) echo "<td> ".$score_tim_A[1][8][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
+                        IF(!ISSET($score_tim_A[1][6][$iktB][$iktA])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_A[1][6][$iktB][$iktA]." </td>"; $menang_game += $score_tim_A[1][6][$iktA][$iktB]; $kalah_game += $score_tim_B[1][6][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_A[1][7][$iktB][$iktA])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_A[1][7][$iktB][$iktA]." </td>"; $menang_game += $score_tim_A[1][7][$iktA][$iktB]; $kalah_game += $score_tim_B[1][7][$iktA][$iktB]; } 
+                        IF(!ISSET($score_tim_A[1][8][$iktB][$iktA])) echo "<td class='bg-dark'></td>"; ELSE { echo "<td> ".$score_tim_A[1][8][$iktB][$iktA]." </td>"; $menang_game += $score_tim_A[1][8][$iktA][$iktB]; $kalah_game += $score_tim_B[1][8][$iktA][$iktB]; } 
 
                         IF(ISSET($score_tim_A[1][6][$iktA][$iktB]) AND $score_tim_A[1][6][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++; 
                         IF(ISSET($score_tim_A[1][7][$iktA][$iktB]) AND $score_tim_A[1][7][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++; 
@@ -99,7 +103,7 @@
 
                         IF(ISSET($score_tim_A[1][6][$iktA][$iktB]) AND $score_tim_A[1][6][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
                         IF(ISSET($score_tim_A[1][7][$iktA][$iktB]) AND $score_tim_A[1][7][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
-                        IF(ISSET($score_tim_A[1][8][$iktA][$iktB]) AND $score_tim_A[1][8][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++; 
+                        IF(ISSET($score_tim_A[1][8][$iktA][$iktB]) AND $score_tim_A[1][8][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++;
                     }
                 }
 
@@ -122,16 +126,16 @@
             foreach($result->result_array() as $L){
                 $iktB = $L['id_kontingen'];
                 IF($L['beregu'] == 'putra'){
-                    IF(ISSET($score_tim_A[1][1][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][1][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_A[1][2][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][2][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_A[1][3][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][3][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_A[1][4][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][4][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_A[1][5][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][5][$iktA][$iktB]." </td>"; ELSE echo "<td>x</td>";
+                    IF(ISSET($score_tim_A[1][1][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][1][$iktA][$iktB]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_A[1][2][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][2][$iktA][$iktB]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_A[1][3][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][3][$iktA][$iktB]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_A[1][4][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][4][$iktA][$iktB]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_A[1][5][$iktA][$iktB])) echo "<td> ".$score_tim_A[1][5][$iktA][$iktB]." </td>"; ELSE echo "<td class='bg-dark'></td>";
                 }
                 IF($L['beregu'] == 'putri'){
-                    IF(ISSET($score_tim_B[1][6][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][6][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_B[1][7][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][7][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
-                    IF(ISSET($score_tim_B[1][8][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][8][$iktB][$iktA]." </td>"; ELSE echo "<td>x</td>";
+                    IF(ISSET($score_tim_B[1][6][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][6][$iktB][$iktA]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_B[1][7][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][7][$iktB][$iktA]." </td>"; ELSE echo "<td class='bg-dark'></td>";
+                    IF(ISSET($score_tim_B[1][8][$iktB][$iktA])) echo "<td> ".$score_tim_B[1][8][$iktB][$iktA]." </td>"; ELSE echo "<td class='bg-dark'></td>";
                 }
             }
             echo '</tr>';
