@@ -111,7 +111,7 @@ extract($_SESSION);
                     <li class="nav-label pt-3">Pertandingan</li>
                     <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
                     <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a menu_admin="tabel_babak_penyisihan_rekap" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="tabel_babak_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
                     <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Babak Turnamen</span></a></li>
                     <li class="nav-item"><a menu_admin="skema_babak_final_rekap" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Penyisihan</span></a></li>
                 <?php } ?>

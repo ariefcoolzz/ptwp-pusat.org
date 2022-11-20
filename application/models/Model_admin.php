@@ -466,11 +466,27 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select('A.*');
 		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.id_kontingen) AS nama_satker_singkat');
 		$this->db->from('data_pool AS A');
-		// $this->db->where('A.pool', 'A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		IF($P['pool'] != "all") $this->db->where('A.pool', $P['pool']);
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
+		return $query;
+	}
+
+	function model_tabel_babak_penyisihan_score($P)
+	{
+		$this->db->select('A.*');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		IF($P['pool'] != "all") $this->db->where('A.pool', $P['pool']);
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		//  die($this->db->last_query());
 		return $query;
 	}
 
