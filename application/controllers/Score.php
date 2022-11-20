@@ -215,8 +215,8 @@ class Score extends CI_Controller
 		$data = $this->Model_score->get_point($_POST['jenis'], $_POST['key']);
 		$data = $data->row_array();
 
-		$ARRAY["point_tim_A"] = $data["point_tim_A"];
-		$ARRAY["point_tim_B"] = $data["point_tim_B"];
+		$ARRAY["point_tim_A"] = isset($data["point_tim_A"]) ? $data["point_tim_A"]:'';
+		$ARRAY["point_tim_B"] = isset($data["point_tim_B"]) ? $data["point_tim_B"]:'';
 
 		echo JSON_ENCODE($ARRAY);
 	}

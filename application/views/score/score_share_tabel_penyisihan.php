@@ -8,9 +8,9 @@
                 </div>
             </div>
         </td>
-        <td id='set1_tim_A' class='text-center'></td>
-        <td class='text-center font-weight-bold bg-success' id='point_tim_A'></td>
-        <td class='text-center font-weight-bold bg-warning' >0</td>
+        <td class='text-center'>0</td>
+        <td class='text-center font-weight-bold bg-success' id='set1_tim_A'></td>
+        <td class='text-center font-weight-bold bg-warning' id='point_tim_A'></td>
     </tr>
     <tr class='align-top'>
         <td>
@@ -21,9 +21,9 @@
                 </div>
             </div>
         </td>
-        <td id='set1_tim_B' class='text-center'></td>
-        <td class='text-center font-weight-bold bg-success' id='point_tim_B'></td>
-        <td class='text-center font-weight-bold bg-warning'>0</td>
+        <td class='text-center'>0</td>
+        <td class='text-center font-weight-bold bg-success' id='set1_tim_B'></td>
+        <td class='text-center font-weight-bold bg-warning' id='point_tim_B'></td>
     </tr>
 </table>
 <style>
