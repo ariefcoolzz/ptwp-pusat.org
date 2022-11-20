@@ -51,10 +51,10 @@
 				$("#set3_tim_A").text(json.set3_tim_A);
 				$("#set3_tim_B").text(json.set3_tim_B);
 				$("#point_tim_A").text(json.point_tim_A);
-				$("#nama_satker_A").text(json.nama_satker_A);
-				$("#nama_satker_B").text(json.nama_satker_B);
-				$("#nama_pemain_tim_A").text(json.nama_pemain_tim_A);
-				$("#nama_pemain_tim_B").text(json.nama_pemain_tim_B);
+				$("#nama_satker_A").html(json.nama_satker_A);
+				$("#nama_satker_B").html(json.nama_satker_B);
+				$("#nama_pemain_tim_A").html(json.nama_pemain_tim_A);
+				$("#nama_pemain_tim_B").html(json.nama_pemain_tim_B);
 			}
 		});
 	}
