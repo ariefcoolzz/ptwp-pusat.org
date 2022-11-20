@@ -17,7 +17,7 @@
 			<div class="card-body">
 				<div class="row mt-3 mb-3" style='border:0px solid green;'>
 					<div class='col-6'>
-						<select class="form-control" id='beregu'>
+						<select class="form-control select_regu" id='beregu'>
 							<option value='' selected>----------------------------------- Pilih Regu -----------------------------------</option>
 							<option value='putra'>Beregu Putra</option>
 							<option value='putri'>Beregu Putri</option>
@@ -25,7 +25,7 @@
 						</select>
 					</div>
 					<div class='col-6'>
-						<select class="form-control" id='pool'>
+						<select class="form-control select_pool" id='pool'>
 							<option value='all' selected>Semua Pool</option>
 							<?php
 							$jumlah_pool = 26; //sampai Z
@@ -38,7 +38,7 @@
 				</div>
 				<div class="row mt-3 mb-3" style='border:0px solid green;'>
 					<div class='col-6'>
-						<select class="form-control" id='id_kontingen_tim_A'>
+						<select class="form-control select_a" id='id_kontingen_tim_A'>
 							<option value='all'>Semua Kontingen A</option>
 							<?php
 							$result = $this->Model_admin->model_data_pool_kontingen_group();
@@ -51,7 +51,7 @@
 						</select>
 					</div>
 					<div class='col-6'>
-						<select class="form-control" id='id_kontingen_tim_B'>
+						<select class="form-control select_b" id='id_kontingen_tim_B'>
 							<option value='all'>Semua Kontingen B</option>
 							<?php
 							$result = $this->Model_admin->model_data_pool_kontingen_group();
@@ -114,6 +114,11 @@
 </div>
 
 <script>
+	$('.select_regu').select2();
+	$('.select_pool').select2();
+	$('.select_a').select2();
+	$('.select_b').select2();
+
 	$('[data-toggle="tooltip"]').tooltip();
 
 	$('.datatable-pemain').DataTable({
