@@ -1,5 +1,5 @@
 <?php
-$result = $this->Model_score->model_data_babak_penyisihan_rekap($_POST);
+$result = $this->Model_score->model_form($_POST);
 if ($result->num_rows()) $R = $result->row_array();
 ?>
 <div class="row">
@@ -61,7 +61,7 @@ if ($result->num_rows()) $R = $result->row_array();
                 <td>Lapangan</td>
                 <td>
                     <?php
-                    $lapangan = $this->Model_score->model_master_lapangan($_POST);
+                    $lapangan = $this->Model_score->model_master_lapangan();
                     if ($lapangan->num_rows()) {
                         echo "<select class='form-control' id='id_lapangan'>";
                         echo "<option></option>";
@@ -83,7 +83,7 @@ if ($result->num_rows()) $R = $result->row_array();
                     <?php
                     $_POST['id_kontingen'] = $R['id_kontingen_tim_A'];
                     $_POST['beregu'] = $R['beregu'];
-                    $pemain = $this->Model_score->model_data_babak_penyisihan_pemain($_POST);
+                    $pemain = $this->Model_score->model_data_pemain($_POST);
                     if ($pemain->num_rows()) {
                         echo "<select class='form-control' id='id_pemain1_tim_A'>";
                         echo "<option></option>";
@@ -108,7 +108,7 @@ if ($result->num_rows()) $R = $result->row_array();
                     <?php
                     $_POST['id_kontingen'] = $R['id_kontingen_tim_B'];
                     $_POST['beregu'] = $R['beregu'];
-                    $pemain = $this->Model_score->model_data_babak_penyisihan_pemain($_POST);
+                    $pemain = $this->Model_score->model_data_pemain($_POST);
                     if ($pemain->num_rows()) {
                         echo "<select class='form-control' id='id_pemain1_tim_B'>";
                         echo "<option></option>";
@@ -208,7 +208,7 @@ if (isset($R)) {
         form_data.append('set3_tim_A', $("#set3_tim_A").val());
         form_data.append('set3_tim_B', $("#set3_tim_B").val());
         $.ajax({
-            url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_simpan",
+            url: "<?php echo base_url(); ?>score/data_penyisihan_simpan",
             type: 'POST',
             cache: false,
             contentType: false,
