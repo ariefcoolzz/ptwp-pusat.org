@@ -70,6 +70,7 @@ if (!$result->num_rows()) {
 ?>
 <script>
     $('#datatable').DataTable({
+        responsive: true,
         ordering: false,
         paging: false,
         language: {
