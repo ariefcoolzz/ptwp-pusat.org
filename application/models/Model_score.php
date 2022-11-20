@@ -54,8 +54,8 @@ class Model_score extends CI_Model
 		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
 		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
 		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->select('A.nama_pemain_tim_A');
+		$this->db->select('A.nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', $_SESSION['id_event']);
 		IF($_SESSION['beregu'] != "all") $this->db->where('A.beregu', $_SESSION['beregu']); 
@@ -71,25 +71,25 @@ class Model_score extends CI_Model
 
 	function model_data_penyisihan_simpan($P)
 	{
-		IF($P['id_pemain2_tim_A'] != "") 
+		IF($P['nama_pemain2_tim_A'] != "") 
 			{
-				$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'].",".$P['id_pemain2_tim_A'];
+				$P['nama_pemain_tim_A'] = $P['nama_pemain1_tim_A']."<br>".$P['nama_pemain2_tim_A'];
 			} 
 		ELSE {
-			$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'];
+			$P['nama_pemain_tim_A'] = $P['nama_pemain1_tim_A'];
 		}
-		IF($P['id_pemain2_tim_B'] != "") 
+		IF($P['nama_pemain2_tim_B'] != "") 
 			{
-				$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'].",".$P['id_pemain2_tim_B'];
+				$P['nama_pemain_tim_B'] = $P['nama_pemain1_tim_B']."<br>".$P['nama_pemain2_tim_B'];
 			} 
 		ELSE {
-			$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'];
+			$P['nama_pemain_tim_B'] = $P['nama_pemain1_tim_B'];
 		}
 
-		UNSET($P['id_pemain1_tim_A']);
-		UNSET($P['id_pemain2_tim_A']);
-		UNSET($P['id_pemain1_tim_B']);
-		UNSET($P['id_pemain2_tim_B']);
+		UNSET($P['nama_pemain1_tim_A']);
+		UNSET($P['nama_pemain2_tim_A']);
+		UNSET($P['nama_pemain1_tim_B']);
+		UNSET($P['nama_pemain2_tim_B']);
 
 		$P['id_event'] = $_SESSION['id_event'];
 		$this->db->where('id_pertandingan', $P['id_pertandingan']);
@@ -106,8 +106,8 @@ class Model_score extends CI_Model
 		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
 		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
 		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->select('A.nama_pemain_tim_A');
+		$this->db->select('A.nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', $_SESSION['id_event']); 
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
@@ -133,8 +133,8 @@ class Model_score extends CI_Model
 		$this->db->select("A.set3_tim_B");
 		$this->db->select("B.NamaSatker AS nama_satker_A");
 		$this->db->select("C.NamaSatker AS nama_satker_B");
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->select('A.nama_pemain_tim_A');
+		$this->db->select('A.nama_pemain_tim_B');
 		$this->db->from("data_babak_".$jenis." AS A");
 		$this->db->join("tmst_satker AS B", "A.id_kontingen_tim_A = B.IdSatker", 'left');
 		$this->db->join("tmst_satker AS C", "A.id_kontingen_tim_B = C.IdSatker", 'left');
@@ -176,8 +176,8 @@ class Model_score extends CI_Model
 		$this->db->select("A.*");
 		$this->db->select("B.lapangan");
 		$this->db->select("KATEGORI(A.id_kategori) AS kategori");
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
-		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
+		$this->db->select('A.nama_pemain_tim_A');
+		$this->db->select('A.nama_pemain_tim_B');
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->join("master_lapangan AS B", "A.id_lapangan = B.id_lapangan", 'left');
 		IF($key != NULL) $this->db->where("MD7(A.id_pertandingan)",$key); 
