@@ -133,6 +133,52 @@ class Score extends CI_Controller
 
 		echo JSON_ENCODE($ARRAY);
 	}
+
+	public function manage_reset_point()
+	{
+		// PRINT_R($_POST);DIE();
+
+		$status = $this->Model_score->manage_reset_point($_POST);
+
+		$data = $this->Model_score->score_point_detail($_POST);
+		$data = $data->row_array();
+		// PRINT_R($data->row_array());DIE();
+
+		$ARRAY['status'] 		= $status;
+		$ARRAY["point_tim_A"] 	= $data["point_tim_A"];
+		$ARRAY["point_tim_B"] 	= $data["point_tim_B"];
+
+		$FIX['jenis'] = $_POST['jenis'];
+		$FIX['id_pertandingan'] = $data['id_pertandingan'];
+
+		$ARRAY['log_penyisihan']= $this->load->view('score/@log_penyisihan', $FIX, TRUE);
+
+		echo JSON_ENCODE($ARRAY);
+	}
+
+	public function manage_hapus_point()
+	{
+		// PRINT_R($_POST);DIE();
+
+		
+
+		$data = $this->Model_score->score_point_detail($_POST);
+		$data = $data->row_array();
+		// PRINT_R($data->row_array());DIE();
+
+		$status = $this->Model_score->manage_hapus_point($_POST);
+
+		$ARRAY['status'] 		= $status;
+		$ARRAY["point_tim_A"] 	= $data["point_tim_A"];
+		$ARRAY["point_tim_B"] 	= $data["point_tim_B"];
+
+		$FIX['jenis'] = $_POST['jenis'];
+		$FIX['id_pertandingan'] = $data['id_pertandingan'];
+
+		$ARRAY['log_penyisihan']= $this->load->view('score/@log_penyisihan', $FIX, TRUE);
+
+		echo JSON_ENCODE($ARRAY);
+	}
 	
 	public function share($jenis,$key)
 	{
