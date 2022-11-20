@@ -7,10 +7,6 @@ if ($result->num_rows()) $R = $result->row_array();
         <input type='hidden' id='id_pertandingan'>
         <table class="table table-borderless table-striped">
             <tr>
-                <td>Event</td>
-                <td><?php echo $R['id_event']; ?></td>
-            </tr>
-            <tr>
                 <td>Beregu</td>
                 <td><?php echo $R['beregu']; ?></td>
             </tr>
@@ -72,6 +68,11 @@ if ($result->num_rows()) $R = $result->row_array();
                     }
                     ?>
                 </td>
+            </tr>
+			<tr>
+                <td>Link Streaming</td>
+                <td><input type="text" class="form-control" id="link_streaming" value='<?php if (isset($R['link_streaming'])) echo $R['link_streaming']; ?>'>
+				</td>
             </tr>
         </table>
     </div>
@@ -207,6 +208,7 @@ if (isset($R)) {
         form_data.append('set2_tim_B', $("#set2_tim_B").val());
         form_data.append('set3_tim_A', $("#set3_tim_A").val());
         form_data.append('set3_tim_B', $("#set3_tim_B").val());
+        form_data.append('link_streaming', $("#link_streaming").val());
         $.ajax({
             url: "<?php echo base_url(); ?>score/data_penyisihan_simpan",
             type: 'POST',
