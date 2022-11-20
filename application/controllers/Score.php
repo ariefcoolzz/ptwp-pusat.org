@@ -126,6 +126,11 @@ class Score extends CI_Controller
 		$ARRAY["point_tim_A"] 	= $data["point_tim_A"];
 		$ARRAY["point_tim_B"] 	= $data["point_tim_B"];
 
+		$FIX['jenis'] = $_POST['jenis'];
+		$FIX['id_pertandingan'] = $data['id_pertandingan'];
+
+		$ARRAY['log_penyisihan']= $this->load->view('score/@log_penyisihan', $FIX, TRUE);
+
 		echo JSON_ENCODE($ARRAY);
 	}
 	
