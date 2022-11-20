@@ -50,6 +50,8 @@
 				$("#set2_tim_B").text(json.set2_tim_B);
 				$("#set3_tim_A").text(json.set3_tim_A);
 				$("#set3_tim_B").text(json.set3_tim_B);
+				$("#menang_tim_A").text(json.menang_tim_A);
+				$("#menang_tim_B").text(json.menang_tim_B);
 				$("#point_tim_A").text(json.point_tim_A);
 				$("#point_tim_B").text(json.point_tim_B);
 				$("#nama_satker_A").html(json.nama_satker_A);

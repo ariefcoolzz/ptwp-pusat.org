@@ -646,16 +646,24 @@ function nama_singkat($nama)
 			{
 				FOR($a=0;$a<COUNT($PEMAIN);$a++)
 					{
-
+						$nama_clean = $PEMAIN[$a];
+						$nama_clean = STR_REPLACE("Hj. ", "", $nama_clean);
+						$nama_clean = STR_REPLACE("H. ", "", $nama_clean);
+						$nama_clean = STR_REPLACE("Hj.", "", $nama_clean);
+						$nama_clean = STR_REPLACE("H.", "", $nama_clean);
+						$nama_clean = STR_REPLACE("Drs. ", "", $nama_clean);
+						$nama_clean = STR_REPLACE("Dra. ", "", $nama_clean);
 						// $hasil = $PEMAIN[$a];
-						$EXP = EXPLODE(" ", $PEMAIN[$a]);
+						$EXP = EXPLODE(" ", $nama_clean);
 						IF(COUNT($EXP) > 0)
 							{
 								$hasil .= $EXP[0]." ";
+								$hasil .= "<small>";
 								FOR($i=1;$i<COUNT($EXP);$i++)
 									{
 										$hasil .= SUBSTR($EXP[$i],0,1)."."; 
 									}
+								$hasil .= "</small>";
 							}
 						$hasil .= "<br>";
 					}

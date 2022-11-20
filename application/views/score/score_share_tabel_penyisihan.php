@@ -9,7 +9,7 @@
                 </div>
             </div>
         </td>
-        <td class='text-center align-middle'>0</td>
+        <td class='text-center align-middle' id='menang_tim_A'></td>
         <td class='text-center align-middle' id='set1_tim_A'></td>
         <td class='text-center align-middle' id='point_tim_A'></td>
     </tr>
@@ -23,7 +23,7 @@
                 </div>
             </div>
         </td>
-        <td class='text-center align-middle'>0</td>
+        <td class='text-center align-middle' id='menang_tim_B'></td>
         <td class='text-center align-middle' id='set1_tim_B'></td>
         <td class='text-center align-middle' id='point_tim_B'></td>
     </tr>

@@ -206,6 +206,8 @@ class Score extends CI_Controller
 		$ARRAY["set2_tim_B"] = $data["set2_tim_B"];
 		$ARRAY["set3_tim_A"] = $data["set3_tim_A"];
 		$ARRAY["set3_tim_B"] = $data["set3_tim_B"];
+		$ARRAY["menang_tim_A"] = $data["menang_tim_A"];
+		$ARRAY["menang_tim_B"] = $data["menang_tim_B"];
 		$ARRAY["nama_satker_A"] = $data["nama_satker_A"];
 		$ARRAY["nama_satker_B"] = $data["nama_satker_B"];
 		$ARRAY["nama_pemain_tim_A"] = nama_singkat($data["nama_pemain_tim_A"]);

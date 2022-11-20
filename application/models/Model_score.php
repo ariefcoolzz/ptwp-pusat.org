@@ -135,6 +135,8 @@ class Model_score extends CI_Model
 		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS nama_satker_B");
 		$this->db->select('A.nama_pemain_tim_A');
 		$this->db->select('A.nama_pemain_tim_B');
+		$this->db->select('(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND set1_tim_A=A.set1_tim_A AND set1_tim_B=A.set1_tim_B AND set1_tim_A > set1_tim_B) AS menang_tim_A');
+		$this->db->select('(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND set1_tim_A=A.set1_tim_A AND set1_tim_B=A.set1_tim_B AND set1_tim_B > set1_tim_A) AS menang_tim_B');
 		$this->db->from("data_babak_".$jenis." AS A");
 		$this->db->where("MD7(A.id_pertandingan)",$key); 
 		$query = $this->db->get();
