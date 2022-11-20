@@ -1,7 +1,13 @@
 <?php 
 $get_point_and_game = $this->Model_score->get_point_and_game($jenis, $id_pertandingan);
 if ($get_point_and_game->num_rows()) {
-    echo "<table border='1' width='100%'>";
+    echo "<table id='datatable' class='table table-primary table-striped table-borderless table-hover'>";
+    echo "<tr class='bg-dark text-white'>
+                <th>Game</th>
+                <th>Point A</th>
+                <th>Point B</th>
+            </tr>
+        ";
     FOREACH($get_point_and_game->result_array() AS $R)
         {
             IF($R['point_tim_A'] == "Game") $bg_A = 'bg-success'; ELSE $bg_A = '';
@@ -14,6 +20,6 @@ if ($get_point_and_game->num_rows()) {
                     </tr>
                 ";
         }
-    echo "</table>";
+    echo "</tr>";
 }
 ?>
