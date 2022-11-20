@@ -131,8 +131,8 @@ class Model_score extends CI_Model
 		$this->db->select("A.set1_tim_B");
 		$this->db->select("A.set2_tim_B");
 		$this->db->select("A.set3_tim_B");
-		$this->db->select("B.NamaSatker AS nama_satker_A");
-		$this->db->select("C.NamaSatker AS nama_satker_B");
+		$this->db->select("NAMA_SATKER_SINGKAT(B.IdSatker) AS nama_satker_A");
+		$this->db->select("NAMA_SATKER_SINGKAT(C.IdSatker) AS nama_satker_B");
 		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_A) AS nama_pemain_tim_A');
 		$this->db->select('NAMA_PEMAIN(A.id_pemain_tim_B) AS nama_pemain_tim_B');
 		$this->db->from("data_babak_".$jenis." AS A");
