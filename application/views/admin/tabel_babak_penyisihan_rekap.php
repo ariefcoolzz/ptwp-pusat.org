@@ -107,13 +107,13 @@
 
                 $menang_persentase = ROUND($menang / $jumlah * 100,2);
                 $kalah_persentase  = ROUND($kalah  / $jumlah * 100,2);
-                
+        $temp_menang[$iktA] = $menang_persentase;
                 echo "<td rowspan='2'>$menang</td>";
                 echo "<td rowspan='2'>$kalah</td>";
                 echo "<td rowspan='2'>$menang_persentase%</td>";
                 echo "<td rowspan='2'>$kalah_persentase%</td>";
                 echo "<td rowspan='2'>100%</td>";
-                echo "<td rowspan='2'></td>";
+        echo "<td rowspan='2' id='peringkat_" . $iktA . "'></td>";
                 // echo "<td rowspan='2'></td>";
                 // echo "<td rowspan='2'></td>";
                 // echo "<td rowspan='2'></td>";
@@ -139,6 +139,14 @@
         }
         echo "</table>";
     }
+                    arsort($temp_menang);
+                    $i = 1;
+                    $val_temp = null;
+                    foreach ($temp_menang as $key => $val) {
+                        echo "<script>$('#peringkat_" . $key . "').html('" . $i . "');</script>";
+                        if ($val !== $val_temp) $i++;
+                        $val_temp = $val;
+                    }
 ?>
 <script>
     $(".edit").on('click', function() {
