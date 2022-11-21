@@ -16,6 +16,7 @@ class Model_score extends CI_Model
 	{
 		$this->db->select('A.*');
 		$this->db->from('master_lapangan AS A');
+		$this->db->order_by('A.lapangan ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
