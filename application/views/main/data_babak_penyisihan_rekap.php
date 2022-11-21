@@ -5,15 +5,13 @@ if (!$result->num_rows()) {
 } else {
     $score = $this->Model_main->model_tabel_babak_penyisihan_score($_POST);
     $no = 0;
-    echo "<h4 class='text-center'>Pool </h4>";
-    echo "<h4 class='text-center'>Beregu </h4>";
-    echo "<table class='table table-primary table-borderless table-hover'>";
+    echo "<table id='table' class='table table-primary table-borderless table-hover'>";
     echo "
         <thead>
 		<tr>
 		<th>No.</th>
-		<th class='d-none'>Beregu</th>
-		<th class='d-none'>Pool</th>
+		<th>Beregu</th>
+		<th>Pool</th>
 		<th> Nama Tim </th>";
     foreach ($result->result_array() as $S) {
         if ($S['beregu'] == 'putra') {
@@ -69,8 +67,8 @@ if (!$result->num_rows()) {
         $no++;
         echo "<tr valign='top'>";
         echo "<td rowspan='2'>" . $no . "</td>";
-        echo "<td class='d-none' id='beregu' rowspan='2'>" . $R['beregu'] . "</td>";
-        echo "<td class='d-none' id='pool' rowspan='2'>" . $R['pool'] . "</td>";
+        echo "<td id='beregu' rowspan='2'>" . $R['beregu'] . "</td>";
+        echo "<td id='pool' rowspan='2'>" . $R['pool'] . "</td>";
         echo "<td rowspan='2'>" . $R['nama_satker_singkat'] . "</td>";
 
         $iktA   = $R['id_kontingen'];
