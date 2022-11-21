@@ -171,7 +171,7 @@ if (!$result->num_rows()) {
         if (!empty($kalah)) $kalah_persentase   = ROUND($kalah  / $jumlah * 100, 2);
         $temp_menang[$iktA] = $menang_persentase;
         $temp_point_game[$iktA] = $point_game;
-        
+
         echo "<td rowspan='2'>$menang</td>";
         echo "<td rowspan='2'>$kalah</td>";
         echo "<td rowspan='2'>$menang_persentase%</td>";
@@ -209,134 +209,113 @@ if (!$result->num_rows()) {
         echo '</tr>';
     }
     echo "</table>";
+    echo "<br><hr>";
 }
-arsort($temp_menang);
-$rangking_temp = array();
-$i = 0;
-$val_temp = null;
-$rangking_sama = 1;
-foreach ($temp_menang as $key => $val) {
-    if ($val !== $val_temp) $i++;
-    else $rangking_sama++;
-    $val_temp = $val;
-    $rangking_temp[$key] = $i;
-}
-##CETAK RANGKING JIKA GK ADA YG SAMA##
-if ($rangking_sama == 1) {
-    foreach ($rangking_temp as $key => $val) {
-        echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+$tmp = array_filter($temp_menang);
+if (!empty($tmp)) {
+    arsort($temp_menang);
+    $rangking_temp = array();
+    $i = 0;
+    $val_temp = null;
+    $rangking_sama = 1;
+    foreach ($temp_menang as $key => $val) {
+        if ($val !== $val_temp) $i++;
+        else $rangking_sama++;
+        $val_temp = $val;
+        $rangking_temp[$key] = $i;
     }
-} else if ($rangking_sama == 2) {
-    $rangking_temp2 = array();
-    $val_temp2 = 0;
-    $yg_sama = null;
-    ## 1st STEP CARI RANGKING YG SAMA DLU
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $val_temp2) {
-            $yg_sama = $val;
-            break; //DAH KITA CARI YG SAMA PERINGKAT ATAS AJA
+    ##CETAK RANGKING JIKA GK ADA YG SAMA##
+    if ($rangking_sama == 1) {
+        foreach ($rangking_temp as $key => $val) {
+            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
         }
-        $val_temp2 = $val;
-    }
-    ## 2nd STEP BIKIN ARRAY PERINGKAT YG SAMA BWT DI SORT SENDIRI (DAPETIN MACTH POINTNYA)
-    $i = 1;
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $yg_sama) $rangking_temp2[$i] = $key;
-        $i++;
-    }
-    $iktA = $rangking_temp2[1];
-    $iktB = $rangking_temp2[2];
-    $menang_iktA = $menang_hth_total[$iktA][$iktB];
-    $menang_iktB = $menang_hth_total[$iktB][$iktA];
-    $rangking_temp3 = array();
-    if ($menang_iktA > $menang_iktB) {
-        $rangking_temp3[$iktA] = $yg_sama;
-        $rangking_temp3[$iktB] = $yg_sama + 1;
-    } else {
-        $rangking_temp3[$iktB] = $yg_sama;
-        $rangking_temp3[$iktA] = $yg_sama + 1;
-    }
-    ## 3rd KITA GABUNING SAMA PERINGKAT YG PERTAMA
-    $rangking_baru = $rangking_temp;
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $yg_sama) {
-            $penambah = $yg_sama;
-            foreach ($rangking_temp3 as $key => $val) {
-                $rangking_baru[$key] = $penambah;
-                $penambah++;
+    } else if ($rangking_sama == 2) {
+        $rangking_temp2 = array();
+        $val_temp2 = 0;
+        $yg_sama = null;
+        ## 1st STEP CARI RANGKING YG SAMA DLU
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $val_temp2) {
+                $yg_sama = $val;
+                break; //DAH KITA CARI YG SAMA PERINGKAT ATAS AJA
             }
-        } else if ($val >= $yg_sama) {
-            $rangking_baru[$key] = $val + $rangking_sama - 1;
+            $val_temp2 = $val;
         }
-    }
-    ## 4rd KITA SET KE LIST PERINGKAT
-    foreach ($rangking_baru as $key => $val) {
-        echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
-    }
-} else if ($rangking_sama >= 3) {
-    $rangking_temp2 = array();
-    $val_temp2 = 0;
-    $yg_sama = null;
-    ## 1st STEP CARI RANGKING YG SAMA DLU
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $val_temp2) {
-            $yg_sama = $val;
-            break; //DAH KITA CARI YG SAMA PERINGKAT ATAS AJA
+        ## 2nd STEP BIKIN ARRAY PERINGKAT YG SAMA BWT DI SORT SENDIRI (DAPETIN MACTH POINTNYA)
+        $i = 1;
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $yg_sama) $rangking_temp2[$i] = $key;
+            $i++;
         }
-        $val_temp2 = $val;
-    }
-    ## 2nd STEP BIKIN ARRAY PERINGKAT YG SAMA BWT DI SORT SENDIRI (DAPETIN MACTH POINTNYA)
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $yg_sama) $rangking_temp2[$key] = $temp_point_game[$key];
-    }
-    arsort($rangking_temp2);
-    ## 3rd KITA GABUNING SAMA PERINGKAT YG PERTAMA
-    $rangking_baru = $rangking_temp;
-    foreach ($rangking_temp as $key => $val) {
-        if ($val == $yg_sama) {
-            $penambah = $yg_sama;
-            foreach ($rangking_temp2 as $key => $val) {
-                $rangking_baru[$key] = $penambah;
-                $penambah++;
+        $iktA = $rangking_temp2[1];
+        $iktB = $rangking_temp2[2];
+        $menang_iktA = $menang_hth_total[$iktA][$iktB];
+        $menang_iktB = $menang_hth_total[$iktB][$iktA];
+        $rangking_temp3 = array();
+        if ($menang_iktA > $menang_iktB) {
+            $rangking_temp3[$iktA] = $yg_sama;
+            $rangking_temp3[$iktB] = $yg_sama + 1;
+        } else {
+            $rangking_temp3[$iktB] = $yg_sama;
+            $rangking_temp3[$iktA] = $yg_sama + 1;
+        }
+        ## 3rd KITA GABUNING SAMA PERINGKAT YG PERTAMA
+        $rangking_baru = $rangking_temp;
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $yg_sama) {
+                $penambah = $yg_sama;
+                foreach ($rangking_temp3 as $key => $val) {
+                    $rangking_baru[$key] = $penambah;
+                    $penambah++;
+                }
+            } else if ($val >= $yg_sama) {
+                $rangking_baru[$key] = $val + $rangking_sama - 1;
             }
-        } else if ($val >= $yg_sama) {
-            $rangking_baru[$key] = $val + $rangking_sama - 1;
         }
-    }
-    ## 4rd KITA SET KE LIST PERINGKAT
-    foreach ($rangking_baru as $key => $val) {
-        echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+        ## 4rd KITA SET KE LIST PERINGKAT
+        foreach ($rangking_baru as $key => $val) {
+            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+        }
+    } else if ($rangking_sama >= 3) {
+        $rangking_temp2 = array();
+        $val_temp2 = 0;
+        $yg_sama = null;
+        ## 1st STEP CARI RANGKING YG SAMA DLU
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $val_temp2) {
+                $yg_sama = $val;
+                break; //DAH KITA CARI YG SAMA PERINGKAT ATAS AJA
+            }
+            $val_temp2 = $val;
+        }
+        ## 2nd STEP BIKIN ARRAY PERINGKAT YG SAMA BWT DI SORT SENDIRI (DAPETIN MACTH POINTNYA)
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $yg_sama) $rangking_temp2[$key] = $temp_point_game[$key];
+        }
+        arsort($rangking_temp2);
+        ## 3rd KITA GABUNING SAMA PERINGKAT YG PERTAMA
+        $rangking_baru = $rangking_temp;
+        foreach ($rangking_temp as $key => $val) {
+            if ($val == $yg_sama) {
+                $penambah = $yg_sama;
+                foreach ($rangking_temp2 as $key => $val) {
+                    $rangking_baru[$key] = $penambah;
+                    $penambah++;
+                }
+            } else if ($val >= $yg_sama) {
+                $rangking_baru[$key] = $val + $rangking_sama - 1;
+            }
+        }
+        ## 4rd KITA SET KE LIST PERINGKAT
+        foreach ($rangking_baru as $key => $val) {
+            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+        }
     }
 }
+
 
 // echo "sama ada : " . $rangking_sama;
 // echo '<pre>';
 // print_r($rangking_temp);
 // print_r($temp_point_game);
 // echo '</pre>';
-?>
-<script>
-    $(".edit").on('click', function() {
-        var form_data = new FormData();
-        form_data.append('id_event', $("#list_event").val());
-        form_data.append('id_pertandingan', $(this).data('id_pertandingan'));
-        $.ajax({
-            url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_form",
-            type: 'POST',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            dataType: 'json',
-            success: function(json) {
-                if (json.status !== true) {
-                    location.reload();
-                } else {
-                    $("#modal").modal('show');
-                    $("#modal_judul").html("Edit Data Pertandingan");
-                    $("#modal_isi").html(json.konten_menu);
-                }
-            }
-        });
-    });
-</script>

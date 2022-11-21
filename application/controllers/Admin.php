@@ -1144,7 +1144,16 @@ class Admin extends CI_Controller
 
 	public function tabel_babak_penyisihan_rekap()
 	{
-		$konten_menu = $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+		$pool = $this->input->post('pool');
+		$konten_menu = '';
+		if ($pool != "all")	$konten_menu = $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+		else {
+			$list_pool = $this->Model_admin->get_list_pool();
+			foreach ($list_pool->result_array() as $R) {
+				$_POST['pool'] = $R['pool'];
+				$konten_menu .= $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+			}
+		}
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 

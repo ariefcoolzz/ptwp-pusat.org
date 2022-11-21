@@ -495,6 +495,19 @@ class Model_admin extends CI_Model
 
 
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function get_list_pool()
+	{
+		$id_event = $this->input->post('id_event');
+		$beregu = $this->input->post('beregu');
+		$this->db->select('pool');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $id_event);
+		$this->db->where('A.beregu', $beregu);
+		$this->db->group_by('A.pool');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
 	function get_data_user($data)
 	{
 		$id_panitia = $this->input->post('id_panitia');
