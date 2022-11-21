@@ -112,19 +112,19 @@ extract($_SESSION);
                     <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
                     <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
                     <li class="nav-item"><a menu_admin="tabel_babak_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_turnamen" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Babak Turnamen</span></a></li>
-                    <li class="nav-item"><a menu_admin="skema_babak_final_rekap" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_babak_final" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Final</span></a></li>
+                    <li class="nav-item"><a menu_admin="skema_babak_final" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Final</span></a></li>
                 <?php } ?>
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
 
                     <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
                     <li class="nav-item"><a menu_admin="data_pertandingan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pertandingan</span></a></li>
                 <?php } ?>
-                <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1, 2, 3))) { ?>
+                <!-- <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1, 2, 3))) { ?>
                     <li class="nav-label pt-3">Score</li>
                     <li class="nav-item"><a menu_admin="score_manage" class="menu_admin nav-link"><i data-feather="circle"></i> <span>Manage Score</span></a></li>
                     <li class="nav-item"><a menu_admin="score_share" class="menu_admin nav-link"><i data-feather="circle"></i> <span>Share Score</span></a></li>
-                <?php } ?>
+                <?php } ?> -->
             </ul>
         </div>
     </aside>

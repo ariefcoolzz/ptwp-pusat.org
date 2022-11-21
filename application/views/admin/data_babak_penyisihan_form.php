@@ -85,17 +85,17 @@ if ($result->num_rows()) $R = $result->row_array();
                     $_POST['beregu'] = $R['beregu'];
                     $pemain = $this->Model_admin->model_data_babak_penyisihan_pemain($_POST);
                     if ($pemain->num_rows()) {
-                        echo "<select class='form-control' id='id_pemain1_tim_A'>";
+                        echo "<select class='form-control' id='nama_pemain1_tim_A'>";
                         echo "<option></option>";
                         foreach ($pemain->result_array() as $P) {
-                            echo "<option value='$P[id_pemain]'>$P[nama]</option>";
+                            echo "<option value='$P[nama]'>$P[nama]</option>";
                         }
                         echo "</select>";
 
-                        echo "<select class='form-control' id='id_pemain2_tim_A' style='display:none;'>";
+                        echo "<select class='form-control' id='nama_pemain2_tim_A' style='display:none;'>";
                         echo "<option></option>";
                         foreach ($pemain->result_array() as $P) {
-                            echo "<option value='$P[id_pemain]'>$P[nama]</option>";
+                            echo "<option value='$P[nama]'>$P[nama]</option>";
                         }
                         echo "</select>";
                     }
@@ -110,17 +110,17 @@ if ($result->num_rows()) $R = $result->row_array();
                     $_POST['beregu'] = $R['beregu'];
                     $pemain = $this->Model_admin->model_data_babak_penyisihan_pemain($_POST);
                     if ($pemain->num_rows()) {
-                        echo "<select class='form-control' id='id_pemain1_tim_B'>";
+                        echo "<select class='form-control' id='nama_pemain1_tim_B'>";
                         echo "<option></option>";
                         foreach ($pemain->result_array() as $P) {
-                            echo "<option value='$P[id_pemain]'>$P[nama]</option>";
+                            echo "<option value='$P[nama]'>$P[nama]</option>";
                         }
                         echo "</select>";
 
-                        echo "<select class='form-control' id='id_pemain2_tim_B' style='display:none;'>";
+                        echo "<select class='form-control' id='nama_pemain2_tim_B' style='display:none;'>";
                         echo "<option></option>";
                         foreach ($pemain->result_array() as $P) {
-                            echo "<option value='$P[id_pemain]'>$P[nama]</option>";
+                            echo "<option value='$P[nama]'>$P[nama]</option>";
                         }
                         echo "</select>";
                     }
@@ -162,21 +162,21 @@ if ($result->num_rows()) $R = $result->row_array();
 if (isset($R)) {
     if ($R['tunggal_ganda'] == "ganda") {
         echo "<script>";
-        echo "$('#id_pemain2_tim_A').show();";
-        echo "$('#id_pemain2_tim_B').show();";
+        echo "$('#nama_pemain2_tim_A').show();";
+        echo "$('#nama_pemain2_tim_B').show();";
         echo "</script>";
     }
-    $E_A = EXPLODE(',', $R['id_pemain_tim_A']);
-    $E_B = EXPLODE(',', $R['id_pemain_tim_B']);
+    $E_A = EXPLODE('<br>', $R['nama_pemain_tim_A']);
+    $E_B = EXPLODE('<br>', $R['nama_pemain_tim_B']);
     echo "<script>";
     echo "$('#id_pertandingan').val('$R[id_pertandingan]');";
     echo "$('#tanggal').val('$R[tanggal]');";
     echo "$('#waktu').val('$R[waktu]');";
     echo "$('#id_lapangan').val('$R[id_lapangan]');";
-    if (isset($E_A[0])) echo "$('#id_pemain1_tim_A').val('$E_A[0]');";
-    if (isset($E_A[1])) echo "$('#id_pemain2_tim_A').val('$E_A[1]');";
-    if (isset($E_B[0])) echo "$('#id_pemain1_tim_B').val('$E_B[0]');";
-    if (isset($E_B[1])) echo "$('#id_pemain2_tim_B').val('$E_B[1]');";
+    if (isset($E_A[0])) echo "$('#nama_pemain1_tim_A').val('$E_A[0]');";
+    if (isset($E_A[1])) echo "$('#nama_pemain2_tim_A').val('$E_A[1]');";
+    if (isset($E_B[0])) echo "$('#nama_pemain1_tim_B').val('$E_B[0]');";
+    if (isset($E_B[1])) echo "$('#nama_pemain2_tim_B').val('$E_B[1]');";
     echo "$('#set1_tim_A').val('$R[set1_tim_A]');";
     echo "$('#set1_tim_B').val('$R[set1_tim_B]');";
     echo "$('#set2_tim_A').val('$R[set2_tim_A]');";
@@ -197,10 +197,10 @@ if (isset($R)) {
         form_data.append('tanggal', $("#tanggal").val());
         form_data.append('waktu', $("#waktu").val());
         form_data.append('id_lapangan', $("#id_lapangan").val());
-        form_data.append('id_pemain1_tim_A', $("#id_pemain1_tim_A").val());
-        form_data.append('id_pemain2_tim_A', $("#id_pemain2_tim_A").val());
-        form_data.append('id_pemain1_tim_B', $("#id_pemain1_tim_B").val());
-        form_data.append('id_pemain2_tim_B', $("#id_pemain2_tim_B").val());
+        form_data.append('nama_pemain1_tim_A', $("#nama_pemain1_tim_A").val());
+        form_data.append('nama_pemain2_tim_A', $("#nama_pemain2_tim_A").val());
+        form_data.append('nama_pemain1_tim_B', $("#nama_pemain1_tim_B").val());
+        form_data.append('nama_pemain2_tim_B', $("#nama_pemain2_tim_B").val());
         form_data.append('set1_tim_A', $("#set1_tim_A").val());
         form_data.append('set1_tim_B', $("#set1_tim_B").val());
         form_data.append('set2_tim_A', $("#set2_tim_A").val());

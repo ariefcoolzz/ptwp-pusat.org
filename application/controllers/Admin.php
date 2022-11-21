@@ -496,15 +496,7 @@ class Admin extends CI_Controller
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
-	public function data_babak_penyisihan()
-	{
-		$data['judul'] = "DATA POOL BABAK PENYISIHAN";
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
-		OB_START();
-		$this->load->view("admin/data_babak_penyisihan", $data);
-		$konten_menu = ob_get_clean();
-		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	}
+	
 	public function data_turnamen()
 	{
 		$data['judul'] = "DATA TURNAMEN";
@@ -1024,51 +1016,6 @@ class Admin extends CI_Controller
 	}
 
 	//Dika aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-	// public function score_manage()
-	// {
-	// 	OB_START();
-	// 	$this->load->view("admin/score_manage");
-	// 	$konten_menu = ob_get_clean();
-	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	// }
-
-	// public function score_manage_form()
-	// {
-	// 	OB_START();
-	// 	$this->load->view("admin/score_manage_form");
-	// 	$konten_menu = ob_get_clean();
-	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	// }
-
-	// public function score_manage_hapus()
-	// {
-	// 	$where = array('id_user' => $_POST['id_user']);
-	// 	$status = $this->basic->delete_data($where, 'score_manage');
-	// 	OB_START();
-	// 	$this->load->view("admin/score_manage");
-	// 	$konten_menu = ob_get_clean();
-	// 	echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
-	// }
-
-
-	// public function score_manage_simpan()
-	// {
-	// 	$where = array('id_user' => $_POST['id_user']);
-	// 	$cek_user = $this->basic->get_data_where($where, 'score_manage');
-	// 	if ($cek_user->num_rows()) {
-	// 		$where = array('id_user' => $_POST['id_user']);
-	// 		$status = $this->basic->update_data($where, 'score_manage', $_POST);
-	// 	} else {
-	// 		$status = $this->basic->insert_data('score_manage', $_POST);
-	// 	}
-
-	// 	OB_START();
-	// 	$this->load->view("admin/score_manage");
-	// 	$konten_menu = ob_get_clean();
-	// 	echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
-	// }
-
-
 	public function data_drawing()
 	{
 		$konten_menu = $this->load->view("admin/data_drawing", NULL, TRUE);
@@ -1109,6 +1056,16 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => $status));
 	}
 
+	public function data_babak_penyisihan()
+	{
+		$data['judul'] = "DATA POOL BABAK PENYISIHAN";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
+		OB_START();
+		$this->load->view("admin/data_babak_penyisihan", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
 	public function data_babak_penyisihan_rekap()
 	{
 		$konten_menu = $this->load->view("admin/data_babak_penyisihan_rekap", NULL, TRUE);
@@ -1144,13 +1101,32 @@ class Admin extends CI_Controller
 
 	public function tabel_babak_penyisihan_rekap()
 	{
-		$konten_menu = $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+		$pool = $this->input->post('pool');
+		$konten_menu = '';
+		if ($pool != "all")	$konten_menu = $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+		else {
+			$list_pool = $this->Model_admin->get_list_pool();
+			foreach ($list_pool->result_array() as $R) {
+				$_POST['pool'] = $R['pool'];
+				$konten_menu .= $this->load->view("admin/tabel_babak_penyisihan_rekap", NULL, TRUE);
+			}
+		}
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
-	public function skema_babak_final_rekap()
+	public function data_babak_final()
 	{
-		$konten_menu = $this->load->view("admin/skema_babak_final_rekap", NULL, TRUE);
+		$data['judul'] = "DATA BABAK FINAL";
+		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
+		OB_START();
+		$this->load->view("admin/data_babak_final", $data);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function skema_babak_final()
+	{
+		$konten_menu = $this->load->view("admin/skema_babak_final", NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 

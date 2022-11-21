@@ -46,10 +46,10 @@ if (!$result->num_rows()) {
         echo '<td>' . $R['kontingen_tim_A'] . '</td>';
         echo '<td>' . $R['kontingen_tim_B'] . '</td>';
         echo '<td>' . $R['kategori'] . '</td>';
-        echo '<td>' . $R['tanggal'] . '</td>';
+        echo '<td>' . format_tanggal('ddmmmmyyyy',$R['tanggal']) . '</td>';
         echo '<td>' . $R['waktu'] . '</td>';
         echo '<td>' . $R['lapangan'] . '</td>';
-        echo "<td align='center' $classA>$tim_A</td>";
+        echo "<td align='center' $classA>xxx $tim_A</td>";
         echo "<td align='center' $classB>$tim_B</td>";
         echo "<td>
                     <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'><i class='fa fa-edit'></i> Edit</button>

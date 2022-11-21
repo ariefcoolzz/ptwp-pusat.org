@@ -10,7 +10,7 @@
 </div>
 <div class="card">
 	<div class="card-body">
-	<a href="javascript:void(0)" id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Dari Pool</a>
+	<a href="javascript:void(0)" id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Dari Babak Penyisihan</a>
 			
 	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
@@ -21,43 +21,12 @@
 			</select>
 		</div>
 		<div class='col-6'>
-			<select class="form-control select2" id='pool'>
-				<option value='all' selected>Semua Pool</option>
-				<?php
-					$jumlah_pool = 26; //sampai Z
-					FOR($i=1;$i<=$jumlah_pool;$i++)
-						{
-							echo "<option value='".pool($i)."'>Pool ".pool($i)."</option>";
-						}
-				?>
-			</select>
-		</div>
-	</div>
-	<div class="row mt-3 mb-3" style='border:0px solid green;'>
-		<div class='col-6'>
-			<select class="form-control select2" id='id_kontingen_tim_A'>
-				<option value='all'>Semua Kontingen A</option>
-				<?php
-					$result = $this->Model_admin->model_data_pool_kontingen_group();
-					if ($result->num_rows()) {
-						foreach ($result->result_array() as $R) {
-							echo "<option value='$R[id_kontingen]'>$R[nama_satker]</option>";
-						}
-					}
-				?>
-			</select>
-		</div>
-		<div class='col-6'>
-			<select class="form-control select2" id='id_kontingen_tim_B'>
-				<option value='all'>Semua Kontingen B</option>
-				<?php
-					$result = $this->Model_admin->model_data_pool_kontingen_group();
-					if ($result->num_rows()) {
-						foreach ($result->result_array() as $R) {
-							echo "<option value='$R[id_kontingen]'>$R[nama_satker]</option>";
-						}
-					}
-				?>
+            <select class="form-control select2" id='per'>
+				<option value='all' selected>Semua</option>
+				<option value='8'>Perdelapan Final</option>
+				<option value='4'>Perempat Final</option>
+				<option value='2'>Semi Final</option>
+				<option value='1'>Final</option>
 			</select>
 		</div>
 	</div>
@@ -78,7 +47,7 @@
 		}
 	});
 
-	$("#beregu,#pool,#id_kontingen_tim_A,#id_kontingen_tim_B").on('change', function() {
+	$("#beregu,#per").on('change', function() {
 		load();
 	});
 
@@ -89,11 +58,9 @@
 		var form_data = new FormData();
 		form_data.append('id_event', $("#list_event").val());
 		form_data.append('beregu', $("#beregu").val());
-		form_data.append('pool', $("#pool").val());
-		form_data.append('id_kontingen_tim_A', $("#id_kontingen_tim_A").val());
-		form_data.append('id_kontingen_tim_B', $("#id_kontingen_tim_B").val());
+		form_data.append('per', $("#per").val());
 		$.ajax({
-			url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_rekap",
+			url: "<?php echo base_url(); ?>admin/data_babak_final_rekap",
 			type: 'POST',
 			cache: false,
 			contentType: false,
