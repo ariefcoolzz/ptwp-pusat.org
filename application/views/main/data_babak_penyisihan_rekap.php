@@ -5,12 +5,15 @@ if (!$result->num_rows()) {
 } else {
     $score = $this->Model_main->model_tabel_babak_penyisihan_score($_POST);
     $no = 0;
-    echo "<table border='1' width='100%'>";
+    echo "<h4 class='text-center'>Pool </h4>";
+    echo "<h4 class='text-center'>Beregu </h4>";
+    echo "<table class='table table-primary table-borderless table-hover'>";
     echo "
+        <thead>
 		<tr>
 		<th>No.</th>
-		<th>Beregu</th>
-		<th>Pool</th>
+		<th class='d-none'>Beregu</th>
+		<th class='d-none'>Pool</th>
 		<th> Nama Tim </th>";
     foreach ($result->result_array() as $S) {
         if ($S['beregu'] == 'putra') {
@@ -27,6 +30,8 @@ if (!$result->num_rows()) {
 		<th colspan='3'> Game </th>
 		<th> Peringkat </th>
 		</tr>
+        </thead>
+        <tbody>
 		";
 
     foreach ($score->result_array() as $S) { //untuk  deklarasiin nilai
@@ -64,8 +69,8 @@ if (!$result->num_rows()) {
         $no++;
         echo "<tr valign='top'>";
         echo "<td rowspan='2'>" . $no . "</td>";
-        echo "<td rowspan='2'>" . $R['beregu'] . "</td>";
-        echo "<td rowspan='2'>" . $R['pool'] . "</td>";
+        echo "<td class='d-none' id='beregu' rowspan='2'>" . $R['beregu'] . "</td>";
+        echo "<td class='d-none' id='pool' rowspan='2'>" . $R['pool'] . "</td>";
         echo "<td rowspan='2'>" . $R['nama_satker_singkat'] . "</td>";
 
         $iktA   = $R['id_kontingen'];
@@ -208,8 +213,8 @@ if (!$result->num_rows()) {
         }
         echo '</tr>';
     }
-    echo "</table>";
-    echo "<br><hr>";
+    echo "</tbody></table>";
+    echo "<hr />";
 }
 $tmp = array_filter($temp_menang);
 if (!empty($tmp)) {
@@ -247,9 +252,9 @@ if (!empty($tmp)) {
             if ($val == $yg_sama) $rangking_temp2[$i] = $key;
             $i++;
         }
-		
-        $iktA = isset($rangking_temp2[1]) ? $rangking_temp2[1]:'';
-        $iktB = isset($rangking_temp2[2]) ? $rangking_temp2[2]:'';
+
+        $iktA = isset($rangking_temp2[1]) ? $rangking_temp2[1] : '';
+        $iktB = isset($rangking_temp2[2]) ? $rangking_temp2[2] : '';
         //$iktB = $rangking_temp2[2];
         $menang_iktA = $menang_hth_total[$iktA][$iktB];
         $menang_iktB = $menang_hth_total[$iktB][$iktA];
