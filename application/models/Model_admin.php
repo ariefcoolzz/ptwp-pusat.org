@@ -356,25 +356,25 @@ class Model_admin extends CI_Model
 
 	function model_data_babak_penyisihan_simpan($P)
 	{
-		IF($P['id_pemain2_tim_A'] != "") 
+		IF($P['nama_pemain2_tim_A'] != "") 
 			{
-				$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'].",".$P['id_pemain2_tim_A'];
+				$P['nama_pemain_tim_A'] = $P['nama_pemain1_tim_A'].",".$P['nama_pemain2_tim_A'];
 			} 
 		ELSE {
-			$P['id_pemain_tim_A'] = $P['id_pemain1_tim_A'];
+			$P['nama_pemain_tim_A'] = $P['nama_pemain1_tim_A'];
 		}
-		IF($P['id_pemain2_tim_B'] != "") 
+		IF($P['nama_pemain2_tim_B'] != "") 
 			{
-				$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'].",".$P['id_pemain2_tim_B'];
+				$P['nama_pemain_tim_B'] = $P['nama_pemain1_tim_B'].",".$P['nama_pemain2_tim_B'];
 			} 
 		ELSE {
-			$P['id_pemain_tim_B'] = $P['id_pemain1_tim_B'];
+			$P['nama_pemain_tim_B'] = $P['nama_pemain1_tim_B'];
 		}
 
-		UNSET($P['id_pemain1_tim_A']);
-		UNSET($P['id_pemain2_tim_A']);
-		UNSET($P['id_pemain1_tim_B']);
-		UNSET($P['id_pemain2_tim_B']);
+		UNSET($P['nama_pemain1_tim_A']);
+		UNSET($P['nama_pemain2_tim_A']);
+		UNSET($P['nama_pemain1_tim_B']);
+		UNSET($P['nama_pemain2_tim_B']);
 
 		$this->db->where('id_pertandingan', $P['id_pertandingan']);
 		$query = $this->db->update('data_babak_penyisihan', $P); 
