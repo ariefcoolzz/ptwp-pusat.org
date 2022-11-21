@@ -253,6 +253,7 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select('A.*');
 		$this->db->from('master_lapangan AS A');
+		$this->db->order_by('A.lapangan ASC');
 		IF(ISSET($P['id_event'])) $this->db->where('A.id_event', $P['id_event']);
 		$query = $this->db->get();
 		// die($this->db->last_query());
