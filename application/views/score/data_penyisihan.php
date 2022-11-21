@@ -64,10 +64,9 @@
 						</select>
 					</div>
 				</div>
-				<?php 
-				IF(ISSET($_SESSION))
-					{
-						echo "
+				<?php
+				if (isset($_SESSION)) {
+					echo "
 								<script>
 									$('#beregu').val('$_SESSION[beregu]');
 									$('#pool').val('$_SESSION[pool]');
@@ -75,7 +74,7 @@
 									$('#id_kontingen_tim_B').val('$_SESSION[id_kontingen_tim_B]');
 								</script>
 							";
-					}
+				}
 				?>
 				<div class='row'>
 					<div class='col-12' id="konten_menu"></div>
@@ -146,11 +145,10 @@
 		load();
 	});
 
-	if($("#beregu").val() != "")
-		{
-			load();
-		}
-	
+	if ($("#beregu").val() != "") {
+		load();
+	}
+
 	function load() {
 		if ($("#beregu").val() == '') {
 			alert("Silahkan Pilih Regu Terlebih Dahulu... !!!");
