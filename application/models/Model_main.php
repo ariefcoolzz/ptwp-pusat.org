@@ -297,6 +297,7 @@ class Model_main extends CI_Model
 		return $data;
 	}
 
+
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	function model_data_link_streaming()
 	{
@@ -325,4 +326,55 @@ class Model_main extends CI_Model
 		return $query;
 	}
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+	function get_list_pool()
+	{
+		$id_event = $this->input->post('id_event');
+		$beregu = $this->input->post('beregu');
+		$this->db->select('pool');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $id_event);
+		$this->db->where('A.beregu', $beregu);
+		$this->db->group_by('A.pool');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	function model_tabel_babak_penyisihan_rekap($P)
+	{
+		// PRINT_R($P);DIE();
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen) AS nama_satker');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.id_kontingen) AS nama_satker_singkat');
+		$this->db->from('data_pool AS A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		IF($P['pool'] != "all") $this->db->where('A.pool', $P['pool']);
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	function model_tabel_babak_penyisihan_score($P)
+	{
+		$this->db->select('A.*');
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		IF($P['pool'] != "all") $this->db->where('A.pool', $P['pool']);
+		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
+		$query = $this->db->get();
+		//  die($this->db->last_query());
+		return $query;
+	}
+	function model_rule($id_event, $field = NULL)
+	{
+		IF($field == NULL) $this->db->select('A.*'); ELSE $this->db->select('A.'.$field);
+		$this->db->from('rule AS A');
+		$this->db->where('A.id_event', $id_event);
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		IF($field == NULL) return $query; ELSE return $query->row_array()[$field];
+	}
+
 }

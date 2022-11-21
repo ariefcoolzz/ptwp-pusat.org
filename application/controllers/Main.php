@@ -192,13 +192,13 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/data_babak_penyisihan', $data);
 	}
 
-	public function data_babak_penyisihan_rekap()
-	{
-		OB_START();
-		$this->load->view('main/data_babak_penyisihan_rekap');
-		$konten = ob_get_clean();
-		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
-	}
+	// public function data_babak_penyisihan_rekap()
+	// {
+		// OB_START();
+		// $this->load->view('main/data_babak_penyisihan_rekap');
+		// $konten = ob_get_clean();
+		// echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	// }
 
 
 	public function data_babak_final($per)
@@ -242,10 +242,26 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
 	}
 
+	public function data_babak_penyisihan_rekap()
+	{
+		$pool = $this->input->post('pool');
+		$konten_menu = '';
+		if ($pool != "all")	$konten_menu = $this->load->view("main/data_babak_penyisihan_rekap", NULL, TRUE);
+		else {
+			$list_pool = $this->Model_main->get_list_pool();
+			foreach ($list_pool->result_array() as $R) {
+				$_POST['pool'] = $R['pool'];
+				$konten_menu .= $this->load->view("main/data_babak_penyisihan_rekap", NULL, TRUE);
+			}
+		}
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	
 	public function data_live_streaming()
 	{
 		echo "Jalan";
 		$data['judul'] = 'cccc';
 		$this->load->view('main/data_live_streaming', NULL);
+
 	}
 }

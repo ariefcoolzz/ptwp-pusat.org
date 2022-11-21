@@ -195,7 +195,7 @@ if (!$result->num_rows()) {
                 if (isset($score_tim_A[1][4][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][4][$iktA][$iktB] . " </td>";
                 else echo "<td class='bg-dark'></td>";
                 if (isset($score_tim_A[1][5][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][5][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>";
+                else echo "<td class='bg-dark'></td>"; //ada yang perlu di cek lagi, soalnya ke count yang BYE
             }
             if ($L['beregu'] == 'putri') {
                 if (isset($score_tim_B[1][6][$iktB][$iktA])) echo "<td> " . $score_tim_B[1][6][$iktB][$iktA] . " </td>";
@@ -247,8 +247,10 @@ if (!empty($tmp)) {
             if ($val == $yg_sama) $rangking_temp2[$i] = $key;
             $i++;
         }
-        $iktA = $rangking_temp2[1];
-        $iktB = $rangking_temp2[2];
+		
+        $iktA = isset($rangking_temp2[1]) ? $rangking_temp2[1]:'';
+        $iktB = isset($rangking_temp2[2]) ? $rangking_temp2[2]:'';
+        //$iktB = $rangking_temp2[2];
         $menang_iktA = $menang_hth_total[$iktA][$iktB];
         $menang_iktB = $menang_hth_total[$iktB][$iktA];
         $rangking_temp3 = array();
