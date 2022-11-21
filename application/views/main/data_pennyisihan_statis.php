@@ -73,30 +73,33 @@
 	<h4 id="section1" class="mg-b-10">DATA PEMAIN TOURNAMEN KETUA MA PTWP</h4>
 	<div data-label="MyTabPTWP" class="df-example">
     	<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link '.$activ.'" id="data_pool-tab" data-toggle="tab" href="#tab_data_pool" role="tab" aria-controls="home" aria-selected="true">Data Pool dan Data Pertandingan</a>
+			 </li>
 			<?php 
-				foreach($kategori->result_array() as $R){
-					$activ = '';
-					if($R['id_kategori'] == 1) $activ = 'active';
-					echo '<li class="nav-item">
-					<a class="nav-link '.$activ.'" id="'.$R['id_kategori'].'-tab" data-toggle="tab" href="#tab_'.$R['id_kategori'].'" role="tab" aria-controls="home" aria-selected="true">'.$R['kategori'].'</a>
-					</li>';
-				}
-			?>
+				// foreach($kategori->result_array() as $R){
+					// $activ = '';
+					// if($R['id_kategori'] == 1) $activ = 'active';
+					// echo '<li class="nav-item">
+					// <a class="nav-link '.$activ.'" id="'.$R['id_kategori'].'-tab" data-toggle="tab" href="#tab_'.$R['id_kategori'].'" role="tab" aria-controls="home" aria-selected="true">'.$R['kategori'].'</a>
+					// </li>';
+				// }
+			// ?>
 		</ul>
 		<div class="tab-content bd bd-gray-300 bd-t-0 pd-20" id="MyTabPTWP">
 			<?php 
 				foreach($kategori->result_array() as $R){
 					$activ = '';
-					if($R['id_kategori'] == 1) $activ = 'show active';
-					echo '<div class="tab-pane fade '.$activ.'" id="tab_'.$R['id_kategori'].'" role="tabpanel" aria-labelledby="'.$R['id_kategori'].'-tab">' ;
+					$R['id_kategori'] == 7;
+					echo '<div class="tab-pane fade" id="tab_data_pool" role="tabpanel" aria-labelledby="data_pool-tab">' ;
 					
-					echo '<a class="btn btn-danger" href="'.base_url('assets/pdf/'.$R['id_kategori'].'.pdf').'" target="_blank">Unduh</a>';
+					echo '<a class="btn btn-danger" href="'.base_url('assets/pdf/7.pdf').'" target="_blank">Unduh</a>';
 					echo '<div id="Iframe-Master-CC-and-Rs" class="set-margin set-padding set-border set-box-shadow center-block-horiz">
 						<div class="responsive-wrapper 
 						responsive-wrapper-wxh-572x612"
 						style="-webkit-overflow-scrolling: touch; overflow: auto;">
 							
-							<iframe src="'.base_url('assets/pdf/'.$R['id_kategori'].'.pdf').'"> 
+							<iframe src="'.base_url('assets/pdf/7.pdf').'"> 
 								<p style="font-size: 110%;"><em><strong>ERROR: </strong>  
 								An &#105;frame should be displayed here but your browser version does not support &#105;frames. </em>Please update your browser to its most recent version and try again.</p>
 							</iframe>
