@@ -1,4 +1,5 @@
-<table class='table table-bordered w-100 font-weight-bold' style='opacity:0.8;'>
+
+<table class='table table-bordered w-100 font-weight-bold' >
     <tr>
         <td>
             <div class='d-flex'>
@@ -28,6 +29,7 @@
         <td class='text-center align-middle' id='point_tim_B'></td>
     </tr>
 </table>
+
 <style>
     /* dika jadi tukang cat */
     .table {
