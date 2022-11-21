@@ -1,6 +1,17 @@
 <?php
 class Model_main extends CI_Model
 {
+
+	
+	function model_master_lapangan()
+	{
+		$this->db->select("A.");
+		$this->db->from('master_lapangan AS A');
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
 	function register_get_pegawai($nip)
 	{
 		$this->db->select("A.nama");

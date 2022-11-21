@@ -241,4 +241,11 @@ class Main extends CI_Controller
 		$data['judul'] = "DATA PENYISIHAN";
 		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
 	}
+
+	public function data_live_streaming()
+	{
+		echo "Jalan";
+		$data['judul'] = 'cccc';
+		$this->load->view('main/data_live_streaming', NULL);
+	}
 }
