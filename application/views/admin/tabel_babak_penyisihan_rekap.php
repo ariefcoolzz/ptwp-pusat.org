@@ -1,5 +1,4 @@
 <?php
-// PRINT_R($_POST);DIE();
 $result = $this->Model_admin->model_tabel_babak_penyisihan_rekap($_POST);
 if (!$result->num_rows()) {
     echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";
@@ -166,9 +165,10 @@ if (!$result->num_rows()) {
 
         $jumlah = $menang + $kalah;
         $point_game = $menang_game - $kalah_game;
-
-        $menang_persentase = ROUND($menang / $jumlah * 100, 2);
-        $kalah_persentase  = ROUND($kalah  / $jumlah * 100, 2);
+        $menang_persentase  = 0;
+        $kalah_persentase   = 0;
+        if (!empty($menang)) $menang_persentase = ROUND($menang / $jumlah * 100, 2);
+        if (!empty($kalah)) $kalah_persentase   = ROUND($kalah  / $jumlah * 100, 2);
         $temp_menang[$iktA] = $menang_persentase;
         $temp_point_game[$iktA] = $point_game;
         
