@@ -8,21 +8,26 @@
 						<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
 					</ol>
 				</nav>
-				<h4>TURNAMEN TENIS PERORANGAN PIALA KMA 2021</h4>
+				<h4>Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia 2022</h4>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="input-group">
-			<select id='id_kategori' class="form-control">
+			<select class="form-control" id='beregu'>
+				<option value='putra' selected>Putra</option>
+				<option value='putri'>Putri</option>
+			</select>
+			<select class="form-control" id='pool'>
+				<option value='all' selected>Semua Pool</option>
 				<?php
-				$kategori = $this->basic->get_data('master_kategori_pemain');
-				foreach ($kategori->result_array() as $R) {
-					echo "<option value='" . MD7($R['id_kategori']) . "'>$R[kategori]</option>";
-				}
+					$jumlah_pool = 26; //sampai Z
+					FOR($i=1;$i<=$jumlah_pool;$i++)
+						{
+							echo "<option value='".pool($i)."'>Pool ".pool($i)."</option>";
+						}
 				?>
 			</select>
-			<span id='form_pool'><?php $this->load->view('./main/@select_pool.php'); ?></span>
 		</div>
 	</div>
 	<div class="table-responsive mg-t-20">
@@ -30,38 +35,72 @@
 	</div>
 </div>
 <script>
-	$(document).ready(function() {
-		$("#id_kategori,#pool").on("change", function() {
-			// alert();skip();
-			proses($("#id_kategori").val(),$("#pool").val());
-		});
-	});
+	// $(document).ready(function() {
+		// $("#id_kategori,#pool").on("change", function() {
+			// // alert();skip();
+			// proses($("#id_kategori").val(),$("#pool").val());
+		// });
+	// });
 	
-	function proses(id_kategori,pool)
-		{
-			var form_data = new FormData();
-			form_data.append('id_kategori', id_kategori);
-			form_data.append('pool', pool);
-			$.ajax({
-				url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
-				type: 'POST',
-				cache: false,
-				contentType: false,
-				processData: false,
-				data: form_data,
-				dataType: 'json',
-				success: function(json) {
-					if (json.status !== true) {
-						alert("Ada Kesalahan... !!!");
-						skip();
-					} else {
-						$("#konten").hide(300);
-						$("#konten").html(json.konten);
-						$("#konten").show(300);
-					}
-				}
-			});
-		}
+	// function proses(id_kategori,pool)
+		// {
+			// var form_data = new FormData();
+			// form_data.append('id_kategori', id_kategori);
+			// form_data.append('pool', pool);
+			// $.ajax({
+				// url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
+				// type: 'POST',
+				// cache: false,
+				// contentType: false,
+				// processData: false,
+				// data: form_data,
+				// dataType: 'json',
+				// success: function(json) {
+					// if (json.status !== true) {
+						// alert("Ada Kesalahan... !!!");
+						// skip();
+					// } else {
+						// $("#konten").hide(300);
+						// $("#konten").html(json.konten);
+						// $("#konten").show(300);
+					// }
+				// }
+			// });
+		// }
 	
-	proses($("#id_kategori").val(),$("#pool").val());
+	// proses($("#id_kategori").val(),$("#pool").val());
+</script>
+
+<script>
+    $("#beregu,#pool").on('change', function() {
+        load_data();
+    });
+
+    load_data();
+    function load_data() {
+        var form_data = new FormData();
+        // form_data.append('id_panitia', $("#id_panitia").val());
+        form_data.append('id_event', '2');
+        form_data.append('beregu', $("#beregu").val());
+        form_data.append('pool', $("#pool").val());
+        $.ajax({
+            url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    alert();
+                    skip();
+                } else {
+                    $("#konten").fadeOut(300);
+                    $("#konten").html(json.konten_menu);
+                    $("#konten").fadeIn(300);
+                }
+            }
+        });
+    }
 </script>
