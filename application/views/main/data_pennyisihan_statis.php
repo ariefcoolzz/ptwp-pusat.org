@@ -70,7 +70,8 @@
 		</ol>
 	</nav>
 	<hr class="mg-y-40">
-	<h4 id="section1" class="mg-b-10">DATA PEMAIN TOURNAMEN KETUA MA PTWP</h4>
+	<h4>Data Pool dan Data Pertandingan</h4>
+	<h4>Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia 2022</h4>
 	<div data-label="MyTabPTWP" class="df-example">
     	<ul class="nav nav-tabs" id="myTab" role="tablist">
 			<li class="nav-item">

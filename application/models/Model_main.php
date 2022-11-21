@@ -296,6 +296,37 @@ class Model_main extends CI_Model
 		$data['total_all'] = $q['total'];
 		return $data;
 	}
+
+
+	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function model_data_link_streaming()
+	{
+		$this->db->select("A.*");
+		$this->db->from('data_link_streaming AS A');
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+
+	function model_data_live_streaming()
+	{
+		$this->db->select("A.*");
+		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_A) AS nama_kontingen_tim_A");
+		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS nama_kontingen_tim_B");
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.id_event', 2); //manualiin dulu
+		$this->db->where('A.id_lapangan IN (25,26,27,28,29,30)'); //manualiin dulu
+
+		$this->db->order_by("A.beregu", "ASC");
+		$this->db->order_by("A.pool", "ASC");
+		$this->db->order_by("A.urutan", "ASC");
+		$this->db->order_by("A.id_kategori", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
+	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 	function get_list_pool()
 	{
 		$id_event = $this->input->post('id_event');
@@ -345,4 +376,5 @@ class Model_main extends CI_Model
 		// die($this->db->last_query());
 		IF($field == NULL) return $query; ELSE return $query->row_array()[$field];
 	}
+
 }
