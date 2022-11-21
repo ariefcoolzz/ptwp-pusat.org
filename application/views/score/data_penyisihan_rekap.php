@@ -53,9 +53,9 @@ if (!$result->num_rows()) {
         echo '<td>' . $R['lapangan'] . '</td>';
         echo "<td>
                 <div class='btn-group-vertical'>
-                    <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</button>
-					<button class='btn btn-sm btn-success share' data-key='$key'>Share Score</button>
-					<button class='btn btn-sm btn-primary manage' data-key='$key'>Manage Score</button>
+                    <button class='btn mb-1 btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</button>
+					<button class='btn mb-1 btn-sm btn-success share' data-key='$key'>Share Score</button>
+					<button class='btn mb-1 btn-sm btn-primary manage' data-key='$key'>Manage Score</button>
                 </div>
             </td>";
 
