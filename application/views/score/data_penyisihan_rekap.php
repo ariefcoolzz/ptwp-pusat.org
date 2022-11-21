@@ -7,22 +7,21 @@ if (!$result->num_rows()) {
 } else {
     $no = 0;
     echo "<div class='table-responsive'>";
-    echo "<table id='datatable' class='table table-primary table-striped table-borderless table-hover'>";
+    echo "<table id='datatable' class='table table-primary table-striped table-borderless table-hover w-100'>";
     echo "
         <thead class='text-center align-middle'>
                 <tr>
                     <th>No.</th>
-                    <th> Beregu </th>
-                    <th> Pool </th>
-                    <th> Urutan </th>
-                    <th> Kontingen Tim A </th>
-                    <th> Kontingen Tim B </th>
+                    <th class='d-none d-lg-table-cell'> Beregu </th>
+                    <th class='d-none d-lg-table-cell'> Pool </th>
+                    <th class='d-none d-lg-table-cell'> Urutan </th>
                     <th> Kategori </th>
-                    <th> Tanggal </th>
-                    <th> Waktu </th>
-                    <th> Lapangan </th>
+                    <th class='d-none d-lg-table-cell'> Kontingen Tim A </th>
+                    <th class='d-none d-lg-table-cell'> Kontingen Tim B </th>
                     <th> Tim A </th>
                     <th> Tim B </th>
+                    <th> Tanggal<br>Waktu </th>
+                    <th> Lapangan </th>
                     <th> Action </th>
                 </tr>
         </thead>
@@ -42,17 +41,16 @@ if (!$result->num_rows()) {
         $no++;
         echo "<tr class='tx-center'>";
         echo '<td>' . $no . '</td>';
-        echo '<td>' . $R['beregu'] . '</td>';
-        echo '<td>' . $R['pool'] . '</td>';
-        echo '<td>' . $R['urutan'] . '</td>';
-        echo '<td>' . $R['kontingen_tim_A'] . '</td>';
-        echo '<td>' . $R['kontingen_tim_B'] . '</td>';
+        echo '<td class="d-none d-lg-table-cell">' . $R['beregu'] . '</td>';
+        echo '<td class="d-none d-lg-table-cell">' . $R['pool'] . '</td>';
+        echo '<td class="d-none d-lg-table-cell">' . $R['urutan'] . '</td>';
         echo '<td>' . $R['kategori'] . '</td>';
-        echo '<td>' . $R['tanggal'] . '</td>';
-        echo '<td>' . $R['waktu'] . '</td>';
-        echo '<td>' . $R['lapangan'] . '</td>';
+        echo '<td class="d-none d-lg-table-cell">' . $R['kontingen_tim_A'] . '</td>';
+        echo '<td class="d-none d-lg-table-cell">' . $R['kontingen_tim_B'] . '</td>';
         echo "<td $classA>$tim_A</td>";
         echo "<td $classB>$tim_B</td>";
+        echo '<td>' . format_tanggal('ddmmyyyy', $R['tanggal']) . '<br>' . $R['waktu'] . '</td>';
+        echo '<td>' . $R['lapangan'] . '</td>';
         echo "<td>
                 <div class='btn-group-vertical'>
                     <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'>Edit</button>
