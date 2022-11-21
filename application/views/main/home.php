@@ -105,201 +105,8 @@
     </div>
 </div>
 
-<div class="content bg-indigo mg-0">
-    <div class="divider-text">
-        <h4 class="text-white">Hasil Pertandingan (Data Dummy)</h4>
-    </div>
-    <div class="card">
-        <div class="card-header d-flex justify-content-between">
-            <h3 class="text-uppercase">Live Score</h3>
-            <a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="btn btn-sm btn-outline-primary tx-bold">All Score</a>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Uji Coba Pertandingan 1 - Indoor</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 1</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA SEMARANG A</small>
+<div id='div_data_live_streaming'></div>
 
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 2</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA SEMARANG B</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
-                        </div><!-- card-footer -->
-                    </div>
-                </div>
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Uji Coba Pertandingan 2 - Outdoor</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 1</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA SEMARANG A</small>
-
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 2</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA SEMARANG B</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
-                        </div><!-- card-footer -->
-                    </div>
-                </div>
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 1</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
-
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 2</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/1dPwcIMfCpw" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
-                        </div><!-- card-footer -->
-                    </div>
-                </div>
-                <div class="col-sm col-xl-3 mg-t-3">
-                    <div class="card" data-aos="fade-left">
-                        <div class="card-header d-flex align-items-center justify-content-between">
-                            <h6 class="mg-b-0">Hasil Pertandingan</h6>
-                            <div class="d-flex align-items-center tx-18">
-                                <!-- <a href="" class="link-03 lh-0"><i class="icon ion-md-refresh"></i></a>
-                                            <a href="" class="link-03 lh-0 mg-l-10"><i class="icon ion-md-more"></i></a> -->
-                            </div>
-                        </div>
-                        <ul class="list-group list-group-flush tx-13">
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-indigo op-5">DA</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 1</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PTA JAKARTA</small>
-
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                            <li class="list-group-item d-flex">
-                                <div class="avatar"><span class="avatar-initial rounded-circle bg-primary op-5">AKP</span></div>
-                                <div class="pd-l-10">
-                                    <p class="tx-dark mg-b-0">Pemain 2</p>
-                                    <small class="tx-12 tx-color-03 mg-b-0">PT JAKARTA</small>
-                                </div>
-                                <div class="mg-l-auto d-flex align-items-center">
-                                    <nav class="nav nav-icon-only">
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                        <h6 class="nav-link">0</h6>
-                                    </nav>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="card-footer text-center tx-13">
-                            <span data-link="https://www.youtube.com/embed/tcSviPx0mw0" class="tonton btn btn-danger"><i data-feather="youtube"></i> Siaran Langsung</span>
-                        </div><!-- card-footer -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="content mg-0">
     <div class="divider-text">
@@ -614,12 +421,31 @@
 </div><!-- modal-dialog -->
 </div><!-- modal -->
 <script>
-    $(".tonton").on("click", function() {
-        var link = $(this).data('link');
-        $("#judul_popup_streaming").html("SIARAN LANGSUNG - Ganda Putra<br>Pertandingan xxxx melawan yyyy");
-        $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
-        $("#popup_streaming").modal('show');
-    });
+    tampilkan_data_live_streaming();
+
+    setInterval(tampilkan_data_live_streaming, 60000); // direfresh setiap 1 menit
+    function tampilkan_data_live_streaming() {
+        var form_data = new FormData();
+        // form_data.append('id_event', $("#list_event").val());
+        $.ajax({
+            url: "<?php echo base_url(); ?>main/data_live_streaming",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    location.reload();
+                } else {
+                    // $("#div_data_live_streaming").hide(300);
+                    $("#div_data_live_streaming").html(json.konten);
+                    // $("#div_data_live_streaming").show(300);
+                }
+            }
+        });
+    }
 
     $(function() {
         'use strict'

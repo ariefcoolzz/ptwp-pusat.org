@@ -259,9 +259,7 @@ class Main extends CI_Controller
 	
 	public function data_live_streaming()
 	{
-		echo "Jalan";
-		$data['judul'] = 'cccc';
-		$this->load->view('main/data_live_streaming', NULL);
-
+		$konten = $this->load->view('main/data_live_streaming', NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 }

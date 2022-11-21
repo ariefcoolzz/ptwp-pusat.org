@@ -1,21 +1,6 @@
-<link href="<?php echo base_url(); ?>assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/typicons.font/typicons.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/prismjs/themes/prism-vs.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/datatables.net-dt/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/css/responsive.dataTables.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>assets/lib/select2/css/select2.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.css" rel="stylesheet" type="text/css">
-<!-- DashForge CSS -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/dashforge.dashboard.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.gradient1.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skin.cool.css">
-
-
 <div class="content bg-indigo mg-0">
     <div class="divider-text">
-        <h4 class="text-white">Hasil Pertandingan (Data Dummy)</h4>
+        <h4 class="text-white">Hasil Pertandingan Lapangan Live Streaming</h4>
     </div>
     <div class="card">
         <div class="card-header d-flex justify-content-between">
@@ -51,7 +36,8 @@
                             {
                                 
                                 $nama_kontingen[$idl] = $R['nama_kontingen_tim_A']." VS ".$R['nama_kontingen_tim_B'];
-                                $str[$idl] .= "<div>$nama_kontingen[$idl] ($kemenangan_A[$idl] - $kemenangan_B[$idl])</div>";
+                                // $str[$idl] .= "<div>$nama_kontingen[$idl] ($kemenangan_A[$idl] - $kemenangan_B[$idl])</div>";
+                                $str[$idl] .= "<div>$nama_kontingen[$idl]</div>";
                             }
                             $str[$idl] .= "<div class='row'>";
                             $str[$idl] .= "<div class='col-10'>".nama_singkat($R['nama_pemain_tim_A'])."</div>";
@@ -67,16 +53,17 @@
                         $result = $this->Model_main->model_data_link_streaming();
                         if ($result->num_rows()) {
                             foreach ($result->result_array() as $R) {
-                                $link[$R['id_lapangan']] = $R['link_streaming'];
+                                $link[$R['id_lapangan']] = $R['link_streaming']; // ini asli dari database
+                                // $link[$R['id_lapangan']] = "https://www.youtube.com/embed/cnqkyfumWco"; // sementara tampilin ini dulu
                             }
                         }
-                                
+
                         FOR($ke=25;$ke<=30;$ke++)
                             {
                                 IF(!ISSET($str[$ke])) $str[$ke] = "";
                                 echo "
                                         <div class='col-lg-2' style='border:1px solid red;'> 
-                                            <span class='btn btn-danger'><a target='_blank' class='text-white' href='$link[$ke]'>Link Youtube</a></span>
+                                            <span data-link='$link[$ke]' class='tonton btn btn-danger'><i data-feather='youtube'></i> Siaran Langsung</span>
                                             $str[$ke]
                                         </div>
                                     ";
@@ -88,21 +75,11 @@
     </div>
 </div>
 
-<script src="<?php echo base_url(); ?>assets/lib/jquery/jquery.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/feather-icons/feather.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/prismjs/prism.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/datatables.net-dt/js/dataTables.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/datatables.net-responsive-dt/js/responsive.dataTables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/lib/select2/js/select2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/dashforge.js"></script>
-<script src="<?php echo base_url(); ?>assets/js/dashforge.aside.js"></script>
-<!-- append theme customizer -->
-<script src="<?php echo base_url(); ?>assets/lib/js-cookie/js.cookie.js"></script>
-<!-- <script src="<?php echo base_url(); ?>assets/js/dashboard-one.js"></script> -->
-<!-- <script src="<?php echo base_url(); ?>assets/js/dashforge.settings.js"></script> -->
-<script src="<?php echo base_url(); ?>assets/lib/tinymce/tinymce.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.16/dist/sweetalert2.all.min.js"></script>
+<script>
+$(".tonton").on("click", function() {
+    var link = $(this).data('link');
+    $("#judul_popup_streaming").html("SIARAN LANGSUNG LAPANGAN UNNES");
+    $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
+    $("#popup_streaming").modal('show');
+});
+</script>
