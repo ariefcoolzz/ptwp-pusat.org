@@ -16,15 +16,15 @@
 			</div>
 			<div class="card-body">
 				<div class="row mt-3 mb-3" style='border:0px solid green;'>
-					<div class='col-6'>
+					<div class='col-lg-6 col-sm-12'>
 						<select class="form-control select_regu" id='beregu'>
-							<option value='' selected>----------------------------------- Pilih Regu -----------------------------------</option>
+							<option value='' selected>Pilih Regu </option>
 							<option value='putra'>Beregu Putra</option>
 							<option value='putri'>Beregu Putri</option>
 							<option value='all'>Semua Regu</option>
 						</select>
 					</div>
-					<div class='col-6'>
+					<div class='col-lg-6 col-sm-12'>
 						<select class="form-control select_pool" id='pool'>
 							<option value='all' selected>Semua Pool</option>
 							<?php
@@ -37,7 +37,7 @@
 					</div>
 				</div>
 				<div class="row mt-3 mb-3" style='border:0px solid green;'>
-					<div class='col-6'>
+					<div class='col-lg-6 col-sm-12'>
 						<select class="form-control select_a" id='id_kontingen_tim_A'>
 							<option value='all'>Semua Kontingen A</option>
 							<?php
@@ -50,7 +50,7 @@
 							?>
 						</select>
 					</div>
-					<div class='col-6'>
+					<div class='col-lg-6 col-sm-12'>
 						<select class="form-control select_b" id='id_kontingen_tim_B'>
 							<option value='all'>Semua Kontingen B</option>
 							<?php
@@ -64,6 +64,19 @@
 						</select>
 					</div>
 				</div>
+				<?php 
+				IF(ISSET($_SESSION))
+					{
+						echo "
+								<script>
+									$('#beregu').val('$_SESSION[beregu]');
+									$('#pool').val('$_SESSION[pool]');
+									$('#id_kontingen_tim_A').val('$_SESSION[id_kontingen_tim_A]');
+									$('#id_kontingen_tim_B').val('$_SESSION[id_kontingen_tim_B]');
+								</script>
+							";
+					}
+				?>
 				<div class='row'>
 					<div class='col-12' id="konten_menu"></div>
 				</div>
@@ -133,7 +146,11 @@
 		load();
 	});
 
-	//load();
+	if($("#beregu").val() != "")
+		{
+			load();
+		}
+	
 	function load() {
 		if ($("#beregu").val() == '') {
 			alert("Silahkan Pilih Regu Terlebih Dahulu... !!!");

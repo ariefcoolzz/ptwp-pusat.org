@@ -1,4 +1,4 @@
-<table class='table table-bordered w-100 font-weight-bold'>
+<table class='table table-bordered w-100 font-weight-bold' style='opacity:0.8;'>
     <tr>
         <td>
             <div class='d-flex'>
