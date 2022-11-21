@@ -62,7 +62,7 @@
                             {
                                 IF(!ISSET($str[$ke])) $str[$ke] = "";
                                 echo "
-                                        <div class='col-lg-2' style='border:1px solid red;'> 
+                                        <div class='col-lg-2 col-sm-12' style='border:1px solid red;'> 
                                             <span data-link='$link[$ke]' class='tonton btn btn-danger'><i data-feather='youtube'></i> Siaran Langsung</span>
                                             $str[$ke]
                                         </div>
