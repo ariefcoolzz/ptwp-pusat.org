@@ -89,15 +89,15 @@
                     <div class="media align-sm-items-center">
                         <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-70 wd-md-40 wd-lg-40 wd-xl-65">
                         <div class="media-body mg-l-15">
-                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-spacing-1 mg-b-5">Live Streaming Opening Ceremony Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia</h6>
+                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-spacing-1 mg-b-5">Pemukulan Bola Pertama Turnamen Tennis Beregu Ke-19 Piala Ketua Mahkamah Agung RI</h6>
                             <div class="d-flex flex-column">
                                 <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
-                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Hari Senin, 21 November 2022, Pukul 11:00 WIB)</h6>
+                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Hari Selasa, 22 November 2022, Pukul 07:00 WIB)</h6>
                             </div>
                         </div><!-- media-body -->
                     </div><!-- media -->
                     <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
-                        <a href="https://www.youtube.com/watch?v=iyOy5KKuXTw" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a>
+                        <a href="https://www.youtube.com/watch?v=1y3QDbGNMos" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a>
                     </div>
                 </div>
             </div>
