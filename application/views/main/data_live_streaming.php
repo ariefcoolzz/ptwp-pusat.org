@@ -60,9 +60,11 @@
 
                         FOR($ke=25;$ke<=30;$ke++)
                             {
+                                $i = $ke - 24;
                                 IF(!ISSET($str[$ke])) $str[$ke] = "";
                                 echo "
                                         <div class='col-lg-2 col-sm-12' style='border:1px solid red;'> 
+                                            Lapangan Tenis UNNES Court $i<br>
                                             <span data-link='$link[$ke]' class='tonton btn btn-danger'><i data-feather='youtube'></i> Siaran Langsung</span>
                                             $str[$ke]
                                         </div>
