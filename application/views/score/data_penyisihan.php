@@ -65,7 +65,7 @@
 					</div>
 				</div>
 				<?php
-				if (isset($_SESSION)) {
+				if (isset($_SESSION['beregu'])) {
 					echo "
 								<script>
 									$('#beregu').val('$_SESSION[beregu]');
