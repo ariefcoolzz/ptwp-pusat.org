@@ -450,7 +450,7 @@
 
     $(".tonton_pembukaan").on("click", function() {
         var link = $(this).data('link');
-        $("#judul_popup_streaming").html("SIARAN LANGSUNG LAPANGAN UNNES");
+        $("#judul_popup_streaming").html("SIARAN LANGSUNG PEMUKULAN BOLA PERTAMA KMA LAPANGAN UNNES");
         $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
         $("#popup_streaming").modal('show');
     });
