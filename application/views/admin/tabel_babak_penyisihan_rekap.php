@@ -161,6 +161,7 @@ if (!$result->num_rows()) {
             }
             $menang_hth_total[$iktA][$iktB] = $menang_hth;
             $kalah_hth_total[$iktA][$iktB]  = $kalah_hth;
+            
         }
 
         $jumlah = $menang + $kalah;
