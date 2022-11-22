@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
-            <a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="btn btn-sm btn-outline-primary tx-bold">All Score</a>
+            <span class="btn btn-sm btn-outline-primary tx-bold" id='live_streaming_all_score' style='cursor:pointer;'>All Score</span>
         </div>
         <div class="card-body">
             <div class='row'>
@@ -86,4 +86,27 @@
         $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
         $("#popup_streaming").modal('show');
     });
+
+    $("#live_streaming_all_score").on("click", function() {
+        var form_data = new FormData();
+        $.ajax({
+            url: "<?php echo base_url(); ?>main/data_live_streaming_all_score",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    location.reload();
+                } else {
+                    $("body").scrollTop('0px');
+                    $("#isi_modal_score").html(json.konten);
+                    $("#modal_score").modal('show');
+                }
+            }
+        });
+    });
+    
 </script>

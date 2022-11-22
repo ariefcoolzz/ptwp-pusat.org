@@ -190,7 +190,7 @@
   </footer>
 
 
-  <div class="modal fade" id="popup_streaming" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="popup_streaming" role="dialog" aria-hidden="true" style='z-index: 1051 !important;'>
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-body pd-20 pd-sm-40">
@@ -208,6 +208,23 @@
     </div><!-- modal-dialog -->
   </div><!-- modal -->
 
+  <div class="modal fade" id="modal_score" role="dialog" aria-hidden="true" style='z-index: 1051 !important;'>
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document" style="width:90%;max-width:100%;">
+      <div class="modal-content">
+        <div class="modal-body pd-20 pd-sm-40">
+          <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <div class="tx-center">
+            <h4 id="judul_popup_streaming">All Score Babak Penyisihan</h4>
+            <div class="modal-body" id="isi_modal_score">
+              ............................................
+            </div>
+          </div>
+        </div><!-- modal-body -->
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
 
   <script>
     $(".close,.fade").on("click", function() {

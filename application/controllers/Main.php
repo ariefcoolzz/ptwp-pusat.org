@@ -262,4 +262,10 @@ class Main extends CI_Controller
 		$konten = $this->load->view('main/data_live_streaming', NULL, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
+
+	public function data_live_streaming_all_score()
+	{
+		$konten = $this->load->view('main/data_live_streaming_all_score', NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	}
 }

@@ -325,6 +325,22 @@ class Model_main extends CI_Model
 		// DIE($this->db->last_query());
 		return $query;
 	}
+
+	function model_data_live_streaming_all_score()
+	{
+		$this->db->select("A.*");
+		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_A) AS nama_kontingen_tim_A");
+		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS nama_kontingen_tim_B");
+		$this->db->from('data_babak_penyisihan AS A');
+		$this->db->where('A.set1_tim_A IS NOT NULL');
+		$this->db->where('A.set1_tim_B IS NOT NULL');
+		$this->db->order_by("A.id_kategori", "ASC");
+		$this->db->order_by("A.pool", "ASC");
+		$this->db->order_by("A.urutan", "ASC");
+		$query = $this->db->get();
+		// DIE($this->db->last_query());
+		return $query;
+	}
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 	function get_list_pool()
