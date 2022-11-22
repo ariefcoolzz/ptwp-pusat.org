@@ -36,14 +36,12 @@
 
                             $nama_kontingen[$idl] = $R['nama_kontingen_tim_A'] . " VS " . $R['nama_kontingen_tim_B'];
                             // $str[$idl] .= "<div>$nama_kontingen[$idl] ($kemenangan_A[$idl] - $kemenangan_B[$idl])</div>";
-                            $str[$idl] .= "<div class='tx-bold tx-center'>$nama_kontingen[$idl]</div>";
+                            $str[$idl] .= "<div class='tx-bold tx-center badge bg-warning mt-3'>$nama_kontingen[$idl]</div>";
                         }
 
-                        $str[$idl] .= "<div class='d-flex justify-content-between align-items-center'><div>" . nama_singkat($R['nama_pemain_tim_A']) . "</div>";
-                        $str[$idl] .= "$R[set1_tim_A]</div>";
-                        $str[$idl] .= "<div class='d-flex justify-content-between align-items-center'><div>" . nama_singkat($R['nama_pemain_tim_B']) . "</div>";
-                        $str[$idl] .= "$R[set1_tim_B]</div>";
-                        $str[$idl] .= "<hr>";
+                        $str[$idl] .= "<div class='d-flex justify-content-between'><div>" . nama_singkat($R['nama_pemain_tim_A']) . "</div>$R[set1_tim_A]</div>";
+                        $str[$idl] .= "<div class='d-flex justify-content-between'><div>" . nama_singkat($R['nama_pemain_tim_B']) . "</div>$R[set1_tim_B]</div>";
+                        $str[$idl] .= "<hr style='margin:0px;'>";
                     }
 
                     $link = array();
@@ -66,7 +64,7 @@
                                                     <button data-link='$link[$ke]' class='tonton btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>
                                                 </div>
                                                 <div class='card-body'>
-                                                    <div class='overflow-auto ht-300'>
+                                                    <div class='overflow-auto ht-500 pr-2'>
                                                         $str[$ke]
                                                     </div>
                                                 </div>
