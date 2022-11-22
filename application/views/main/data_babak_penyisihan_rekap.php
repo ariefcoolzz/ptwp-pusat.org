@@ -1,11 +1,13 @@
 <?php
 $result = $this->Model_main->model_tabel_babak_penyisihan_rekap($_POST);
+$list_kategori = $this->Model_main->list_kategori_pemain($_POST);
 if (!$result->num_rows()) {
     echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";
 } else {
     $score = $this->Model_main->model_tabel_babak_penyisihan_score($_POST);
     $no = 0;
-    echo "<table id='table' class='table table-primary table-borderless table-hover'>";
+	echo "<h4 class='text-center mt-2'>".strtoupper($_POST['beregu'])." - POOL ".$_POST['pool']."</h4>";
+    echo "<table id='table' class='table table-primary table-bordered table-hover'>";
     echo "
         <thead>
 		<tr>
@@ -14,12 +16,8 @@ if (!$result->num_rows()) {
 		<th>Pool</th>
 		<th> Nama Tim </th>";
     foreach ($result->result_array() as $S) {
-        if ($S['beregu'] == 'putra') {
-            echo "<th colspan='5'> $S[nama_satker_singkat] </th>";
-        }
-        if ($S['beregu'] == 'putri') {
-            echo "<th colspan='3'> $S[nama_satker_singkat] </th>";
-        }
+        $total_kategori = $list_kategori->num_rows();
+        echo "<th colspan='".$total_kategori."'> $S[nama_satker_singkat] </th>";
     }
     echo "     
 		<th> Menang </th>
@@ -77,90 +75,20 @@ if (!$result->num_rows()) {
             $kalah_hth = 0;
             $iktB = $L['id_kontingen'];
             // echo "$iktA $iktB<br>";
-            if ($L['beregu'] == 'putra') {
-                if (!isset($score_tim_B[1][1][$iktA][$iktB])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_B[1][1][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][1][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][1][$iktA][$iktB];
-                }
-                if (!isset($score_tim_B[1][2][$iktA][$iktB])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_B[1][2][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][2][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][2][$iktA][$iktB];
-                }
-                if (!isset($score_tim_B[1][3][$iktA][$iktB])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_B[1][3][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][3][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][3][$iktA][$iktB];
-                }
-                if (!isset($score_tim_B[1][4][$iktA][$iktB])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_B[1][4][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][4][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][4][$iktA][$iktB];
-                }
-                if (!isset($score_tim_B[1][4][$iktA][$iktB])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_B[1][5][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][5][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][5][$iktA][$iktB];
-                }
+            foreach ($list_kategori->result_array() as $K) {
+                $id_k = $K['id_kategori'];
+                if (isset($score_tim_B[1][$id_k][$iktA][$iktB])) {
+                    echo "<td> " . $score_tim_B[1][$id_k][$iktA][$iktB] . " </td>";
+                    $menang_game += $score_tim_A[1][$id_k][$iktA][$iktB];
+                    $kalah_game += $score_tim_B[1][$id_k][$iktA][$iktB];
+                } else if ($iktA == $iktB) echo "<td class='bg-dark' style='border:none;'></td>";
+                else echo "<td></td>";
 
-                if (isset($score_tim_A[1][1][$iktA][$iktB]) and $score_tim_A[1][1][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
-                if (isset($score_tim_A[1][2][$iktA][$iktB]) and $score_tim_A[1][2][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
-                if (isset($score_tim_A[1][3][$iktA][$iktB]) and $score_tim_A[1][3][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
-                if (isset($score_tim_A[1][4][$iktA][$iktB]) and $score_tim_A[1][4][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
-                if (isset($score_tim_A[1][5][$iktA][$iktB]) and $score_tim_A[1][5][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
+                if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
+                if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
 
-                if (isset($score_tim_A[1][1][$iktA][$iktB]) and $score_tim_A[1][1][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
-                if (isset($score_tim_A[1][2][$iktA][$iktB]) and $score_tim_A[1][2][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
-                if (isset($score_tim_A[1][3][$iktA][$iktB]) and $score_tim_A[1][3][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
-                if (isset($score_tim_A[1][4][$iktA][$iktB]) and $score_tim_A[1][4][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
-                if (isset($score_tim_A[1][5][$iktA][$iktB]) and $score_tim_A[1][5][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
-
-                ##BUAT NAMPUNG MENANG KALAH HEAD TO HEAD
-                if (isset($score_tim_A[1][1][$iktA][$iktB]) and $score_tim_A[1][1][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
-                if (isset($score_tim_A[1][2][$iktA][$iktB]) and $score_tim_A[1][2][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
-                if (isset($score_tim_A[1][3][$iktA][$iktB]) and $score_tim_A[1][3][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
-                if (isset($score_tim_A[1][4][$iktA][$iktB]) and $score_tim_A[1][4][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
-                if (isset($score_tim_A[1][5][$iktA][$iktB]) and $score_tim_A[1][5][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
-
-                if (isset($score_tim_A[1][1][$iktA][$iktB]) and $score_tim_A[1][1][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
-                if (isset($score_tim_A[1][2][$iktA][$iktB]) and $score_tim_A[1][2][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
-                if (isset($score_tim_A[1][3][$iktA][$iktB]) and $score_tim_A[1][3][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
-                if (isset($score_tim_A[1][4][$iktA][$iktB]) and $score_tim_A[1][4][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
-                if (isset($score_tim_A[1][5][$iktA][$iktB]) and $score_tim_A[1][5][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
-            }
-            if ($L['beregu'] == 'putri') {
-                if (!isset($score_tim_A[1][6][$iktB][$iktA])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_A[1][6][$iktB][$iktA] . " </td>";
-                    $menang_game += $score_tim_A[1][6][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][6][$iktA][$iktB];
-                }
-                if (!isset($score_tim_A[1][7][$iktB][$iktA])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_A[1][7][$iktB][$iktA] . " </td>";
-                    $menang_game += $score_tim_A[1][7][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][7][$iktA][$iktB];
-                }
-                if (!isset($score_tim_A[1][8][$iktB][$iktA])) echo "<td class='bg-dark'></td>";
-                else {
-                    echo "<td> " . $score_tim_A[1][8][$iktB][$iktA] . " </td>";
-                    $menang_game += $score_tim_A[1][8][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][8][$iktA][$iktB];
-                }
-
-                if (isset($score_tim_A[1][6][$iktA][$iktB]) and $score_tim_A[1][6][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++;
-                if (isset($score_tim_A[1][7][$iktA][$iktB]) and $score_tim_A[1][7][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++;
-                if (isset($score_tim_A[1][8][$iktA][$iktB]) and $score_tim_A[1][8][$iktA][$iktB] >= $jumlah_game_penyisihan_putri) $menang++;
-
-                if (isset($score_tim_A[1][6][$iktA][$iktB]) and $score_tim_A[1][6][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++;
-                if (isset($score_tim_A[1][7][$iktA][$iktB]) and $score_tim_A[1][7][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++;
-                if (isset($score_tim_A[1][8][$iktA][$iktB]) and $score_tim_A[1][8][$iktA][$iktB] < $jumlah_game_penyisihan_putri) $kalah++;
+                if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang_hth++;
+                if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah_hth++;
             }
             $menang_hth_total[$iktA][$iktB] = $menang_hth;
             $kalah_hth_total[$iktA][$iktB]  = $kalah_hth;
@@ -188,25 +116,12 @@ if (!$result->num_rows()) {
         echo "<tr valign='top'>";
         foreach ($result->result_array() as $L) {
             $iktB = $L['id_kontingen'];
-            if ($L['beregu'] == 'putra') {
-                if (isset($score_tim_A[1][1][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][1][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_A[1][2][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][2][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_A[1][3][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][3][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_A[1][4][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][4][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_A[1][5][$iktA][$iktB])) echo "<td> " . $score_tim_A[1][5][$iktA][$iktB] . " </td>";
-                else echo "<td class='bg-dark'></td>"; //ada yang perlu di cek lagi, soalnya ke count yang BYE
-            }
-            if ($L['beregu'] == 'putri') {
-                if (isset($score_tim_B[1][6][$iktB][$iktA])) echo "<td> " . $score_tim_B[1][6][$iktB][$iktA] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_B[1][7][$iktB][$iktA])) echo "<td> " . $score_tim_B[1][7][$iktB][$iktA] . " </td>";
-                else echo "<td class='bg-dark'></td>";
-                if (isset($score_tim_B[1][8][$iktB][$iktA])) echo "<td> " . $score_tim_B[1][8][$iktB][$iktA] . " </td>";
-                else echo "<td class='bg-dark'></td>";
+            foreach ($list_kategori->result_array() as $K) {
+                $id_k = $K['id_kategori'];
+                if (isset($score_tim_B[1][$id_k][$iktA][$iktB])) {
+                    echo "<td> " . $score_tim_B[1][$id_k][$iktB][$iktA] . " </td>";
+                } else if ($iktA == $iktB) echo "<td class='bg-dark' style='border:none;'></td>";
+                else echo "<td></td>";
             }
         }
         echo '</tr>';
@@ -247,13 +162,14 @@ if (!empty($tmp)) {
         ## 2nd STEP BIKIN ARRAY PERINGKAT YG SAMA BWT DI SORT SENDIRI (DAPETIN MACTH POINTNYA)
         $i = 1;
         foreach ($rangking_temp as $key => $val) {
-            if ($val == $yg_sama) $rangking_temp2[$i] = $key;
-            $i++;
+            if ($val == $yg_sama) {
+				$rangking_temp2[$i] = $key;
+				$i++;
+			}
         }
 
-        $iktA = isset($rangking_temp2[1]) ? $rangking_temp2[1] : '';
-        $iktB = isset($rangking_temp2[2]) ? $rangking_temp2[2] : '';
-        //$iktB = $rangking_temp2[2];
+        $iktA = $rangking_temp2[1];
+        $iktB = $rangking_temp2[2];
         $menang_iktA = $menang_hth_total[$iktA][$iktB];
         $menang_iktB = $menang_hth_total[$iktB][$iktA];
         $rangking_temp3 = array();

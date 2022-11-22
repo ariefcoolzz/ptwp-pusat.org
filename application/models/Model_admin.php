@@ -472,6 +472,7 @@ class Model_admin extends CI_Model
 		$this->db->from('data_pool AS A');
 		$this->db->where('A.id_event', $P['id_event']);
 		$this->db->where('A.beregu', $P['beregu']);
+		$this->db->where('A.id_kontingen IS NOT NULL');
 		IF($P['pool'] != "all") $this->db->where('A.pool', $P['pool']);
 		$this->db->order_by('A.id_event ASC, A.pool ASC, A.urutan ASC');
 		$query = $this->db->get();
@@ -567,6 +568,15 @@ class Model_admin extends CI_Model
 
 
 	//PUTRA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+	function list_kategori_pemain($P)
+	{
+		$this->db->from('master_kategori_pemain AS A');
+		$this->db->where('A.beregu', $P['beregu']);
+		$this->db->order_by('A.urutan');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
 	function get_list_pool()
 	{
 		$id_event = $this->input->post('id_event');
