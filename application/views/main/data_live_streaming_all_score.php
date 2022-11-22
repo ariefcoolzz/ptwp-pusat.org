@@ -1,6 +1,6 @@
 <div class="content bg-indigo mg-0">
     <div class="divider-text">
-        <h4 class="text-white">Hasil Score Babak Penyisihan</h4>
+        <h4 class="text-white">Hasil Score Babak Penyisihan Beregu <?php echo $_POST['beregu']; ?></h4>
     </div>
     <div class="card">
         <div class="card-header d-flex justify-content-between">
@@ -11,7 +11,7 @@
                 <?php
                 $nama_kontingen = array();
                 $str = array();
-                $result = $this->Model_main->model_data_live_streaming_all_score();
+                $result = $this->Model_main->model_data_live_streaming_all_score($_POST['beregu']);
                 if ($result->num_rows()) {
                     foreach ($result->result_array() as $R) {
                         $p = $R['pool'];
@@ -42,7 +42,10 @@
                         $str[$p] .= "<hr style='margin:0px;'>";
                     }
 
-                    for ($ke = 1; $ke <= 16; $ke++) {
+                    IF($_POST['beregu'] == 'putra') $jumlah_pool = 16; ELSE $jumlah_pool = 8;
+
+
+                    for ($ke = 1; $ke <= $jumlah_pool; $ke++) {
                         $p = pool($ke);
                         if (!isset($str[$p])) $str[$p] = "";
                         echo "

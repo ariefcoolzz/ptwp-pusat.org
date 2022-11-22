@@ -326,14 +326,14 @@ class Model_main extends CI_Model
 		return $query;
 	}
 
-	function model_data_live_streaming_all_score()
+	function model_data_live_streaming_all_score($beregu)
 	{
 		$this->db->select("A.*");
 		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_A) AS nama_kontingen_tim_A");
 		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS nama_kontingen_tim_B");
 		$this->db->from('data_babak_penyisihan AS A');
 		$this->db->where('A.id_event', '2');
-		$this->db->where('A.beregu', 'putra');
+		$this->db->where('A.beregu', $beregu);
 		$this->db->where('A.set1_tim_A IS NOT NULL');
 		$this->db->where('A.set1_tim_B IS NOT NULL');
 		$this->db->order_by("A.id_event", "ASC");

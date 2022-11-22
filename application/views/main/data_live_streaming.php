@@ -5,7 +5,8 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
-            <span class="btn btn-sm btn-outline-primary tx-bold" id='live_streaming_all_score' style='cursor:pointer;'>All Score</span>
+            <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
+            <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span>
         </div>
         <div class="card-body">
             <div class='row'>
@@ -87,8 +88,9 @@
         $("#popup_streaming").modal('show');
     });
 
-    $("#live_streaming_all_score").on("click", function() {
+    $(".live_streaming_all_score").on("click", function() {
         var form_data = new FormData();
+        form_data.append('beregu', $(this).data('beregu'));
         $.ajax({
             url: "<?php echo base_url(); ?>main/data_live_streaming_all_score",
             type: 'POST',
