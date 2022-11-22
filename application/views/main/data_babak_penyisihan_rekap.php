@@ -123,9 +123,7 @@ if (!$result->num_rows()) {
             foreach ($list_kategori->result_array() as $K) {
                 $id_k = $K['id_kategori'];
                 if (isset($score_tim_B[1][$id_k][$iktA][$iktB])) {
-                    echo "<td> " . $score_tim_B[1][$id_k][$iktA][$iktB] . " </td>";
-                    $menang_game += $score_tim_A[1][$id_k][$iktA][$iktB];
-                    $kalah_game += $score_tim_B[1][$id_k][$iktA][$iktB];
+                    echo "<td> " . $score_tim_B[1][$id_k][$iktB][$iktA] . " </td>";
                 } else if ($iktA == $iktB) echo "<td class='bg-dark' style='border:none;'></td>";
                 else echo "<td></td>";
             }
