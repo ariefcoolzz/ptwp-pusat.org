@@ -670,3 +670,8 @@ function nama_singkat($nama)
 			}
 		return $hasil;
 	}
+function cetak_peringkat($data){
+	foreach ($data as $key => $val) {
+            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+        }
+}
