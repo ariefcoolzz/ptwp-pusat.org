@@ -1,4 +1,3 @@
-Admin
 <?php
 $result = $this->Model_admin->model_tabel_babak_penyisihan_rekap($_POST);
 if (!$result->num_rows()) {
