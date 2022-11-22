@@ -5,8 +5,10 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
-            <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
-            <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span>
+            <div class="btn-group">
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span>
+            </div>
         </div>
         <div class="card-body">
             <div class='row'>
@@ -110,5 +112,4 @@
             }
         });
     });
-    
 </script>
