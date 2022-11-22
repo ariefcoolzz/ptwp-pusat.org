@@ -16,12 +16,8 @@ if (!$result->num_rows()) {
 		<th>Pool</th>
 		<th> Nama Tim </th>";
     foreach ($result->result_array() as $S) {
-        if ($S['beregu'] == 'putra') {
-            echo "<th colspan='5'> $S[nama_satker_singkat] </th>";
-        }
-        if ($S['beregu'] == 'putri') {
-            echo "<th colspan='3'> $S[nama_satker_singkat] </th>";
-        }
+        $total_kategori = $list_kategori->num_rows();
+        echo "<th colspan='".$total_kategori."'> $S[nama_satker_singkat] </th>";
     }
     echo "     
 		<th> Menang </th>
