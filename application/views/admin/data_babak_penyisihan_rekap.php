@@ -49,7 +49,7 @@ if (!$result->num_rows()) {
         echo '<td>' . format_tanggal('ddmmmmyyyy',$R['tanggal']) . '</td>';
         echo '<td>' . $R['waktu'] . '</td>';
         echo '<td>' . $R['lapangan'] . '</td>';
-        echo "<td align='center' $classA>xxx $tim_A</td>";
+        echo "<td align='center' $classA>$tim_A</td>";
         echo "<td align='center' $classB>$tim_B</td>";
         echo "<td>
                     <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'><i class='fa fa-edit'></i> Edit</button>
@@ -58,6 +58,7 @@ if (!$result->num_rows()) {
         // echo '<td class="text-center"><a href="#" onClick="tambah_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
         // <a href="#" onClick="hapus_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td></td>';
         echo '</tr>';
+        
     }
     echo "</tbody></table></div>";
 }
