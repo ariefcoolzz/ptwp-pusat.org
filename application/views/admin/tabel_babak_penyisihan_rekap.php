@@ -1,3 +1,4 @@
+Admin
 <?php
 $result = $this->Model_admin->model_tabel_babak_penyisihan_rekap($_POST);
 if (!$result->num_rows()) {
@@ -161,7 +162,7 @@ if (!$result->num_rows()) {
             }
             $menang_hth_total[$iktA][$iktB] = $menang_hth;
             $kalah_hth_total[$iktA][$iktB]  = $kalah_hth;
-            
+
         }
 
         $jumlah = $menang + $kalah;
