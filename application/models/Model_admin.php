@@ -564,6 +564,14 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
+	function model_data_babak_final_simpan($P)
+	{
+		$this->db->where('id_pertandingan', $P['id_pertandingan']);
+		$query = $this->db->update('data_babak_final', $P); 
+		//die($this->db->last_query());
+		return $query;
+	}
+
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 

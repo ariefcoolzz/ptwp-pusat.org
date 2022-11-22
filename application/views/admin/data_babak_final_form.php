@@ -7,6 +7,8 @@
 <?php
 $result = $this->Model_admin->model_data_babak_final_rekap($_POST);
 if ($result->num_rows()) $R = $result->row_array();
+
+$satker = $this->Model_admin->model_tmst_satker();
 ?>
 <div class="row">
     <div class="col-lg">
@@ -34,9 +36,8 @@ if ($result->num_rows()) $R = $result->row_array();
             </tr>
             <tr>
                 <td>Kontingen Tim A</td>
-                <td>xxx 
+                <td>
                     <?php
-                    $satker = $this->Model_admin->model_tmst_satker();
                     if ($satker->num_rows()) {
                         echo "<select class='form-control select2' id='id_kontingen_tim_A'>";
                         echo "<option></option>";
@@ -51,7 +52,18 @@ if ($result->num_rows()) $R = $result->row_array();
             </tr>
             <tr>
                 <td>Kontingen Tim B</td>
-                <td><?php echo $R['kontingen_tim_B']; ?></td>
+                <td><?php
+                    if ($satker->num_rows()) {
+                        echo "<select class='form-control select2' id='id_kontingen_tim_B'>";
+                        echo "<option></option>";
+                        foreach ($satker->result_array() as $S) {
+                            echo "<option value='$S[IdSatker]'>$S[NamaSatker]</option>";
+                            
+                        }
+                        echo "</select>";
+                    }
+                    ?>
+                </td>
             </tr>
             <tr>
                 <td>Tanggal</td>

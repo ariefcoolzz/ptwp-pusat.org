@@ -1149,6 +1149,12 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function data_babak_final_simpan()
+	{
+		$status = $this->Model_admin->model_data_babak_final_simpan($_POST);
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+
 	public function skema_babak_final()
 	{
 		$konten_menu = $this->load->view("admin/skema_babak_final", NULL, TRUE);
