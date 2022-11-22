@@ -212,6 +212,8 @@ if (isset($R)) {
     echo "$('#tanggal').val('$R[tanggal]');";
     echo "$('#waktu').val('$R[waktu]');";
     echo "$('#id_lapangan').val('$R[id_lapangan]');";
+    echo "$('#id_kontingen_tim_A').val('$R[id_kontingen_tim_A]');";
+    echo "$('#id_kontingen_tim_B').val('$R[id_kontingen_tim_B]');";
     if (isset($E_A[0])) echo "$('#nama_pemain1_tim_A').val('$E_A[0]');";
     if (isset($E_A[1])) echo "$('#nama_pemain2_tim_A').val('$E_A[1]');";
     if (isset($E_B[0])) echo "$('#nama_pemain1_tim_B').val('$E_B[0]');";
@@ -245,6 +247,8 @@ if (isset($R)) {
         form_data.append('tanggal', $("#tanggal").val());
         form_data.append('waktu', $("#waktu").val());
         form_data.append('id_lapangan', $("#id_lapangan").val());
+        form_data.append('id_kontingen_tim_A', $("#id_kontingen_tim_A").val());
+        form_data.append('id_kontingen_tim_B', $("#id_kontingen_tim_B").val());
         form_data.append('nama_pemain1_tim_A', $("#nama_pemain1_tim_A").val());
         form_data.append('nama_pemain2_tim_A', $("#nama_pemain2_tim_A").val());
         form_data.append('nama_pemain1_tim_B', $("#nama_pemain1_tim_B").val());

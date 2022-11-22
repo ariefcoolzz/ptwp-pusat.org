@@ -1152,6 +1152,9 @@ class Admin extends CI_Controller
 	public function data_babak_final_simpan()
 	{
 		$status = $this->Model_admin->model_data_babak_final_simpan($_POST);
+		OB_START();
+		$this->load->view("admin/data_babak_final", NULL);
+		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
