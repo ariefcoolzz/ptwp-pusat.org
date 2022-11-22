@@ -10,7 +10,7 @@
 </div>
 <div class="card">
 	<div class="card-body">
-	<a id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Template Final</a>
+	<!-- <a id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Template Final</a> -->
 			
 	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
@@ -38,15 +38,6 @@
 
 <script>
 	$(".select2").select2();
-	$('[data-toggle="tooltip"]').tooltip();
-
-	$('.datatable-pemain').DataTable({
-		language: {
-			searchPlaceholder: 'Pencarian...',
-			sSearch: '',
-			lengthMenu: '_MENU_ Pemain/Halaman',
-		}
-	});
 
 	$("#beregu,#per").on('change', function() {
 		load();

@@ -504,6 +504,16 @@ class Model_admin extends CI_Model
 			// PRINT_R($G);DIE();
 			$this->model_data_babak_final_generate_simpan($G);
 		}
+
+		FOR($a=1;$a<=8;$a++)
+		{
+			$G['id_event'] = $P['id_event'];
+			$G['beregu'] = 'putri'; 
+			$G['per'] = '8'; 
+			$G['urutan'] = $a; 
+			// PRINT_R($G);DIE();
+			$this->model_data_babak_final_generate_simpan($G);
+		}
 	}
 
 	function model_data_babak_final_generate_simpan($FIX)
@@ -558,7 +568,7 @@ class Model_admin extends CI_Model
 		IF(ISSET($P['per']) AND $P['per'] != "all") $this->db->where('A.per', $P['per']); 
 		IF(ISSET($P['id_kontingen_tim_A']) AND $P['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $P['id_kontingen_tim_A']); 
 		IF(ISSET($P['id_kontingen_tim_B']) AND $P['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $P['id_kontingen_tim_B']); 
-		$this->db->order_by('A.id_event ASC, A.beregu ASC, A.per ASC, A.urutan ASC, A.id_kategori');
+		$this->db->order_by('A.id_event ASC, A.beregu ASC, A.per ASC, A.urutan ASC, A.id_kategori ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -585,7 +595,7 @@ class Model_admin extends CI_Model
 		UNSET($P['nama_pemain2_tim_A']);
 		UNSET($P['nama_pemain1_tim_B']);
 		UNSET($P['nama_pemain2_tim_B']);
-		
+
 		$this->db->where('id_pertandingan', $P['id_pertandingan']);
 		$query = $this->db->update('data_babak_final', $P); 
 		//die($this->db->last_query());

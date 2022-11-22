@@ -27,15 +27,27 @@ if (!$result->num_rows()) {
         </thead>
         <tbody>
             ";
+    $jumlah_menang_A = 0;
+    $jumlah_menang_B = 0;
     foreach ($result->result_array() as $R) {
 
-        $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']);
-        $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']);
+        $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']). ' - '.if_null($R['set2_tim_A']). ' - '.if_null($R['set3_tim_A']);
+        $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']). ' - '.if_null($R['set2_tim_B']). ' - '.if_null($R['set3_tim_B']);
 
-        if ($R['set1_tim_A'] < 8) $classA = "";
-        else $classA = "class='bg-success'";
-        if ($R['set1_tim_B'] < 8) $classB = "";
-        else $classB = "class='bg-success'";
+        if ($R['set1_tim_A'] >= 8) $jumlah_menang_A++;
+        if ($R['set1_tim_B'] >= 8) $jumlah_menang_B++;
+
+        if ($R['set2_tim_A'] >= 8) $jumlah_menang_A++;
+        if ($R['set2_tim_B'] >= 8) $jumlah_menang_B++;
+
+        if ($R['set3_tim_A'] >= 8) $jumlah_menang_A++;
+        if ($R['set3_tim_B'] >= 8) $jumlah_menang_B++;
+
+        IF($jumlah_menang_A >= 2)  $classA = "class='bg-success'"; else $classA = ""; 
+        IF($jumlah_menang_B >= 2)  $classB = "class='bg-success'"; else $classB = ""; 
+
+        $jumlah_menang_A = 0;
+        $jumlah_menang_B = 0;
 
         $no++;
         echo "<tr valign='top'>";
@@ -54,9 +66,6 @@ if (!$result->num_rows()) {
         echo "<td>
                     <button class='btn btn-sm btn-warning edit' data-id_pertandingan='$R[id_pertandingan]'><i class='fa fa-edit'></i> Edit</button>
                 </td>";
-
-        // echo '<td class="text-center"><a href="#" onClick="tambah_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn-tambah btn btn-xs btn-outline-success btn-rounded" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-        // <a href="#" onClick="hapus_pool(' . $R['id_tim_A'] . ',' . $R['id_tim_B'] . ')" class="btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a></td></td>';
         echo '</tr>';
         
     }
