@@ -492,6 +492,77 @@ class Model_admin extends CI_Model
 		return $query;
 	}
 
+	function model_data_babak_final_generate($P)
+	{
+		FOR($a=1;$a<=16;$a++)
+		{
+			$G['id_event'] = $P['id_event'];
+			$G['beregu'] = 'putra'; 
+			$G['per'] = '16'; 
+			$G['urutan'] = $a; 
+			// PRINT_R($G);DIE();
+			$this->model_data_babak_final_generate_simpan($G);
+		}
+	}
+
+	function model_data_babak_final_generate_simpan($FIX)
+	{
+		$this->db->select('A.id_kategori');
+		$this->db->from('master_kategori_pemain AS A');
+		$this->db->where('A.beregu', $FIX['beregu']);
+		$this->db->order_by('A.urutan ASC');
+		$kategori = $this->db->get(); 
+		IF($kategori->num_rows())
+			{
+				FOREACH($kategori->result_array() AS $k) 
+					{			
+						$FIX['id_kategori'] = $k['id_kategori'];
+
+						$this->db->select('A.id_pertandingan');
+						$this->db->from('data_babak_final AS A');
+						$this->db->where('A.id_event', $FIX['id_event']);
+						$this->db->where('A.beregu', $FIX['beregu']);
+						$this->db->where('A.per', $FIX['per']);
+						$this->db->where('A.urutan', $FIX['urutan']);
+						$this->db->where('A.id_kategori', $FIX['id_kategori']);
+						$cek = $this->db->get(); 
+						//Pengecekan tabel data_babak_penyisihan, Jika sudah ada tidak di insert
+						IF(!$cek->num_rows())
+							{
+								$status = $this->db->insert('data_babak_final', $FIX);
+							}
+						else {
+							$this->db->where('id_pertandingan', $cek->row_array()['id_pertandingan']);
+							$status = $this->db->update('data_babak_final', $FIX);
+						}
+					}
+			}
+	}
+
+	function model_data_babak_final_rekap($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
+		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
+		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
+		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
+		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
+		$this->db->select('A.nama_pemain_tim_A AS nama_pemain_tim_A');
+		$this->db->select('A.nama_pemain_tim_B AS nama_pemain_tim_B');
+		$this->db->from('data_babak_final AS A');
+		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
+		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 
+		IF(ISSET($P['per']) AND $P['per'] != "all") $this->db->where('A.per', $P['per']); 
+		IF(ISSET($P['id_kontingen_tim_A']) AND $P['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $P['id_kontingen_tim_A']); 
+		IF(ISSET($P['id_kontingen_tim_B']) AND $P['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $P['id_kontingen_tim_B']); 
+		$this->db->order_by('A.id_event ASC, A.beregu ASC, A.per ASC, A.urutan ASC, A.id_kategori');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+
 	//DIKA AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 

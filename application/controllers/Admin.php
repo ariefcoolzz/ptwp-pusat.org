@@ -1116,10 +1116,35 @@ class Admin extends CI_Controller
 
 	public function data_babak_final()
 	{
-		$data['judul'] = "DATA BABAK FINAL";
-		$data['kategori'] = $this->basic->get_data('master_kategori_pemain');
 		OB_START();
-		$this->load->view("admin/data_babak_final", $data);
+		$this->load->view("admin/data_babak_final", NULL);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_babak_final_form()
+	{
+		OB_START();
+		$this->load->view("admin/data_babak_final_form", NULL);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+
+	public function data_babak_final_generate()
+	{
+		$this->Model_admin->model_data_babak_final_generate($_POST);
+		OB_START();
+		$this->load->view("admin/data_babak_final_rekap", NULL);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	
+	public function data_babak_final_rekap()
+	{
+		OB_START();
+		$this->load->view("admin/data_babak_final_rekap", NULL);
 		$konten_menu = ob_get_clean();
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}

@@ -3,14 +3,14 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb breadcrumb-style1 mg-b-10">
 				<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-				<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
+				<li class="breadcrumb-item active" aria-current="page">Data Babak Final</li>
 			</ol>
 		</nav>
 	</div>
 </div>
 <div class="card">
 	<div class="card-body">
-	<a href="javascript:void(0)" id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Dari Babak Penyisihan</a>
+	<a id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Template Final</a>
 			
 	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
@@ -23,6 +23,7 @@
 		<div class='col-6'>
             <select class="form-control select2" id='per'>
 				<option value='all' selected>Semua</option>
+				<option value='16'>Per enam belas Final</option>
 				<option value='8'>Perdelapan Final</option>
 				<option value='4'>Perempat Final</option>
 				<option value='2'>Semi Final</option>
@@ -88,7 +89,7 @@
 				var form_data = new FormData();
 				form_data.append('id_event', $("#list_event").val());
 				$.ajax({
-					url: "<?php echo base_url(); ?>admin/data_babak_penyisihan_generate",
+					url: "<?php echo base_url(); ?>admin/data_babak_final_generate",
 					type: 'POST',
 					cache: false,
 					contentType: false,
