@@ -64,7 +64,7 @@
                                                     <button data-link='$link[$ke]' class='tonton btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>
                                                 </div>
                                                 <div class='card-body'>
-                                                    <div class='overflow-auto ht-500 pr-2'>
+                                                    <div class='overflow-y-auto ht-500 pr-2'>
                                                         $str[$ke]
                                                     </div>
                                                 </div>
