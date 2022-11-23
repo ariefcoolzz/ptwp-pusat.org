@@ -124,8 +124,8 @@
                 <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/data_jadwal_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal Pertandingan</a></li>-->
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
-                <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/data_skema_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Skema Pertandingan</a></li>
-                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/8'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/data_skema_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Skema Pertandingan</a></li>
+                <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/8'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perdelapan Final</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/4'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Perempat Final</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/2'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Semi Final</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_final/1'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Final</a></li>-->

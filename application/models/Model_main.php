@@ -428,5 +428,18 @@ class Model_main extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
+	function model_data_skema_veteran($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('B.id_kontingen_tim_A, B.id_kontingen_tim_B');
+		$this->db->select('NAMA_SATKER_SINGKAT(B.id_kontingen_tim_A) AS satker_A');
+		$this->db->select('NAMA_SATKER_SINGKAT(B.id_kontingen_tim_B) AS satker_B');
+		$this->db->from('data_babak_final AS A');
+		$this->db->join("data_skema AS B", "A.`id_event` = B.`id_event` AND A.`beregu` = B.`beregu` AND A.`per` = B.`per` AND A.`urutan` = B.`urutan`", 'left');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		$query = $this->db->get();
+		return $query;
+	}
 
 }

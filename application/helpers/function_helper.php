@@ -675,3 +675,19 @@ function cetak_peringkat($data){
             echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
         }
 }
+function nama_satker_singkat($satker)
+{
+	$satker = str_replace("Mahkamah Syar`iyah", "MS", $satker);
+	$satker = str_replace("Pengadilan Tinggi Agama", "PTA", $satker);
+	$satker = str_replace("Pengadilan Tinggi", "PT", $satker);
+	$satker = str_replace("Pengadilan Agama", "PA", $satker);
+	$satker = str_replace("Pengadilan Negeri", "PN", $satker);
+	$satker = str_replace("Badan Urusan Administrasi", "BUA", $satker);
+	$satker = str_replace("Direktorat Jenderal Badan Peradilan Agama", "DITJEN BADILAG", $satker);
+	$satker = str_replace("Direktorat Jenderal Badan Peradilan Umum", "DITJEN BADILUM", $satker);
+	$satker = str_replace("Direktorat Jenderal Badan Peradilan Militer Dan Tata Usaha Negara", "DITJEN BADILMILTUN", $satker);
+	$satker = str_replace("Badan Penelitian Dan Pengembangan Dan Pendidikan Dan Pelatihan Hukum Dan Peradilan", "BLDK", $satker);
+	$satker = str_replace("Badan Pengawasan", "BAWAS", $satker);
+	$satker = str_replace("Mahkamah Agung", "MA", $satker);
+	return $satker;
+}

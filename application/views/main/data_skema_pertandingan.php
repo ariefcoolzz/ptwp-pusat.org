@@ -10,8 +10,9 @@
         <h4 class="text-center mg-t-20">
             <div class="form-group ml-4">
                 <select class="form-control" id='beregu'>
-                    <option value='putra' selected>Putra</option>
+                    <option value='putra'>Putra</option>
                     <option value='putri'>Putri</option>
+                    <option value='veteran' selected>Veteran</option>
                 </select>
             </div>
 
@@ -27,6 +28,7 @@
             // alert();skip();
             load_data();
         });
+        load_data();
 
         function load_data() {
             // alert(id_kategori);

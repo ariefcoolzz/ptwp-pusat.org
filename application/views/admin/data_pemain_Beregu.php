@@ -17,8 +17,8 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
 
         <h5 class="text-center"> <?php echo $event['nama']; ?> </h5>
         <?php
-        // if ($event['tanggal_selesai'] >= date('Y-m-d')) {
-        if ('2022-11-11' >= date('Y-m-d')) {
+                    // if ($event['tanggal_selesai'] >= date('Y-m-d')) {
+                    if ('2022-12-11' >= date('Y-m-d')) {
             echo '<a href="javascript:void(0)" id="tambah" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Pemain / Official</a>';
         } else {
             echo '<h4 class="text-danger">Pendaftaran Telah Berakhir</h4>';

@@ -8,7 +8,8 @@ if ($satker->num_rows()) {
 }
 
 if ($_POST['beregu'] == "putra") $jumlah = 32;
-else $jumlah = 16;
+if ($_POST['beregu'] == "putri") $jumlah = 16;
+if ($_POST['beregu'] == "veteran") $jumlah = 32; 
 
 $K[0] = "B";
 $K[1] = "A";
@@ -19,8 +20,8 @@ $b = 1;
 $c = 1;
 $d = 1;
 $e = 1;
-if ($jumlah == 32) echo "<tr><td>Per-32</td><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
-if ($jumlah == 16) echo "<tr><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
+if ($jumlah == 32) echo "<tr class='bg-info text-center'><td>Per-32</td><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
+if ($jumlah == 16) echo "<tr class='bg-info text-center'><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
 
 for ($a = 1; $a <= $jumlah; $a++) {
 
@@ -28,7 +29,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
     $per    = $jumlah / 2;
     $urutan = CEIL($a / 2);
     $tim    = $K[$a % 2];
-    echo "<td>$a. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+    echo "<td><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
 
     $per    = $jumlah / 4;
     $urutan = CEIL($a / 4);
@@ -36,7 +37,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='2' style='vertical-align: middle;'>$b. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+        echo "<td rowspan='2' style='vertical-align: middle;'><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
         $b++;
     }
 
@@ -46,7 +47,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='4' style='vertical-align: middle;'>$c. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+        echo "<td rowspan='4' style='vertical-align: middle;'><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
         $c++;
     }
 
@@ -56,7 +57,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='8' style='vertical-align: middle;'>$d. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+        echo "<td rowspan='8' style='vertical-align: middle;'><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
         $d++;
     }
 
@@ -66,7 +67,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='16' style='vertical-align: middle;'>$e. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+        echo "<td rowspan='16' style='vertical-align: middle;'><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
         $e++;
     }
 
@@ -76,7 +77,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='32' style='vertical-align: middle;'>$a. <span id='C-$per-$urutan-$tim'>--Belum ditentukan--</span></td>";
+        echo "<td rowspan='32' style='vertical-align: middle;'><span id='C-$per-$urutan-$tim'><i class='text-danger'>Umpire</i></span></td>";
     }
 
     echo "</tr>";
@@ -88,23 +89,46 @@ function pemenang($jumlah)
     return "<td rowspan='$jumlah'>xxx</td>";
 }
 
-
-$skema = $this->Model_main->model_data_skema($_POST);
-if ($skema->num_rows()) {
-    foreach ($skema->result_array() as $R) {
-        $per = $R['per'];
-        $urutan = $R['urutan'];
-        $satkerA = '--Belum ditentukan--';
-        $satkerB = '--Belum ditentukan--';
-        if ($R['id_kontingen_tim_A']) {
-            $satkerA = $R['satker_A'];
+if ($_POST['beregu'] == "veteran") {
+    $skema = $this->Model_main->model_data_skema_veteran($_POST);
+    if ($skema->num_rows()) {
+        foreach ($skema->result_array() as $R) {
+            $per = $R['per'];
+            $urutan = $R['urutan'];
+            $satkerA = "<i class='text-danger'>Umpire</i>";
+            $satkerB = "<i class='text-danger'>Umpire</i>";
+            if ($R['id_kontingen_tim_A']) {
+                $satkerA = '<div class="d-flex bg-gray-400"><div class="pd-10 bg-gray-300 flex-grow-1">' . $R['nama_pemain_tim_A'] . '</div><div class="pd-10 bg-gray-400 align-self-center">' . $R['satker_A'] . '</div><div class="pd-10 bg-gray-500 align-self-center">' . $R['set1_tim_A'] . '</div></div>';
+            }
+            if ($R['id_kontingen_tim_B']) {
+                $satkerB = '<div class="d-flex bg-gray-400"><div class="pd-10 bg-gray-300 flex-grow-1">' . $R['nama_pemain_tim_B'] . '</div><div class="pd-10 bg-gray-400 align-self-center">' . $R['satker_B'] . '</div><div class="pd-10 bg-gray-500 align-self-center">' . $R['set1_tim_B'] . '</div></div>';
+            }
+            echo "<script>
+                var satkerA = '$satkerA';
+                var satkerB = '$satkerB';
+                    $('#C-$per-$urutan-A').html(satkerA);
+                    $('#C-$per-$urutan-B').html(satkerB);
+                </script>";
         }
-        if ($R['id_kontingen_tim_B']) {
-            $satkerB = $R['satker_B'];
+    }
+} else {
+    $skema = $this->Model_main->model_data_skema($_POST);
+    if ($skema->num_rows()) {
+        foreach ($skema->result_array() as $R) {
+            $per = $R['per'];
+            $urutan = $R['urutan'];
+            $satkerA = "<i class='text-danger'>Umpire</i>";
+            $satkerB = "<i class='text-danger'>Umpire</i>";
+            if ($R['id_kontingen_tim_A']) {
+                $satkerA = $R['satker_A'];
+            }
+            if ($R['id_kontingen_tim_B']) {
+                $satkerB = $R['satker_B'];
+            }
+            echo "<script>
+                    $('#C-$per-$urutan-A').text('$satkerA');
+                    $('#C-$per-$urutan-B').text('$satkerB');
+                </script>";
         }
-        echo "<script>
-                $('#C-$per-$urutan-A').text('$satkerA');
-                $('#C-$per-$urutan-B').text('$satkerB');
-            </script>";
     }
 }
