@@ -1,6 +1,6 @@
 <div class="content bg-indigo mg-0">
     <div class="divider-text">
-        <h4 class="text-white">Hasil Pertandingan Lapangan UNNES Live Streaming</h4>
+        <h4 class="text-white">Hasil Pertandingan Babak Penyisihan</h4>
     </div>
     <div class="card">
         <div class="card-header d-flex justify-content-between">
