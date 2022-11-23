@@ -241,9 +241,10 @@ class Model_admin extends CI_Model
 	function model_tmst_satker()
 	{
 		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.IdSatker) AS nama_satker_singkat');
 		$this->db->from('tmst_satker AS A');
 		$this->db->where('A.LevelSatker <= 2');
-		$this->db->order_by('RAND()');
+		$this->db->order_by('A.NamaSatker ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -491,6 +492,39 @@ class Model_admin extends CI_Model
 		$query = $this->db->get();
 		//  die($this->db->last_query());
 		return $query;
+	}
+
+	function model_data_skema($P)
+	{
+		$this->db->select('A.*');
+		$this->db->from('data_skema AS A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		$query = $this->db->get(); 
+		return $query;
+	}
+
+	function model_data_skema_simpan($FIX)
+	{
+		$this->db->select('A.id_event');
+		$this->db->from('data_skema AS A');
+		$this->db->where('A.id_event', $FIX['id_event']);
+		$this->db->where('A.beregu', $FIX['beregu']);
+		$this->db->where('A.per', $FIX['per']);
+		$this->db->where('A.urutan', $FIX['urutan']);
+		$ketemu = $this->db->get(); 
+		IF(!$ketemu->num_rows())
+			{
+				$status = $this->db->insert('data_skema', $FIX);
+			}
+			else {
+				$this->db->where('id_event', $FIX['id_event']);
+				$this->db->where('beregu', $FIX['beregu']);
+				$this->db->where('per', $FIX['per']);
+				$this->db->where('urutan', $FIX['urutan']);
+				$status = $this->db->update('data_skema', $FIX);
+			}
+		return $status;
 	}
 
 	function model_data_babak_final_generate($P)

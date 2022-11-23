@@ -1122,6 +1122,24 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function data_skema_rekap()
+	{
+		OB_START();
+		$this->load->view("admin/data_skema_rekap", NULL);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_skema_simpan()
+	{
+		// PRINT_R($_POST);
+		$status = $this->Model_admin->model_data_skema_simpan($_POST);
+		OB_START();
+		$this->load->view("admin/data_skema_rekap", NULL);
+		$konten_menu = ob_get_clean();
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+
 	public function data_babak_final()
 	{
 		OB_START();
