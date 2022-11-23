@@ -18,12 +18,12 @@ FOR($a=1;$a <= $jumlah; $a++)
     {
         
         echo "<tr>";
-            $per    = 16; 
+            $per    = $jumlah / 2; 
             $urutan = CEIL($a / 2);
             $tim    = $K[$a % 2];
-                            echo "<td><select               id='C-$per-$urutan-$tim' class='id_kontingen ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                    echo "<td><select               id='C-$per-$urutan-$tim' class='id_kontingen ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
 
-            $per    = 8; 
+            $per    = $jumlah / 4; 
             $urutan = CEIL($a / 4);
             IF($a % 2 == 1) 
                 {
@@ -33,7 +33,7 @@ FOR($a=1;$a <= $jumlah; $a++)
                     echo "<td rowspan='2'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                 }
 
-            $per    = 4; 
+            $per    = $jumlah / 8; 
             $urutan = CEIL($a / 8);
             IF($a % 4 == 1) 
                 {
@@ -43,7 +43,7 @@ FOR($a=1;$a <= $jumlah; $a++)
                     echo "<td rowspan='4'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                 }
 
-            $per    = 2; 
+            $per    = $jumlah / 16; 
             $urutan = CEIL($a / 16);
             IF($a % 8 == 1) 
                 {
@@ -52,8 +52,8 @@ FOR($a=1;$a <= $jumlah; $a++)
                     $tim    = $K[$t[$per] % 2];
                     echo "<td rowspan='8'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                 }
-
-            $per    = 1; 
+            
+            $per    = $jumlah / 32; 
             $urutan = CEIL($a / 32);
             IF($a % 16 == 1) 
                 {
@@ -62,19 +62,25 @@ FOR($a=1;$a <= $jumlah; $a++)
                     $tim    = $K[$t[$per] % 2];
                     echo "<td rowspan='16'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                 }
-
-            $per    = 0; 
+        
+            $per    = $jumlah / 64; 
             $urutan = CEIL($a / 64);
             IF($a % 32 == 1) 
                 {
                     IF(!ISSET($t[$per])) $t[$per] = 0;
                     $t[$per]++;
                     $tim    = $K[$t[$per] % 2];
-                    IF($a % 32 == 1) echo "<td rowspan='32'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                    echo "<td rowspan='32'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                 }
+                
         echo "</tr>";
     }
 echo "</table>";
+
+function pemenang($jumlah)
+    {
+        return "<td rowspan='$jumlah'>xxx</td>";
+    }
 
 
 $skema = $this->Model_admin->model_data_skema($_POST);
