@@ -338,17 +338,22 @@ class Model_admin extends CI_Model
 		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $P['id_event']); //id event dimanualin dulu, gw kata ribet gak pake session
 		$this->db->where('A.is_official', '0');  
-		$this->db->where('A.is_veteran', '0');  
 		IF(ISSET($P['id_kontingen'])) $this->db->where('A.id_kontingen', $P['id_kontingen']); 
 		
 		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putra') 
 			{
+				$this->db->where('A.is_veteran', '0');  
 				$this->db->where('A.is_dharmayukti', '0');
 				$this->db->where('A.beregu', 'putra'); 
 			} 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == 'putri') 
 			{
+				$this->db->where('A.is_veteran', '0');  
 				$this->db->where("((A.beregu = 'putra' AND A.is_dharmayukti = '1') OR A.beregu = 'putri')");
+			} 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == 'veteran') 
+			{
+				$this->db->where('A.is_veteran', '1');  
 			} 
 		$this->db->order_by('nama ASC');
 		$query = $this->db->get();
@@ -587,6 +592,8 @@ class Model_admin extends CI_Model
 	function model_data_babak_final_rekap($P)
 	{
 		$this->db->select('A.*');
+		$this->db->select('(SELECT id_kontingen_tim_A FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS id_kontingen_tim_A');
+		$this->db->select('(SELECT id_kontingen_tim_B FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS id_kontingen_tim_B');
 		$this->db->select('(SELECT NAMA_SATKER(id_kontingen_tim_A) FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS kontingen_tim_A');
 		$this->db->select('(SELECT NAMA_SATKER(id_kontingen_tim_B) FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS kontingen_tim_B');
 		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');

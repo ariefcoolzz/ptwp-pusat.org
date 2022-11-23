@@ -31,8 +31,15 @@ if (!$result->num_rows()) {
     $jumlah_menang_B = 0;
     foreach ($result->result_array() as $R) {
 
-        $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']). ' - '.if_null($R['set2_tim_A']). ' - '.if_null($R['set3_tim_A']);
-        $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']). ' - '.if_null($R['set2_tim_B']). ' - '.if_null($R['set3_tim_B']);
+        IF($R['per'] == 1)
+            {
+                $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']). ' - '.if_null($R['set2_tim_A']). ' - '.if_null($R['set3_tim_A']);
+                $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']). ' - '.if_null($R['set2_tim_B']). ' - '.if_null($R['set3_tim_B']);
+            }
+        else {    
+                $tim_A = $R['nama_pemain_tim_A'] . "<br>" . if_null($R['set1_tim_A']);
+                $tim_B = $R['nama_pemain_tim_B'] . "<br>" . if_null($R['set1_tim_B']);
+            }
 
         if ($R['set1_tim_A'] >= 8) $jumlah_menang_A++;
         if ($R['set1_tim_B'] >= 8) $jumlah_menang_B++;
