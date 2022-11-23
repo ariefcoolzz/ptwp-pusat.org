@@ -14,6 +14,7 @@ if ($_POST['beregu'] == "veteran") $jumlah = 32;
 $K[0] = "B";
 $K[1] = "A";
 
+echo "<h3 class='tx-uppercase'>Babak Final ".$_POST['beregu']."</h3>";
 echo "<table id='table' class='table table-bordered table-striped'>";
 $b = 1;
 $c = 1;

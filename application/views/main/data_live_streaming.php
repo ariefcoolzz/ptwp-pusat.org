@@ -90,43 +90,38 @@
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
             <div class="btn-group">
-                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
-                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Babak Final Putra</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Babak Final Putri</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='veteran' style='cursor:pointer;'>All Score Babak Final Veteran</span>
             </div>
         </div>
         <div class="card-body">
-            <div class="content content-fixed">
-               
-                <div class="table-responsive">
-                    <h2>TURNAMEN TENIS BEREGU PIALA KMA KE 19 TAHUN 2022</h2>
-                    <h4 class="text-center mg-t-20">
-                        <div class="form-group ml-4">
-                            <select class="form-control" id='beregu'>
-                                <option value='putra'>Putra</option>
-                                <option value='putri'>Putri</option>
-                                <option value='veteran' selected>Veteran</option>
-                            </select>
-                        </div>
-
-                    </h4>
-                    <div class="table-responsive mg-t-20">
-                        <div class="container-fluid" id='konten'></div>
-                    </div>
+            <div class="table-responsive">
+                    <!-- <div class="form-group ml-4">
+                        <select class="form-control" id='beregu'>
+                            <option value='putra'>Putra</option>
+                            <option value='putri'>Putri</option>
+                            <option value='veteran' selected>Veteran</option>
+                        </select>
+                    </div> -->
+                <div class="table-responsive ">
+                    <div class="container-fluid" id='konten'></div>
                 </div>
             </div>
+        
             <script>
                 $(document).ready(function() {
-                    $("#beregu").on("change", function() {
+                    $(".babak_final_all_score").on("click", function() {
                         // alert();skip();
-                        load_data();
+                        load_data($(this).data('beregu'));
                     });
-                    load_data();
+                    load_data('veteran');
 
-                    function load_data() {
+                    function load_data(beregu) {
                         // alert(id_kategori);
                         var form_data = new FormData();
                         form_data.append('id_event', '2');
-                        form_data.append('beregu', $("#beregu").val());
+                        form_data.append('beregu', beregu);
 
                         $.ajax({
                             url: "<?php echo base_url(); ?>main/data_skema_pertandingan_rekap",
