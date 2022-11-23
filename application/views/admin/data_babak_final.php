@@ -18,6 +18,7 @@
 				<option value='all' selected>Semua Regu</option>
 				<option value='putra'>Beregu Putra</option>
 				<option value='putri'>Beregu Putri</option>
+				<option value='veteran'>Veteran</option>
 			</select>
 		</div>
 		<div class='col-6'>

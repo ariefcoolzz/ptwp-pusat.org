@@ -11,6 +11,7 @@
                 <select class="form-control" id='beregu'>
                     <option value='putra' selected>Putra</option>
                     <option value='putri'>Putri</option>
+                    <option value='veteran'>Veteran</option>
                 </select>
             </div>
         </div>

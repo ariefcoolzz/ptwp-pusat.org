@@ -7,79 +7,59 @@ if ($satker->num_rows()) {
     }
 }
 
-IF($_POST['beregu'] == "putra") $jumlah = 32; ELSE $jumlah = 16; 
-
-$K[0] = "B";
-$K[1] = "A";
+IF($_POST['beregu'] == "putra") $jumlah = 32; 
+IF($_POST['beregu'] == "putri") $jumlah = 16; 
+IF($_POST['beregu'] == "veteran") $jumlah = 32; 
 
 echo "<div class='row'>";
 echo "<table border='1' width='100%'>";
 FOR($a=1;$a <= $jumlah; $a++)
     {
-        
         echo "<tr>";
-            $per    = $jumlah / 2; 
-            $urutan = CEIL($a / 2);
-            $tim    = $K[$a % 2];
-                    echo "<td><select               id='C-$per-$urutan-$tim' class='id_kontingen ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
-
-            $per    = $jumlah / 4; 
-            $urutan = CEIL($a / 4);
-            IF($a % 2 == 1) 
-                {
-                    IF(!ISSET($t[$per])) $t[$per] = 0;
-                    $t[$per]++;
-                    $tim    = $K[$t[$per] % 2];
-                    echo "<td rowspan='2'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+            $j = $jumlah;
+            WHILE($j >= 1)
+                { 
+                    echo rowspan($option,$a,$jumlah,$j);
+                    $j = $j / 2;
                 }
-
-            $per    = $jumlah / 8; 
-            $urutan = CEIL($a / 8);
-            IF($a % 4 == 1) 
-                {
-                    IF(!ISSET($t[$per])) $t[$per] = 0;
-                    $t[$per]++;
-                    $tim    = $K[$t[$per] % 2];
-                    echo "<td rowspan='4'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
-                }
-
-            $per    = $jumlah / 16; 
-            $urutan = CEIL($a / 16);
-            IF($a % 8 == 1) 
-                {
-                    IF(!ISSET($t[$per])) $t[$per] = 0;
-                    $t[$per]++;
-                    $tim    = $K[$t[$per] % 2];
-                    echo "<td rowspan='8'  ><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
-                }
-            
-            $per    = $jumlah / 32; 
-            $urutan = CEIL($a / 32);
-            IF($a % 16 == 1) 
-                {
-                    IF(!ISSET($t[$per])) $t[$per] = 0;
-                    $t[$per]++;
-                    $tim    = $K[$t[$per] % 2];
-                    echo "<td rowspan='16'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
-                }
-        
-            $per    = $jumlah / 64; 
-            $urutan = CEIL($a / 64);
-            IF($a % 32 == 1) 
-                {
-                    IF(!ISSET($t[$per])) $t[$per] = 0;
-                    $t[$per]++;
-                    $tim    = $K[$t[$per] % 2];
-                    echo "<td rowspan='32'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
-                }
-                
         echo "</tr>";
     }
 echo "</table>";
 
-function pemenang($jumlah)
+
+
+function rowspan($option,$a,$jumlah,$peserta)
     {
-        return "<td rowspan='$jumlah'>xxx</td>";
+        $K[0] = "B";
+        $K[1] = "A";
+        
+        $hasil  = "";
+        $baris  = $jumlah / $peserta;
+        $per    = $peserta / 2;
+        $urutan = CEIL($a / ($jumlah / $per));
+        
+        
+        IF(!ISSET($t[$per])) $t[$per] = 0;
+        $t[$per]++;
+        
+        IF($jumlah == $peserta)
+            {
+                $tim    = $K[$a % 2];
+                $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+            }
+        ELSE IF(($a % $baris) == 1) 
+            {
+                IF($peserta == 1)
+                    {
+                        $hasil .= "<td rowspan='$jumlah'><div id='pemenang' class='badge bg-success'>Pemenang</div></td>";
+                    }
+                    else
+                    {
+                        $tim = $K[(CEIL($a / $baris) % 2)];
+                        $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                    }
+            }
+        return $hasil;
     }
 
 

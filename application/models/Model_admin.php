@@ -587,8 +587,8 @@ class Model_admin extends CI_Model
 	function model_data_babak_final_rekap($P)
 	{
 		$this->db->select('A.*');
-		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_A) AS kontingen_tim_A');
-		$this->db->select('NAMA_SATKER(A.id_kontingen_tim_B) AS kontingen_tim_B');
+		$this->db->select('(SELECT NAMA_SATKER(id_kontingen_tim_A) FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS kontingen_tim_A');
+		$this->db->select('(SELECT NAMA_SATKER(id_kontingen_tim_B) FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS kontingen_tim_B');
 		$this->db->select('LAPANGAN(A.id_lapangan) AS lapangan');
 		$this->db->select('KATEGORI(A.id_kategori) AS kategori');
 		$this->db->select('TUNGGAL_GANDA(A.id_kategori) AS tunggal_ganda');
@@ -599,6 +599,7 @@ class Model_admin extends CI_Model
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putra") $this->db->where('A.beregu', 'putra'); 
 		IF(ISSET($P['beregu']) AND $P['beregu'] == "putri") $this->db->where('A.beregu', 'putri'); 
+		IF(ISSET($P['beregu']) AND $P['beregu'] == "veteran") $this->db->where('A.beregu', 'veteran'); 
 		IF(ISSET($P['per']) AND $P['per'] != "all") $this->db->where('A.per', $P['per']); 
 		IF(ISSET($P['id_kontingen_tim_A']) AND $P['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $P['id_kontingen_tim_A']); 
 		IF(ISSET($P['id_kontingen_tim_B']) AND $P['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $P['id_kontingen_tim_B']); 
