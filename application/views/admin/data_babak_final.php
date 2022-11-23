@@ -10,7 +10,7 @@
 </div>
 <div class="card">
 	<div class="card-body">
-	<!-- <a id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Template Final</a> -->
+	<a id='generate' class="btn-drawing btn btn-danger"><i class="typcn typcn-arrow-repeat"></i> Generate Data Template Final</a>
 			
 	<div class="row mt-3 mb-3" style='border:0px solid green;'>
 		<div class='col-6'>
