@@ -8,7 +8,7 @@
     <div class="table-responsive">
         <h2>TURNAMEN TENIS BEREGU PIALA KMA KE 19 TAHUN 2022</h2>
         <h4 class="text-center mg-t-20">
-            <div class="form-group ml-4">
+            <div class="form-group">
                 <select class="form-control" id='beregu'>
                     <option value='putra'>Putra</option>
                     <option value='putri'>Putri</option>
