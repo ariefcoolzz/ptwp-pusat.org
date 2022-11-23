@@ -406,5 +406,27 @@ class Model_main extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
+	function model_tmst_satker()
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.IdSatker) AS nama_satker_singkat');
+		$this->db->from('tmst_satker AS A');
+		$this->db->where('A.LevelSatker <= 2');
+		$this->db->order_by('A.NamaSatker ASC');
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	function model_data_skema($P)
+	{
+		$this->db->select('A.*');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.id_kontingen_tim_A) AS satker_A');
+		$this->db->select('NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS satker_B');
+		$this->db->from('data_skema AS A');
+		$this->db->where('A.id_event', $P['id_event']);
+		$this->db->where('A.beregu', $P['beregu']);
+		$query = $this->db->get();
+		return $query;
+	}
 
 }
