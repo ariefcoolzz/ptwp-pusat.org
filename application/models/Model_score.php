@@ -207,7 +207,7 @@ class Model_score extends CI_Model
 	}
 
 
-	function get_game($jenis, $key)
+	function get_game_penyisihan($key)
 	{
 		$this->db->select("A.set1_tim_A");
 		$this->db->select("A.set2_tim_A");
@@ -221,7 +221,7 @@ class Model_score extends CI_Model
 		$this->db->select('A.nama_pemain_tim_B');
 		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND id_kontingen_tim_A=A.id_kontingen_tim_A AND id_kontingen_tim_B=A.id_kontingen_tim_B AND set1_tim_A = 8) AS menang_tim_A");
 		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND id_kontingen_tim_A=A.id_kontingen_tim_A AND id_kontingen_tim_B=A.id_kontingen_tim_B AND set1_tim_B = 8) AS menang_tim_B");
-		$this->db->from("data_babak_".$jenis." AS A");
+		$this->db->from("data_babak_penyisihan AS A");
 		$this->db->where("MD7(A.id_pertandingan)",$key); 
 		$query = $this->db->get();
 		// DIE($this->db->last_query());
@@ -257,8 +257,8 @@ class Model_score extends CI_Model
 
 	function get_point($jenis, $key)
 	{
-		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
-		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_A),A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_B),A.id_point_tim_B) AS point_tim_B");
 		$this->db->from("data_babak_".$jenis."_score AS A");
 		$this->db->where("MD7(A.id_pertandingan)",$key); 
 		$this->db->order_by("`set` DESC, `game` DESC"); 
@@ -271,8 +271,8 @@ class Model_score extends CI_Model
 	function get_point_and_game($jenis, $id_pertandingan)
 	{
 		$this->db->select("A.*");
-		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
-		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_A),A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_B),A.id_point_tim_B) AS point_tim_B");
 		$this->db->from("data_babak_".$jenis."_score AS A");
 		$this->db->where("A.id_pertandingan",$id_pertandingan); 
 		$this->db->order_by("`set` ASC, `game` ASC"); 
@@ -320,8 +320,8 @@ class Model_score extends CI_Model
 	function score_point_detail($P)
 	{
 		$this->db->select("A.*");
-		$this->db->select("`POINT`(A.id_point_tim_A) AS point_tim_A");
-		$this->db->select("`POINT`(A.id_point_tim_B) AS point_tim_B");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_A),A.id_point_tim_A) AS point_tim_A");
+		$this->db->select("IF(A.kategori = 'point',`POINT`(A.id_point_tim_B),A.id_point_tim_B) AS point_tim_B");
 		$this->db->from("data_babak_".$P['jenis']."_score AS A");
 		$this->db->where("MD7(A.id_pertandingan)",$P['key']);
 		$this->db->where("A.`set`",$P['set']);
@@ -365,10 +365,20 @@ class Model_score extends CI_Model
 			}
 		
 		//Contoh Query = UPDATE data_babak_final SET set1_tim_B = (set1_tim_B - 1) WHERE id_pertandingan = 1
-		IF($P['aksi'] == "+") 
-			$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." >= 4,4,(id_point_tim_".$P['tim']." + 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
-		ELSE
-			$query = "UPDATE data_babak_".$P['jenis']."_score SET id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." <= 0,0,(id_point_tim_".$P['tim']." - 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+		IF($P['kategori'] == 'point')
+			{
+				IF($P['aksi'] == "+") 
+					$query = "UPDATE data_babak_".$P['jenis']."_score SET kategori = '".$P['kategori']."', id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." >= 4,4,(id_point_tim_".$P['tim']." + 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+				ELSE
+					$query = "UPDATE data_babak_".$P['jenis']."_score SET kategori = '".$P['kategori']."', id_point_tim_".$P['tim']." = IF(id_point_tim_".$P['tim']." <= 0,0,(id_point_tim_".$P['tim']." - 1)) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+			}
+		ELSE {
+			IF($P['aksi'] == "+") 
+					$query = "UPDATE data_babak_".$P['jenis']."_score SET kategori = '".$P['kategori']."', id_point_tim_".$P['tim']." = (id_point_tim_".$P['tim']." + 1) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+				ELSE
+					$query = "UPDATE data_babak_".$P['jenis']."_score SET kategori = '".$P['kategori']."', id_point_tim_".$P['tim']." = (id_point_tim_".$P['tim']." - 1) WHERE MD7(id_pertandingan) = '".$P['key']."' AND `set` = '".$P['set']."' AND game = '".$P['game']."'";
+			
+		}
 		// DIE($query);
 		$status = $this->db->query($query);
 		// DIE($this->db->last_query());
