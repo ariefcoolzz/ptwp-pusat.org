@@ -45,7 +45,7 @@ function rowspan($option,$a,$jumlah,$peserta)
         IF($jumlah == $peserta)
             {
                 $tim    = $K[$a % 2];
-                $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                $hasil .= "<td rowspan='$baris'>$a<select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
             }
         ELSE IF(($a % $baris) == 1) 
             {
@@ -56,7 +56,7 @@ function rowspan($option,$a,$jumlah,$peserta)
                     else
                     {
                         $tim = $K[(CEIL($a / $baris) % 2)];
-                        $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                        $hasil .= "<td rowspan='$baris'>$a<select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
                     }
             }
         return $hasil;

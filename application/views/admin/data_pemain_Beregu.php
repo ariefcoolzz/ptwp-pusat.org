@@ -90,6 +90,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     <!-- <th>Foto</th> -->
                                     <th>Nama</th>
                                     <th>Nip</th>
+                                    <th>No Handphone</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Usia</th>
                                     <th>Jabatan</th>
@@ -111,7 +112,9 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     // }
                                     echo "<td align='left'>" . $R['nama'] . "</td>";
                                     echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
+									echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
                                     echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
+                                    //echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
                                     echo "<td align='left'>" . $R['umur'] . "</td>";
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
