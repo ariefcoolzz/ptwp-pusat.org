@@ -136,9 +136,9 @@
                                     alert("Ada Kesalahan... !!!");
                                     skip();
                                 } else {
-                                    $("#konten").hide(300);
+                                    // $("#konten").hide(300);
                                     $("#konten").html(json.konten);
-                                    $("#konten").show(300);
+                                    // $("#konten").show(300);
                                 }
                             }
                         });
