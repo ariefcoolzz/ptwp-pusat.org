@@ -51,6 +51,33 @@ class Score extends CI_Controller
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
+	public function babak_final()
+	{
+		$this->template->load('score_template', 'score/data_final');
+	}
+
+	public function data_final_rekap()
+	{
+		$_SESSION = $_POST; //disessionin aja biar gak pusing pake parameter
+		// PRINT_R($_SESSION);DIE();
+		$konten_menu = $this->load->view("score/data_final_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_final_form()
+	{
+		$konten_menu = $this->load->view("score/data_final_form", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_final_simpan()
+	{
+		$status = $this->Model_score->model_data_final_simpan($_POST);
+		unset($_POST['id_pertandingan']);
+		$konten_menu = $this->load->view("score/data_final_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
+	}
+	
 
 	public function manage($jenis,$key)
 	{
@@ -197,7 +224,8 @@ class Score extends CI_Controller
 		// PRINT_R($_POST);DIE();
 
 		//BUAT GET GAME
-		$data = $this->Model_score->get_game($_POST['jenis'], $_POST['key']);
+		$func = "get_game_".$_POST['jenis'];
+		$data = $this->Model_score->$func($_POST['key']);
 		$data = $data->row_array();
 		// PRINT_R($data->row_array());DIE();
 		$ARRAY["set1_tim_A"] = $data["set1_tim_A"];
