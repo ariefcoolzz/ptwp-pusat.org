@@ -66,8 +66,8 @@
 							}
 						?>
 					</select>
-					<div id='manage_tombol_point' style='display:none;'>
-						<select id='kategori' class="form-control col-sm-12 col-lg-4 mt-3 mb-3">
+					<div id='manage_tombol_point' class="d-flex flex-column align-items-center" style='display:none;'>
+						<select id='kategori' class="form-control col-sm-12 col-lg-10 mt-3 mb-3">
 							<option value='point'>Point</option>
 							<option value='tie_break'>Tie Break</option>
 						</select>
