@@ -67,8 +67,8 @@
 				<?php
 				if (isset($_SESSION['beregu'])) echo "<script>$('#beregu').val('$_SESSION[beregu]');</script>";
 				if (isset($_SESSION['per'])) echo "<script>$('#per').val('$_SESSION[per]');</script>";
-				if (isset($_SESSION['id_kontingen_tim_A'])) echo "<script>$('#beregu').val('$_SESSION[id_kontingen_tim_A]');</script>";
-				if (isset($_SESSION['id_kontingen_tim_B'])) echo "<script>$('#beregu').val('$_SESSION[id_kontingen_tim_B]');</script>";
+				if (isset($_SESSION['id_kontingen_tim_A'])) echo "<script>$('#id_kontingen_tim_A').val('$_SESSION[id_kontingen_tim_A]');</script>";
+				if (isset($_SESSION['id_kontingen_tim_B'])) echo "<script>$('#id_kontingen_tim_B').val('$_SESSION[id_kontingen_tim_B]');</script>";
 				?>
 				<div class='row'>
 					<div class='col-12' id="konten_menu"></div>
