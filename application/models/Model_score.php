@@ -144,10 +144,10 @@ class Model_score extends CI_Model
 		$this->db->where('A.id_event', $_SESSION['id_event']);
 		IF($_SESSION['beregu'] != "all") $this->db->where('A.beregu', $_SESSION['beregu']); 
 		IF($_SESSION['per'] != "all") $this->db->where('A.per', $_SESSION['per']); 
-		IF($_SESSION['id_kontingen_tim_A'] != "all") $this->db->where('A.id_kontingen_tim_A', $_SESSION['id_kontingen_tim_A']); 
-		IF($_SESSION['id_kontingen_tim_B'] != "all") $this->db->where('A.id_kontingen_tim_B', $_SESSION['id_kontingen_tim_B']); 
 		IF(ISSET($P['id_pertandingan'])) $this->db->where('A.id_pertandingan', $P['id_pertandingan']); 
-		$this->db->order_by('A.id_event ASC, A.per ASC, A.urutan ASC, A.id_kategori');
+		IF($_SESSION['id_kontingen_tim_A'] != "all") $this->db->having('id_kontingen_tim_A', $_SESSION['id_kontingen_tim_A']); 
+		IF($_SESSION['id_kontingen_tim_B'] != "all") $this->db->having('id_kontingen_tim_B', $_SESSION['id_kontingen_tim_B']); 
+		$this->db->order_by('A.id_event ASC, A.per ASC, A.urutan ASC, A.id_kategori ASC');
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
