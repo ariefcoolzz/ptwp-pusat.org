@@ -19,7 +19,7 @@ class Score extends CI_Controller
 		$this->template->load('score_template', 'score/score');
 	}
 
-	public function penyisihan()
+	public function babak_penyisihan()
 	{
 		$this->template->load('score_template', 'score/data_penyisihan');
 	}
