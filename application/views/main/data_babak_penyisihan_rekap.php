@@ -53,7 +53,7 @@ if (!$result->num_rows()) {
     $jumlah_game_penyisihan_putra = $this->Model_main->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putra');
     $jumlah_game_penyisihan_putri = $this->Model_main->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putri');
     $jml_peserta = $result->num_rows();
-    $lengkap = true;
+    $lengkap = false;
     foreach ($result->result_array() as $R) {
         $jumlah = 0;
         $menang = 0;
@@ -146,6 +146,7 @@ if (!empty($tmp)) {
         $val_temp = $val;
         $rangking_temp[$key] = $i;
     }
+    // print_r($temp_menang);
     ##CETAK RANGKING JIKA GK ADA YG SAMA##
     if ($rangking_sama == 1) {
         foreach ($rangking_temp as $key => $val) {
