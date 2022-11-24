@@ -20,8 +20,8 @@ $b = 1;
 $c = 1;
 $d = 1;
 $e = 1;
-if ($jumlah == 32) echo "<tr class='bg-primary text-white tx-bold tx-uppercase tx-center'><td>Per-32</td><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
-if ($jumlah == 16) echo "<tr class='bg-primary text-white tx-bold tx-uppercase tx-center'><td>Per-16</td><td>Per-8</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
+if ($jumlah == 32) echo "<tr class='bg-primary text-white tx-bold tx-uppercase tx-center'><td>Per-16</td><td>Per-8</td><td>Per-4</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
+if ($jumlah == 16) echo "<tr class='bg-primary text-white tx-bold tx-uppercase tx-center'><td>Per-8</td><td>Per-4</td><td>Semi Final</td><td>Final</td><td>Pemenang</td></tr>";
 
 for ($a = 1; $a <= $jumlah; $a++) {
 
