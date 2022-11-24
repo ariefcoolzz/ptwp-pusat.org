@@ -9,10 +9,10 @@
                 </div>
             </div>
         </td>
-        <!-- <td class='text-center align-middle' id='menang_tim_A'></td> -->
+        <td class='text-center align-middle' id='menang_tim_A'></td>
         <td class='text-center align-middle'>
             <span id='set1_tim_A'></span> 
-            | <span id='set2_tim_A'></span> 
+            <!-- | <span id='set2_tim_A'></span>  -->
             <!-- | <span id='set3_tim_A'></span> -->
         </td>
         <td class='text-center align-middle' id='point_tim_A'></td>
@@ -27,10 +27,10 @@
                 </div>
             </div>
         </td>
-        <!-- <td class='text-center align-middle' id='menang_tim_B'></td> -->
+        <td class='text-center align-middle' id='menang_tim_B'></td>
         <td class='text-center align-middle'>
             <span id='set1_tim_B'></span> 
-            | <span id='set2_tim_B'></span> 
+            <!-- | <span id='set2_tim_B'></span>  -->
             <!-- | <span id='set3_tim_B'></span> -->
         </td>
         <td class='text-center align-middle' id='point_tim_B'></td>
