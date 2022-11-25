@@ -98,10 +98,10 @@ if ($_POST['beregu'] == "veteran") {
             $satkerA = "<i class='text-danger'>Umpire</i>";
             $satkerB = "<i class='text-danger'>Umpire</i>";
             if ($R['id_kontingen_tim_A']) {
-                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_A']) . '</div><div class="">' . $R['satker_A'] . '</div><div class="">' . if_null($R['set1_tim_A']) . '</div></div>';
+                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_A']) . '</div><div class="">' . $R['satker_A'] . '</div><div class="">' . ($R['set1_tim_A']) . '</div></div>';
             }
             if ($R['id_kontingen_tim_B']) {
-                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_B']) . '</div><div class="">' . $R['satker_B'] . '</div><div class="">' . if_null($R['set1_tim_B']) . '</div></div>';
+                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_B']) . '</div><div class="">' . $R['satker_B'] . '</div><div class="">' . ($R['set1_tim_B']) . '</div></div>';
             }
             echo "<script>
                 var satkerA = '$satkerA';
@@ -127,10 +127,10 @@ if ($_POST['beregu'] == "veteran") {
             IF($R['set1_tim_B'] >= 8) $S[$per][$urutan]['B']++;
 
             if ($R['id_kontingen_tim_A']) {
-                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_A'] . '</div><div class="">' . if_null($S[$per][$urutan]['A']) . '</div></div>';
+                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_A'] . '</div><div class="">' . ($S[$per][$urutan]['A']) . '</div></div>';
             }
             if ($R['id_kontingen_tim_B']) {
-                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_B'] . '</div><div class="">' . if_null($S[$per][$urutan]['B']) . '</div></div>';
+                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_B'] . '</div><div class="">' . ($S[$per][$urutan]['B']) . '</div></div>';
             }
             echo "<script>
                 var satkerA = '$satkerA';
