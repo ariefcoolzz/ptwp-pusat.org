@@ -14,7 +14,7 @@ if ($_POST['beregu'] == "veteran") $jumlah = 32;
 $K[0] = "B";
 $K[1] = "A";
 
-echo "<h3 class='tx-uppercase'>Babak Final ".$_POST['beregu']."</h3>";
+echo "<h3 class='tx-uppercase'>Babak Final " . $_POST['beregu'] . "</h3>";
 echo "<table id='table' class='table table-bordered table-striped'>";
 $b = 1;
 $c = 1;
@@ -37,7 +37,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='2' style='vertical-align: middle;width:16.67%;'><span class='badge badge-danger' id='C-$per-$urutan-$tim'><i class='tx-bold'>Umpire</i></span></td>";
+        echo "<td rowspan='2' style='vertical-align: middle;width:16.67%;' class='bg-light'><span class='' id='C-$per-$urutan-$tim'><i class='badge badge-danger tx-bold'>Umpire</i></span></td>";
         $b++;
     }
 
@@ -47,7 +47,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='4' style='vertical-align: middle;width:16.67%;'><span class='badge badge-danger' id='C-$per-$urutan-$tim'><i class='tx-bold'>Umpire</i></span></td>";
+        echo "<td rowspan='4' style='vertical-align: middle;width:16.67%;'><span class='d-flex justify-content-between align-items-center' id='C-$per-$urutan-$tim'><i class='badge badge-danger tx-bold'>Umpire</i></span></td>";
         $c++;
     }
 
@@ -57,7 +57,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='8' style='vertical-align: middle;width:16.67%;'><span class='badge badge-danger' id='C-$per-$urutan-$tim'><i class='tx-bold'>Umpire</i></span></td>";
+        echo "<td rowspan='8' style='vertical-align: middle;width:16.67%;'><span class='' id='C-$per-$urutan-$tim'><i class='badge badge-danger tx-bold'>Umpire</i></span></td>";
         $d++;
     }
 
@@ -67,7 +67,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='16' style='vertical-align: middle;width:16.67%;'><span class='badge badge-danger' id='C-$per-$urutan-$tim'><i class='tx-bold'>Umpire</i></span></td>";
+        echo "<td rowspan='16' style='vertical-align: middle;width:16.67%;'><span class='' id='C-$per-$urutan-$tim'><i class='badge badge-danger tx-bold'>Umpire</i></span></td>";
         $e++;
     }
 
@@ -77,7 +77,7 @@ for ($a = 1; $a <= $jumlah; $a++) {
         if (!isset($t[$per])) $t[$per] = 0;
         $t[$per]++;
         $tim    = $K[$t[$per] % 2];
-        echo "<td rowspan='32' style='vertical-align: middle;width:16.67%;'><span class='badge badge-danger' id='C-$per-$urutan-$tim'><i class='tx-bold'>Umpire</i></span></td>";
+        echo "<td rowspan='32' style='vertical-align: middle;width:16.67%;'><span class='d-flex justify-content-between align-items-center' id='C-$per-$urutan-$tim'><i class='badge badge-danger tx-bold'>Umpire</i></span></td>";
     }
 
     echo "</tr>";
