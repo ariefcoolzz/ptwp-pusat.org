@@ -52,7 +52,8 @@ if (!$result->num_rows()) {
 
     $jumlah_game_penyisihan_putra = $this->Model_main->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putra');
     $jumlah_game_penyisihan_putri = $this->Model_main->model_rule($_POST['id_event'], 'jumlah_game_penyisihan_putri');
-
+    $jml_peserta = $result->num_rows();
+    $lengkap = false;
     foreach ($result->result_array() as $R) {
         $jumlah = 0;
         $menang = 0;
@@ -82,7 +83,10 @@ if (!$result->num_rows()) {
                     $menang_game += $score_tim_A[1][$id_k][$iktA][$iktB];
                     $kalah_game += $score_tim_B[1][$id_k][$iktA][$iktB];
                 } else if ($iktA == $iktB) echo "<td class='bg-dark' style='border:none;'></td>";
-                else echo "<td></td>";
+                else {
+                    $lengkap = false;
+                    echo "<td></td>";
+                }
 
                 if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] >= $jumlah_game_penyisihan_putra) $menang++;
                 if (isset($score_tim_A[1][$id_k][$iktA][$iktB]) and $score_tim_A[1][$id_k][$iktA][$iktB] < $jumlah_game_penyisihan_putra) $kalah++;
@@ -142,10 +146,11 @@ if (!empty($tmp)) {
         $val_temp = $val;
         $rangking_temp[$key] = $i;
     }
+    // print_r($temp_menang);
     ##CETAK RANGKING JIKA GK ADA YG SAMA##
     if ($rangking_sama == 1) {
         foreach ($rangking_temp as $key => $val) {
-            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+            if ($lengkap) echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
         }
     } else if ($rangking_sama == 2) {
         $rangking_temp2 = array();
@@ -195,7 +200,7 @@ if (!empty($tmp)) {
         }
         ## 4rd KITA SET KE LIST PERINGKAT
         foreach ($rangking_baru as $key => $val) {
-            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+            if ($lengkap) echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
         }
     } else if ($rangking_sama >= 3) {
         $rangking_temp2 = array();
@@ -229,7 +234,7 @@ if (!empty($tmp)) {
         }
         ## 4rd KITA SET KE LIST PERINGKAT
         foreach ($rangking_baru as $key => $val) {
-            echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
+            if ($lengkap) echo "<script>$('#peringkat_" . $key . "').html('" . $val . "');</script>";
         }
     }
 }

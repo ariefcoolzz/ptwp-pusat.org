@@ -59,12 +59,15 @@
                     for ($ke = 25; $ke <= 30; $ke++) {
                         $i = $ke - 24;
                         if (!isset($str[$ke])) $str[$ke] = "";
+
+                        IF($link[$ke] == "") $button_streaming = "";
+                        else $button_streaming = "<button data-link='$link[$ke]' class='tonton btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>";
                         echo "
                                         <div class='col-sm-12 col-md-6 col-lg-6 col-xl-2 mt-1'> 
                                             <div class='card'>
                                                 <div class='card-header text-center'>
                                                     <h4>Lapangan Tenis UNNES Court $i</h4>
-                                                    <button data-link='$link[$ke]' class='tonton btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>
+                                                    $button_streaming
                                                 </div>
                                                 <div class='card-body'>
                                                     <div class='overflow-y-auto ht-500 pr-2'>

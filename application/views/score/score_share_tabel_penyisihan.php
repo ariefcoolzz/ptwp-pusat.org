@@ -1,4 +1,3 @@
-
 <table class='table table-bordered w-100 font-weight-bold' >
     <tr>
         <td>

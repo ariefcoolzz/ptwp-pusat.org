@@ -428,7 +428,7 @@ class Model_main extends CI_Model
 		$query = $this->db->get();
 		return $query;
 	}
-	function model_data_skema_veteran($P)
+	function model_data_skema_beregu($P)
 	{
 		$this->db->select('A.*');
 		$this->db->select('B.id_kontingen_tim_A, B.id_kontingen_tim_B');
@@ -439,6 +439,7 @@ class Model_main extends CI_Model
 		$this->db->where('A.id_event', $P['id_event']);
 		$this->db->where('A.beregu', $P['beregu']);
 		$query = $this->db->get();
+		// die($this->db->last_query());
 		return $query;
 	}
 

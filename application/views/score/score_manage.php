@@ -25,8 +25,8 @@
 					<select id='set' class="form-control col-sm-12 col-lg-4">
 						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
-						<option value='2' disabled>Dua</option>
-						<option value='3' disabled>Tiga</option>
+						<option value='2'>Dua</option>
+						<option value='3'>Tiga</option>
 					</select>
 				</div>
 				<div id='manage_tombol' style='display:none;'>
@@ -66,9 +66,12 @@
 							}
 						?>
 					</select>
-					<div id='manage_tombol_point' style='display:none;'>
-						<div class="h3 tx-bolder bd-b m-30">Point</div>
-						<div class="row no-gutters wd-300">
+					<div id='manage_tombol_point' class="d-flex flex-column align-items-center" style='display:none;'>
+						<select id='kategori' class="form-control col-sm-12 col-lg-10 mt-3 mb-3">
+							<option value='point'>Point</option>
+							<option value='tie_break'>Tie Break</option>
+						</select>
+						<div class="row no-gutters wd-300 mg-t-10">
 							<div class="col-6">
 								<button data-tipe='point' data-tim='A' data-aksi='+' class='tombol_point wd-100 btn btn-lg btn-success'><i class="fa fa-plus-circle"></i> Tambah</button>
 							</div>
@@ -233,6 +236,7 @@
 		form_data.append('tipe', $(this).data('tipe'));
 		form_data.append('tim', $(this).data('tim'));
 		form_data.append('aksi', $(this).data('aksi'));
+		form_data.append('kategori', $("#kategori").val());
 		$.ajax({
 			url: "<?php echo base_url(); ?>score/manage_tombol_point",
 			type: 'POST',

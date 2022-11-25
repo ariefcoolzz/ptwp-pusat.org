@@ -5,14 +5,14 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb breadcrumb-style1 mg-b-10">
 						<li class="breadcrumb-item"><a href="<?php echo base_url('score'); ?>">Score</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Penyisihan</li>
+						<li class="breadcrumb-item active" aria-current="page">Final</li>
 					</ol>
 				</nav>
 			</div>
 		</div>
 		<div class="card">
 			<div class="card-header tx-center tx-uppercase">
-				<h3>Babak Penyisihan</h3>
+				<h3>Babak Final</h3>
 			</div>
 			<div class="card-body">
 				<div class="row mt-3 mb-3" style='border:0px solid green;'>
@@ -21,18 +21,18 @@
 							<option value='' selected>Pilih Regu </option>
 							<option value='putra'>Beregu Putra</option>
 							<option value='putri'>Beregu Putri</option>
+							<option value='veteran'>Veteran</option>
 							<option value='all'>Semua Regu</option>
 						</select>
 					</div>
 					<div class='col-lg-6 col-sm-12'>
-						<select class="form-control select_pool" id='pool'>
-							<option value='all' selected>Semua Pool</option>
-							<?php
-							$jumlah_pool = 26; //sampai Z
-							for ($i = 1; $i <= $jumlah_pool; $i++) {
-								echo "<option value='" . pool($i) . "'>Pool " . pool($i) . "</option>";
-							}
-							?>
+						<select class="form-control select_per" id='per'>
+							<option value='all' selected>Semua Per</option>
+							<option value='16'>Per 16</option>
+							<option value='8'>Per 8</option>
+							<option value='4'>Per 4</option>
+							<option value='2'>Semi Final</option>
+							<option value='1'>Final</option>
 						</select>
 					</div>
 				</div>
@@ -66,7 +66,7 @@
 				</div>
 				<?php
 				if (isset($_SESSION['beregu'])) echo "<script>$('#beregu').val('$_SESSION[beregu]');</script>";
-				if (isset($_SESSION['pool'])) echo "<script>$('#pool').val('$_SESSION[pool]');</script>";
+				if (isset($_SESSION['per'])) echo "<script>$('#per').val('$_SESSION[per]');</script>";
 				if (isset($_SESSION['id_kontingen_tim_A'])) echo "<script>$('#id_kontingen_tim_A').val('$_SESSION[id_kontingen_tim_A]');</script>";
 				if (isset($_SESSION['id_kontingen_tim_B'])) echo "<script>$('#id_kontingen_tim_B').val('$_SESSION[id_kontingen_tim_B]');</script>";
 				?>
@@ -121,7 +121,7 @@
 
 <script>
 	$('.select_regu').select2();
-	$('.select_pool').select2();
+	$('.select_per').select2();
 	$('.select_a').select2();
 	$('.select_b').select2();
 
@@ -135,7 +135,7 @@
 		}
 	});
 
-	$("#beregu,#pool,#id_kontingen_tim_A,#id_kontingen_tim_B").on('change', function() {
+	$("#beregu,#per,#id_kontingen_tim_A,#id_kontingen_tim_B").on('change', function() {
 		load();
 	});
 
@@ -154,11 +154,11 @@
 		var form_data = new FormData();
 		form_data.append('id_event', '2');
 		form_data.append('beregu', $("#beregu").val());
-		form_data.append('pool', $("#pool").val());
+		form_data.append('per', $("#per").val());
 		form_data.append('id_kontingen_tim_A', $("#id_kontingen_tim_A").val());
 		form_data.append('id_kontingen_tim_B', $("#id_kontingen_tim_B").val());
 		$.ajax({
-			url: "<?php echo base_url(); ?>score/data_penyisihan_rekap",
+			url: "<?php echo base_url(); ?>score/data_final_rekap",
 			type: 'POST',
 			cache: false,
 			contentType: false,
