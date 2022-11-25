@@ -230,6 +230,7 @@ class Model_score extends CI_Model
 
 	function get_game_final($key)
 	{
+		$this->db->select("A.per");
 		$this->db->select("A.set1_tim_A");
 		$this->db->select("A.set2_tim_A");
 		$this->db->select("A.set3_tim_A");
@@ -242,8 +243,8 @@ class Model_score extends CI_Model
 		$this->db->select('(SELECT NAMA_SATKER_SINGKAT(id_kontingen_tim_B) FROM data_skema WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan) AS nama_satker_B');
 		$this->db->select('A.nama_pemain_tim_A');
 		$this->db->select('A.nama_pemain_tim_B');
-		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_final WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan AND set1_tim_A = 8) AS menang_tim_A");
-		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_final WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan AND set1_tim_B = 8) AS menang_tim_B");
+		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_final WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan AND (set1_tim_A = 8 OR set2_tim_A = 8 OR set3_tim_A = 8)) AS menang_tim_A");
+		$this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_final WHERE id_event=A.id_event AND beregu=A.beregu AND per=A.per AND urutan=A.urutan AND (set1_tim_B = 8 OR set2_tim_B = 8 OR set3_tim_B = 8)) AS menang_tim_B");
 		
 		// $this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND id_kontingen_tim_A=A.id_kontingen_tim_A AND id_kontingen_tim_B=A.id_kontingen_tim_B AND set1_tim_A = 8) AS menang_tim_A");
 		// $this->db->select("(SELECT COUNT(id_pertandingan) FROM data_babak_penyisihan WHERE beregu=A.beregu AND id_kontingen_tim_A=A.id_kontingen_tim_A AND id_kontingen_tim_B=A.id_kontingen_tim_B AND set1_tim_B = 8) AS menang_tim_B");

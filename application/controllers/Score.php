@@ -222,12 +222,12 @@ class Score extends CI_Controller
 	public function score_get()
 	{
 		// PRINT_R($_POST);DIE();
-
 		//BUAT GET GAME
 		$func = "get_game_".$_POST['jenis'];
 		$data = $this->Model_score->$func($_POST['key']);
 		$data = $data->row_array();
 		// PRINT_R($data->row_array());DIE();
+		$ARRAY["per"] = $data["per"];
 		$ARRAY["set1_tim_A"] = $data["set1_tim_A"];
 		$ARRAY["set1_tim_B"] = $data["set1_tim_B"];
 		$ARRAY["set2_tim_A"] = $data["set2_tim_A"];
