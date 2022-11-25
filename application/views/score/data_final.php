@@ -28,11 +28,11 @@
 					<div class='col-lg-6 col-sm-12'>
 						<select class="form-control select_per" id='per'>
 							<option value='all' selected>Semua Per</option>
-							<option value='16' selected>Per 16</option>
-							<option value='8' selected>Per 8</option>
-							<option value='4' selected>Per 4</option>
-							<option value='2' selected>Semi Final</option>
-							<option value='1' selected>Final</option>
+							<option value='16'>Per 16</option>
+							<option value='8'>Per 8</option>
+							<option value='4'>Per 4</option>
+							<option value='2'>Semi Final</option>
+							<option value='1'>Final</option>
 						</select>
 					</div>
 				</div>

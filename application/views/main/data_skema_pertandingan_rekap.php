@@ -90,7 +90,7 @@ function pemenang($jumlah)
 }
 
 if ($_POST['beregu'] == "veteran") {
-    $skema = $this->Model_main->model_data_skema_veteran($_POST);
+    $skema = $this->Model_main->model_data_skema_beregu($_POST);
     if ($skema->num_rows()) {
         foreach ($skema->result_array() as $R) {
             $per = $R['per'];
@@ -98,10 +98,10 @@ if ($_POST['beregu'] == "veteran") {
             $satkerA = "<i class='text-danger'>Umpire</i>";
             $satkerB = "<i class='text-danger'>Umpire</i>";
             if ($R['id_kontingen_tim_A']) {
-                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_A']) . '</div><div class="">' . $R['satker_A'] . '</div><div class="">' . $R['set1_tim_A'] . '</div></div>';
+                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_A']) . '</div><div class="">' . $R['satker_A'] . '</div><div class="">' . if_null($R['set1_tim_A']) . '</div></div>';
             }
             if ($R['id_kontingen_tim_B']) {
-                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_B']) . '</div><div class="">' . $R['satker_B'] . '</div><div class="">' . $R['set1_tim_B'] . '</div></div>';
+                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . nama_singkat($R['nama_pemain_tim_B']) . '</div><div class="">' . $R['satker_B'] . '</div><div class="">' . if_null($R['set1_tim_B']) . '</div></div>';
             }
             echo "<script>
                 var satkerA = '$satkerA';
@@ -112,22 +112,31 @@ if ($_POST['beregu'] == "veteran") {
         }
     }
 } else {
-    $skema = $this->Model_main->model_data_skema($_POST);
+    $skema = $this->Model_main->model_data_skema_beregu($_POST);
     if ($skema->num_rows()) {
         foreach ($skema->result_array() as $R) {
             $per = $R['per'];
             $urutan = $R['urutan'];
             $satkerA = "<i class='text-danger'>Umpire</i>";
             $satkerB = "<i class='text-danger'>Umpire</i>";
+
+            IF(!ISSET($S[$per][$urutan]['A'])) $S[$per][$urutan]['A'] = 0;
+            IF(!ISSET($S[$per][$urutan]['B'])) $S[$per][$urutan]['B'] = 0;
+
+            IF($R['set1_tim_A'] >= 8) $S[$per][$urutan]['A']++;
+            IF($R['set1_tim_B'] >= 8) $S[$per][$urutan]['B']++;
+
             if ($R['id_kontingen_tim_A']) {
-                $satkerA = $R['satker_A'];
+                $satkerA = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_A'] . '</div><div class="">' . if_null($S[$per][$urutan]['A']) . '</div></div>';
             }
             if ($R['id_kontingen_tim_B']) {
-                $satkerB = $R['satker_B'];
+                $satkerB = '<div class="d-flex justify-content-between align-items-center"><div class="">' . $R['satker_B'] . '</div><div class="">' . if_null($S[$per][$urutan]['B']) . '</div></div>';
             }
             echo "<script>
-                    $('#C-$per-$urutan-A').text('$satkerA');
-                    $('#C-$per-$urutan-B').text('$satkerB');
+                var satkerA = '$satkerA';
+                var satkerB = '$satkerB';
+                    $('#C-$per-$urutan-A').html(satkerA);
+                    $('#C-$per-$urutan-B').html(satkerB);
                 </script>";
         }
     }

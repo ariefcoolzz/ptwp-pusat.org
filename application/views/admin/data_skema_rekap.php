@@ -45,7 +45,7 @@ function rowspan($option,$a,$jumlah,$peserta)
         IF($jumlah == $peserta)
             {
                 $tim    = $K[$a % 2];
-                $hasil .= "<td rowspan='$baris'>$a<select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select><span id='S-$per-$urutan-$tim'></span></td>";
             }
         ELSE IF(($a % $baris) == 1) 
             {
@@ -56,7 +56,7 @@ function rowspan($option,$a,$jumlah,$peserta)
                     else
                     {
                         $tim = $K[(CEIL($a / $baris) % 2)];
-                        $hasil .= "<td rowspan='$baris'>$a<select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select></td>";
+                        $hasil .= "<td rowspan='$baris'><select id='C-$per-$urutan-$tim' class='id_kontingen  ' data-per='$per' data-urutan='$urutan' data-tim='$tim'>$option</select><span id='S-$per-$urutan-$tim'></td>";
                     }
             }
         return $hasil;
@@ -75,6 +75,27 @@ if ($skema->num_rows()) {
         echo "<script>
                 $('#C-$per-$urutan-A').val('$id_kontingen_tim_A');
                 $('#C-$per-$urutan-B').val('$id_kontingen_tim_B');
+            </script>";
+    }
+}
+
+$final = $this->Model_admin->model_data_babak_final_rekap($_POST);
+if ($final->num_rows()) {
+    // PRINT_R($final->result_array());
+    $option = "<option></option>";
+    foreach ($final->result_array() as $R) {
+        $per = $R['per'];
+        $urutan = $R['urutan'];
+        
+        IF(!ISSET($S[$per][$urutan]['A'])) $S[$per][$urutan]['A'] = 0;
+        IF(!ISSET($S[$per][$urutan]['B'])) $S[$per][$urutan]['B'] = 0;
+
+        IF($R['set1_tim_A'] >= '8') $S[$per][$urutan]['A']++; 
+        IF($R['set1_tim_B'] >= '8') $S[$per][$urutan]['B']++; 
+
+        echo "<script>
+                $('#S-$per-$urutan-A').text('".$S[$per][$urutan]['A']."');
+                $('#S-$per-$urutan-B').text('".$S[$per][$urutan]['B']."');
             </script>";
     }
 }
