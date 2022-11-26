@@ -43,17 +43,20 @@
 			data: form_data,
 			dataType: 'json',
 			success: function(json) {
-				// alert(json.game_tim_A);
-				if(json.per == '1')
-					{
-						$(".template_final").show();
-						$(".template_non_final").hide();
-					}
-				else
-					{
-						$(".template_non_final").show();
-						$(".template_final").hide();
-					}
+				
+				// if(json.per == '1')
+				// 	{
+				// 		$(".template_final").show();
+				// 		$(".template_non_final").hide();
+				// 	}
+				// else
+				// 	{
+				// 		$(".template_non_final").show();
+				// 		$(".template_final").hide();
+				// 	}
+
+				$(".template_non_final").show();
+				$(".template_final").hide();				
 
 				$(".set1_tim_A").text(json.set1_tim_A);
 				$(".set1_tim_B").text(json.set1_tim_B);

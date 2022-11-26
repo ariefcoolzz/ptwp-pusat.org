@@ -25,8 +25,8 @@
 					<select id='set' class="form-control col-sm-12 col-lg-4">
 						<option value='0'>Pilih SET</option>
 						<option value='1'>Satu</option>
-						<option value='2'>Dua</option>
-						<option value='3'>Tiga</option>
+						<option value='2' disabled>Dua</option>
+						<option value='3' disabled>Tiga</option>
 					</select>
 				</div>
 				<div id='manage_tombol' style='display:none;'>
