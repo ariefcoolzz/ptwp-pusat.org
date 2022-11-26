@@ -111,7 +111,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
                                     // }
                                     echo "<td align='left'>" . $R['nama'] . "</td>";
-                                    echo "<td align='left'>" . nip_titik($R['nip']) . "</td>";
+                                    echo "<td align='left'>" . ($R['nip']) . "</td>";
 									echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
                                     echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
                                     //echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
