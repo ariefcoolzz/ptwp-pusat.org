@@ -98,7 +98,7 @@
                     </div><!-- media -->
                     <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
                         <!-- <a href="https://www.youtube.com/watch?v=1y3QDbGNMos" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a> -->
-                        <button data-link='https://youtu.be/Vh3_xyKOnJ8' class='tonton_pembukaan btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>
+                        <button data-link='https://www.youtube.com/embed/Vh3_xyKOnJ8' class='tonton_pembukaan btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>
                     </div>
                 </div>
             </div>
@@ -450,7 +450,7 @@
 
     $(".tonton_pembukaan").on("click", function() {
         var link = $(this).data('link');
-        $("#judul_popup_streaming").html("SIARAN LANGSUNG PEMUKULAN BOLA PERTAMA KMA LAPANGAN UNNES");
+        $("#judul_popup_streaming").html("Penutupan Turnamen Tennis Beregu Ke-19 Piala Ketua Mahkamah Agung RI");
         $("#isi_popup_streaming").html("<iframe src='" + link + "?autoplay=1' allow='autoplay' width='100%' height='500px' title='YouTube video player' frameborder='0' allow='autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>");
         $("#popup_streaming").modal('show');
     });
