@@ -384,6 +384,7 @@ class Admin extends CI_Controller
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
 		$data['id_event'] = $this->input->post('id_event');
 		$data['event'] = $event 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'master_kategori_pemain');
 		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) {
 			$konten_menu = $this->load->view("admin/data_pemain_list_" . $event['jenis_pertandingan'], $data, TRUE);
 		} else if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) {
@@ -440,7 +441,7 @@ class Admin extends CI_Controller
 		// print_r($cek_pegawai);
 		// echo '</pre>';
 		// die();
-		if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0' and $_POST['is_official'] == '0' and $_POST['is_veteran'] == '0') {
+		/* if ($cek_pegawai['jenis_kelamin'] == 'Pria' and $_POST['is_dharmayukti'] == '0' and $_POST['is_official'] == '0' and $_POST['is_veteran'] == '0') {
 			$cek_pemain_pria = $this->basic->get_data_where(array('id_kontingen' => $_POST['id_kontingen'], 'jenis_kelamin' => 'Pria', 'is_official' => '0', 'is_veteran' => '0', 'is_dharmayukti' => '0'), 'view_pemain');
 			if ($cek_pemain_pria->num_rows() >= 8) {
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRA BEREGU MAKSIMAL 8 ORANG'));
@@ -466,7 +467,7 @@ class Admin extends CI_Controller
 				echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN PUTRI BEREGU MAKSIMAL 6 ORANG'));
 				return;
 			}
-		}
+		} */ ##DISABLE CHECKING FOR BEREGU MALES BET BKIN KONDISI MATIIN DLU
 
 		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		// else $_POST['is_dharmayukti'] = 0;

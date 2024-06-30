@@ -6,8 +6,14 @@
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
             <div class="btn-group">
-                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
-                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span>
+                <!-- <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Beregu Putra</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Beregu Putri</span> -->
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='1' style='cursor:pointer;'>All Score Tunggal Putra Hakim</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='2' style='cursor:pointer;'>Ganda Putra Hakim</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='3' style='cursor:pointer;'>Tunggal Putra Karyawan</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='4' style='cursor:pointer;'>Ganda Putra Karyawan</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='5' style='cursor:pointer;'>Tunggal Putri</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='6' style='cursor:pointer;'>Ganda Putri</span>
             </div>
         </div>
         <div class="card-body">
@@ -79,6 +85,9 @@
                                     ";
                     }
                 }
+                else{
+                    echo "<div class='col-12 text-center'>DATA PERTANDINGAN BELUM TERSEDIA</div>";
+                }
                 ?>
             </div>
         </div>
@@ -93,9 +102,15 @@
         <div class="card-header d-flex justify-content-between">
             <h3 class="text-uppercase">Live Score</h3>
             <div class="btn-group">
-                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Babak Final Putra</span>
+                <!-- <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='putra' style='cursor:pointer;'>All Score Babak Final Putra</span>
                 <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='putri' style='cursor:pointer;'>All Score Babak Final Putri</span>
-                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='veteran' style='cursor:pointer;'>All Score Babak Final Veteran</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold babak_final_all_score" data-beregu='veteran' style='cursor:pointer;'>All Score Babak Final Veteran</span> -->
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='1' style='cursor:pointer;'>All Score Tunggal Putra Hakim</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='2' style='cursor:pointer;'>Ganda Putra Hakim</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='3' style='cursor:pointer;'>Tunggal Putra Karyawan</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='4' style='cursor:pointer;'>Ganda Putra Karyawan</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='5' style='cursor:pointer;'>Tunggal Putri</span>
+                <span class="btn btn-sm btn-outline-primary tx-bold live_streaming_all_score" data-perorangan='6' style='cursor:pointer;'>Ganda Putri</span>
             </div>
         </div>
         <div class="card-body">
@@ -118,13 +133,14 @@
                         // alert();skip();
                         load_data($(this).data('beregu'));
                     });
-                    load_data('veteran');
+                    // load_data('veteran');
 
                     function load_data(beregu) {
                         // alert(id_kategori);
                         var form_data = new FormData();
                         form_data.append('id_event', '2');
-                        form_data.append('beregu', beregu);
+                        //form_data.append('beregu', beregu);
+                        form_data.append('perorangan', perorangan);
 
                         $.ajax({
                             url: "<?php echo base_url(); ?>main/data_skema_pertandingan_rekap",

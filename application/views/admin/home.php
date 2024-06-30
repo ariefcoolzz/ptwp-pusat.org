@@ -13,7 +13,7 @@
     <div class="card card-body shadow-lg">
         <div class="row no-gutters">
             <div class="col-lg-3 col-sm tx-center">
-                <img src="<?php echo ('assets/img/logo_ptwp_xix.png'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
+                <img src="<?php echo ('assets/img/piala_kma_iv_jogjakarta.jpeg'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
             </div>
             <div class="col-lg-9 col-sm my-auto">
                 <div data-aos="zoom-in" data-aos-duration="3000">
@@ -21,15 +21,15 @@
                         <div class="media align-sm-items-center">
                             <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-70 wd-md-40 wd-lg-40 wd-xl-65">
                             <div class="media-body mg-l-15">
-                                <h6 class="tx-12 tx-lg-14 tx-semibold tx-uppercase tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA <span class="tx-normal tx-color-03">(PTWP XIX)</span></h6>
+                                <h6 class="tx-12 tx-lg-14 tx-semibold tx-uppercase tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA TENIS PERORANGAN <br>(PIALA KMA KE-IV)</span></h6>
                                 <div class="d-flex flex-column">
-                                    <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2022</h2>
-                                    <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Pendaftaran Dimulai 5 Oktober 2022 s.d 11 November 2022)</h6>
+                                    <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2024</h2>
+                                    <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0"> (Pendaftaran Dimulai 1 Juli 2024 s.d 9 September 2024)</h6>
                                 </div>
                             </div><!-- media-body -->
                         </div><!-- media -->
                         <div class="">
-                            <a href="javascript:void(0)" role="button" menu_admin="data_pemain" class="menu_admin btn btn-lg btn-primary btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="edit" class="mg-r-5"></i> PENDAFTARAN PESERTA TURNAMEN BEREGU</a>
+                            <a href="javascript:void(0)" role="button" menu_admin="data_pemain" class="menu_admin btn btn-lg btn-primary btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="edit" class="mg-r-5"></i> PENDAFTARAN PESERTA</a>
                         </div>
                     </div>
                 </div>

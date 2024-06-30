@@ -21,7 +21,7 @@ class Model_admin extends CI_Model
 	{
 		$this->db->select("B.IdAnggotaKeluarga AS id");
 		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
-		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/xxx.jpg&w=200'>\",B.NamaAnggotaKeluarga,' Istri dari ', A.nama,' (Dharmayukti)</div>') AS text");
+		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='".base_url('assets/img/default.png')."'>\",B.NamaAnggotaKeluarga,' Istri dari ', A.nama,' (Dharmayukti)</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->join("tmst_keluarga AS B", "A.id_pegawai = B.IdPegawai AND B.JenisHubunganKeluarga IN ('9','10')", "LEFT");
 		$this->db->where("(B.NamaAnggotaKeluarga LIKE '%$keyword%' OR A.nama LIKE '%$keyword%')");
@@ -719,6 +719,18 @@ class Model_admin extends CI_Model
 			$this->db->where('A.is_official', '0');
 			$this->db->where('A.is_veteran', '0');
 		}
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
+	function get_data_pemain_new($id_kontingen, $id_kategori)
+	{
+		$id_event = $this->input->post('id_event');
+		$id_panitia = $this->input->post('id_panitia');
+		$this->db->from('view_pemain AS A');
+		$this->db->where('A.id_event', $id_event);
+		$this->db->where('A.id_kontingen', $id_kontingen);
+		$this->db->where('A.id_kategori', $id_kategori);
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;

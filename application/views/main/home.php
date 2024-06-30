@@ -6,7 +6,7 @@
             <!--<li data-target="#slideshow" data-slide-to="2"></li>-->
         </ol>
         <div class="carousel-inner bg-secondary">
-             <div class="carousel-item active">
+            <div class="carousel-item active">
                 <a href="#">
                     <img src="<?php echo base_url() ?>assets/img/banner-ptwp-2024.jpg" class="d-block  mx-auto w-100" alt="...">
                     <div class="carousel-caption">
@@ -24,7 +24,7 @@
             <!--    <img src="<?php echo base_url() ?>assets/img/ptwp_2021.jpg" class="d-block mx-auto w-100" alt="...">-->
             <!--    <div class="carousel-caption">-->
             <!--         <h1 class="text-white">PTWP</h1>-->
-                    <!--<p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->-->
+            <!--<p class="tx-14">Badan Sehat, Pikiran Jernih, Kerja Produktif.</p> -->-->
             <!--    </div>-->
             <!--</div>-->
             <!-- <div class="carousel-item">-->
@@ -104,17 +104,17 @@
     <!--                    </div><!-- media-body -->
     <!--                </div><!-- media -->
     <!--                <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">-->
-                        <!-- <a href="https://www.youtube.com/watch?v=1y3QDbGNMos" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a> -->
+    <!-- <a href="https://www.youtube.com/watch?v=1y3QDbGNMos" target="_blank" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i data-feather="youtube" class="mg-r-5"></i> Live Streaming</a> -->
     <!--                    <button data-link='https://www.youtube.com/embed/Vh3_xyKOnJ8' class='tonton_pembukaan btn btn-danger'><i class='fa fa-youtube-play'></i> Siaran Langsung</button>-->
     <!--                </div>-->
     <!--            </div>-->
     <!--        </div>-->
     <!--    </div>-->
     <!--</div>-->
-    
+
     <div class="row no-gutters">
         <div class="col-lg-3 col-sm tx-center">
-            <img src="<?php echo ('assets/img/logo-aph-2023.png'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
+            <img src="<?php echo ('assets/img/piala_kma_iv_jogjakarta.jpeg'); ?>" alt="thumbnails" class="wd-250 wd-md-200 wd-lg-150 wd-xl-200" data-aos="zoom-in" data-aos-duration="1000">
         </div>
         <div class="col-lg-9 col-sm my-auto">
             <div data-aos="zoom-in" data-aos-duration="3000">
@@ -122,15 +122,15 @@
                     <div class="media align-sm-items-center">
                         <img src="<?php echo base_url('assets/img/tennis-ball.png') ?>" class="wd-70 wd-md-40 wd-lg-40 wd-xl-65">
                         <div class="media-body mg-l-15">
-                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-spacing-1 mg-b-5">Invitasi Tenis Beregu Aparatur Penegak Hukum (APH)</h6>
+                            <h6 class="tx-12 tx-lg-14 tx-semibold tx-spacing-1 mg-b-5">PENDAFTARAN PESERTA TENIS PERORANGAN (PIALA KMA KE-IV)</h6>
                             <div class="d-flex flex-column">
-                                <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2023</h2>
-                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0">Klik untuk membaca lebih lanjut</h6>
+                                <h2 class="tx-20 tx-lg-28 tx-normal tx-rubik tx-spacing--2 lh-2 mg-b-0">TAHUN 2024</h2>
+                                <h6 class="tx-11 tx-lg-16 tx-normal tx-rubik tx-danger mg-l-5 lh-2 mg-b-0">(Pendaftaran Dimulai 1 Juli 2024 s.d 9 September 2024)</h6>
                             </div>
                         </div><!-- media-body -->
                     </div><!-- media -->
                     <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
-                         <a href="https://ptwp-pusat.org/main/page/invitasi_tenis_beregu_aparatur_penegak_hukum_(aph)_tahun_2023" target="_parent" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i class="mg-r-5"></i> Baca Selengkapnya</a> 
+                        <a href="<?php echo base_url('login'); ?>" target="_parent" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i class="mg-r-5"></i> Registrasi Peserta</a>
                         <!--<button data-link='https://ptwp-pusat.org/main/page/invitasi_tenis_beregu_aparatur_penegak_hukum_(aph)_tahun_2023' class='btn btn-danger'></i> Baca Selengkapnya</button>-->
                     </div>
                 </div>

@@ -2,7 +2,14 @@
 class Model_main extends CI_Model
 {
 
-	
+	function get_event_aktif(){
+		$this->db->select("A.id_event");
+		$this->db->from('data_event AS A');
+		$this->db->where('A.is_aktif', '1');
+		$query = $this->db->get()->row_array();
+		// DIE($this->db->last_query());
+		return $query['id_event'];
+	}
 	function model_master_lapangan()
 	{
 		$this->db->select("A.");
@@ -310,11 +317,12 @@ class Model_main extends CI_Model
 
 	function model_data_live_streaming()
 	{
+		$id_event = $this->get_event_aktif();
 		$this->db->select("A.*");
 		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_A) AS nama_kontingen_tim_A");
 		$this->db->select("NAMA_SATKER_SINGKAT(A.id_kontingen_tim_B) AS nama_kontingen_tim_B");
 		$this->db->from('data_babak_penyisihan AS A');
-		$this->db->where('A.id_event', 2); //manualiin dulu
+		$this->db->where('A.id_event', $id_event); //manualiin dulu
 		$this->db->where('A.id_lapangan IN (25,26,27,28,29,30)'); //manualiin dulu
 
 		$this->db->order_by("A.beregu", "ASC");

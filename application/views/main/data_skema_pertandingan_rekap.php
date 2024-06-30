@@ -6,7 +6,7 @@ if ($satker->num_rows()) {
         $option .= "<option value='$S[IdSatker]'>$S[nama_satker_singkat]</option>";
     }
 }
-
+$jumlah = 32;
 if ($_POST['beregu'] == "putra") $jumlah = 32;
 if ($_POST['beregu'] == "putri") $jumlah = 16;
 if ($_POST['beregu'] == "veteran") $jumlah = 32;
