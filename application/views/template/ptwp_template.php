@@ -178,7 +178,7 @@
   <footer class="footer">
     <div>
       <span>&copy; 2021 PTWP-PUSAT.ORG </span>
-      <!-- <span>Design By <a href="#">TIM GERCEP GANIS</a></span> -->
+       <span>Designed and Developed By <a href="#">TIM GERCEP GANIS BADILAG</a></span> 
     </div>
     <div>
       <nav class="nav">
