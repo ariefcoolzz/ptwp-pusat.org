@@ -46,7 +46,7 @@
                     echo "<td>
                             <div class='d-flex flex-column'>
                             <a class='tx-bolder'>" . $R['panitia'] . "</a>
-                            <a>" . $R['nama_satker_parent'] . "</a>
+                            <a>" . $R['nama_satker_kontingen'] . "</a>
                             </div>
                         </td>";
                     if ($R['aktif'])
