@@ -53,7 +53,70 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                 <h5 class="text-center"> DATA MANAJER / OFFICIAL </h5>
                 <?php 
                     if($tambah){
-                        echo '<a href="javascript:void(0)" data-jenis="official" data-id_kategori="0" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Official</a>';
+                        echo '<a href="javascript:void(0)" data-jenis="official" data-id_kategori="1" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Official</a>';
+                    }
+                    ?>
+                
+                <div data-label="Example" class="df-example demo-table">
+                    <div class="table-responsive">
+                        <table class="datatable-pemain table table-primary mg-b-0">
+                            <thead class="thead-primary">
+                                <tr class="text-center">
+                                    <th class="wd-20">No</th>
+                                    <!-- <th>Foto</th> -->
+                                    <th>Nama</th>
+                                    <th>Nip</th>
+                                    <th>No Handphone</th>
+                                    <th>Jenis Kelamin</th>
+                                    <th>Usia</th>
+                                    <th>Jabatan</th>
+                                    <th>Satuan Kerja</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;                                
+                                foreach ($list_official->result_array() as $R) {
+                                    echo '<tr align="center">';
+                                    echo "<td>" . $no . "</td>";
+                                    // if (!empty($R['FotoPegawai']) OR !empty($R['FotoFormal'])) {
+                                    // echo "<td class='align-center'><a href='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal'], 200) . "' data-lightbox='$R[nama_gelar]' data-title='$R[nama_gelar]'><center><img src='" . cdn_foto($R['FotoPegawai'], $R['FotoFormal']) . "' class='img-thumbnail d-block' style='width:70px;height:85px;'></center></a></td>";
+                                    // } else {
+                                    // echo "<td align='align-center'><img src='" . base_url('assets/profil/default.png') . "' class='img-thumbnail' style='width:55px;height:60px;'></td>";
+                                    // }
+                                    echo "<td align='left'>" . $R['nama'] . "</td>";
+                                    echo "<td align='left'>" . ($R['nip']) . "</td>";
+                                    echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
+                                    echo "<td align='left'>" . $R['jenis_kelamin'] . "</td>";
+                                    //echo "<td align='left'>" . $R['NomorHandphone'] . "</td>";
+                                    echo "<td align='left'>" . $R['umur'] . "</td>";
+                                    echo "<td align='left'>" . $R['jabatan'] . "</td>";
+                                    echo "<td align='left'>" . $R['nama_satker'] . "</td>";
+                                    echo '<td>
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
+                                    echo "</td>";
+                                    echo "</tr>";
+                                    $no++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div><!-- table-responsive -->
+                </div><!-- df-example -->
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-body">
+                <?php echo $this->session->flashdata('msg'); 
+                $list_official = $this->Model_admin->get_data_pemain($id_kontingen, false, 2);
+                $tambah = true;
+                if($list_official->num_rows() >= 1) $tambah = false;
+                ?>
+                <h5 class="text-center"> DATA PESERTA KONGGRESS </h5>
+                <?php 
+                    if($tambah){
+                        echo '<a href="javascript:void(0)" data-jenis="official" data-id_kategori="2" class="btn-tambah btn btn-primary"><i class="fa fa-plus-circle"></i> Tambah Peserta Konggress</a>';
                     }
                     ?>
                 
@@ -455,7 +518,8 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
             is_dharmayukti = 1;
         }
         if (jenis == 'official') {
-            is_official = 1;
+            is_official = id_kategori;
+            id_kategori = 0;
         }
         if ($("#is_veteran").is(":checked") == true) {
             is_veteran = 1;

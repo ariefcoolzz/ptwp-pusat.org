@@ -24,11 +24,29 @@
         // echo '</pre>';
         // die();
         $no = 1;
+        $jenis_event = $event['jenis_pertandingan'];
+        $kat_pemain = array(); //untuk perorangan
+        foreach ($kategori_pemain->result_array() as $R) {
+            $id_kategori = $R['id_kategori'];
+            $kat_pemain[$id_kategori] = $R;
+        }
+        // echo '<pre>';
+        // print_r($pemain->result_array());
+        // echo '</pre>';
+        // die();
         foreach ($pemain->result_array() as $R) {
-            $kelompok = 'BEREGU PUTRA';
-            if ($R['is_dharmayukti'] or $R['jenis_kelamin'] == 'Wanita') $kelompok = 'BEREGU PUTRI';
-            if ($R['is_official']) $kelompok = 'MANAJER/OFFICIAL';
-            if ($R['is_veteran']) $kelompok = 'VETERAN';
+            $kelompok = '';
+            if ($jenis_event == 'Beregu') {
+                $kelompok = 'BEREGU PUTRA';
+                if ($R['is_dharmayukti'] or $R['jenis_kelamin'] == 'Wanita') $kelompok = 'BEREGU PUTRI';
+                if ($R['is_official']) $kelompok = 'MANAJER/OFFICIAL';
+                if ($R['is_veteran']) $kelompok = 'VETERAN';
+            } else {
+                $id_kategori = $R['id_kategori'];
+                if ($R['is_official'] == 1) $kelompok = 'MANAJER/OFFICIAL';
+                else if ($R['is_official'] == 2) $kelompok = 'Peserta Konggres';
+                else if ($id_kategori !== 0) $kelompok = $kat_pemain[$id_kategori]['kategori'];
+            }
             $nama = $R['nama'];
             $nip = nip_titik($R['nip']);
             $usia = $R['umur'];

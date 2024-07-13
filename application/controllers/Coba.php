@@ -7,34 +7,30 @@ class Coba extends CI_Controller
 	{
 		$nama = "Dika Andrian Pradana Putra Permana<br>Arief Kusuma Putra";
 
-		
+
 		$hasil = '';
 		$PEMAIN = EXPLODE("<br>", $nama);
-		IF(COUNT($PEMAIN) >= 0)
-			{
-				FOR($a=0;$a<COUNT($PEMAIN);$a++)
-					{
+		if (COUNT($PEMAIN) >= 0) {
+			for ($a = 0; $a < COUNT($PEMAIN); $a++) {
 
-						// $hasil = $PEMAIN[$a];
-						$EXP = EXPLODE(" ", $PEMAIN[$a]);
-						IF(COUNT($EXP) > 0)
-							{
-								$hasil .= $EXP[0]." ";
-								FOR($i=1;$i<COUNT($EXP);$i++)
-									{
-										$hasil .= SUBSTR($EXP[$i],0,1)."."; 
-									}
-							}
-						$hasil .= "<br>";
+				// $hasil = $PEMAIN[$a];
+				$EXP = EXPLODE(" ", $PEMAIN[$a]);
+				if (COUNT($EXP) > 0) {
+					$hasil .= $EXP[0] . " ";
+					for ($i = 1; $i < COUNT($EXP); $i++) {
+						$hasil .= SUBSTR($EXP[$i], 0, 1) . ".";
 					}
+				}
+				$hasil .= "<br>";
 			}
+		}
 		echo $hasil;
 	}
 
 	public function pass_coba()
 	{
 		$pass = MD7('admin');
-		echo $pass."<br>";
+		echo $pass . "<br>";
 		$q = $this->basic->processLogin('admin', MD7('admin'));
 		print_r($q->result_array());
 	}
@@ -115,6 +111,35 @@ class Coba extends CI_Controller
 	{
 		echo '<pre>';
 		print_r($_SESSION);
+		echo '</pre>';
+		die();
+	}
+	public function tes_ku()
+	{
+		$id_event = 92;
+		$this->load->model('Model_admin');
+		$new_array = array();
+		$list_kontingen = $this->Model_admin->get_list_kontingen_perorangan($id_event);
+		foreach ($list_kontingen->result_array() as $R) {
+			$id_kontingen = $R['id_kontingen'];
+			$new_array[$id_kontingen] = $R;
+			$new_array[$id_kontingen][1] = $R['total_official'];
+			$new_array[$id_kontingen][2] = $R['total_peserta_konggres'];
+			$kategori = $this->Model_admin->get_kategori_pemain($id_event);
+			foreach ($kategori->result_array() as $D) {
+				$id_kategori = $D['id_kategori'];
+				$new_array[$id_kontingen][$id_kategori] = 0;
+			}
+		}
+		$all_pemain = $this->Model_admin->get_list_pemain_all($id_event);
+
+		foreach ($all_pemain->result_array() as $D) {
+			$id_kontingen = $D['id_kontingen'];
+			$id_kategori = $D['id_kategori'];
+			$new_array[$id_kontingen][$id_kategori]++;
+		}
+		echo '<pre>';
+		print_r($new_array);
 		echo '</pre>';
 		die();
 	}

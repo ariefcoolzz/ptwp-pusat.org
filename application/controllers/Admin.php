@@ -353,12 +353,13 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => $status, "konten_menu" => $konten_menu));
 	}
 
-	public function data_pemain_export($jenis, $id_kontingen)
+	public function data_pemain_export($jenis, $id_kontingen, $id_event)
 	{
 		$data['id_kontingen'] = $id_kontingen;
-		$_POST['id_event'] = 2; //MANUAL DLU AH
+		$_POST['id_event'] = $id_event; //MANUAL DLU AH
 		$kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
 		$data['kontingen'] = $kontingen;
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event), 'master_kategori_pemain');
 		header("Content-type: application/vnd-ms-excel");
 		header("Content-Disposition: attachment; filename=data_pemain_" . $kontingen['nama_kontingen'] . ".xls");
 		header("Pragma: no-cache");
@@ -369,8 +370,9 @@ class Admin extends CI_Controller
 	}
 	public function data_pemain_export_all($id_event)
 	{
-		$data['event']	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
+		$data['event']= $event	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
 		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event), 'master_kategori_pemain');
 		header("Content-type: application/vnd-ms-excel");
 		header("Content-Disposition: attachment; filename=data_pemain_all.xls");
 		header("Pragma: no-cache");
@@ -402,6 +404,16 @@ class Admin extends CI_Controller
 		$data['id_kontingen'] = $this->input->post('id_kontingen');
 		$data['event'] 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
 		$konten_menu = $this->load->view("admin/data_pemain_Beregu", $data, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_pemain_detil_perorangan()
+	{
+		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
+		$data['id_event'] = $this->input->post('id_event');
+		$data['id_kontingen'] = $this->input->post('id_kontingen');
+		$data['event'] 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'master_kategori_pemain');
+		$konten_menu = $this->load->view("admin/data_pemain_Perorangan", $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 

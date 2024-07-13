@@ -700,7 +700,7 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	function get_data_pemain($id_kontingen, $jenis_kelamin = false, $is_official = false, $is_veteran = false)
+	function get_data_pemain($id_kontingen, $jenis_kelamin = false, $is_official = 0, $is_veteran = false)
 	{
 		$id_event = $this->input->post('id_event');
 		$id_panitia = $this->input->post('id_panitia');
@@ -716,7 +716,7 @@ class Model_admin extends CI_Model
 			// $this->db->or_where('A.is_dharmayukti', '1');
 			$this->db->where("(A.jenis_kelamin = '" . $jenis_kelamin . "' OR A.is_dharmayukti = '1')");
 		}
-		if ($is_official) $this->db->where('A.is_official', '1');
+		if ($is_official) $this->db->where('A.is_official', $is_official);
 		else if ($is_veteran) $this->db->where('A.is_veteran', '1');
 		else {
 			$this->db->where('A.is_official', '0');
@@ -726,14 +726,15 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
-	function get_data_pemain_new($id_kontingen, $id_kategori)
+	function get_data_pemain_new($id_kontingen, $id_kategori = false)
 	{
 		$id_event = $this->input->post('id_event');
 		$id_panitia = $this->input->post('id_panitia');
 		$this->db->from('view_pemain AS A');
 		$this->db->where('A.id_event', $id_event);
 		$this->db->where('A.id_kontingen', $id_kontingen);
-		$this->db->where('A.id_kategori', $id_kategori);
+		if($id_kategori) $this->db->where('A.id_kategori', $id_kategori);
+		$this->db->order_by("A.id_kategori", "ASC");
 		$query = $this->db->get();
 		// die($this->db->last_query());
 		return $query;
@@ -772,7 +773,27 @@ class Model_admin extends CI_Model
 		SUM(CASE WHEN V.`is_verifikasi` = '1' AND V.`is_veteran` = '0' AND V.`is_official` = '0' AND (V.`jenis_kelamin` = 'WANITA' OR V.`is_dharmayukti` = '1') THEN 1 ELSE 0 END) AS total_putri_sudah
 		FROM
 		view_pemain AS V
-		WHERE V.`id_event` = '2'
+		WHERE V.`id_event` = '$id_event'
+		GROUP BY id_kontingen) 
+		AS B ON A.IdSatker = B.id_kontingen
+		WHERE (IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'
+		ORDER BY UrutanTingkatBanding ASC");
+		// die($this->db->last_query());
+		return $query;
+	}
+	function get_list_kontingen_perorangan($id_event)
+	{
+		$query = $this->db->query("SELECT A.`IdSatker` AS id_kontingen, A.`NamaSatker` AS nama_satker, 
+		IFNULL(B.total_official,'0') AS total_official,
+		IFNULL(B.total_peserta_konggres,'0') AS total_peserta_konggres
+		FROM tmst_satker AS A
+		LEFT JOIN 
+		(SELECT V.`id_kontingen` AS id_kontingen,
+		SUM(CASE WHEN V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official,
+		SUM(CASE WHEN V.`is_official` = '2' THEN 1 ELSE 0 END) AS total_peserta_konggres
+		FROM
+		view_pemain AS V
+		WHERE V.`id_event` = '$id_event'
 		GROUP BY id_kontingen) 
 		AS B ON A.IdSatker = B.id_kontingen
 		WHERE (IdSatker = 920 OR LevelSatker = 2) AND IsAktif = 'Y'
@@ -792,6 +813,12 @@ class Model_admin extends CI_Model
 	function get_data_kontingen($id_kontingen)
 	{
 		$query = $this->db->query("SELECT NAMA_SATKER('$id_kontingen') as nama_kontingen")->row_array();
+		// die($this->db->last_query());
+		return $query;
+	}
+	function get_kategori_pemain($id_event)
+	{
+		$query = $this->db->query("SELECT * FROM master_kategori_pemain WHERE id_event = '$id_event' ORDER BY urutan");
 		// die($this->db->last_query());
 		return $query;
 	}
