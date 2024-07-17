@@ -25,6 +25,17 @@ class Admin extends CI_Controller
 			echo JSON_ENCODE($hasil);
 		}
 	}
+	public function get_data_id_nama_veteran()
+	{
+		if (isset($_GET['q']) and STRLEN($_GET['q']) >= 4) {
+			$keyword = $_GET['q'];
+			$data = $this->Model_admin->model_get_data_id_nama_veteran($keyword);
+			// PRINT_R($data->result_array());DIE();
+			$hasil = array("results" => $data->result_array());
+			// PRINT_R($hasil);DIE();
+			echo JSON_ENCODE($hasil);
+		}
+	}
 
 	public function get_data_id_nama_dharmayukti()
 	{
@@ -359,7 +370,7 @@ class Admin extends CI_Controller
 		$_POST['id_event'] = $id_event; //MANUAL DLU AH
 		$kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
 		$data['kontingen'] = $kontingen;
-		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event), 'master_kategori_pemain');
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event, 'is_tampil'=> 1), 'master_kategori_pemain');
 		header("Content-type: application/vnd-ms-excel");
 		header("Content-Disposition: attachment; filename=data_pemain_" . $kontingen['nama_kontingen'] . ".xls");
 		header("Pragma: no-cache");
@@ -371,13 +382,30 @@ class Admin extends CI_Controller
 	public function data_pemain_export_all($id_event)
 	{
 		$data['event']= $event	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
-		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);
+		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);		
 		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event), 'master_kategori_pemain');
+		// header("Content-type: application/vnd-ms-excel");
+		// header("Content-Disposition: attachment; filename=data_pemain_all.xls");
+		// header("Pragma: no-cache");
+		// header("Expires: 0");
+		$tabel = $this->load->view("admin/data_pemain_export_all", $data, TRUE);
+		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
+		echo $tabel;
+	}
+	public function data_pemain_veteran_export($id_event)
+	{
+		$data['event']= $event	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
+		$_POST['id_event'] = $id_event;
+		$data['pemain'] = $this->Model_admin->get_data_pemain_veteran();
 		header("Content-type: application/vnd-ms-excel");
-		header("Content-Disposition: attachment; filename=data_pemain_all.xls");
+		header("Content-Disposition: attachment; filename=data_pemain_veteran.xls");
 		header("Pragma: no-cache");
 		header("Expires: 0");
-		$tabel = $this->load->view("admin/data_pemain_export_all", $data, TRUE);
+		// echo '<pre>';
+		// print_r($data['pemain']->result_array());
+		// echo '</pre>';
+		// die();
+		$tabel = $this->load->view("admin/data_pemain_veteran_export", $data, TRUE);
 		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
 		echo $tabel;
 	}
@@ -386,7 +414,7 @@ class Admin extends CI_Controller
 		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
 		$data['id_event'] = $this->input->post('id_event');
 		$data['event'] = $event 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
-		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'master_kategori_pemain');
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event'], 'is_tampil'=> 1), 'master_kategori_pemain');
 		if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1))) {
 			$konten_menu = $this->load->view("admin/data_pemain_list_" . $event['jenis_pertandingan'], $data, TRUE);
 		} else if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) {
@@ -395,6 +423,15 @@ class Admin extends CI_Controller
 		} else {
 			$konten_menu = "HALAMAN TIDAK TERSEDIA";
 		}
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+	public function data_pemain_veteran() //KASUISTIS KARNA TANPA KONTINGEN
+	{
+		// $data['list_pemain'] = $this->Model_admin->get_data_pemain();
+		$data['id_event'] = $this->input->post('id_event');
+		$data['event'] = $event 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event'], 'beregu'=> 'veteran'), 'master_kategori_pemain')->row_array();
+		$konten_menu = $this->load->view("admin/data_pemain_veteran", $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 	public function data_pemain_detil_beregu()
@@ -412,7 +449,7 @@ class Admin extends CI_Controller
 		$data['id_event'] = $this->input->post('id_event');
 		$data['id_kontingen'] = $this->input->post('id_kontingen');
 		$data['event'] 	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'data_event')->row_array();
-		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event']), 'master_kategori_pemain');
+		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $data['id_event'], 'is_tampil'=> 1), 'master_kategori_pemain');
 		$konten_menu = $this->load->view("admin/data_pemain_Perorangan", $data, TRUE);
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
@@ -495,6 +532,68 @@ class Admin extends CI_Controller
 
 		if ($status) {
 			$this->data_pemain();
+		} else {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
+		}
+	}
+	public function data_pemain_veteran_simpan()
+	{
+		// echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
+		// die();
+		// echo '<pre>';
+		// print_r($_POST);
+		// echo '</pre>';
+		// die();
+		$id_pemain_1 	= $this->input->post('id_pemain_1');
+		$id_pemain_2 	= $this->input->post('id_pemain_2');
+		$id_event 		= $this->input->post('id_event');
+		// echo $id_pemain;
+		// die();
+		if (empty($id_pemain_1) or $id_pemain_1 == 'null') {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'SILAHKAN PILIH PEMAIN TERLEBIH DAHULU'));
+			return;
+		}
+		if (empty($id_pemain_2) or $id_pemain_2 == 'null') {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'SILAHKAN PILIH PEMAIN TERLEBIH DAHULU'));
+			return;
+		}
+		if ($id_pemain_1 == $id_pemain_2) {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'PEMAIN 1 tidak boleh sama dengan PEMAIN 2'));
+			return;
+		}
+		
+		$this->db->where("id_pemain IN ('$id_pemain_1','$id_pemain_2') AND id_event ='$id_event'");
+		$cek_pemain = $this->db->get('data_pemain');
+		if ($cek_pemain->num_rows()) {
+			echo JSON_ENCODE(array("status" => false, "pesan" => 'SUDAH ADA PEMAIN / OFFICIAL DENGAN NAMA TERSEBUT, SILAHKAN HAPUS TERLEBIH DAHULU'));
+			return;
+		} else {
+						
+			$this->db->where("beregu = 'veteran' AND id_event ='$id_event'");
+			$get_kategori = $this->db->get('master_kategori_pemain')->row_array();
+			$id_kategori = $get_kategori['id_kategori']; 
+
+			$data['id_kontingen'] = '920'; //VETERAN TANPA KONTINGEN, KITA TAMPUNG DI MA AJA
+			$data['id_pemain'] = $id_pemain_1;
+			$data['is_veteran'] = 1;
+			$data['id_event'] = $id_event;
+			$data['id_kategori'] = $id_kategori;
+			$data['user_created'] = $_SESSION['id_user'];
+			$pemain1 = $this->basic->insert_data('data_pemain', $data);
+			$data['id_pemain'] = $id_pemain_2;
+			$pemain2 = $this->basic->insert_data('data_pemain', $data); //INSERT 2 pemain langsung aja karena kategori GANDA
+
+
+			$insert_tim['id_kategori'] =$id_kategori;
+			$insert_tim['id_pemain1'] = $id_pemain_1;
+			$insert_tim['id_pemain2'] = $id_pemain_2;
+			
+			$status = $this->basic->insert_data('data_tim', $insert_tim);
+
+		}
+
+		if ($status) {
+			$this->data_pemain_veteran();
 		} else {
 			echo JSON_ENCODE(array("status" => false, "pesan" => 'GAGAL'));
 		}

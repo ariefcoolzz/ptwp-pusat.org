@@ -106,6 +106,7 @@ extract($_SESSION);
                     <li class="nav-label pt-3">Pemain & Tim</li>
 
                     <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pemain_veteran" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain Veteran</span></a></li>
                     <li class="nav-item"><a menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="users"></i> <span>Data Tim</span></a></li>
 
                     <li class="nav-label pt-3">Pertandingan</li>
@@ -119,6 +120,7 @@ extract($_SESSION);
                 <?php if (IN_ARRAY($_SESSION['id_panitia'], array(2, 3))) { ?>
 
                     <li class="nav-item"><a menu_admin="data_pemain" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_pemain_veteran" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain Veteran</span></a></li>
                     <li class="nav-item"><a menu_admin="data_pertandingan" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pertandingan</span></a></li>
                 <?php } ?>
                 <!-- <?php if (IN_ARRAY($_SESSION['id_panitia'], array(0, 1, 2, 3))) { ?>
