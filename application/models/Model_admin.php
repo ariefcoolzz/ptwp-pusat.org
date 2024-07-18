@@ -28,11 +28,11 @@ class Model_admin extends CI_Model
 		if($id_satker == '1501') $id_satker = '4';
 		$this->db->select("A.id_pegawai AS id");
 		// $this->db->select("CONCAT(\"<span><img sytle='display: inline-block;' class='rounded-circle ht-40 wd-50 pd-x-5' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' [',A.nip,']</span>') AS text");
-		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' (',A.umur,')',' <br>',A.nip,' <br>',A.nama_satker,' <br>','</div>') AS text");
+		$this->db->select("CONCAT(\"<div class='media'><img class='img-thumbnail ht-90 wd-75 mg-r-10' src='//images.weserv.nl/?url=https://sikep.mahkamahagung.go.id/uploads/foto_pegawai/\",A.FotoPegawai,\"&w=200'>\",A.nama,' (',A.umur,')',' <br> Tgl Lahir : ',A.tgl_lahir,' <br>',A.nip,' <br>',A.nama_satker,' <br>','</div>') AS text");
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
 		// if ($veteran) $this->db->where("(A.umur >= '60' OR A.id_jabatan = '30')"); //INI TAHUN 2022
-		$this->db->where("(A.umur >= '60' AND A.umur <= 70)");
+		$this->db->where("(YEAR(A.tgl_lahir) <= 1964 AND A.umur <= 70)");
 		$this->db->where("id_status_pegawai = 1");
 		$this->db->limit("100");
 		$query = $this->db->get();
