@@ -46,7 +46,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         <div class="card mb-2">
             <div class="card-body">
                 <?php echo $this->session->flashdata('msg'); 
-                $list_official = $this->Model_admin->get_data_pemain($id_kontingen, false, true);
+                $list_official = $this->Model_admin->get_data_non_pemain($id_kontingen, 1);
                 $tambah = true;
                 if($list_official->num_rows() >= 2) $tambah = false;
                 ?>
@@ -94,7 +94,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
-                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_user'] . '" data-jenis="official" data-id_kategori="1" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     $no++;
@@ -109,7 +109,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         <div class="card mb-2">
             <div class="card-body">
                 <?php echo $this->session->flashdata('msg'); 
-                $list_official = $this->Model_admin->get_data_pemain($id_kontingen, false, 2);
+                $list_official = $this->Model_admin->get_data_non_pemain($id_kontingen, 2);
                 $tambah = true;
                 if($list_official->num_rows() >= 1) $tambah = false;
                 ?>
@@ -157,7 +157,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                     echo '<td>
-                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
+                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_user'] . '" data-jenis="official" data-id_kategori="2" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                     echo "</td>";
                                     echo "</tr>";
                                     $no++;
@@ -243,7 +243,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                             echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                             echo "<td align='left'>" . $R['nama_satker'] . "</td>";
                                             echo '<td>
-                                            <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
+                                            <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" data-jenis="pemain" data-id_kategori="'.$K['id_kategori'].'" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
                                             echo "</td>";
                                             echo "</tr>";
                                         }
@@ -388,6 +388,8 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
             if (result.isConfirmed) {
                 var form_data = new FormData();
                 form_data.append('id_pemain', $(this).data('id_pemain'));
+                form_data.append('jenis', $(this).data('jenis'));
+                form_data.append('id_kategori', $(this).data('id_kategori'));
                 form_data.append('id_event', '<?php echo $id_event; ?>');
                 $.ajax({
                     url: "<?php echo base_url(); ?>admin/hapus_data_pemain",
@@ -518,8 +520,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
             is_dharmayukti = 1;
         }
         if (jenis == 'official') {
-            is_official = id_kategori;
-            id_kategori = 0;
+            is_official = true;
         }
         if ($("#is_veteran").is(":checked") == true) {
             is_veteran = 1;

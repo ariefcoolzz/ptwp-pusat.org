@@ -19,22 +19,62 @@
     </thead>
     <tbody>
         <?php
-        // echo '<pre>';
-        // print_r($pemain->row_array());
-        // echo '</pre>';
-        // die();
-        $no = 1;
+        $kat_non_pemain[1] = 'Official';
+        $kat_non_pemain[2] = 'Peserta Konggress';
         $jenis_event = $event['jenis_pertandingan'];
         $kat_pemain = array(); //untuk perorangan
         foreach ($kategori_pemain->result_array() as $R) {
             $id_kategori = $R['id_kategori'];
             $kat_pemain[$id_kategori] = $R;
         }
+        $new_array = array();
+        foreach($non_pemain->result_array() as $R){
+            $id_pemain = $R['id_user'];
+            $id_kategori = $R['id_kategori'];
+            $R['is_dharmayukti'] = 0;
+            $R['is_veteran'] = 0;
+            if(array_key_exists($id_pemain,$new_array)){
+                $new_array[$id_pemain]['kelompok'] = $new_array[$id_pemain]['kelompok'].', '.$kat_non_pemain[$id_kategori];
+            }
+            else{
+                $R['id_pemain'] = $id_pemain;
+                $R['kelompok']  = $kat_non_pemain[$id_kategori];
+                $new_array[$id_pemain] = $R;
+            }          
+        }
+        foreach ($pemain->result_array() as $R) {
+            $id_pemain = $R['id_pemain'];
+            $id_kategori = $R['id_kategori'];
+            $R['nama_istri'] = ucwords(strtolower($R['nama_istri']));
+            
+            if(array_key_exists($id_pemain,$new_array)){
+                if($new_array[$id_pemain]['is_dharmayukti'] == $R['is_dharmayukti']){
+                    $new_array[$id_pemain]['kelompok'] = $new_array[$id_pemain]['kelompok'].', '.$kat_pemain[$id_kategori]['kategori'];
+                }
+                else{
+                    $id_pemain  = $R['id_keluarga'];
+                    $R['id_pemain'] = $id_pemain;
+                    $R['kelompok']  = $kat_pemain[$id_kategori]['kategori'];
+                    $new_array[$id_pemain] = $R;
+                }
+            }
+            else{
+                $R['kelompok']  = $kat_pemain[$id_kategori]['kategori'];
+                $new_array[$id_pemain] = $R;
+            }    
+        }
+
+        
+        // echo '<pre>';
+        // print_r($new_array);
+        // echo '</pre>';
+        // die();
+        $no = 1;
         // echo '<pre>';
         // print_r($pemain->result_array());
         // echo '</pre>';
         // die();
-        foreach ($pemain->result_array() as $R) {
+        foreach ($new_array as $R) {
             $kelompok = '';
             if ($jenis_event == 'Beregu') {
                 $kelompok = 'BEREGU PUTRA';
@@ -42,11 +82,10 @@
                 if ($R['is_official']) $kelompok = 'MANAJER/OFFICIAL';
                 if ($R['is_veteran']) $kelompok = 'VETERAN';
             } else {
-                $id_kategori = $R['id_kategori'];
-                if ($R['is_official'] == 1) $kelompok = 'MANAJER/OFFICIAL';
-                else if ($R['is_official'] == 2) $kelompok = 'Peserta Konggres';
-                else if ($id_kategori !== 0) $kelompok = $kat_pemain[$id_kategori]['kategori'];
+                $kelompok = $R['kelompok'];
+                if($R['is_veteran']) $R['nama_kontingen'] = 'VETERAN';
             }
+            
             $nama = $R['nama'];
             $nip = nip_titik($R['nip']);
             $usia = $R['umur'];

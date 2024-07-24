@@ -760,6 +760,22 @@ class Model_admin extends CI_Model
 		// die($this->db->last_query());
 		return $query;
 	}
+	function get_data_non_pemain($id_kontingen = false, $id_kategori = false)
+	{
+		$id_event = $this->input->post('id_event');
+		$id_panitia = $this->input->post('id_panitia');
+		$this->db->select('sat.`NamaSatker` as nama_kontingen, A.*, B.*');
+		$this->db->from('data_non_pemain AS A');
+		$this->db->join('data_pegawai_all AS B','A.id_user = B.id_pegawai', 'LEFT');
+		$this->db->join('tmst_satker AS sat','A.id_kontingen = sat.IdSatker','LEFT');
+		$this->db->where('A.id_event', $id_event);
+		if($id_kontingen) $this->db->where('A.id_kontingen', $id_kontingen);
+		if($id_kategori) $this->db->where('A.id_kategori', $id_kategori);
+		$this->db->order_by("A.id_kategori", "ASC");
+		$query = $this->db->get();
+		// die($this->db->last_query());
+		return $query;
+	}
 	function get_data_pemain_veteran()
 	{
 		$id_event = $this->input->post('id_event');
@@ -823,10 +839,10 @@ class Model_admin extends CI_Model
 		FROM tmst_satker AS A
 		LEFT JOIN 
 		(SELECT V.`id_kontingen` AS id_kontingen,
-		SUM(CASE WHEN V.`is_official` = '1' THEN 1 ELSE 0 END) AS total_official,
-		SUM(CASE WHEN V.`is_official` = '2' THEN 1 ELSE 0 END) AS total_peserta_konggres
+		SUM(CASE WHEN V.`id_kategori` = '1' THEN 1 ELSE 0 END) AS total_official,
+		SUM(CASE WHEN V.`id_kategori` = '2' THEN 1 ELSE 0 END) AS total_peserta_konggres
 		FROM
-		view_pemain AS V
+		data_non_pemain AS V
 		WHERE V.`id_event` = '$id_event'
 		GROUP BY id_kontingen) 
 		AS B ON A.IdSatker = B.id_kontingen

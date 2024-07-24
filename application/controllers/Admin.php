@@ -381,13 +381,15 @@ class Admin extends CI_Controller
 	}
 	public function data_pemain_export_all($id_event)
 	{
+		$_POST['id_event'] = $id_event;
 		$data['event']= $event	= $this->basic->get_data_where(array('id_event' => $id_event), 'data_event')->row_array();
+		$data['non_pemain'] = $this->Model_admin->get_data_non_pemain(false,false);		
 		$data['pemain'] = $this->Model_admin->get_list_pemain_all($id_event);		
 		$data['kategori_pemain']	= $this->basic->get_data_where(array('id_event' => $id_event), 'master_kategori_pemain');
-		// header("Content-type: application/vnd-ms-excel");
-		// header("Content-Disposition: attachment; filename=data_pemain_all.xls");
-		// header("Pragma: no-cache");
-		// header("Expires: 0");
+		header("Content-type: application/vnd-ms-excel");
+		header("Content-Disposition: attachment; filename=data_pemain_all.xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
 		$tabel = $this->load->view("admin/data_pemain_export_all", $data, TRUE);
 		$tabel = str_replace("<br>", "<br style='mso-data-placement:same-cell;'/>", $tabel);
 		echo $tabel;
@@ -520,14 +522,32 @@ class Admin extends CI_Controller
 
 		// if ($_POST['is_dharmayukti'] == 'true')  $_POST['is_dharmayukti'] = 1;
 		// else $_POST['is_dharmayukti'] = 0;
-		if ($_POST)
-			$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti'], 'id_event' => $_POST['id_event']);
-		$cek_pemain = $this->basic->get_data_where($where, 'data_pemain');
+		$is_official = $this->input->post('is_official');
+		$where = array();
+		$nama_table = 'data_pemain';
+		$DATA_INSERT = $_POST;
+		$DATA_INSERT['user_created'] = $_SESSION['id_user'];
+		if ($_POST){
+			if($is_official){
+				$nama_table = 'data_non_pemain';
+				$where = array('id_user' => $_POST['id_pemain'], 'id_kategori' => $_POST['id_kategori'], 'id_event' => $_POST['id_event']);
+				$DATA_INSERT['id_user'] = $_POST['id_pemain'];
+				unset($DATA_INSERT['id_pemain']);
+				unset($DATA_INSERT['is_dharmayukti']);
+				unset($DATA_INSERT['is_official']);
+				unset($DATA_INSERT['is_veteran']);
+			}
+			else{
+				$where = array('id_pemain' => $_POST['id_pemain'], 'is_dharmayukti' => $_POST['is_dharmayukti'], 'id_event' => $_POST['id_event']);
+			}
+		}
+			
+		$cek_pemain = $this->basic->get_data_where($where, $nama_table);
 		if ($cek_pemain->num_rows()) {
 			echo JSON_ENCODE(array("status" => false, "pesan" => 'SUDAH ADA PEMAIN / OFFICIAL DENGAN NAMA TERSEBUT, SILAHKAN HAPUS TERLEBIH DAHULU'));
 			return;
 		} else {
-			$status = $this->basic->insert_data('data_pemain', $_POST);
+			$status = $this->basic->insert_data($nama_table, $DATA_INSERT);
 		}
 
 		if ($status) {
@@ -975,8 +995,19 @@ class Admin extends CI_Controller
 	public function hapus_data_pemain()
 	{
 		$id_pemain = $this->input->post('id_pemain');
-		$where = array('id_pemain' => $id_pemain);
-		$status = $this->basic->delete_data($where, 'data_pemain');
+		$jenis = $this->input->post('jenis');
+		$id_event = $this->input->post('id_event');
+		$id_kategori = $this->input->post('id_kategori');
+		$nama_tabel = 'data_pemain';
+		if($jenis == 'pemain'){
+			$where = array('id_pemain' => $id_pemain, 'id_event'=>$id_event, 'id_kategori' => $id_kategori);
+		}
+		else{
+			$nama_tabel = 'data_non_pemain';
+			$where = array('id_user' => $id_pemain, 'id_event'=>$id_event, 'id_kategori' => $id_kategori);
+		}
+		
+		$status = $this->basic->delete_data($where, $nama_tabel);
 		if ($status) {
 			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
 		} else {
