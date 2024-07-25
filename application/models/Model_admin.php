@@ -32,7 +32,7 @@ class Model_admin extends CI_Model
 		$this->db->from("data_pegawai_all AS A");
 		$this->db->where("(A.nama_gelar LIKE '%$keyword%' OR A.nip LIKE '%$keyword%')");
 		// if ($veteran) $this->db->where("(A.umur >= '60' OR A.id_jabatan = '30')"); //INI TAHUN 2022
-		$this->db->where("(YEAR(A.tgl_lahir) <= 1964 AND A.umur <= 70)");
+		$this->db->where("((YEAR(A.tgl_lahir) <= 1964 AND A.umur <= 70) OR A.id_jabatan = '30')");
 		$this->db->where("id_status_pegawai = 1");
 		$this->db->limit("100");
 		$query = $this->db->get();
