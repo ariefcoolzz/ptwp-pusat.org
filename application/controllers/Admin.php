@@ -1015,6 +1015,23 @@ class Admin extends CI_Controller
 		}
 		$this->data_pemain();
 	}
+	public function hapus_data_tim_veteran(){
+		$id_tim = $this->input->post('id_tim');
+		$where = array('id_tim' => $id_tim);
+		$get = $this->basic->get_data_where($where, 'data_tim')->row_array();
+		
+		$status = $this->basic->delete_data($where, 'data_tim');
+		$where = array('id_pemain' => $get['id_pemain1'], 'is_veteran' => 1);
+		$status = $this->basic->delete_data($where, 'data_pemain');
+		$where = array('id_pemain' => $get['id_pemain2'], 'is_veteran' => 1);
+		$status = $this->basic->delete_data($where, 'data_pemain');
+		if ($status) {
+			$this->session->set_flashdata('msg', '<div class="alert alert-success"> Data Berhasil Dihapus.</div>');
+		} else {
+			$this->session->set_flashdata('msg', '<div class="alert alert-danger"> Data Gagal Dihapus.</div>');
+		}
+		$this->data_pemain_veteran();
+	}
 	public function hapus_data_tim()
 	{
 		$id_tim = $this->input->post('id_tim');

@@ -96,7 +96,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     else{
                                         echo "<td align='left' style='display:none'></td>";
                                     }                             
-                                    $tim_temp = $R['id_tim'];
+                                    
                                     
                                     echo "<td align='left'>" . $R['nama'] . "</td>";
                                     echo "<td align='left'>" . ($R['nip']) . "</td>";
@@ -106,17 +106,28 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                     echo "<td align='left'>" . $R['umur'] . "</td>";
                                     echo "<td align='left'>" . $R['jabatan'] . "</td>";
                                     echo "<td align='left'>" . $R['nama_satker'] . "</td>";
-                                    if($R['user_created'] == $_SESSION['id_user']){
-
-                                        echo '<td>
-                                        <a href="javascript:void(0)" data-id_pemain="' . $R['id_pemain'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fas fa fa-times"></i></a>';
-                                    echo "</td>";
+                                    if($R['user_created'] == $_SESSION['id_user'] or IN_ARRAY($_SESSION['id_panitia'], array(0, 1))){
+                                        if($R['id_tim'] !== $tim_temp && $tim_temp !== 0){
+                                            echo '<td align="left" rowspan = "2">
+                                                <a href="javascript:void(0)" data-id_tim="' . $R['id_tim'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete TIM"><i class="fas fa fa-times"></i></a>';
+                                            echo "</td>";
+                                        }
+                                        else if($tim_temp == 0){
+                                            echo '<td align="left" rowspan = "2">
+                                                <a href="javascript:void(0)" data-id_tim="' . $R['id_tim'] . '" class="hapus btn btn-xs btn-outline-danger btn-rounded" data-toggle="tooltip" data-placement="top" title="Delete TIM"><i class="fas fa fa-times"></i></a>';
+                                            echo "</td>";
+                                        }        
+                                        else{
+                                            echo "<td align='left' style='display:none'></td>";
+                                        }   
+                                        
                                     }else{
 
-                                        echo "<td></td>";
+                                        // echo "<td></td>";
                                     }
                                     echo "</tr>";
                                     $no++;
+                                    $tim_temp = $R['id_tim'];
                                 }
                                 ?>
                             </tbody>
@@ -262,10 +273,10 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
         }).then((result) => {
             if (result.isConfirmed) {
                 var form_data = new FormData();
-                form_data.append('id_pemain', $(this).data('id_pemain'));
+                form_data.append('id_tim', $(this).data('id_tim'));
                 form_data.append('id_event', '<?php echo $id_event; ?>');
                 $.ajax({
-                    url: "<?php echo base_url(); ?>admin/hapus_data_pemain",
+                    url: "<?php echo base_url(); ?>admin/hapus_data_tim_veteran",
                     type: 'POST',
                     cache: false,
                     contentType: false,
