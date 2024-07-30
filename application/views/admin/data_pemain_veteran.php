@@ -123,7 +123,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                                         
                                     }else{
 
-                                        // echo "<td></td>";
+                                        echo "<td></td>";
                                     }
                                     echo "</tr>";
                                     $no++;
