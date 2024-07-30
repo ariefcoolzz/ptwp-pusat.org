@@ -111,7 +111,7 @@ $kontingen = $this->Model_admin->get_data_kontingen($id_kontingen);
                 <?php echo $this->session->flashdata('msg'); 
                 $list_official = $this->Model_admin->get_data_non_pemain($id_kontingen, 2);
                 $tambah = true;
-                if($list_official->num_rows() >= 1) $tambah = false;
+                if($list_official->num_rows() >= 4) $tambah = false;
                 ?>
                 <h5 class="text-center"> DATA PESERTA KONGGRESS </h5>
                 <?php 
