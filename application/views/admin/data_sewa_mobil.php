@@ -12,7 +12,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <iframe src="https://artoursewamobil.com/" height="1200" width="100%" title="Iframe Example"></iframe>
+                <iframe src="https://drive.google.com/file/d/1iCsxVbEu85oQ_rfxl-1PEoOeVvkY9o7O/preview" height="1200" width="100%" title="Iframe Example"></iframe>
             </div>
         </div>
     </div>
