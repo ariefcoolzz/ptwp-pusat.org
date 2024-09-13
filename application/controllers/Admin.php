@@ -1220,16 +1220,16 @@ class Admin extends CI_Controller
 		if($id_kategori_pemain == "") $pesan .= "Kategori Pemain Harus Dipilih<br>";
 		if($pool == "") $pesan .= "Pool Harus Dipilih<br>";
 		if($urutan == "") $pesan .= "Urutan Harus Dipilih<br>";
-		if($id_pemain1_tim_A == "") $pesan .= "Pemain Pertama Tim A Harus Dipilih<br>";
-		if($id_pemain1_tim_B == "") $pesan .= "Pemain Pertama Tim B Harus Dipilih<br>";
+		if($id_pemain1 == "") $pesan .= "Pemain Pertama Harus Dipilih<br>";
+		// if($id_pemain1_tim_B == "") $pesan .= "Pemain Pertama Tim B Harus Dipilih<br>";
 		if($pesan != "") die(JSON_ENCODE(array("status" => false, "pesan" => $pesan)));
 
-		if($id_pemain2_tim_A == "") $id_pemain2_tim_A = NULL;
-		if($id_pemain2_tim_B == "") $id_pemain2_tim_B = NULL;
+		if($id_pemain2 == "") $id_pemain2 = NULL;
+		// if($id_pemain2_tim_B == "") $id_pemain2_tim_B = NULL;
 
-		$P['from'] = "data_perorangan_penyisihan";
-		$P['values'] = array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1_tim_A" => $id_pemain1_tim_A,  "id_pemain2_tim_A" => $id_pemain2_tim_A,  "id_pemain1_tim_B" => $id_pemain1_tim_B,  "id_pemain2_tim_B" => $id_pemain2_tim_B);
-		$P['where'] = array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
+		$P['from'] = "data_perorangan_pool";
+		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1" => $id_pemain1, "id_pemain2" => $id_pemain2);
+		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
 		$status = $this->Model_basic->insert_cek($P);
 		echo JSON_ENCODE(array("status" => $status));
 	}

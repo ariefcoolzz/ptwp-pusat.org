@@ -20,20 +20,21 @@
         {
             foreach($data->result_array() AS $R)
                 {
-                    $option .= "<option value='$R[id_pemain]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker]</option>";
+                    $option .= "<option value='$R[id_pemain]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker] | $R[nama_satker_parent]</option>";
                 }
         }
     ?>
-    <div class="col-5">
-        <select class="form-control select2" id='id_pemain1_tim_A'>
+    <div class="col-10">
+        <select class="form-control select2" id='id_pemain1'>
             <option></option>
             <?php echo $option; ?>
         </select>
-        <select class="form-control select2" id='id_pemain2_tim_A'>
+        <select class="form-control select2" id='id_pemain2'>
             <option></option>
             <?php if($tunggal_ganda == "ganda")  echo $option; ?>
         </select>
     </div>
+    <?php /* 
     <div class="col-5">
         <select class="form-control select2" id='id_pemain1_tim_B'>
             <option></option>
@@ -45,6 +46,7 @@
             <?php if($tunggal_ganda == "ganda")  echo $option; ?>
         </select>
     </div>
+    */ ?>
     <div class="col-2">
         <button class='btn bg-success w-100' id='simpan'>Simpan</button>
     </div>
@@ -52,29 +54,45 @@
 
 <?php
 UNSET($P);
-$P['from'] = "data_babak_penyisihan AS A";
-$P['where'] = "A.id_event = '$_SESSION[id_event]'";
+$P['select'] = "A.*, B.nama_gelar AS nama_pemain1, C.nama_gelar AS nama_pemain2";
+$P['from'] = "data_perorangan_pool AS A";
+$P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
+$P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
+$P['where'] = "A.id_event = '$_SESSION[id_event]' AND A.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
+$P['echo'] = true;
 $data = $this->Model_basic->select($P);
 if(!$data->num_rows()) echo "<center>Belum Ada Data</center>";
 else 
     {
+        echo "<div class='table-responsive'>";
+        echo "<table class='table table-primary table-striped table-borderless table-hover'>
+                <thead class='text-center align-middle'>
+                    <tr>
+                        <th>No.</th>
+                        <th>Pool</th>
+                        <th>Urutan</th>
+                        <th>Nama Pemain 1</th>
+                        <th>Nama Pemain 2</th>
+                    </tr>
+                </thead>
+                <tbody class='text-center'>";
+        $no = 0;
         foreach($data->result_array() AS $R)
             {
-                echo "<h1>POOL TIM REGU ...........</h1>";
-                echo "<div class='table-responsive'>";
-                echo "<table class='table table-primary table-striped table-borderless table-hover'>";
+                $no++;
                 echo "
-                        <thead class='text-center align-middle'>
                         <tr>
-                            <th>No.</th>
-                            <th>Pool</th>
-                            <th>Urutan</th>
-                            <th>Nama Kontingen/Satker</th>
+                            <td>$no</td>
+                            <td>$R[pool]</td>
+                            <td>$R[urutan]</td>
+                            <td>$R[nama_pemain1]</td>
+                            <td>$R[nama_pemain2]</td>
                         </tr>
-                        </thead>
-                        <tbody class='text-center'>
                     ";
             }
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
     }
 ?>
 <script>
@@ -86,10 +104,10 @@ else
         form_data.append('id_kategori_pemain', "<?php echo $_POST['id_kategori_pemain']; ?>");
         form_data.append('pool', $("#pool").val());
         form_data.append('urutan', $("#urutan").val());
-        form_data.append('id_pemain1_tim_A', $("#id_pemain1_tim_A").val());
-        form_data.append('id_pemain2_tim_A', $("#id_pemain2_tim_A").val());
-        form_data.append('id_pemain1_tim_B', $("#id_pemain1_tim_B").val());
-        form_data.append('id_pemain2_tim_B', $("#id_pemain2_tim_B").val());
+        form_data.append('id_pemain1', $("#id_pemain1").val());
+        form_data.append('id_pemain2', $("#id_pemain2").val());
+        // form_data.append('id_pemain1_tim_B', $("#id_pemain1_tim_B").val());
+        // form_data.append('id_pemain2_tim_B', $("#id_pemain2_tim_B").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_perorangan_pool_simpan",
             type: 'POST',
