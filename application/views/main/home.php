@@ -129,17 +129,30 @@
                             </div>
                         </div><!-- media-body -->
                     </div><!-- media -->
+                    <?php /*
                     <div class="d-flex flex-column flex-sm-row mg-t-20 mg-md-t-0">
                         <a href="<?php echo base_url('login'); ?>" target="_parent" role="button" class="btn btn-lg btn-danger btn-uppercase rounded-pill pd-x-15 mg-t-5 mg-sm-t-0  mg-sm-l-5"><i class="mg-r-5"></i> Registrasi Peserta</a>
                         <!--<button data-link='https://ptwp-pusat.org/main/page/invitasi_tenis_beregu_aparatur_penegak_hukum_(aph)_tahun_2023' class='btn btn-danger'></i> Baca Selengkapnya</button>-->
                     </div>
+                    */ ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<?php /*
 <div id='div_data_live_streaming'></div>
+*/ 
+echo '
+<center>
+<iframe width="90%" height=3000 src="'.base_url('assets/pdf/hasil-drawing-pertandingan-yogyakarta-2024.pdf').'"> 
+    <p style="font-size: 110%;"><em><strong>ERROR: </strong>  
+    An &#105;frame should be displayed here but your browser version does not support &#105;frames. </em>Please update your browser to its most recent version and try again.</p>
+</iframe>
+</center>';
+?>
+
 
 
 <div class="content mg-0">

@@ -1,4 +1,7 @@
 <?php
+// echo "<pre>";
+PRINT_R($_SESSION);
+// echo "</pre>";
 extract($_SESSION);
 ?>
 <!DOCTYPE html>
