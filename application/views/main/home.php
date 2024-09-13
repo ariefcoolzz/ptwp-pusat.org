@@ -144,15 +144,10 @@
 <?php /*
 <div id='div_data_live_streaming'></div>
 */ 
-echo '
-<center>
-<iframe width="90%" height=3000 src="'.base_url('assets/pdf/hasil-drawing-pertandingan-yogyakarta-2024.pdf').'"> 
-    <p style="font-size: 110%;"><em><strong>ERROR: </strong>  
-    An &#105;frame should be displayed here but your browser version does not support &#105;frames. </em>Please update your browser to its most recent version and try again.</p>
-</iframe>
-</center>';
 ?>
-
+<center>
+<a href='<?php echo base_url('main/hasil_drawing_pertandingan'); ?>'><img src='<?php echo base_url("assets/img/hasil-drawing-yogyakarta-2024.jpeg"); ?>'></a>
+</center>
 
 
 <div class="content mg-0">
@@ -468,31 +463,31 @@ echo '
 </div><!-- modal-dialog -->
 </div><!-- modal -->
 <script>
-    tampilkan_data_live_streaming();
+    // tampilkan_data_live_streaming();
 
-    setInterval(tampilkan_data_live_streaming, 60000); // direfresh setiap 1 menit
-    function tampilkan_data_live_streaming() {
-        var form_data = new FormData();
-        // form_data.append('id_event', $("#list_event").val());
-        $.ajax({
-            url: "<?php echo base_url(); ?>main/data_live_streaming",
-            type: 'POST',
-            cache: false,
-            contentType: false,
-            processData: false,
-            data: form_data,
-            dataType: 'json',
-            success: function(json) {
-                if (json.status !== true) {
-                    location.reload();
-                } else {
-                    // $("#div_data_live_streaming").hide(300);
-                    $("#div_data_live_streaming").html(json.konten);
-                    // $("#div_data_live_streaming").show(300);
-                }
-            }
-        });
-    }
+    // setInterval(tampilkan_data_live_streaming, 60000); // direfresh setiap 1 menit
+    // function tampilkan_data_live_streaming() {
+    //     var form_data = new FormData();
+    //     // form_data.append('id_event', $("#list_event").val());
+    //     $.ajax({
+    //         url: "<?php echo base_url(); ?>main/data_live_streaming",
+    //         type: 'POST',
+    //         cache: false,
+    //         contentType: false,
+    //         processData: false,
+    //         data: form_data,
+    //         dataType: 'json',
+    //         success: function(json) {
+    //             if (json.status !== true) {
+    //                 location.reload();
+    //             } else {
+    //                 // $("#div_data_live_streaming").hide(300);
+    //                 $("#div_data_live_streaming").html(json.konten);
+    //                 // $("#div_data_live_streaming").show(300);
+    //             }
+    //         }
+    //     });
+    // }
 
     $(".tonton_pembukaan").on("click", function() {
         var link = $(this).data('link');
