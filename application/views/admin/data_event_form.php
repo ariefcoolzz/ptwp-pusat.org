@@ -51,6 +51,13 @@ if (isset($_POST['id_event'])) {
                                 <label class="control-label">Keterangan :</label>
                                 <textarea id='keterangan' class='form-control'><?php if (isset($R)) echo $R['keterangan']; ?></textarea>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label">Keaktifan :</label>
+                                <select id='is_aktif' class='form-control'>
+                                    <option value=1 <?php if (isset($R) and $R['is_aktif'] == 1) echo "selected"; ?>>Aktif</option>
+                                    <option value=0 <?php if (isset($R) and $R['is_aktif'] == 0) echo "selected"; ?>>Tidak Aktif</option>
+                                </select>
+                            </div>
 
                             <div id='biodata'></div>
                         </div>
@@ -69,11 +76,13 @@ if (isset($_POST['id_event'])) {
     $("#simpan").on('click', function() {
         $("#simpan").html('<i class="fa fa-spinner fa-spin"></i> Sedang Memproses Data');
         var form_data = new FormData();
+        form_data.append('id_event', $("#id_event").val());
         form_data.append('tanggal_mulai', $("#tanggal_mulai").val());
         form_data.append('tanggal_selesai', $("#tanggal_selesai").val());
         form_data.append('nama', $("#nama").val());
         form_data.append('jenis_pertandingan', $("#jenis_pertandingan").val());
         form_data.append('keterangan', $("#keterangan").val());
+        form_data.append('is_aktif', $("#is_aktif").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_event_simpan",
             type: 'POST',

@@ -1,14 +1,9 @@
 <?php
-$id_event = $this->Model_main->get_event_aktif();
-UNSET($P);
-// $P['select'] = "";
-$P['from'] = "data_babak_penyisihan AS A";
-$P['where'] = "A.id_event = '$id_event'";
-$P['die'] = true;
-$data = $this->Model_basic->select($P);
-echo "Finish";
-die();
-
+$result = $this->Model_main->model_tabel_babak_penyisihan_rekap($_POST);
+$list_kategori = $this->Model_main->list_kategori_pemain($_POST);
+if (!$result->num_rows()) {
+    echo "<h2 class='text-danger'>Maaf... Belum Ada Data Pertandingan</h2>";
+} else {
     $score = $this->Model_main->model_tabel_babak_penyisihan_score($_POST);
     $no = 0;
 	echo "<h4 class='text-center mt-2'>".strtoupper($_POST['beregu'])." - POOL ".$_POST['pool']."</h4>";
@@ -137,7 +132,7 @@ die();
     }
     echo "</tbody></table>";
     echo "<hr />";
-
+}
 $tmp = array_filter($temp_menang);
 if (!empty($tmp)) {
     arsort($temp_menang);

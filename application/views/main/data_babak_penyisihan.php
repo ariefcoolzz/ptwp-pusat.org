@@ -8,7 +8,7 @@
 						<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
 					</ol>
 				</nav>
-				<h4>Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia 2022</h4>
+				<h4>Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia 2024</h4>
 				<h1 class='text-white bg-danger p-2 blink'>Desclaimer<br><br>Apabila terdapat kekeliruan data akan diperbaiki kemudian dan yg berlaku yang ditangan wasit dan seksi pertandingan.</h1>
 			</div>
 		</div>

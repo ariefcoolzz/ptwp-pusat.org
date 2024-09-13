@@ -9,6 +9,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->model('Model_main');
 		$this->load->model('Model_admin');
+		$this->load->model('Model_basic');
 		$this->basic->squrity();
 	}
 
@@ -51,8 +52,9 @@ class Admin extends CI_Controller
 
 	public function index()
 	{
+		$_SESSION['id_event'] = $this->Model_basic->get_event_aktif();
 		$data['judul'] = "Halaman Admin";
-		$data['list_event'] = $this->basic->get_data('data_event');
+		$data['set_id_event'] = $this->basic->get_data('data_event');
 		$this->template->load('admin_template', 'admin/home', $data);
 	}
 
@@ -1197,6 +1199,41 @@ class Admin extends CI_Controller
 		
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public function data_perorangan_pool()
+	{
+		$konten_menu = $this->load->view("admin/data_perorangan_pool", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_perorangan_pool_rekap()
+	{
+		$konten_menu = $this->load->view("admin/data_perorangan_pool_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_perorangan_pool_simpan()
+	{
+		EXTRACT($_POST);
+
+		$pesan = "";
+		if($id_kategori_pemain == "") $pesan .= "Kategori Pemain Harus Dipilih<br>";
+		if($pool == "") $pesan .= "Pool Harus Dipilih<br>";
+		if($urutan == "") $pesan .= "Urutan Harus Dipilih<br>";
+		if($id_pemain1_tim_A == "") $pesan .= "Pemain Pertama Tim A Harus Dipilih<br>";
+		if($id_pemain1_tim_B == "") $pesan .= "Pemain Pertama Tim B Harus Dipilih<br>";
+		if($pesan != "") die(JSON_ENCODE(array("status" => false, "pesan" => $pesan)));
+
+		if($id_pemain2_tim_A == "") $id_pemain2_tim_A = NULL;
+		if($id_pemain2_tim_B == "") $id_pemain2_tim_B = NULL;
+
+		$P['from'] = "data_perorangan_penyisihan";
+		$P['values'] = array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1_tim_A" => $id_pemain1_tim_A,  "id_pemain2_tim_A" => $id_pemain2_tim_A,  "id_pemain1_tim_B" => $id_pemain1_tim_B,  "id_pemain2_tim_B" => $id_pemain2_tim_B);
+		$P['where'] = array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
+		$status = $this->Model_basic->insert_cek($P);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public function data_pool()
 	{

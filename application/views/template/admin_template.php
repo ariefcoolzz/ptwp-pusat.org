@@ -94,10 +94,10 @@ extract($_SESSION);
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_sewa_mobil" class="menu_admin nav-link"><i data-feather="truck"></i> <span>Sewa Mobil</span></a></li>
                 <li class="nav-item"><a href="javascript:void(0)" menu_admin="data_transparansi_keuangan" class="menu_admin nav-link"><i data-feather="dollar-sign"></i> <span>Laporan Keuangan</span></a></li>
                 <!-- <li class="nav-label pt-3">Kejuaaraan / Event</li>
-                <select id="list_event" class="filter form-control">
+                <select id="set_id_event" class="filter form-control">
                     <?php
-                    if ($list_event->num_rows() > 0) {
-                        foreach ($list_event->result_array() as $R) {
+                    if ($set_id_event->num_rows() > 0) {
+                        foreach ($set_id_event->result_array() as $R) {
                             $selected = '';
                             if ($R['is_aktif']) $selected = "selected";
                             echo '<option value="' . $R['id_event'] . '" ' . $selected . '>' . $R['nama'] . '</option>';
@@ -112,10 +112,18 @@ extract($_SESSION);
                     <li class="nav-item"><a menu_admin="data_pemain_veteran" class="menu_admin nav-link"><i data-feather="user"></i> <span>Data Pemain Veteran</span></a></li>
                     <li class="nav-item"><a menu_admin="data_tim" class="menu_admin nav-link"><i data-feather="users"></i> <span>Data Tim</span></a></li>
 
-                    <li class="nav-label pt-3">Pertandingan</li>
+                    <li class="nav-label pt-3">Pertandingan Beregu</li>
                     <li class="nav-item"><a menu_admin="data_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
                     <li class="nav-item"><a menu_admin="data_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
                     <li class="nav-item"><a menu_admin="tabel_babak_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_skema" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Skema</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_babak_final" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Final</span></a></li>
+                    <li class="nav-item"><a menu_admin="skema_babak_final" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Final</span></a></li>
+
+                    <li class="nav-label pt-3">Pertandingan Perorangan</li>
+                    <li class="nav-item"><a menu_admin="data_perorangan_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_perorangan_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="tabel_perorangan_babak_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
                     <li class="nav-item"><a menu_admin="data_skema" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Skema</span></a></li>
                     <li class="nav-item"><a menu_admin="data_babak_final" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Final</span></a></li>
                     <li class="nav-item"><a menu_admin="skema_babak_final" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Final</span></a></li>
@@ -137,17 +145,15 @@ extract($_SESSION);
 
     <div class="content ht-100v pd-0">
         <div class="content-header">
-            <select id="list_event" class="filter form-control col-lg-6">
-                <?php
-                if ($list_event->num_rows() > 0) {
-                    foreach ($list_event->result_array() as $R) {
-                        $selected = '';
-                        if ($R['is_aktif']) $selected = "selected";
-                        echo '<option value="' . $R['id_event'] . '" ' . $selected . '>' . $R['nama'] . '</option>';
-                    }
-                }
-                ?>
-            </select>
+            <?php 
+            UNSET($P);
+            $P['from'] = "data_event AS A";
+            $P['where'] = "A.id_event = '$_SESSION[id_event]'";
+            // $P['die'] = true;
+            $id_event = $this->Model_basic->select($P)->row_array()['id_event'];
+            $event = $this->Model_basic->select($P)->row_array()['nama'];
+            echo "<h4>Event Aktif > <b>$id_event: $event</b></h4>";
+            ?>
             <nav class="nav mg-l-10">
                 <a href="<?php echo base_url('') ?>" target="_blank" class="nav-link" data-toggle="tooltip" data-placement="left" title="Halaman Utama PTWP"><i data-feather="chrome" class="text-primary"></i></a>
             </nav>
@@ -246,6 +252,7 @@ extract($_SESSION);
         $('.nav-item.active').removeClass('active');
         $('a[href="' + location.pathname + location.search + '"]').closest('li.nav-item').addClass('active');
     });
+
     $(".menu_admin").on("click", function() {
         //loader
         $(".title_loader").text("Sedang Memuat Halaman");
@@ -255,7 +262,7 @@ extract($_SESSION);
         //loader
         // skip();
         var form_data = new FormData();
-        form_data.append('id_event', $('#list_event').val());
+        // form_data.append('xxx', $('#xxx').val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/" + $(this).attr('menu_admin'),
             type: 'POST',

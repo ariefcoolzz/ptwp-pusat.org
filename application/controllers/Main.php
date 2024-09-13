@@ -9,6 +9,7 @@ class Main extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Model_main');
+		$this->load->model('Model_basic');
 		// $this->sesi = '28';
 		// $this->hari = '3';
 		// $this->basic->squrity();
@@ -187,12 +188,6 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 
-	public function data_babak_penyisihan()
-	{
-		$data['judul'] = "Babak Penyisihan";
-		$this->template->load('ptwp_template', 'main/data_babak_penyisihan', $data);
-	}
-
 	// public function data_babak_penyisihan_rekap()
 	// {
 		// OB_START();
@@ -247,6 +242,12 @@ class Main extends CI_Controller
 	{
 		$data['judul'] = "DATA PENYISIHAN";
 		$this->template->load('ptwp_template', 'main/data_penyisihan_statis', $data);
+	}
+
+	public function data_babak_penyisihan()
+	{
+		$data['judul'] = "Babak Penyisihan";
+		$this->template->load('ptwp_template', 'main/data_babak_penyisihan', $data);
 	}
 
 	public function data_babak_penyisihan_rekap()

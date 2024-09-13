@@ -2,14 +2,6 @@
 class Model_main extends CI_Model
 {
 
-	function get_event_aktif(){
-		$this->db->select("A.id_event");
-		$this->db->from('data_event AS A');
-		$this->db->where('A.is_aktif', '1');
-		$query = $this->db->get()->row_array();
-		// DIE($this->db->last_query());
-		return $query['id_event'];
-	}
 	function model_master_lapangan()
 	{
 		$this->db->select("A.");
