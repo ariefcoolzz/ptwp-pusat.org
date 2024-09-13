@@ -240,7 +240,7 @@ class Main extends CI_Controller
 	public function data_penyisihan_file()
 	{
 		$data['judul'] = "DATA PENYISIHAN";
-		$this->template->load('ptwp_template', 'main/data_pennyisihan_statis', $data);
+		$this->template->load('ptwp_template', 'main/data_penyisihan_statis', $data);
 	}
 
 	public function data_babak_penyisihan_rekap()
