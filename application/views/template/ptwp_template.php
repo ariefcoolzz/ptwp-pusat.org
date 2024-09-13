@@ -121,7 +121,7 @@
                 <li class="nav-label mg-t-20">Pertandingan</li>
                 <?php /* <li class="nav-sub-item"><a href="<?php echo base_url('main/data_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Pertandingan</a></li> */ ?>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/page/pedoman_pertandingan_xii'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Pedoman Pertandingan</a></li>
-                <!--<li class="nav-sub-item"><a href="<?php echo base_url('main/data_jadwal_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Jadwal Pertandingan</a></li>-->
+                <li class="nav-sub-item"><a href="<?php echo base_url('main/hasil_drawing_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Hasil Drawing Pertandingan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_penyisihan_file'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Data Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_babak_penyisihan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Babak Penyisihan</a></li>
                 <li class="nav-sub-item"><a href="<?php echo base_url('main/data_skema_pertandingan'); ?>" class="nav-sub-link"><i data-feather="check-circle"></i> Skema Pertandingan</a></li>

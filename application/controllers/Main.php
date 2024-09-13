@@ -237,6 +237,12 @@ class Main extends CI_Controller
 		$this->template->load('ptwp_template', 'main/data_jadwal_pertandingan', $data);
 	}
 
+	public function hasil_drawing_pertandingan()
+	{
+		$data['judul'] = "DATA DRAWING PERTANDINGAN";
+		$this->template->load('ptwp_template', 'main/hasil_drawing_pertandingan', $data);
+	}
+
 	public function data_penyisihan_file()
 	{
 		$data['judul'] = "DATA PENYISIHAN";
