@@ -189,6 +189,24 @@
     </div>
   </footer>
 
+  <div class="modal fade" id="popup" role="dialog" aria-hidden="true" style='z-index: 1051 !important;'>
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header pd-20 pd-sm-40">
+          <a href="" role="button" class="close pos-absolute t-15 r-15" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <div class="tx-center">
+            <h4 id="popup_judul" class='bg-primary'>.............</h4>
+            <div class="modal-body h3" id="popup_isi">
+              ............................................
+            </div>
+          </div>
+        </div><!-- modal-body -->
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
+
 
   <div class="modal fade" id="popup_streaming" role="dialog" aria-hidden="true" style='z-index: 1051 !important;'>
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
@@ -267,3 +285,11 @@
 </body>
 
 </html>
+
+<script>
+  $( document ).ready(function() {
+    $("#popup_judul").html("Pengumuman");
+    $("#popup_isi").html("Refree dan Panitia Pelaksanaa memutuskan untuk merevisi sistem pertandingan babak penyisihan dalam pool yang semula disepakati dalam technical meeting mengunakan <b>games 8 (delapan)</b> direvisi menjadi <b>games 6 (enam)</b>, kecuali babak semi final dan final menggunakan <b>games 8 (delapan) No ADV</b><br><br><a href='<?php echo base_url('assets/pdf/revisi-sistem-pertandingan.pdf'); ?>' target='blank'>Lihat Surat Pengumumannya</a>");
+    $("#popup").modal('show');
+  });
+</script>

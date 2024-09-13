@@ -14,13 +14,16 @@
     UNSET($P);
     $P['from'] = "data_pemain AS A";
     $P['join'][] = array("data_pegawai_all AS B", "A.id_pemain=B.id_pegawai", "LEFT");
+    $P['join'][] = array("tmst_keluarga AS K", "A.id_keluarga=K.IdAnggotaKeluarga", "LEFT");
     $P['where'] = "A.id_event = '$_SESSION[id_event]'";
     $data = $this->Model_basic->select($P);
     if($data->num_rows())
         {
             foreach($data->result_array() AS $R)
                 {
-                    $option .= "<option value='$R[id_pemain]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker] | $R[nama_satker_parent]</option>";
+                    $dharmayukti = "";
+                    if($R['is_dharmayukti'] != "") $dharmayukti = " | ".$R['NamaAnggotaKeluarga'];
+                    $option .= "<option value='$R[id_pemain]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker] | $R[nama_satker_parent] $dharmayukti</option>";
                 }
         }
     ?>

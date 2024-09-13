@@ -72,9 +72,10 @@
 	<hr class="mg-y-40">
 	<div data-label="MyTabPTWP" class="df-example">
 		<?php 
+        $time = DATE('YmdHis');
 			echo '
 				
-				<iframe width="100%" height=3000 src="'.base_url('assets/pdf/hasil-drawing-pertandingan-yogyakarta-2024.pdf').'"> 
+				<iframe width="100%" height=3000 src="'.base_url("assets/pdf/hasil-drawing-pertandingan-yogyakarta-2024.pdf?$time").'"> 
 					<p style="font-size: 110%;"><em><strong>ERROR: </strong>  
 					An &#105;frame should be displayed here but your browser version does not support &#105;frames. </em>Please update your browser to its most recent version and try again.</p>
 				</iframe>
