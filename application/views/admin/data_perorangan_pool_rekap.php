@@ -59,7 +59,7 @@ $P['from'] = "data_perorangan_pool AS A";
 $P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
 $P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
 $P['where'] = "A.id_event = '$_SESSION[id_event]' AND A.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
-$P['echo'] = true;
+// $P['echo'] = true;
 $data = $this->Model_basic->select($P);
 if(!$data->num_rows()) echo "<center>Belum Ada Data</center>";
 else 
@@ -73,6 +73,7 @@ else
                         <th>Urutan</th>
                         <th>Nama Pemain 1</th>
                         <th>Nama Pemain 2</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class='text-center'>";
@@ -87,6 +88,11 @@ else
                             <td>$R[urutan]</td>
                             <td>$R[nama_pemain1]</td>
                             <td>$R[nama_pemain2]</td>
+                            <td><button class='hapus btn bg-danger' 
+                                data-id_kategori_pemain='$R[id_kategori_pemain]'  
+                                data-pool='$R[pool]'
+                                data-urutan='$R[urutan]'
+                            >Hapus</td>
                         </tr>
                     ";
             }
@@ -110,6 +116,40 @@ else
         // form_data.append('id_pemain2_tim_B', $("#id_pemain2_tim_B").val());
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_perorangan_pool_simpan",
+            type: 'POST',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: form_data,
+            dataType: 'json',
+            success: function(json) {
+                if (json.status !== true) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: json.pesan,
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Simpan Data Berhasil',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                    load_data();
+                }
+            }
+        });
+    });
+
+    $(".hapus").on('click', function() {
+        var form_data = new FormData();
+        form_data.append('id_kategori_pemain', "<?php echo $_POST['id_kategori_pemain']; ?>");
+        form_data.append('pool', $(this).data('pool'));
+        form_data.append('urutan', $(this).data('urutan'));
+        $.ajax({
+            url: "<?php echo base_url(); ?>admin/data_perorangan_pool_hapus",
             type: 'POST',
             cache: false,
             contentType: false,

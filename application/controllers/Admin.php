@@ -1212,6 +1212,15 @@ class Admin extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
 	}
 
+	public function data_perorangan_pool_hapus()
+	{
+		EXTRACT($_POST);
+		$P['from'] = "data_perorangan_pool";
+		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
+		$status = $this->Model_basic->delete($P);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+
 	public function data_perorangan_pool_simpan()
 	{
 		EXTRACT($_POST);
