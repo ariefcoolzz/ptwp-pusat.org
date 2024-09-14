@@ -58,7 +58,7 @@
 
 <?php
 UNSET($P);
-$P['select'] = "A.*, IF(A.is_dharmayukti1 = 0, B.nama_gelar, D.NamaAnggotaKeluarga) AS nama_pemain1, IF(A.is_dharmayukti2 = 0, C.nama_gelar, E.NamaAnggotaKeluarga) AS nama_pemain2";
+$P['select'] = "A.*, IF(A.is_dharmayukti1 IS NULL, B.nama_gelar, D.NamaAnggotaKeluarga) AS nama_pemain1, IF(A.is_dharmayukti2 IS NULL, C.nama_gelar, E.NamaAnggotaKeluarga) AS nama_pemain2";
 $P['from'] = "data_perorangan_pool AS A";
 $P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
 $P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
