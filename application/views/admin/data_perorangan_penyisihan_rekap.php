@@ -28,7 +28,7 @@ if(!$data->num_rows()) echo "<center>Belum Ada Data</center>";
 else 
     {
         echo "<div class='table-responsive'>";
-        echo "<table class='table table-primary table-striped table-borderless table-hover'>
+        echo "<table id='data-perorangan' class='table table-primary table-striped table-borderless table-hover'>
                 <thead class='text-center align-middle'>
                     <tr>
                         <th>No.</th>
@@ -73,6 +73,7 @@ else
     }
 ?>
 <script>
+    
     $(".select2").select2();
 
     $(".set_tim_A,.set_tim_B").on('change', function() {
@@ -128,18 +129,29 @@ else
                         icon: 'success',
                         title: json.pesan,
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 200
                     });
                 } else {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Simpan Data Berhasil',
-                        showConfirmButton: false,
-                        timer: 1000
-                    });
-                    load_data();
+                    // Swal.fire({
+                    //     icon: 'success',
+                    //     title: 'Simpan Data Berhasil',
+                    //     showConfirmButton: false,
+                    //     timer: 200
+                    // });
+                    // load_data();
                 }
             }
         });
+    });
+
+    $('#data-perorangan').DataTable({
+        ordering: false,
+        paging:false,
+        language: {
+            searchPlaceholder: 'Pencarian...',
+            sSearch: '',
+            lengthMenu: '_MENU_ Berita/Halaman',
+            // info: false
+        }
     });
 </script>

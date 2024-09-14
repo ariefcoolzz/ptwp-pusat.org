@@ -1280,7 +1280,7 @@ class Admin extends CI_Controller
 		if($id_pertandingan == "") $pesan .= "ID Pertandingan tidak valid<br>";
 		if(!($set_tim_A >= 0 AND $set_tim_A <= 6)) $pesan .= "Set Tim A Tidak Valid<br>";
 		if(!($set_tim_B >= 0 AND $set_tim_B <= 6)) $pesan .= "Set Tim B Tidak Valid<br>";
-		if($set_tim_A != 6 AND $set_tim_B != 6) $pesan .= "Set Tim A / B Salah Satu Harus Menang<br>";
+		if($set_tim_A != 6 AND $set_tim_B != 6 AND $set_tim_A != 0 AND $set_tim_B != 0) $pesan .= "Set Tim A / B Salah Satu Harus Menang<br>";
 		// if($id_pemain1_tim_B == "") $pesan .= "Pemain Pertama Tim B Harus Dipilih<br>";
 		if($pesan != "") die(JSON_ENCODE(array("status" => false, "pesan" => $pesan)));
 
