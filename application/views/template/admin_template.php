@@ -122,8 +122,8 @@ extract($_SESSION);
 
                     <li class="nav-label pt-3">Pertandingan Perorangan</li>
                     <li class="nav-item"><a menu_admin="data_perorangan_pool" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Pool</span></a></li>
-                    <li class="nav-item"><a menu_admin="data_perorangan_babak_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
-                    <li class="nav-item"><a menu_admin="tabel_perorangan_babak_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="data_perorangan_penyisihan" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Penyisihan</span></a></li>
+                    <li class="nav-item"><a menu_admin="tabel_perorangan_penyisihan" class="menu_admin nav-link"><span style="margin-left: 35px;">Tabel Babak Penyisihan</span></a></li>
                     <li class="nav-item"><a menu_admin="data_skema" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Skema</span></a></li>
                     <li class="nav-item"><a menu_admin="data_babak_final" class="menu_admin nav-link"><i data-feather="share-2"></i> <span>Data Babak Final</span></a></li>
                     <li class="nav-item"><a menu_admin="skema_babak_final" class="menu_admin nav-link"><span style="margin-left: 35px;">Skema Babak Final</span></a></li>

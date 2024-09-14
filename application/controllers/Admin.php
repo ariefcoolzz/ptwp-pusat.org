@@ -1259,6 +1259,92 @@ class Admin extends CI_Controller
 		$status = $this->Model_basic->insert_cek($P);
 		echo JSON_ENCODE(array("status" => $status));
 	}
+
+	public function data_perorangan_penyisihan()
+	{
+		$konten_menu = $this->load->view("admin/data_perorangan_penyisihan", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_perorangan_penyisihan_generate()
+	{
+		UNSET($P);
+		$P['select'] = "A.id_event, A.id_kategori_pemain, A.pool, COUNT(A.urutan) AS jumlah_urutan";
+		$P['from'] = "data_perorangan_pool AS A";
+		$P['where'] = "A.id_event = '$_SESSION[id_event]' ";
+		$P['group_by'] = "A.id_kategori_pemain, A.pool";
+		$P['order_by'] = "A.id_kategori_pemain ASC, A.pool ASC, A.urutan DESC";
+		$data = $this->Model_basic->select($P);
+		if($data->num_rows())
+			{
+				foreach($data->result_array() AS $R)
+					{
+						// echo $R['id_kategori_pemain']." ".$R['pool']." > ".$R['jumlah_urutan']."<br>";
+						$ju = $R['jumlah_urutan'];
+						$urutan = 0;
+						for($a=1;$a<=$ju;$a++)
+							{
+								UNSET($P); // Tim A
+								$P['from'] = "data_perorangan_pool AS A";
+								$P['where'] = "A.id_event = '$R[id_event]' AND A.id_kategori_pemain='$R[id_kategori_pemain]' AND A.pool='$R[pool]' AND A.urutan='$a'";
+								// $P['echo'] = true;
+								$dataS = $this->Model_basic->select($P);
+								if($dataS->num_rows())
+									{
+										$SA = $dataS->row_array();
+									}
+
+								for($b=$a+1;$b<=$ju;$b++)
+									{
+										// echo "$a : $b<br>";
+
+										UNSET($P); // Tim B
+										$P['from'] = "data_perorangan_pool AS A";
+										$P['where'] = "A.id_event = '$R[id_event]' AND A.id_kategori_pemain='$R[id_kategori_pemain]' AND A.pool='$R[pool]' AND A.urutan='$b'";
+										// $P['echo'] = true;
+										// $P['die'] = true;
+										$dataS = $this->Model_basic->select($P);
+										if($dataS->num_rows())
+											{
+												$SB = $dataS->row_array();
+											}
+
+										$urutan++;
+										UNSET($P);
+										$P['from'] = "data_perorangan_penyisihan";
+										$P['values'] = array(
+											"id_event" => $R['id_event'],
+											"id_kategori_pemain" => $R['id_kategori_pemain'],
+											"pool" => $R['pool'],
+											"urutan" => $urutan,
+											"id_pemain1_tim_A" => $SA['id_pemain1'],
+											"id_pemain2_tim_A" => $SA['id_pemain2'],
+											"id_pemain1_tim_B" => $SB['id_pemain1'],
+											"id_pemain2_tim_B" => $SB['id_pemain2'],
+											"is_dharmayukti1_tim_A" => $SA['is_dharmayukti1'],
+											"is_dharmayukti2_tim_A" => $SA['is_dharmayukti2'],
+											"is_dharmayukti1_tim_B" => $SB['is_dharmayukti1'],
+											"is_dharmayukti2_tim_B" => $SB['is_dharmayukti2'],
+											"id_keluarga1_tim_A" => $SA['id_keluarga1'],
+											"id_keluarga2_tim_A" => $SA['id_keluarga2'],
+											"id_keluarga1_tim_B" => $SB['id_keluarga1'],
+											"id_keluarga2_tim_B" => $SB['id_keluarga2']
+										);
+										$P['where'] = array(
+											"id_event" => $R['id_event'],
+											"id_kategori_pemain" => $R['id_kategori_pemain'],
+											"pool" => $R['pool'],
+											"urutan" => $urutan
+										);
+										$P['echo'] = true;
+										// $this->Model_basic->insert_cek($P);
+										$this->Model_basic->insert($P);
+									}
+							}
+					}
+			}
+		echo JSON_ENCODE(array("status" => TRUE));
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	public function data_pool()
