@@ -21,7 +21,6 @@
         {
             foreach($data->result_array() AS $R)
                 {
-                    $dharmayukti = "";
                     if($R['is_dharmayukti'])
                         $option .= "<option value='$R[id_pemain]' data-is_dharmayukti='$R[is_dharmayukti]' data-id_keluarga='$R[id_keluarga]'>$R[NamaAnggotaKeluarga] | Dharmayukti | $R[nama_gelar]</option>";
                     else 
@@ -31,11 +30,11 @@
     ?>
     <div class="col-10">
         <select class="form-control select2" id='id_pemain1'>
-            <option></option>
+            <option data-is_dharmayukti='' data-id_keluarga='' selected></option>
             <?php echo $option; ?>
         </select>
         <select class="form-control select2" id='id_pemain2'>
-            <option></option>
+            <option data-is_dharmayukti='' data-id_keluarga='' selected></option>
             <?php if($tunggal_ganda == "ganda")  echo $option; ?>
         </select>
     </div>
