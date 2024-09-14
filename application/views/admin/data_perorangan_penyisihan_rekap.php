@@ -96,14 +96,14 @@ else
                         icon: 'error',
                         title: json.pesan,
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 100
                     });
                 } else {
                     Swal.fire({
                         icon: 'success',
                         title: 'Simpan Data Berhasil',
                         showConfirmButton: false,
-                        timer: 1000
+                        timer: 100
                     });
                 }
             }
@@ -129,16 +129,16 @@ else
                         icon: 'success',
                         title: json.pesan,
                         showConfirmButton: false,
-                        timer: 200
+                        timer: 1000
                     });
                 } else {
-                    // Swal.fire({
-                    //     icon: 'success',
-                    //     title: 'Simpan Data Berhasil',
-                    //     showConfirmButton: false,
-                    //     timer: 200
-                    // });
-                    // load_data();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Simpan Data Berhasil',
+                        showConfirmButton: false,
+                        timer: 1000
+                    });
+                    load_data();
                 }
             }
         });
