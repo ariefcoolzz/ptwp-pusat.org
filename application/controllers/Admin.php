@@ -1255,7 +1255,7 @@ class Admin extends CI_Controller
 		$P['from'] = "data_perorangan_pool";
 		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1" => $id_pemain1, "id_pemain2" => $id_pemain2, "is_dharmayukti1" => $is_dharmayukti1, "is_dharmayukti2" => $is_dharmayukti2, "id_keluarga1" => $id_keluarga1, "id_keluarga2" => $id_keluarga2);
 		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
-		$P['die'] = true;
+		// $P['die'] = true;
 		$status = $this->Model_basic->insert_cek($P);
 		echo JSON_ENCODE(array("status" => $status));
 	}
