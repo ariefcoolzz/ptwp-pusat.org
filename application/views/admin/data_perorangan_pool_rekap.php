@@ -134,7 +134,7 @@ else
             success: function(json) {
                 if (json.status !== true) {
                     Swal.fire({
-                        icon: 'success',
+                        icon: 'error',
                         title: json.pesan,
                         showConfirmButton: false,
                         timer: 1000

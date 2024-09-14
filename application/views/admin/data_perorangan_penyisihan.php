@@ -25,7 +25,7 @@
         </div>
         <div class="col">
             <select class="form-control" id='pool'>
-                <option></option>
+                <option value=''>Semua Pool</option>
                 <?php 
                 for($p=1;$p<=26;$p++)
                     {
@@ -47,8 +47,9 @@
 		load();
 	});
 
-	load();
+	// load();
 	function load() {
+
 		var form_data = new FormData();
 		form_data.append('id_kategori_pemain', $("#id_kategori_pemain").val());
 		$.ajax({
