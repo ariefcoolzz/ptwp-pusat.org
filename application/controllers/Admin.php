@@ -1336,9 +1336,9 @@ class Admin extends CI_Controller
 											"pool" => $R['pool'],
 											"urutan" => $urutan
 										);
-										$P['echo'] = true;
-										// $this->Model_basic->insert_cek($P);
-										$this->Model_basic->insert($P);
+										// $P['echo'] = true;
+										$this->Model_basic->insert_cek($P);
+										// $this->Model_basic->insert($P);
 									}
 							}
 					}
