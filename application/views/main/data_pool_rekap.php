@@ -1,4 +1,5 @@
 <?php
+$_SESSION['id_event'] = $this->Model_basic->get_event_aktif();
 UNSET($P);
 // $P['select'] = "";
 $P['from'] = "data_perorangan_pool AS A";
