@@ -62,6 +62,7 @@ $P['from'] = "data_perorangan_pool AS A";
 $P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
 $P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
 $P['where'] = "A.id_event = '$_SESSION[id_event]' AND A.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
+
 // $P['echo'] = true;
 $data = $this->Model_basic->select($P);
 if(!$data->num_rows()) echo "<center>Belum Ada Data</center>";

@@ -8,8 +8,6 @@
 						<li class="breadcrumb-item active" aria-current="page"><?php echo $judul; ?></li>
 					</ol>
 				</nav>
-				<h4>Turnamen Tenis Beregu Ke-19 Piala Ketua Mahkamah Agung Republik Indonesia 2024</h4>
-				<h1 class='text-white bg-danger p-2 blink'>Desclaimer<br><br>Apabila terdapat kekeliruan data akan diperbaiki kemudian dan yg berlaku yang ditangan wasit dan seksi pertandingan.</h1>
 			</div>
 		</div>
 	</div>
@@ -32,16 +30,6 @@
                     }
                 ?>
 			</select>
-			<select class="form-control" id='pool'>
-				<option value='all' selected>Semua Pool</option>
-				<?php
-					$jumlah_pool = 26; //sampai Z
-					FOR($i=1;$i<=$jumlah_pool;$i++)
-						{
-							echo "<option value='".pool($i)."'>Pool ".pool($i)."</option>";
-						}
-				?>
-			</select>
 		</div>
 	</div>
 	<div class="table-responsive mg-t-20">
@@ -54,7 +42,7 @@
 	})();
 
 	$(document).ready(function() {
-		$("#id_kategori_pemain,#pool").on("change", function() {
+		$("#id_kategori_pemain").on("change", function() {
 			proses();
 		});
 	});
@@ -63,9 +51,8 @@
 		{
 			var form_data = new FormData();
 			form_data.append('id_kategori_pemain', $("#id_kategori_pemain").val());
-			form_data.append('pool', $("#pool").val());
 			$.ajax({
-				url: "<?php echo base_url(); ?>main/data_babak_penyisihan_rekap",
+				url: "<?php echo base_url(); ?>main/data_pool_rekap",
 				type: 'POST',
 				cache: false,
 				contentType: false,
