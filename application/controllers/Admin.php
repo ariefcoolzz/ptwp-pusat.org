@@ -1236,8 +1236,20 @@ class Admin extends CI_Controller
 		if($id_pemain2 == "") $id_pemain2 = NULL;
 		// if($id_pemain2_tim_B == "") $id_pemain2_tim_B = NULL;
 
+		if(!$is_dharmayukti1) 
+			{
+				$is_dharmayukti1 = NULL;
+				$di_keluarga1 = NULL;
+			}
+
+		if($is_dharmayukti2) 
+			{
+				$is_dharmayukti2 = NULL;
+				$id_keluarga2 = NULL;
+			}
+
 		$P['from'] = "data_perorangan_pool";
-		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1" => $id_pemain1, "id_pemain2" => $id_pemain2);
+		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan, "id_pemain1" => $id_pemain1, "id_pemain2" => $id_pemain2, "is_dharmayukti1" => $is_dharmayukti1, "is_dharmayukti2" => $is_dharmayukti2, "id_keluarga1" => $id_keluarga1, "id_keluarga2" => $id_keluarga2);
 		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "pool" => $pool, "urutan" => $urutan);
 		$status = $this->Model_basic->insert_cek($P);
 		echo JSON_ENCODE(array("status" => $status));

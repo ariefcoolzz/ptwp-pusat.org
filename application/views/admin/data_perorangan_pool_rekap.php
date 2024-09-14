@@ -22,8 +22,10 @@
             foreach($data->result_array() AS $R)
                 {
                     $dharmayukti = "";
-                    if($R['is_dharmayukti'] != "") $dharmayukti = " | ".$R['NamaAnggotaKeluarga'];
-                    $option .= "<option value='$R[id_pemain]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker] | $R[nama_satker_parent] $dharmayukti</option>";
+                    if($R['is_dharmayukti'])
+                        $option .= "<option value='$R[id_pemain]' data-is_dharmayukti='$R[is_dharmayukti]' data-id_keluarga='$R[id_keluarga]'>$R[NamaAnggotaKeluarga] | Dharmayukti | $R[nama_gelar]</option>";
+                    else 
+                        $option .= "<option value='$R[id_pemain]' data-is_dharmayukti='$R[is_dharmayukti]' data-id_keluarga='$R[id_keluarga]'>$R[nama_gelar] | $R[nip] | $R[jabatan_lengkap] | $R[nama_satker] | $R[nama_satker_parent] </option>";
                 }
         }
     ?>
@@ -57,10 +59,12 @@
 
 <?php
 UNSET($P);
-$P['select'] = "A.*, B.nama_gelar AS nama_pemain1, C.nama_gelar AS nama_pemain2";
+$P['select'] = "A.*, IF(A.is_dharmayukti1 = 0, B.nama_gelar, D.NamaAnggotaKeluarga) AS nama_pemain1, IF(A.is_dharmayukti2 = 0, C.nama_gelar, E.NamaAnggotaKeluarga) AS nama_pemain2";
 $P['from'] = "data_perorangan_pool AS A";
 $P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
 $P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
+$P['join'][] = array("tmst_keluarga AS D", "A.id_keluarga1=D.IdAnggotaKeluarga", "LEFT");
+$P['join'][] = array("tmst_keluarga AS E", "A.id_keluarga2=E.IdAnggotaKeluarga", "LEFT");
 $P['where'] = "A.id_event = '$_SESSION[id_event]' AND A.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
 
 // $P['echo'] = true;
@@ -116,8 +120,10 @@ else
         form_data.append('urutan', $("#urutan").val());
         form_data.append('id_pemain1', $("#id_pemain1").val());
         form_data.append('id_pemain2', $("#id_pemain2").val());
-        // form_data.append('id_pemain1_tim_B', $("#id_pemain1_tim_B").val());
-        // form_data.append('id_pemain2_tim_B', $("#id_pemain2_tim_B").val());
+        form_data.append('is_dharmayukti1', $("#id_pemain1").children('option:selected').data('is_dharmayukti'));
+        form_data.append('is_dharmayukti2', $("#id_pemain2").children('option:selected').data('is_dharmayukti'));
+        form_data.append('id_keluarga1', $("#id_pemain1").children('option:selected').data('id_keluarga'));
+        form_data.append('id_keluarga2', $("#id_pemain2").children('option:selected').data('id_keluarga'));
         $.ajax({
             url: "<?php echo base_url(); ?>admin/data_perorangan_pool_simpan",
             type: 'POST',
