@@ -114,6 +114,7 @@ class Main extends CI_Controller
 
 	public function index()
 	{
+		$_SESSION['id_event'] = $this->Model_basic->get_event_aktif();
 		$this->Model_main->log_data_konten(0);
 		$data['judul'] = "Persatuan Tenis Warga Peradilan (PTWP) Pusat";
 		$data['berita_pusat'] = $this->Model_main->get_data_konten_list('1', '3'); // KATEGORI 1 LIMIT 3
