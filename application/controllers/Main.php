@@ -288,6 +288,21 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 
+	public function data_klasemen()
+	{
+		$data['judul'] = "DATA POOL";
+		$this->template->load('ptwp_template', 'main/data_klasemen', $data);
+	}
+
+	public function data_klasemen_rekap()
+	{
+		OB_START();
+		$this->load->view('main/data_klasemen_rekap');
+		$konten = ob_get_clean();
+		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
+	}
+
+
 	public function data_live_streaming()
 	{
 		$konten = $this->load->view('main/data_live_streaming', NULL, TRUE);

@@ -58,13 +58,10 @@
 
 <?php
 UNSET($P);
-$P['select'] = "A.*, IF(A.is_dharmayukti1 IS NULL, B.nama_gelar, D.NamaAnggotaKeluarga) AS nama_pemain1, IF(A.is_dharmayukti2 IS NULL, C.nama_gelar, E.NamaAnggotaKeluarga) AS nama_pemain2";
-$P['from'] = "data_perorangan_pool AS A";
-$P['join'][] = array("data_pegawai_all AS B", "A.id_pemain1=B.id_pegawai", "LEFT");
-$P['join'][] = array("data_pegawai_all AS C", "A.id_pemain2=C.id_pegawai", "LEFT");
-$P['join'][] = array("tmst_keluarga AS D", "A.id_keluarga1=D.IdAnggotaKeluarga", "LEFT");
-$P['join'][] = array("tmst_keluarga AS E", "A.id_keluarga2=E.IdAnggotaKeluarga", "LEFT");
-$P['where'] = "A.id_event = '$_SESSION[id_event]' AND A.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
+$P['select'] = "X.*, A.nama_pemain,";
+$P['from'] = "data_perorangan_pool AS X";
+$P['join'][] = array("view_tim AS A", "A.id_tim=X.id_tim", "LEFT");
+$P['where'] = "X.id_event = '$_SESSION[id_event]' AND X.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
 
 // $P['echo'] = true;
 $data = $this->Model_basic->select($P);
@@ -78,8 +75,7 @@ else
                         <th>No.</th>
                         <th>Pool</th>
                         <th>Urutan</th>
-                        <th>Nama Pemain 1</th>
-                        <th>Nama Pemain 2</th>
+                        <th>Nama Pemain</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -93,8 +89,7 @@ else
                             <td>$no</td>
                             <td>$R[pool]</td>
                             <td>$R[urutan]</td>
-                            <td>$R[nama_pemain1]</td>
-                            <td>$R[nama_pemain2]</td>
+                            <td>$R[nama_pemain]</td>
                             <td><button class='hapus btn bg-danger' 
                                 data-id_kategori_pemain='$R[id_kategori_pemain]'  
                                 data-pool='$R[pool]'

@@ -1371,7 +1371,62 @@ class Admin extends CI_Controller
 			}
 		echo JSON_ENCODE(array("status" => TRUE));
 	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public function data_perorangan_gugur()
+	{
+		$konten_menu = $this->load->view("admin/data_perorangan_gugur", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_perorangan_gugur_rekap()
+	{
+		$konten_menu = $this->load->view("admin/data_perorangan_gugur_rekap", NULL, TRUE);
+		echo JSON_ENCODE(array("status" => TRUE, "konten_menu" => $konten_menu));
+	}
+
+	public function data_perorangan_gugur_simpan()
+	{
+		EXTRACT($_POST);
+
+		$pesan = "";
+		if($per == "") $pesan .= "Per Harus Dipilih<br>";
+		if($urutan == "") $pesan .= "Urutan Harus Dipilih<br>";
+		if($id_tim_A == "") $pesan .= "Pemain Tim A Harus Dipilih<br>";
+		if($id_tim_B == "") $pesan .= "Pemain Tim B Harus Dipilih<br>";
+		if($pesan != "") die(JSON_ENCODE(array("status" => false, "pesan" => $pesan)));
+
+		$P['from'] = "data_perorangan_gugur";
+		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "per" => $per, "urutan" => $urutan, "id_tim_A" => $id_tim_A, "id_tim_B" => $id_tim_B);
+		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "per" => $per, "urutan" => $urutan, "id_tim_A" => $id_tim_A, "id_tim_B" => $id_tim_B);
+		// $P['die'] = true;
+		$status = $this->Model_basic->delete($P);
+		$status = $this->Model_basic->insert($P);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+
+	public function data_perorangan_gugur_update()
+	{
+		EXTRACT($_POST);
+
+		$pesan = "";
+		if($id_pertandingan == "") $pesan .= "ID Pertandingan tidak valid<br>";
+		// if(!($set_tim_A >= 0 AND $set_tim_A <= 6)) $pesan .= "Set Tim A Tidak Valid<br>";
+		// if(!($set_tim_B >= 0 AND $set_tim_B <= 6)) $pesan .= "Set Tim B Tidak Valid<br>";
+		// if($set_tim_A != 6 AND $set_tim_B != 6 AND $set_tim_A != 0 AND $set_tim_B != 0) $pesan .= "Set Tim A / B Salah Satu Harus Menang<br>";
+		// if($id_pemain1_tim_B == "") $pesan .= "Pemain Pertama Tim B Harus Dipilih<br>";
+		if($pesan != "") die(JSON_ENCODE(array("status" => false, "pesan" => $pesan)));
+
+		$P['from'] = "data_perorangan_gugur";
+		$P['set'] 	= array("set_tim_A" => $set_tim_A, "set_tim_B" => $set_tim_B);
+		$P['where'] 	= array("id_pertandingan" => $id_pertandingan);
+		// $P['die'] = true;
+		$status = $this->Model_basic->update($P);
+		echo JSON_ENCODE(array("status" => $status));
+	}
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 	public function data_pool()
 	{
