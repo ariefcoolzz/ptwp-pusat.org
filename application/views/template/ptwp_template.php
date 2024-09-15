@@ -292,12 +292,13 @@
 </html>
 
 <script>
-  var teks3 = "<div style='text-align:justify;'>Jadwal Pertandingan 15 September 2024. Update 06.00 WITA.<br><a href='<?php echo base_url('assets/pdf/oop-15-9.pdf'); ?>' target='blank'>Lihat Jadwal Pertandingan</a></div>";
+  var teks4 = "<div style='text-align:justify;'>Jadwal Pertandingan Senin, 16 September 2024. Update 06.00 WITA.<br><a href='<?php echo base_url('assets/pdf/oop-16-9.pdf'); ?>' target='blank'>Lihat Jadwal Pertandingan</a></div>";
+  var teks3 = "<hr><div style='text-align:justify;'>Jadwal Pertandingan Minggu, 15 September 2024. Update 06.00 WITA.<br><a href='<?php echo base_url('assets/pdf/oop-15-9.pdf'); ?>' target='blank'>Lihat Jadwal Pertandingan</a></div>";
   var teks2 = "<hr><div style='text-align:justify;'>Dalam rangka memudahkan koordinasi antara Panitia Pelaksana Pusat dan Daerah dengan para kontingen seluruh Indonesia dalam penyelenggaraan Kejuaraan Nasional Turnamen Tenis Perorangan Piala KMA Ke-IV dan Kongres PTWP KeXIX Tahun 2024 di Yogyakarta, bersama ini kami sampaikan Daftar Kenderaan Kontingen dan nomor kontak sopir masing-masing. Kami mohon kepada setiap kontingen untuk menginformasikan nomor kontak PIC (HP/WA) dan alamat Hotel masing-masing kontingen agar melancarkan dan memudahkan koordinasi selama kegiatan berlangsung. Adapun data No. Kontak PIC dan Hotel dapat diisikan pada link berikut: <br><a target='blank' href='https://docs.google.com/spreadsheets/d/1rQUy6qPNE3gmRa9nvnT5NeNE5OdFoqembMMQFQPLGq0/edit?usp=sharing'>https://docs.google.com/spreadsheets/d/1rQUy6qPNE3gmRa9nvnT5NeNE5OdFoqembMMQFQPLGq0/edit?usp=sharing</a>. <br>Perlu kami informasikan, bahwa apabila kontingen dijemput ke bandara pada hari Sabtu, Minggu, dan Senin seluruh biaya ditanggung oleh panitia. Apabila kontingen dijemput hari Jumat atau sebelumnya silahkan menghubungi sopir yang telah ditentukan.<br><a href='<?php echo base_url('assets/pdf/daftar-kendaraan.pdf'); ?>' target='blank'>Lihat Surat Pengumumannya</a></div>";
   var teks1 = "<hr><br><div style='text-align:justify;'>Refree dan Panitia Pelaksanaa memutuskan untuk merevisi sistem pertandingan babak penyisihan dalam pool yang semula disepakati dalam technical meeting mengunakan <b>games 8 (delapan)</b> direvisi menjadi <b>games 6 (enam)</b>, kecuali babak semi final dan final menggunakan <b>games 8 (delapan) No ADV</b><br><a href='<?php echo base_url('assets/pdf/revisi-sistem-pertandingan.pdf'); ?>' target='blank'>Lihat Surat Pengumumannya</a></div>";
   $( document ).ready(function() {
     $("#popup_judul").html("Pengumuman");
-    $("#popup_isi").html(teks3 + teks2 + teks1);
+    $("#popup_isi").html(teks4 + teks3 + teks2 + teks1);
     $("#popup").modal('show');
   });
 </script>
