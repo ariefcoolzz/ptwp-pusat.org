@@ -1,5 +1,5 @@
 <?php
-$id_event = $this->Model_main->get_event_aktif();
+$id_event = $this->Model_basic->get_event_aktif();
 UNSET($P);
 $P['select'] = "X.*, 
     Y.kategori,
