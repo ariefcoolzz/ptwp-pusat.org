@@ -1,4 +1,5 @@
 <?php
+$id_event = $this->Model_main->get_event_aktif();
 UNSET($P);
 $P['select'] = "X.*, 
     Y.kategori,
@@ -20,7 +21,7 @@ $P['join'][] = array("data_pegawai_all AS B2", "X.id_pemain2_tim_B=B2.id_pegawai
 $P['join'][] = array("tmst_keluarga AS BK1", "X.id_keluarga1_tim_B=BK1.IdAnggotaKeluarga", "LEFT");
 $P['join'][] = array("tmst_keluarga AS BK2", "X.id_keluarga2_tim_B=BK2.IdAnggotaKeluarga", "LEFT");
 
-$P['where'] = "X.id_event = '$_SESSION[id_event]'";
+$P['where'] = "X.id_event = '$id_event'";
 
 // $P['echo'] = true;
 $data = $this->Model_basic->select($P);
