@@ -302,6 +302,12 @@ class Main extends CI_Controller
 		echo JSON_ENCODE(array("status" => TRUE, "konten" => $konten));
 	}
 
+	public function data_sistem_gugur()
+	{
+		$data['judul'] = "DATA SISTEM GUGUR";
+		$this->template->load('ptwp_template', 'main/data_sistem_gugur', $data);
+	}
+
 
 	public function data_live_streaming()
 	{
