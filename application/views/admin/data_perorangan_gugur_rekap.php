@@ -56,6 +56,7 @@ $P['join'][] = array("master_kategori_pemain AS K", "X.id_kategori_pemain=K.id_k
 $P['join'][] = array("view_tim AS A", "A.id_tim=X.id_tim_A", "LEFT");
 $P['join'][] = array("view_tim AS B", "B.id_tim=X.id_tim_B", "LEFT");
 $P['where'] = "X.id_event = '$_SESSION[id_event]' AND X.id_kategori_pemain = '$_POST[id_kategori_pemain]'";
+$P['order_by'] = "X.per ASC, X.urutan ASC";
 IF($_POST['per'] != "all") $P['where'].= " AND X.per = '$_POST[per]'";
 
 // $P['echo'] = true;
