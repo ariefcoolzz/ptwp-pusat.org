@@ -1398,7 +1398,7 @@ class Admin extends CI_Controller
 
 		$P['from'] = "data_perorangan_gugur";
 		$P['values'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "per" => $per, "urutan" => $urutan, "id_tim_A" => $id_tim_A, "id_tim_B" => $id_tim_B);
-		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "per" => $per, "urutan" => $urutan, "id_tim_A" => $id_tim_A, "id_tim_B" => $id_tim_B);
+		$P['where'] 	= array("id_event" => $_SESSION['id_event'], "id_kategori_pemain" => $id_kategori_pemain, "per" => $per, "urutan" => $urutan);
 		// $P['die'] = true;
 		$status = $this->Model_basic->delete($P);
 		$status = $this->Model_basic->insert($P);
