@@ -30,7 +30,7 @@
                 <option value='8' selected>Per 8 Final</option>
                 <option value='4'>Per 4 Final</option>
                 <option value='2'>Semi Final</option>
-                <option value='1'>Semi Final</option>
+                <option value='1'>Final</option>
             </select>
         </div> 
 	</div>
