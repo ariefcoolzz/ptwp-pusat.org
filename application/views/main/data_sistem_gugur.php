@@ -39,6 +39,12 @@ if($data->num_rows())
     <div class='card'>
     <div class='card-body'>
     <table border='1' width='100%'>
+        <tr align='center' class='bg-primary'>
+            <th>Per 8 Final</th>
+            <th>Per 4 Final</th>
+            <th>Semi Final</th>
+            <th>Final</th>
+        </tr>
         <?php 
         for($v=1;$v<=$urutan;$v++)
             {
